@@ -28,6 +28,8 @@ func getPosts() []gotumblr.TextPost {
 	blogname := "devopsreactions.tumblr.com"
 	blogtypes := "text"
 	options := map[string]string{}
+	options["offset"] = "1"
+	options["limit"] = "5"
 	postsResponse := client.Posts(blogname, blogtypes, options)
 	posts := parsePosts(postsResponse)
 	return posts
