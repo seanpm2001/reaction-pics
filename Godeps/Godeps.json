@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/albertyw/devops-reactions-index",
+	"GoVersion": "go1.6",
+	"Deps": []
+}
