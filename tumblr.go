@@ -9,16 +9,14 @@ import (
 )
 
 func main() {
-	postsResponse := getPosts()
-	fmt.Println(postsResponse.Posts[0])
-	var post gotumblr.BasePost
-	err := json.Unmarshal(postsResponse.Posts[0], &post)
-	fmt.Println(err)
-	fmt.Println(post)
-	//fmt.Println(postsResponse.Total_posts)
+	posts := getPosts()
+	fmt.Println(len(posts))
+	fmt.Println(posts[0].Title)
+	fmt.Println(posts[0].Body)
+	fmt.Println(posts[0].Post_url)
 }
 
-func getPosts() gotumblr.PostsResponse {
+func getPosts() []gotumblr.TextPost {
 	client := gotumblr.NewTumblrRestClient(
 		os.Getenv("CONSUMER_KEY"),
 		os.Getenv("CONSUMER_SECRET"),
@@ -31,5 +29,20 @@ func getPosts() gotumblr.PostsResponse {
 	blogtypes := "text"
 	options := map[string]string{}
 	postsResponse := client.Posts(blogname, blogtypes, options)
-	return postsResponse
+	posts := parsePosts(postsResponse)
+	return posts
+}
+
+func parsePosts(postsResponse gotumblr.PostsResponse) []gotumblr.TextPost {
+	var posts []gotumblr.TextPost
+	var post gotumblr.TextPost
+	for _, element := range postsResponse.Posts {
+		err := json.Unmarshal(element, &post)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			posts = append(posts, post)
+		}
+	}
+	return posts
 }
