@@ -1,5 +1,24 @@
 {
 	"ImportPath": "github.com/albertyw/devops-reactions-index",
 	"GoVersion": "go1.6",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/MariaTerzieva/gotumblr",
+			"Rev": "62f45d64049aeab0b3835351edc66704c7210f7a"
+		},
+		{
+			"ImportPath": "github.com/joho/godotenv",
+			"Comment": "v1-10-g4ed1339",
+			"Rev": "4ed13390c0acd2ff4e371e64d8b97c8954138243"
+		},
+		{
+			"ImportPath": "github.com/joho/godotenv/autoload",
+			"Comment": "v1-10-g4ed1339",
+			"Rev": "4ed13390c0acd2ff4e371e64d8b97c8954138243"
+		},
+		{
+			"ImportPath": "github.com/kurrik/oauth1a",
+			"Rev": "cb1b80e32dd4385099f8d09312e4bcf6bdc993ec"
+		}
+	]
 }
