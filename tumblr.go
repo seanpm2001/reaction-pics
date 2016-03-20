@@ -25,10 +25,16 @@ func main() {
 }
 
 func getPosts() []gotumblr.TextPost {
+	var posts, newPosts []gotumblr.TextPost
+	offset := 0
 	client := getTumblrClient()
-	options := getTumblrOptions(0)
-	postsResponse := client.Posts(BlogName, BlogTypes, options)
-	posts := parsePosts(postsResponse)
+	for len(newPosts) == PostsLimit || offset == 0 {
+		options := getTumblrOptions(offset)
+		postsResponse := client.Posts(BlogName, BlogTypes, options)
+		newPosts = parsePosts(postsResponse)
+		posts = append(posts, newPosts...)
+		offset += PostsLimit
+	}
 	return posts
 }
 
