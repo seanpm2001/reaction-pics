@@ -2,6 +2,7 @@ package main
 
 import _ "github.com/joho/godotenv/autoload"
 import (
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"github.com/MariaTerzieva/gotumblr"
@@ -18,10 +19,26 @@ const (
 
 func main() {
 	posts := getPosts()
-	fmt.Println(len(posts))
-	fmt.Println(posts[0].Title)
-	fmt.Println(posts[0].Body)
-	fmt.Println(posts[0].Post_url)
+	writePostsToCSV(posts)
+}
+
+func writePostsToCSV(posts []gotumblr.TextPost) {
+	var row []string
+	file, err := os.Create("data.csv")
+	defer file.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	writer := csv.NewWriter(file)
+	for _, post := range posts {
+		row = []string{post.Title, post.Body, post.Post_url}
+		writer.Write(row)
+		if err := writer.Error(); err != nil {
+			fmt.Println(err)
+		}
+	}
+	writer.Flush()
 }
 
 func getPosts() []gotumblr.TextPost {
