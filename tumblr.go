@@ -8,6 +8,12 @@ import (
 	"os"
 )
 
+const (
+	TumblrURL = "http://api.tumblr.com"
+	BlogName  = "devopsreactions.tumblr.com"
+	BlogTypes = "text"
+)
+
 func main() {
 	posts := getPosts()
 	fmt.Println(len(posts))
@@ -16,21 +22,24 @@ func main() {
 	fmt.Println(posts[0].Post_url)
 }
 
-func getPosts() []gotumblr.TextPost {
+func getTumblrClient() *gotumblr.TumblrRestClient {
 	client := gotumblr.NewTumblrRestClient(
 		os.Getenv("CONSUMER_KEY"),
 		os.Getenv("CONSUMER_SECRET"),
 		os.Getenv("TOKEN"),
 		os.Getenv("TOKEN_SECRET"),
 		"https://www.albertyw.com/",
-		"http://api.tumblr.com",
+		TumblrURL,
 	)
-	blogname := "devopsreactions.tumblr.com"
-	blogtypes := "text"
+	return client
+}
+
+func getPosts() []gotumblr.TextPost {
+	client := getTumblrClient()
 	options := map[string]string{}
 	options["offset"] = "1"
 	options["limit"] = "5"
-	postsResponse := client.Posts(blogname, blogtypes, options)
+	postsResponse := client.Posts(BlogName, BlogTypes, options)
 	posts := parsePosts(postsResponse)
 	return posts
 }
