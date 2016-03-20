@@ -6,12 +6,14 @@ import (
 	"fmt"
 	"github.com/MariaTerzieva/gotumblr"
 	"os"
+	"strconv"
 )
 
 const (
-	TumblrURL = "http://api.tumblr.com"
-	BlogName  = "devopsreactions.tumblr.com"
-	BlogTypes = "text"
+	TumblrURL  = "http://api.tumblr.com"
+	BlogName   = "devopsreactions.tumblr.com"
+	BlogTypes  = "text"
+	PostsLimit = 20
 )
 
 func main() {
@@ -20,6 +22,14 @@ func main() {
 	fmt.Println(posts[0].Title)
 	fmt.Println(posts[0].Body)
 	fmt.Println(posts[0].Post_url)
+}
+
+func getPosts() []gotumblr.TextPost {
+	client := getTumblrClient()
+	options := getTumblrOptions(0)
+	postsResponse := client.Posts(BlogName, BlogTypes, options)
+	posts := parsePosts(postsResponse)
+	return posts
 }
 
 func getTumblrClient() *gotumblr.TumblrRestClient {
@@ -34,14 +44,11 @@ func getTumblrClient() *gotumblr.TumblrRestClient {
 	return client
 }
 
-func getPosts() []gotumblr.TextPost {
-	client := getTumblrClient()
+func getTumblrOptions(offset int) map[string]string {
 	options := map[string]string{}
-	options["offset"] = "1"
-	options["limit"] = "5"
-	postsResponse := client.Posts(BlogName, BlogTypes, options)
-	posts := parsePosts(postsResponse)
-	return posts
+	options["offset"] = strconv.Itoa(offset)
+	options["limit"] = strconv.Itoa(PostsLimit)
+	return options
 }
 
 func parsePosts(postsResponse gotumblr.PostsResponse) []gotumblr.TextPost {
