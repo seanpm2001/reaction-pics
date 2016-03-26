@@ -6,4 +6,10 @@ Index of DevOps Reactions
 
 ## Installation
 
+```
+glide install
+go build
+./devops_reactions_index
+```
+
 ## Running tests
