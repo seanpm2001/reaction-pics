@@ -1,0 +1,10 @@
+package: github.com/albertyw/devops-reactions-index
+import:
+- package: github.com/MariaTerzieva/gotumblr
+  version: 62f45d64049aeab0b3835351edc66704c7210f7a
+- package: github.com/joho/godotenv
+  version: 4ed13390c0acd2ff4e371e64d8b97c8954138243
+  subpackages:
+  - autoload
+- package: github.com/kurrik/oauth1a
+  version: cb1b80e32dd4385099f8d09312e4bcf6bdc993ec

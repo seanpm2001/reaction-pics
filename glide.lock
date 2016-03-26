@@ -1,0 +1,12 @@
+hash: 0eb69941527d762962325af1a69fd80a18b21b1e4dc720a59024d93321b4a974
+updated: 2016-03-26T12:47:14.669031791-07:00
+imports:
+- name: github.com/joho/godotenv
+  version: ""
+  subpackages:
+  - autoload
+- name: github.com/kurrik/oauth1a
+  version: ""
+- name: github.com/MariaTerzieva/gotumblr
+  version: ""
+devImports: []
