@@ -28,5 +28,9 @@ func makeMockPost() gotumblr.PostsResponse {
 }
 
 func TestParsePosts(t *testing.T) {
-
+	postResponse := makeMockPost()
+	textPost := parsePosts(postResponse)
+	if textPost[0].Title != "title" {
+		t.Fail()
+	}
 }
