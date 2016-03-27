@@ -32,13 +32,23 @@ func writePostsToCSV(posts []gotumblr.TextPost) {
 	}
 	writer := csv.NewWriter(file)
 	for _, post := range posts {
-		row = []string{post.Title, post.Body, post.Post_url}
+		row = getRow(post)
 		writer.Write(row)
 		if err := writer.Error(); err != nil {
 			fmt.Println(err)
 		}
 	}
 	writer.Flush()
+}
+
+func getRow(post gotumblr.TextPost) (row []string) {
+	row = []string{
+		strconv.FormatInt(post.Id, 10),
+		post.Title,
+		post.Body,
+		post.Post_url,
+	}
+	return row
 }
 
 func getPosts() []gotumblr.TextPost {
