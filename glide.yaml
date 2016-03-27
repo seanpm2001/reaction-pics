@@ -8,3 +8,7 @@ import:
   - autoload
 - package: github.com/kurrik/oauth1a
   version: cb1b80e32dd4385099f8d09312e4bcf6bdc993ec
+- package: github.com/golang/mock
+  subpackages:
+  - gomock
+  - mockgen
