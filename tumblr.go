@@ -11,10 +11,10 @@ import (
 )
 
 const (
-	TumblrURL  = "http://api.tumblr.com"
-	BlogName   = "devopsreactions.tumblr.com"
-	BlogTypes  = "text"
-	PostsLimit = 20
+	tumblrURL  = "http://api.tumblr.com"
+	blogName   = "devopsreactions.tumblr.com"
+	blogTypes  = "text"
+	postsLimit = 20
 )
 
 func main() {
@@ -45,12 +45,12 @@ func getPosts() []gotumblr.TextPost {
 	var posts, newPosts []gotumblr.TextPost
 	offset := 0
 	client := getTumblrClient()
-	for len(newPosts) == PostsLimit || offset == 0 {
+	for len(newPosts) == postsLimit || offset == 0 {
 		options := getTumblrOptions(offset)
-		postsResponse := client.Posts(BlogName, BlogTypes, options)
+		postsResponse := client.Posts(blogName, blogTypes, options)
 		newPosts = parsePosts(postsResponse)
 		posts = append(posts, newPosts...)
-		offset += PostsLimit
+		offset += postsLimit
 	}
 	return posts
 }
@@ -62,7 +62,7 @@ func getTumblrClient() *gotumblr.TumblrRestClient {
 		os.Getenv("TOKEN"),
 		os.Getenv("TOKEN_SECRET"),
 		"https://www.albertyw.com/",
-		TumblrURL,
+		tumblrURL,
 	)
 	return client
 }
@@ -70,7 +70,7 @@ func getTumblrClient() *gotumblr.TumblrRestClient {
 func getTumblrOptions(offset int) map[string]string {
 	options := map[string]string{}
 	options["offset"] = strconv.Itoa(offset)
-	options["limit"] = strconv.Itoa(PostsLimit)
+	options["limit"] = strconv.Itoa(postsLimit)
 	return options
 }
 
