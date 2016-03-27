@@ -48,7 +48,7 @@ func getRow(post gotumblr.TextPost) (row []string) {
 		post.Body,
 		post.Post_url,
 	}
-	return row
+	return
 }
 
 func getPosts() []gotumblr.TextPost {
