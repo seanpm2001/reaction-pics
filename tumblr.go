@@ -1,10 +1,10 @@
 package main
 
-import _ "github.com/joho/godotenv/autoload"
 import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/MariaTerzieva/gotumblr"
 	"os"
 	"strconv"
