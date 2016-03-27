@@ -4,8 +4,8 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
-	_ "github.com/joho/godotenv/autoload"
 	"github.com/MariaTerzieva/gotumblr"
+	_ "github.com/joho/godotenv/autoload"
 	"os"
 	"strconv"
 )

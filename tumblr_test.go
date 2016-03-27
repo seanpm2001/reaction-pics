@@ -17,11 +17,11 @@ func makeMockPost() gotumblr.PostsResponse {
 		Title: "title",
 		Body:  "Body",
 	}
-	mockTextPostJson, _ := json.Marshal(&mockTextPost)
-	mockTextPostJsonRawMessage := *(*json.RawMessage)(&mockTextPostJson)
+	mockTextPostJSON, _ := json.Marshal(&mockTextPost)
+	mockTextPostJSONRawMessage := *(*json.RawMessage)(&mockTextPostJSON)
 	mockPostsResponse := gotumblr.PostsResponse{
 		Blog:        mockBlogInfo,
-		Posts:       []json.RawMessage{mockTextPostJsonRawMessage},
+		Posts:       []json.RawMessage{mockTextPostJSONRawMessage},
 		Total_posts: 5,
 	}
 	return mockPostsResponse
