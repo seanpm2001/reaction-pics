@@ -31,7 +31,6 @@ func getRow(post gotumblr.TextPost) (row []string) {
 	row = []string{
 		strconv.FormatInt(post.Id, 10),
 		post.Title,
-		post.Body,
 		post.Post_url,
 	}
 	return
