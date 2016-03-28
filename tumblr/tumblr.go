@@ -1,4 +1,4 @@
-package devopsreactionsindex
+package tumblr
 
 import (
 	"encoding/json"
@@ -17,7 +17,7 @@ const (
 	postsLimit = 20
 )
 
-func getPosts() []gotumblr.TextPost {
+func GetPosts() []gotumblr.TextPost {
 	var posts, newPosts []gotumblr.TextPost
 	offset := 0
 	client := getTumblrClient()

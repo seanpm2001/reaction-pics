@@ -1,4 +1,4 @@
-package devopsreactionsindex
+package tumblr
 
 import (
 	"encoding/json"

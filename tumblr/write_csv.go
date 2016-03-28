@@ -1,4 +1,4 @@
-package devopsreactionsindex
+package tumblr
 
 import (
 	"encoding/csv"
@@ -8,12 +8,7 @@ import (
 	"strconv"
 )
 
-func main() {
-	posts := getPosts()
-	writePostsToCSV(posts)
-}
-
-func writePostsToCSV(posts []gotumblr.TextPost) {
+func WritePostsToCSV(posts []gotumblr.TextPost) {
 	var row []string
 	file, err := os.Create("data.csv")
 	defer file.Close()
