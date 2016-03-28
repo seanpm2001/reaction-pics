@@ -1,4 +1,4 @@
-package main
+package devopsreactionsindex
 
 import (
 	"encoding/json"

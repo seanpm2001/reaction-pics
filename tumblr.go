@@ -1,10 +1,10 @@
-package main
+package devopsreactionsindex
 
 import (
-	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"github.com/MariaTerzieva/gotumblr"
+	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	"os"
 	"strconv"
@@ -16,40 +16,6 @@ const (
 	blogTypes  = "text"
 	postsLimit = 20
 )
-
-func main() {
-	posts := getPosts()
-	writePostsToCSV(posts)
-}
-
-func writePostsToCSV(posts []gotumblr.TextPost) {
-	var row []string
-	file, err := os.Create("data.csv")
-	defer file.Close()
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	writer := csv.NewWriter(file)
-	for _, post := range posts {
-		row = getRow(post)
-		writer.Write(row)
-		if err := writer.Error(); err != nil {
-			fmt.Println(err)
-		}
-	}
-	writer.Flush()
-}
-
-func getRow(post gotumblr.TextPost) (row []string) {
-	row = []string{
-		strconv.FormatInt(post.Id, 10),
-		post.Title,
-		post.Body,
-		post.Post_url,
-	}
-	return
-}
 
 func getPosts() []gotumblr.TextPost {
 	var posts, newPosts []gotumblr.TextPost
