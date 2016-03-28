@@ -22,6 +22,7 @@ func GetPosts() []gotumblr.TextPost {
 	offset := 0
 	client := getTumblrClient()
 	for len(newPosts) == postsLimit || offset == 0 {
+		fmt.Println("Downloading", offset)
 		options := getTumblrOptions(offset)
 		postsResponse := client.Posts(blogName, blogTypes, options)
 		newPosts = parsePosts(postsResponse)
