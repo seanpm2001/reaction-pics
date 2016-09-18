@@ -1,25 +1,24 @@
 #!/bin/bash
 
-set -e
-
 cd -P `pwd`
-go test -v $(glide novendor)
-
-rm -rf vendor
+godirs=$(glide novendor)
+go test -v $godirs
+gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
 VET_ERRORS=$(go vet .)
 if [ -n "$VET_ERRORS" ]; then
     echo "Lint failures on:"
     echo "$VET_ERRORS"
-    glide install
     exit 1
 fi
 
-FMT_ERRORS=$(gofmt -e -l -d .)
-if [ -n "$FMT_ERRORS" ]; then
+fmt_errors=""
+for gofile in $gofiles; do
+    fmt_errors+=$(gofmt -e -l -d $gofile)
+done
+if [ -n "$fmt_errors" ]; then
     echo "Fmt failures on:"
-    echo "$FMT_ERRORS"
-    glide install
+    echo "$fmt_errors"
     exit 1
 fi
 
@@ -28,8 +27,5 @@ LINT_ERRORS=$(golint .)
 if [ -n "$LINT_ERRORS" ]; then
     echo "Lint failures on:"
     echo "$LINT_ERRORS"
-    glide install
     exit 1
 fi
-
-glide install
