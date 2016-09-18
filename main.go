@@ -1,8 +1,8 @@
 package main
 
 import (
-	_ "github.com/albertyw/devops-reactions-index/tumblr"
 	"github.com/albertyw/devops-reactions-index/server"
+	_ "github.com/albertyw/devops-reactions-index/tumblr"
 )
 
 func main() {
