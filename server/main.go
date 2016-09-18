@@ -1,15 +1,29 @@
 package server
 
 import (
-    "fmt"
-    "net/http"
+	"fmt"
+	"github.com/flosch/pongo2"
+	"net/http"
 )
 
+const (
+	templateDir = "server/templates/"
+)
+
+var indexPath = fmt.Sprintf("%s/index.htm", templateDir)
+var index = pongo2.Must(pongo2.FromFile(indexPath))
+
 func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "asdf", r.URL.Path[1:])
+	// Execute the template per HTTP request
+	err := index.ExecuteWriter(pongo2.Context{"query": r.FormValue("query")}, w)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func Run() {
-    http.HandleFunc("/", handler)
-    http.ListenAndServe(":8080", nil)
+	address := ":8080"
+	fmt.Println("server listening on %s", address)
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(address, nil)
 }
