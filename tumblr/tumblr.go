@@ -17,8 +17,8 @@ const (
 	postsLimit = 20
 )
 
-func GetPosts() []gotumblr.TextPost {
-	var posts, newPosts []gotumblr.TextPost
+func GetPosts() []Post {
+	var posts, newPosts []Post
 	offset := 0
 	client := getTumblrClient()
 	for len(newPosts) == postsLimit || offset == 0 {
@@ -51,15 +51,16 @@ func getTumblrOptions(offset int) map[string]string {
 	return options
 }
 
-func parsePosts(postsResponse gotumblr.PostsResponse) []gotumblr.TextPost {
-	var posts []gotumblr.TextPost
-	var post gotumblr.TextPost
+func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
+	var posts []Post
+	var tumblrPost gotumblr.TextPost
 	for _, element := range postsResponse.Posts {
-		err := json.Unmarshal(element, &post)
+		err := json.Unmarshal(element, &tumblrPost)
 		if err != nil {
 			fmt.Println(err)
 		} else {
-			posts = append(posts, post)
+			post := TumblrToPost(&tumblrPost)
+			posts = append(posts, *post)
 		}
 	}
 	return posts

@@ -10,11 +10,11 @@ type Post struct {
 	Url   string
 }
 
-func TumblrToPost(tumblrPost *gotumblr.TextPost) Post {
+func TumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
 	post := Post{
 		Id:    tumblrPost.Id,
 		Title: tumblrPost.Title,
 		Url:   tumblrPost.Post_url,
 	}
-	return post
+	return &post
 }
