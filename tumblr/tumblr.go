@@ -2,6 +2,7 @@ package tumblr
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/MariaTerzieva/gotumblr"
 	// Used for getting tumblr env vars
@@ -18,7 +19,8 @@ const (
 )
 
 func GetPosts() []Post {
-	var posts, newPosts []Post
+	var newPosts []Post
+	posts, postIds := getExistingPosts()
 	offset := 0
 	client := getTumblrClient()
 	for len(newPosts) == postsLimit || offset == 0 {
@@ -26,7 +28,10 @@ func GetPosts() []Post {
 		options := getTumblrOptions(offset)
 		postsResponse := client.Posts(blogName, blogTypes, options)
 		newPosts = parsePosts(postsResponse)
-		posts = append(posts, newPosts...)
+		err := addNewPosts(newPosts, posts, postIds)
+		if err != nil {
+			break
+		}
 		offset += postsLimit
 	}
 	return posts
@@ -64,4 +69,25 @@ func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
 		}
 	}
 	return posts
+}
+
+func getExistingPosts() ([]Post, map[int64]bool) {
+	posts := ReadPostsFromCSV()
+	postIds := make(map[int64]bool)
+	for i := 0; i < len(posts); i++ {
+		postIds[posts[i].Id] = true
+	}
+	return posts, postIds
+}
+
+func addNewPosts(newPosts []Post, posts []Post, postIds map[int64]bool) (err error) {
+	for i := 0; i < len(newPosts); i++ {
+		post := newPosts[i]
+		if _, ok := postIds[post.Id]; ok {
+			return errors.New("repeated data")
+		} else {
+			posts = append(posts, post)
+		}
+	}
+	return nil
 }
