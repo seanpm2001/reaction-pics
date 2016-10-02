@@ -39,3 +39,20 @@ func TestTumblrToPost(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestCSVToPost(t *testing.T) {
+	row := make([]string, 3)
+	row[0] = "1234"
+	row[1] = "title"
+	row[2] = "url"
+	post := CSVToPost(row)
+	if post.Id != 1234 {
+		t.Fail()
+	}
+	if post.Title != "title" {
+		t.Fail()
+	}
+	if post.Url != "url" {
+		t.Fail()
+	}
+}
