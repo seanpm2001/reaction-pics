@@ -11,13 +11,13 @@ func TestPost(t *testing.T) {
 		"title",
 		"url",
 	}
-	if post.id != 1234 {
+	if post.Id != 1234 {
 		t.Fail()
 	}
-	if post.title != "title" {
+	if post.Title != "title" {
 		t.Fail()
 	}
-	if post.url != "url" {
+	if post.Url != "url" {
 		t.Fail()
 	}
 }
