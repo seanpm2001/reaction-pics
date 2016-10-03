@@ -2,6 +2,7 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/albertyw/devops-reactions-index)](https://goreportcard.com/report/github.com/albertyw/devops-reactions-index)
 [ ![Codeship Status for albertyw/devops-reactions-index](https://codeship.com/projects/815ff950-d5bf-0133-cd9a-4e3a42acd1da/status?branch=master)](https://codeship.com/projects/142652)
+[![Code Climate](https://codeclimate.com/github/albertyw/devops-reactions-index/badges/gpa.svg)](https://codeclimate.com/github/albertyw/devops-reactions-index)
 
 Index of DevOps Reactions
 
