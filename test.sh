@@ -5,10 +5,13 @@ godirs=$(glide novendor)
 go test -v $godirs
 gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
-VET_ERRORS=$(go vet .)
-if [ -n "$VET_ERRORS" ]; then
-    echo "Lint failures on:"
-    echo "$VET_ERRORS"
+govet_errors=""
+for gofile in $gofiles; do
+    govet_errors+=$(go vet $gofile 2>&1)
+done
+if [ -n "$govet_errors" ]; then
+    echo "Vet failures on:"
+    echo "$govet_errors"
     exit 1
 fi
 
@@ -23,9 +26,12 @@ if [ -n "$fmt_errors" ]; then
 fi
 
 go get -u github.com/golang/lint/golint
-LINT_ERRORS=$(golint .)
-if [ -n "$LINT_ERRORS" ]; then
+golint_errors=""
+for gofile in $gofiles; do
+    golint_errors+=$(golint $gofile)
+done
+if [ -n "$golint_errors" ]; then
     echo "Lint failures on:"
-    echo "$LINT_ERRORS"
+    echo "$golint_errors"
     exit 1
 fi
