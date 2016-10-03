@@ -28,7 +28,7 @@ func GetPosts() []Post {
 		options := getTumblrOptions(offset)
 		postsResponse := client.Posts(blogName, blogTypes, options)
 		newPosts = parsePosts(postsResponse)
-		err := addNewPosts(newPosts, posts, postIds)
+		err := addNewPosts(&newPosts, &posts, &postIds)
 		if err != nil {
 			break
 		}
@@ -80,13 +80,13 @@ func getExistingPosts() ([]Post, map[int64]bool) {
 	return posts, postIds
 }
 
-func addNewPosts(newPosts []Post, posts []Post, postIds map[int64]bool) (err error) {
-	for i := 0; i < len(newPosts); i++ {
-		post := newPosts[i]
-		if _, ok := postIds[post.Id]; ok {
+func addNewPosts(newPosts *[]Post, posts *[]Post, postIds *map[int64]bool) (err error) {
+	for i := 0; i < len(*newPosts); i++ {
+		post := (*newPosts)[i]
+		if _, ok := (*postIds)[post.Id]; ok {
 			return errors.New("repeated data")
 		} else {
-			posts = append(posts, post)
+			*posts = append(*posts, post)
 		}
 	}
 	return nil

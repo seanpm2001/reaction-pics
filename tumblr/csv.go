@@ -27,12 +27,14 @@ func ReadPostsFromCSV() (posts []Post) {
 
 func WritePostsToCSV(posts []Post) {
 	var row []string
+	fmt.Printf("Saving %d posts\n", len(posts))
 	file, err := os.Create("data.csv")
 	defer file.Close()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	posts = *SortPosts(&posts)
 	writer := csv.NewWriter(file)
 	for _, post := range posts {
 		row = getRow(post)
@@ -42,6 +44,10 @@ func WritePostsToCSV(posts []Post) {
 		}
 	}
 	writer.Flush()
+	err = writer.Error()
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func getRow(post Post) (row []string) {

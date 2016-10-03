@@ -2,11 +2,11 @@ package main
 
 import (
 	"github.com/albertyw/devops-reactions-index/server"
-	_ "github.com/albertyw/devops-reactions-index/tumblr"
+	"github.com/albertyw/devops-reactions-index/tumblr"
 )
 
 func main() {
-	// posts := tumblr.GetPosts()
-	// tumblr.WritePostsToCSV(posts)
+	posts := tumblr.GetPosts()
+	tumblr.WritePostsToCSV(posts)
 	server.Run()
 }
