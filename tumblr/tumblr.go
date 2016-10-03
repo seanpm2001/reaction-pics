@@ -18,6 +18,7 @@ const (
 	postsLimit = 20
 )
 
+// GetPosts returns a list of all Posts
 func GetPosts() []Post {
 	var newPosts []Post
 	posts, postIds := getExistingPosts()
@@ -64,7 +65,7 @@ func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
 		if err != nil {
 			fmt.Println(err)
 		} else {
-			post := TumblrToPost(&tumblrPost)
+			post := GoTumblrToPost(&tumblrPost)
 			posts = append(posts, *post)
 		}
 	}
@@ -75,7 +76,7 @@ func getExistingPosts() ([]Post, map[int64]bool) {
 	posts := ReadPostsFromCSV()
 	postIds := make(map[int64]bool)
 	for i := 0; i < len(posts); i++ {
-		postIds[posts[i].Id] = true
+		postIds[posts[i].ID] = true
 	}
 	return posts, postIds
 }
@@ -83,11 +84,10 @@ func getExistingPosts() ([]Post, map[int64]bool) {
 func addNewPosts(newPosts *[]Post, posts *[]Post, postIds *map[int64]bool) (err error) {
 	for i := 0; i < len(*newPosts); i++ {
 		post := (*newPosts)[i]
-		if _, ok := (*postIds)[post.Id]; ok {
+		if _, ok := (*postIds)[post.ID]; ok {
 			return errors.New("repeated data")
-		} else {
-			*posts = append(*posts, post)
 		}
+		*posts = append(*posts, post)
 	}
 	return nil
 }

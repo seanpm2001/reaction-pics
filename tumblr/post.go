@@ -6,42 +6,47 @@ import (
 	"strconv"
 )
 
+// Post is a representation of a single tumblr post
 type Post struct {
-	Id    int64
+	ID    int64
 	Title string
-	Url   string
+	URL   string
 }
 
-func TumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
+// GoTumblrToPost converts a gotumblr.TextPost into a Post
+func GoTumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
 	post := Post{
-		Id:    tumblrPost.Id,
+		ID:    tumblrPost.Id,
 		Title: tumblrPost.Title,
-		Url:   tumblrPost.Post_url,
+		URL:   tumblrPost.Post_url,
 	}
 	return &post
 }
 
+// CSVToPost converts a CSV row into a Post
 func CSVToPost(row []string) *Post {
 	id, err := strconv.ParseInt(row[0], 10, 64)
 	if err != nil {
 		id = 0
 	}
 	post := Post{
-		Id:    id,
+		ID:    id,
 		Title: row[1],
-		Url:   row[2],
+		URL:   row[2],
 	}
 	return &post
 }
 
+// SortPosts sorts Posts in reverse ID order
 func SortPosts(posts *[]Post) *[]Post {
-	sort.Sort(SortById(*posts))
-	sort.Sort(sort.Reverse(SortById(*posts)))
+	sort.Sort(SortByID(*posts))
+	sort.Sort(sort.Reverse(SortByID(*posts)))
 	return posts
 }
 
-type SortById []Post
+// SortByID is an interface for Sorting
+type SortByID []Post
 
-func (a SortById) Len() int           { return len(a) }
-func (a SortById) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a SortById) Less(i, j int) bool { return a[i].Id < a[j].Id }
+func (a SortByID) Len() int           { return len(a) }
+func (a SortByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a SortByID) Less(i, j int) bool { return a[i].ID < a[j].ID }

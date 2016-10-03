@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+// ReadPostsFromCSV reads a CSV file into a list of posts
 func ReadPostsFromCSV() (posts []Post) {
 	file, err := os.Open("data.csv")
 	defer file.Close()
@@ -25,6 +26,7 @@ func ReadPostsFromCSV() (posts []Post) {
 	return posts
 }
 
+// WritePostsToCSV writes a list of posts to a CSV file
 func WritePostsToCSV(posts []Post) {
 	var row []string
 	fmt.Printf("Saving %d posts\n", len(posts))
@@ -52,9 +54,9 @@ func WritePostsToCSV(posts []Post) {
 
 func getRow(post Post) (row []string) {
 	row = []string{
-		strconv.FormatInt(post.Id, 10),
+		strconv.FormatInt(post.ID, 10),
 		post.Title,
-		post.Url,
+		post.URL,
 	}
 	return
 }
