@@ -56,3 +56,20 @@ func TestCSVToPost(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestSort(t *testing.T) {
+	posts := make([]Post, 3)
+	posts[0] = Post{3, "title3", "url3"}
+	posts[1] = Post{1, "title1", "url1"}
+	posts[2] = Post{2, "title2", "url2"}
+	posts = *SortPosts(&posts)
+	if posts[0].Id != 3 {
+		t.Fail()
+	}
+	if posts[1].Id != 2 {
+		t.Fail()
+	}
+	if posts[2].Id != 1 {
+		t.Fail()
+	}
+}
