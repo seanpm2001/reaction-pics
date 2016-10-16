@@ -1,8 +1,16 @@
 #!/bin/bash
 
 cd -P `pwd`
-godirs=$(glide novendor)
-go test -v $godirs -cover
+echo "" > coverage.txt
+for godir in $(go list ./... | grep -v vendor); do
+    go test -coverprofile=coverage.out $godir -covermode=atomic
+    if [ -f coverage.out ]
+    then
+        cat coverage.out | grep -v "mode: set" >> coverage.txt
+    fi
+done
+rm coverage.out
+
 gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
 govet_errors=""
