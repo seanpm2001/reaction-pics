@@ -4,13 +4,16 @@ import (
 	"fmt"
 	"github.com/flosch/pongo2"
 	"net/http"
+	"os"
 )
 
-const (
-	templateDir = "server/templates/"
-)
+func getTemplateDir() string {
+	goPath := os.Getenv("GOPATH")
+	currentDir := fmt.Sprintf("%s/src/github.com/albertyw/devops-reactions-index", goPath)
+	return fmt.Sprintf("%s/server/templates", currentDir)
+}
 
-var indexPath = fmt.Sprintf("%s/index.htm", templateDir)
+var indexPath = fmt.Sprintf("%s/index.htm", getTemplateDir())
 var index = pongo2.Must(pongo2.FromFile(indexPath))
 
 func handler(w http.ResponseWriter, r *http.Request) {
