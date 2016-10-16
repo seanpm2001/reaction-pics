@@ -2,7 +2,7 @@
 
 cd -P `pwd`
 godirs=$(glide novendor)
-go test -v $godirs
+go test -v $godirs -cover
 gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
 govet_errors=""
