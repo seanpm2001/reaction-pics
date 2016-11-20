@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	posts := tumblr.GetPosts()
+	posts := tumblr.GetPosts(false)
 	tumblr.WritePostsToCSV(posts)
 	server.Run()
 }

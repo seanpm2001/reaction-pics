@@ -19,9 +19,12 @@ const (
 )
 
 // GetPosts returns a list of all Posts
-func GetPosts() []Post {
+func GetPosts(getNewPosts bool) []Post {
 	var newPosts []Post
 	posts, postIds := getExistingPosts()
+	if !getNewPosts {
+		return posts
+	}
 	offset := 0
 	client := getTumblrClient()
 	for len(newPosts) == postsLimit || offset == 0 {
