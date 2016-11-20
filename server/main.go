@@ -24,7 +24,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 // Run starts up the HTTP server
 func Run() {
-	address := ":8080"
+	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(address, nil)
