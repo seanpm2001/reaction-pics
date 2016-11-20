@@ -8,9 +8,7 @@ import (
 )
 
 func getTemplateDir() string {
-	goPath := os.Getenv("GOPATH")
-	currentDir := fmt.Sprintf("%s/src/github.com/albertyw/devops-reactions-index", goPath)
-	return fmt.Sprintf("%s/server/templates", currentDir)
+	return os.Getenv("SERVER_TEMPLATES")
 }
 
 var indexPath = fmt.Sprintf("%s/index.htm", getTemplateDir())
