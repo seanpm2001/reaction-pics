@@ -12,6 +12,24 @@ var post = Post{
 	"url",
 }
 
+func TestReadPostsFromCSV(t *testing.T) {
+	posts := []Post{post}
+	WritePostsToCSV(posts)
+	posts = ReadPostsFromCSV()
+	if len(posts) != 1 {
+		t.Fail()
+	}
+	if posts[0].ID != 1234 {
+		t.Fail()
+	}
+	if posts[0].Title != "title" {
+		t.Fail()
+	}
+	if posts[0].URL != "url" {
+		t.Fail()
+	}
+}
+
 func TestWritePoststoCSV(t *testing.T) {
 	posts := []Post{post}
 	WritePostsToCSV(posts)
