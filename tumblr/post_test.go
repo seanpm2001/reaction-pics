@@ -57,6 +57,14 @@ func TestCSVToPost(t *testing.T) {
 	}
 }
 
+func TestCorruptPost(t *testing.T) {
+	row := make([]string, 3)
+	post := CSVToPost(row)
+	if post.ID != 0 {
+		t.Fail()
+	}
+}
+
 func TestSort(t *testing.T) {
 	posts := make([]Post, 3)
 	posts[0] = Post{3, "title3", "url3"}

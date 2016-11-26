@@ -1,15 +1,38 @@
 package tumblr
 
 import (
+	"os"
+	"strings"
 	"testing"
 )
 
-func TestGetRow(t *testing.T) {
-	post := Post{
-		1234,
-		"title",
-		"url",
+var post = Post{
+	1234,
+	"title",
+	"url",
+}
+
+func TestWritePoststoCSV(t *testing.T) {
+	posts := []Post{post}
+	WritePostsToCSV(posts)
+	file, err := os.Open(csvLocation)
+	defer file.Close()
+	if err != nil {
+		t.Fail()
 	}
+	data := make([]byte, 20)
+	length, err := file.Read(data)
+	if length != 15 {
+		t.Fail()
+	}
+	csvString := strings.TrimSpace(string(data[:14]))
+	if csvString != "1234,title,url" {
+		t.Fail()
+	}
+
+}
+
+func TestGetRow(t *testing.T) {
 	row := getRow(post)
 	if row[0] != "1234" {
 		t.Fail()
