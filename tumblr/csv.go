@@ -7,9 +7,11 @@ import (
 	"strconv"
 )
 
+const csvLocation = "data.csv"
+
 // ReadPostsFromCSV reads a CSV file into a list of posts
 func ReadPostsFromCSV() (posts []Post) {
-	file, err := os.Open("data.csv")
+	file, err := os.Open(csvLocation)
 	defer file.Close()
 	if err != nil {
 		return
@@ -30,7 +32,7 @@ func ReadPostsFromCSV() (posts []Post) {
 func WritePostsToCSV(posts []Post) {
 	var row []string
 	fmt.Printf("Saving %d posts\n", len(posts))
-	file, err := os.Create("data.csv")
+	file, err := os.Create(csvLocation)
 	defer file.Close()
 	if err != nil {
 		fmt.Println(err)
