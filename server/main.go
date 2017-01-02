@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	"github.com/flosch/pongo2"
+	"io/ioutil"
 	"net/http"
 	"os"
 )
@@ -12,14 +12,31 @@ func getTemplateDir() string {
 }
 
 var indexPath = fmt.Sprintf("%s/index.htm", getTemplateDir())
-var index = pongo2.Must(pongo2.FromFile(indexPath))
+
+func readFile(path string) (string, error) {
+	data, err := ioutil.ReadFile(path)
+	if err != nil {
+		return "", err
+	}
+	html := string(data)
+	return html, nil
+}
+
+func getFilePath(urlPath string) (string, error) {
+	return indexPath, nil
+}
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	// Execute the template per HTTP request
-	err := index.ExecuteWriter(pongo2.Context{"query": r.FormValue("query")}, w)
+	filePath, err := getFilePath(r.URL.Path)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusNotFound)
+	}
+	data, err := readFile(filePath)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+	fmt.Fprintf(w, data)
 }
 
 // Run starts up the HTTP server
