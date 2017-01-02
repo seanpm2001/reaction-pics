@@ -1,6 +1,7 @@
 package server
 
 import (
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -12,6 +13,9 @@ func getTemplateDir() string {
 }
 
 var indexPath = fmt.Sprintf("%s/index.htm", getTemplateDir())
+var uRLFilePaths = map[string]string{
+	"/": indexPath,
+}
 
 func readFile(path string) (string, error) {
 	data, err := ioutil.ReadFile(path)
@@ -23,7 +27,11 @@ func readFile(path string) (string, error) {
 }
 
 func getFilePath(urlPath string) (string, error) {
-	return indexPath, nil
+	filePath, exists := uRLFilePaths[urlPath]
+	if !exists {
+		return "", errors.New("")
+	}
+	return filePath, nil
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
