@@ -1,8 +1,6 @@
-hash: 57750cdfa626bf814f5d745f47a6193e41c0a98d24b83618df1d15a1bedfdb62
-updated: 2016-09-17T19:53:41.51533094-07:00
+hash: 8061b5bbb026f578102b61792725f78874cfe7117f1efec1232ba1999e9def7b
+updated: 2017-01-03T02:27:07.472727445+09:00
 imports:
-- name: github.com/flosch/pongo2
-  version: 5e81b817a0c48c1c57cdf1a9056cf76bdee02ca9
 - name: github.com/golang/mock
   version: bd3c8e81be01eef76d4b503f5e687d2d1354d2d9
   subpackages:
