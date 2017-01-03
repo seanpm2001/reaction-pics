@@ -1,6 +1,7 @@
 package tumblr
 
 import (
+	"encoding/json"
 	"github.com/MariaTerzieva/gotumblr"
 	"sort"
 	"strconv"
@@ -8,9 +9,9 @@ import (
 
 // Post is a representation of a single tumblr post
 type Post struct {
-	ID    int64
-	Title string
-	URL   string
+	ID    int64  `json:"id"`
+	Title string `json:"title"`
+	URL   string `json:"url"`
 }
 
 // GoTumblrToPost converts a gotumblr.TextPost into a Post
@@ -35,6 +36,12 @@ func CSVToPost(row []string) *Post {
 		URL:   row[2],
 	}
 	return &post
+}
+
+// PostsToJSON converts a Post into a JSON string
+func PostsToJSON(posts []Post) string {
+	jsonPosts, _ := json.Marshal(posts)
+	return string(jsonPosts)
 }
 
 // SortPosts sorts Posts in reverse ID order

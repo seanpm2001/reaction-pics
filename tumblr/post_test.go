@@ -65,6 +65,17 @@ func TestCorruptPost(t *testing.T) {
 	}
 }
 
+func TestPostsToJSON(t *testing.T) {
+	posts := make([]Post, 2)
+	posts[0] = Post{1, "title1", "url1"}
+	posts[1] = Post{2, "title2", "url2"}
+	json := PostsToJSON(posts)
+	expected := "[{\"id\":1,\"title\":\"title1\",\"url\":\"url1\"},{\"id\":2,\"title\":\"title2\",\"url\":\"url2\"}]"
+	if json != expected {
+		t.Fail()
+	}
+}
+
 func TestSort(t *testing.T) {
 	posts := make([]Post, 3)
 	posts[0] = Post{3, "title3", "url3"}
