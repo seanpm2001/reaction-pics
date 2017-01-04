@@ -53,10 +53,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	handler, err := getURLHandler(urlPath)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusNotFound)
+		return
 	}
 	data, err := handler()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 	fmt.Fprintf(w, data)
 }
