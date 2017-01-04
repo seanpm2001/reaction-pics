@@ -13,21 +13,18 @@ const dataURLPath = "/data.json"
 
 var templateDir = os.Getenv("SERVER_TEMPLATES")
 var indexPath = fmt.Sprintf("%s/index.htm", templateDir)
-var uRLFilePaths = map[string]func() (string, error){
-	"/":         readFile(indexPath),
-	dataURLPath: dataURLHandler,
-}
+var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
 
-func readFile(p string) func() (string, error) {
+func readFile(p string) func(http.ResponseWriter, *http.Request) {
 	path := p
-	return func() (string, error) {
+	return func(w http.ResponseWriter, r *http.Request) {
 		data, err := ioutil.ReadFile(path)
 		if err != nil {
-			return "", err
+			return
 		}
 		html := string(data)
-		return html, nil
+		fmt.Fprintf(w, html)
 	}
 }
 
@@ -43,8 +40,9 @@ func getURLHandler(urlPath string) (func() (string, error), error) {
 	return handler, nil
 }
 
-func dataURLHandler() (string, error) {
-	return tumblr.PostsToJSON(posts), nil
+func dataURLHandler(w http.ResponseWriter, r *http.Request) {
+	html := tumblr.PostsToJSON(posts)
+	fmt.Fprintf(w, html)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -68,6 +66,7 @@ func Run(p []tumblr.Post) {
 	posts = p
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", readFile(indexPath))
+	http.HandleFunc(dataURLPath, dataURLHandler)
 	http.ListenAndServe(address, nil)
 }
