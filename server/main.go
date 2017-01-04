@@ -9,13 +9,10 @@ import (
 	"os"
 )
 
-func getTemplateDir() string {
-	return os.Getenv("SERVER_TEMPLATES")
-}
-
 const dataURLPath = "/data.json"
 
-var indexPath = fmt.Sprintf("%s/index.htm", getTemplateDir())
+var templateDir = os.Getenv("SERVER_TEMPLATES")
+var indexPath = fmt.Sprintf("%s/index.htm", templateDir)
 var uRLFilePaths = map[string]func() (string, error){
 	"/":         readFile(indexPath),
 	dataURLPath: dataURLHandler,
