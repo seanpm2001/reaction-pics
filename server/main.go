@@ -16,49 +16,48 @@ func getTemplateDir() string {
 const dataURLPath = "/data.json"
 
 var indexPath = fmt.Sprintf("%s/index.htm", getTemplateDir())
-var uRLFilePaths = map[string]string{
-	"/":         indexPath,
-	dataURLPath: "",
+var uRLFilePaths = map[string]func() (string, error){
+	"/":         readFile(indexPath),
+	dataURLPath: dataURLHandler,
 }
 var posts []tumblr.Post
 
-func readFile(path string) (string, error) {
-	data, err := ioutil.ReadFile(path)
-	if err != nil {
-		return "", err
+func readFile(p string) func() (string, error) {
+	path := p
+	return func() (string, error) {
+		data, err := ioutil.ReadFile(path)
+		if err != nil {
+			return "", err
+		}
+		html := string(data)
+		return html, nil
 	}
-	html := string(data)
-	return html, nil
 }
 
-func getFilePath(urlPath string) (string, error) {
-	filePath, exists := uRLFilePaths[urlPath]
+func fakeHandler() (string, error) {
+	return "", errors.New("Called Fake Handler")
+}
+
+func getURLHandler(urlPath string) (func() (string, error), error) {
+	handler, exists := uRLFilePaths[urlPath]
 	if !exists {
-		return "", errors.New("")
+		return fakeHandler, errors.New("")
 	}
-	return filePath, nil
+	return handler, nil
 }
 
-func processURL(urlPath string) (string, error) {
-	if urlPath == dataURLPath {
-		return tumblr.PostsToJSON(posts), nil
-	}
-	return "", errors.New("no handler for url path")
+func dataURLHandler() (string, error) {
+	return tumblr.PostsToJSON(posts), nil
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	// Execute the template per HTTP request
 	urlPath := r.URL.Path
-	filePath, err := getFilePath(urlPath)
+	handler, err := getURLHandler(urlPath)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusNotFound)
 	}
-	var data string
-	if filePath == "" {
-		data, err = processURL(urlPath)
-	} else {
-		data, err = readFile(filePath)
-	}
+	data, err := handler()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

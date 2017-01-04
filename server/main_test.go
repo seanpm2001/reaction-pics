@@ -4,19 +4,27 @@ import (
 	"testing"
 )
 
-func TestGetFilePath(t *testing.T) {
-	filePath, err := getFilePath("/")
+func TestGetURLHandler(t *testing.T) {
+	handler, err := getURLHandler("/")
 	if err != nil {
 		t.Fail()
 	}
-	if filePath[len(filePath)-9:] != "index.htm" {
+	data, err := handler()
+	if err != nil {
 		t.Fail()
 	}
-	filePath, err = getFilePath("/asdf")
+	if len(data) == 0 {
+		t.Fail()
+	}
+	handler, err = getURLHandler("/asdf")
 	if err == nil {
 		t.Fail()
 	}
-	if filePath != "" {
+	if handler == nil {
+		t.Fail()
+	}
+	data, err = handler()
+	if err == nil {
 		t.Fail()
 	}
 }
