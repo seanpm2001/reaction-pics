@@ -15,6 +15,8 @@ var indexPath = fmt.Sprintf("%s/index.htm", templateDir)
 var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
 
+// exactURL is a closure that checks that the http match is an exact url path
+// match instead of allowing for net/http's loose match
 func exactURL(
 	targetFunc func(http.ResponseWriter, *http.Request),
 	requestedPath string,
@@ -29,6 +31,8 @@ func exactURL(
 	}
 }
 
+// readFile returns a function that reads the file at a given path and makes a
+// response from it
 func readFile(p string) func(http.ResponseWriter, *http.Request) {
 	path := p
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -41,6 +45,7 @@ func readFile(p string) func(http.ResponseWriter, *http.Request) {
 	}
 }
 
+// dataURLHandler is an http handler for the dataURLPath response
 func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 	html := tumblr.PostsToJSON(posts)
 	fmt.Fprintf(w, html)
