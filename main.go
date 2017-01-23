@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/albertyw/devops-reactions-index/server"
 	"github.com/albertyw/devops-reactions-index/tumblr"
+	_ "github.com/joho/godotenv/autoload"
 	"os"
 	"strings"
 )

@@ -3,6 +3,7 @@ package server
 import (
 	"fmt"
 	"github.com/albertyw/devops-reactions-index/tumblr"
+	_ "github.com/joho/godotenv/autoload"
 	"io/ioutil"
 	"net/http"
 	"os"
