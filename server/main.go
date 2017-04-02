@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strings"
 )
 
 const dataURLPath = "/data.json"
@@ -53,6 +54,21 @@ func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, html)
 }
 
+// searchHandler is an http handler to search data for keywords
+func searchHandler(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query().Get("query")
+	query = strings.ToLower(query)
+	selectedPosts := []tumblr.Post{}
+	for _, post := range posts {
+		postData := strings.ToLower(post.Title)
+		if strings.Contains(postData, query) {
+			selectedPosts = append(selectedPosts, post)
+		}
+	}
+	html := tumblr.PostsToJSON(selectedPosts)
+	fmt.Fprintf(w, html)
+}
+
 // Run starts up the HTTP server
 func Run(p []tumblr.Post) {
 	posts = p
@@ -60,5 +76,6 @@ func Run(p []tumblr.Post) {
 	fmt.Println("server listening on", address)
 	http.HandleFunc("/", exactURL(readFile(indexPath), "/"))
 	http.HandleFunc(dataURLPath, dataURLHandler)
+	http.HandleFunc("/search", searchHandler)
 	http.ListenAndServe(address, nil)
 }
