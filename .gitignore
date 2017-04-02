@@ -25,7 +25,6 @@ _testmain.go
 
 .env
 devops-reactions-index
-data.csv
 coverage.txt
 
 Godeps
