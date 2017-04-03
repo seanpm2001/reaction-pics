@@ -5,7 +5,6 @@ import (
 	"github.com/albertyw/devops-reactions-index/tumblr"
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
@@ -41,12 +40,15 @@ func exactURL(
 func readFile(p string) func(http.ResponseWriter, *http.Request) {
 	path := p
 	return func(w http.ResponseWriter, r *http.Request) {
-		data, err := ioutil.ReadFile(path)
+		file, err := os.Open(path)
 		if err != nil {
 			return
 		}
-		html := string(data)
-		fmt.Fprintf(w, html)
+		fileInfo, err := os.Stat(path)
+		if err != nil {
+			return
+		}
+		http.ServeContent(w, r, path, fileInfo.ModTime(), file)
 	}
 }
 
