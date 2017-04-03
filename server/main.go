@@ -15,6 +15,7 @@ const dataURLPath = "/data.json"
 
 var templateDir = os.Getenv("SERVER_TEMPLATES")
 var indexPath = fmt.Sprintf("%s/index.htm", templateDir)
+var jsPath = fmt.Sprintf("%s/app.js", templateDir)
 var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
 
@@ -75,6 +76,7 @@ func Run(p []tumblr.Post) {
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
 	http.HandleFunc("/", exactURL(readFile(indexPath), "/"))
+	http.HandleFunc("/app.js", readFile(jsPath))
 	http.HandleFunc(dataURLPath, dataURLHandler)
 	http.HandleFunc("/search", searchHandler)
 	http.ListenAndServe(address, nil)
