@@ -59,6 +59,7 @@ func getRow(post Post) (row []string) {
 		strconv.FormatInt(post.ID, 10),
 		post.Title,
 		post.URL,
+		post.Image,
 	}
 	return
 }
