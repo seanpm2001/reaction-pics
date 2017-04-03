@@ -1,5 +1,5 @@
 hash: d4eadc1484bde6d8db60add7f1eb367f5913280d5c2b2061107a1fde7cc4fa71
-updated: 2017-02-06T00:16:45.960747271-08:00
+updated: 2017-04-02T21:35:41.61415474-07:00
 imports:
 - name: github.com/golang/mock
   version: bd3c8e81be01eef76d4b503f5e687d2d1354d2d9
@@ -7,7 +7,7 @@ imports:
   - gomock
   - mockgen
 - name: github.com/joho/godotenv
-  version: 4ed13390c0acd2ff4e371e64d8b97c8954138243
+  version: 325433c502d409f3c3dc820098fb0cfe38d98dc7
   subpackages:
   - autoload
 - name: github.com/kurrik/oauth1a
