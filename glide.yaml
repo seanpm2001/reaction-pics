@@ -13,3 +13,6 @@ import:
   subpackages:
   - gomock
   - mockgen
+- package: golang.org/x/net
+  subpackages:
+  - html
