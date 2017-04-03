@@ -39,7 +39,7 @@ func CSVToPost(row []string) *Post {
 		ID:    id,
 		Title: row[1],
 		URL:   row[2],
-		Image:  row[3],
+		Image: row[3],
 	}
 	return &post
 }

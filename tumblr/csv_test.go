@@ -10,6 +10,7 @@ var post = Post{
 	1234,
 	"title",
 	"url",
+	"http://placehold.it/350x150",
 }
 
 func TestReadPostsFromCSV(t *testing.T) {
@@ -28,9 +29,12 @@ func TestReadPostsFromCSV(t *testing.T) {
 	if posts[0].URL != "url" {
 		t.Fail()
 	}
+	if posts[0].Image != "http://placehold.it/350x150" {
+		t.Fail()
+	}
 }
 
-func TestWritePoststoCSV(t *testing.T) {
+func TestWritePostsToCSV(t *testing.T) {
 	posts := []Post{post}
 	WritePostsToCSV(posts)
 	file, err := os.Open(csvLocation)
@@ -38,16 +42,15 @@ func TestWritePoststoCSV(t *testing.T) {
 	if err != nil {
 		t.Fail()
 	}
-	data := make([]byte, 20)
+	data := make([]byte, 50)
 	length, err := file.Read(data)
-	if length != 15 {
+	if length != 43 {
 		t.Fail()
 	}
-	csvString := strings.TrimSpace(string(data[:14]))
-	if csvString != "1234,title,url" {
+	csvString := strings.TrimSpace(string(data[:43]))
+	if csvString != "1234,title,url,http://placehold.it/350x150" {
 		t.Fail()
 	}
-
 }
 
 func TestGetRow(t *testing.T) {
@@ -59,6 +62,9 @@ func TestGetRow(t *testing.T) {
 		t.Fail()
 	}
 	if row[2] != "url" {
+		t.Fail()
+	}
+	if row[3] != "http://placehold.it/350x150" {
 		t.Fail()
 	}
 }
