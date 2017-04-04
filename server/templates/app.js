@@ -1,5 +1,8 @@
 var timeouts = [];
-function updateResults() {
+function updateResults(e) {
+  if (e.which === 0) {
+      return;
+  }
   var query = $("#query").val();
   for (var x=0; x<timeouts.length; x++) {
     clearTimeout(timeouts[x]);
@@ -30,4 +33,4 @@ function showImage(x, postId, image) {
   return timeout;
 }
 
-$("#query").keyup(updateResults);
+$("#query").keypress(updateResults);
