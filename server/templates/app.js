@@ -1,5 +1,4 @@
 var pendingRequest = undefined;
-var timeouts = [];
 function updateResults(e) {
   if (e.which === 0) {
       return;
@@ -7,9 +6,6 @@ function updateResults(e) {
   var query = $("#query").val();
   if (pendingRequest) {
     pendingRequest.abort();
-  }
-  for (var x=0; x<timeouts.length; x++) {
-    clearTimeout(timeouts[x]);
   }
   pendingRequest = $.getJSON(
     "/search",
@@ -21,20 +17,22 @@ function updateResults(e) {
         var post = '<div id="' + postId + '" class="result">';
         post += '<h2><a href="' + data[x].url + '">' + data[x].title + '</a></h2>';
         post += '</div>';
-        var timeout = showImage(x, postId, data[x].image);
-        timeouts.push(timeout);
         $("#results").append(post);
+        showImage(x, postId, data[x].image);
       }
+      $('img.result-img').lazyload({
+        effect: "fadeIn",
+        threshold: 1000,
+        skip_invisible: true
+      });
     }
   );
 }
 
 function showImage(x, postId, image) {
-  var timeout = setTimeout(function() {
-    var img = '<img src="' + image + '" class="result-img"/>';
-    $("#" + postId).append(img);
-  }, 500 * x);
-  return timeout;
+  var img = '<img data-original="' + image + '" class="result-img"/>';
+  $("#" + postId).append(img);
+  console.log($("#" + postId));
 }
 
 $("#query").keypress(updateResults);
