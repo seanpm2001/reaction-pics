@@ -1,13 +1,17 @@
+var pendingRequest = undefined;
 var timeouts = [];
 function updateResults(e) {
   if (e.which === 0) {
       return;
   }
   var query = $("#query").val();
+  if (pendingRequest) {
+    pendingRequest.abort();
+  }
   for (var x=0; x<timeouts.length; x++) {
     clearTimeout(timeouts[x]);
   }
-  $.getJSON(
+  pendingRequest = $.getJSON(
     "/search",
     {query: query},
     function processQueryResult(data) {
