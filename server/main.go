@@ -19,6 +19,17 @@ var cssPath = fmt.Sprintf("%s/global.css", templateDir)
 var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
 
+// logURL is a closure that logs (to stdout) the url and query of requests
+func logURL(
+	targetFunc func(http.ResponseWriter, *http.Request),
+) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		url := r.URL.String()
+		fmt.Println(url)
+		targetFunc(w, r)
+	}
+}
+
 // exactURL is a closure that checks that the http match is an exact url path
 // match instead of allowing for net/http's loose match
 func exactURL(
@@ -78,10 +89,10 @@ func Run(p []tumblr.Post) {
 	posts = p
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
-	http.HandleFunc("/", exactURL(readFile(indexPath), "/"))
-	http.HandleFunc("/app.js", readFile(jsPath))
-	http.HandleFunc("/global.css", readFile(cssPath))
-	http.HandleFunc(dataURLPath, dataURLHandler)
-	http.HandleFunc("/search", searchHandler)
+	http.HandleFunc("/", logURL(exactURL(readFile(indexPath), "/")))
+	http.HandleFunc("/app.js", logURL(readFile(jsPath)))
+	http.HandleFunc("/global.css", logURL(readFile(cssPath)))
+	http.HandleFunc(dataURLPath, logURL(dataURLHandler))
+	http.HandleFunc("/search", logURL(searchHandler))
 	http.ListenAndServe(address, nil)
 }
