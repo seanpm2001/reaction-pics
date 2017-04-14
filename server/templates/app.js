@@ -1,4 +1,6 @@
+var maxLength = 20;
 var pendingRequest = undefined;
+
 function updateResults(e) {
   if (e.which === 0) {
       return;
@@ -15,6 +17,12 @@ function updateResults(e) {
       for (var x=0; x<data.length; x++) {
         var post = data[x];
         showImage(x, post);
+        if (x >= maxLength) {
+          showImage(x, {
+            title: "Refine your search for more results"
+          });
+          break;
+        }
       }
       $('img.result-img').lazyload({
         effect: "fadeIn",
@@ -27,8 +35,11 @@ function updateResults(e) {
 
 function showImage(x, postData) {
   var postHTML = '<div id="post' + x + '" class="result">';
-  postHTML += '<h2><a href="' + postData.url + '">' + postData.title + '</a></h2>';
-  postHTML += '<img data-original="' + postData.image + '" class="result-img" />';
+  postHTML += '<h2>';
+  if (postData.url) postHTML += '<a href="' + postData.url + '">';
+  postHTML += postData.title;
+  if (postData.url) postHTML += '</a></h2>';
+  if (postData.image) postHTML += '<img data-original="' + postData.image + '" class="result-img" />';
   postHTML += '</div>';
   $("#results").append(postHTML);
 }
