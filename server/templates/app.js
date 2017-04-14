@@ -13,12 +13,8 @@ function updateResults(e) {
     function processQueryResult(data) {
       $("#results").html("");
       for (var x=0; x<data.length; x++) {
-        var postId = 'post' + x;
-        var post = '<div id="' + postId + '" class="result">';
-        post += '<h2><a href="' + data[x].url + '">' + data[x].title + '</a></h2>';
-        post += '</div>';
-        $("#results").append(post);
-        showImage(x, postId, data[x].image);
+        var post = data[x];
+        showImage(x, post);
       }
       $('img.result-img').lazyload({
         effect: "fadeIn",
@@ -29,10 +25,12 @@ function updateResults(e) {
   );
 }
 
-function showImage(x, postId, image) {
-  var img = '<img data-original="' + image + '" class="result-img"/>';
-  $("#" + postId).append(img);
-  console.log($("#" + postId));
+function showImage(x, postData) {
+  var postHTML = '<div id="post' + x + '" class="result">';
+  postHTML += '<h2><a href="' + postData.url + '">' + postData.title + '</a></h2>';
+  postHTML += '<img data-original="' + postData.image + '" class="result-img" />';
+  postHTML += '</div>';
+  $("#results").append(postHTML);
 }
 
 $("#query").keypress(updateResults);
