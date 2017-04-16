@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/albertyw/devops-reactions-index/server"
-	"github.com/albertyw/devops-reactions-index/tumblr"
+	"github.com/albertyw/reaction-pics/server"
+	"github.com/albertyw/reaction-pics/tumblr"
 	_ "github.com/joho/godotenv/autoload"
 	"os"
 	"strings"

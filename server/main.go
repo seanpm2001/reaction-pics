@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	"github.com/albertyw/devops-reactions-index/tumblr"
+	"github.com/albertyw/reaction-pics/tumblr"
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	"net/http"
