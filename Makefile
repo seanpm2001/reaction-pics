@@ -7,4 +7,4 @@ all:
 
 serve:
 	go build
-	./devops-reactions-index
+	./reaction-pics

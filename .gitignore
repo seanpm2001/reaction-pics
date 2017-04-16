@@ -24,7 +24,7 @@ _testmain.go
 *.prof
 
 .env
-devops-reactions-index
+reaction-pics
 coverage.txt
 
 Godeps

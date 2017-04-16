@@ -1,1 +1,1 @@
-web: devops-reactions-index
+web: reaction-pics

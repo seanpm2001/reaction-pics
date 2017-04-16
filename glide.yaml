@@ -1,4 +1,4 @@
-package: github.com/albertyw/devops-reactions-index
+package: github.com/albertyw/reaction-pics
 import:
 - package: github.com/MariaTerzieva/gotumblr
   version: master
