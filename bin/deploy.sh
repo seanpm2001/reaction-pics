@@ -8,3 +8,4 @@ go build
 
 # Restart services
 sudo service nginx restart
+sudo systemctl restart goserver

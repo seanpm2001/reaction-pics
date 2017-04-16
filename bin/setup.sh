@@ -40,3 +40,8 @@ rm ~/glide-v0.12.3-linux-amd64.tar.gz
 cd ~/gocode/src/github.com/albertyw/reaction-pics
 glide install
 go build
+
+# Set up go server service
+sudo ln -s /home/ubuntu/gocode/src/github.com/albertyw/reaction-pics/config/goserver.service /etc/systemd/system/goserver.service
+sudo systemctl start goserver
+sudo systemctl enable goserver
