@@ -1,0 +1,13 @@
+[Unit]
+Description=Go Server
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/home/ubuntu/gocode/src/github.com/albertyw/reaction-pics
+Environment="SERVER_TEMPLATES=/home/ubuntu/gocode/src/github.com/albertyw/reaction-pics/server/templates/"
+ExecStart=/home/ubuntu/gocode/src/github.com/albertyw/reaction-pics/reaction-pics
+
+[Install]
+WantedBy=multi-user.target
