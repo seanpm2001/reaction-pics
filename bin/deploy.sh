@@ -4,6 +4,7 @@
 cd ~/gocode/src/github.com/albertyw/reaction-pics/ || exit 1
 git checkout master
 git pull
+glide install
 go build
 
 # Restart services
