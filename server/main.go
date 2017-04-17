@@ -53,6 +53,7 @@ func readFile(p string) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		file, err := os.Open(path)
 		if err != nil {
+			http.NotFound(w, r)
 			return
 		}
 		fileInfo, err := os.Stat(path)
