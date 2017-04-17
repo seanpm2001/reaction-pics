@@ -1,5 +1,5 @@
-hash: 0892dfec59442bbce439f68633248cb9d76333f7aeb29760e0bba75d51fd582d
-updated: 2017-04-02T21:38:52.570844056-07:00
+hash: cb12999648401e4edd8526bf1f7ad1a9a6c47328500bf820f0033d25691223af
+updated: 2017-04-16T17:21:17.963104324-07:00
 imports:
 - name: github.com/golang/mock
   version: bd3c8e81be01eef76d4b503f5e687d2d1354d2d9
@@ -18,4 +18,5 @@ imports:
   version: ffcf1bedda3b04ebb15a168a59800a73d6dc0f4d
   subpackages:
   - html
+  - html/atom
 testImports: []
