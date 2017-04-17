@@ -1,5 +1,5 @@
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-export SERVER_TEMPLATES:=$(ROOT_DIR)/server/templates/
+export SERVER_DIR:=$(ROOT_DIR)/server/
 
 all:
 	go build

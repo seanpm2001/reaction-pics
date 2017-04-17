@@ -12,10 +12,10 @@ import (
 
 const dataURLPath = "/data.json"
 
-var templateDir = os.Getenv("SERVER_TEMPLATES")
-var indexPath = fmt.Sprintf("%s/index.htm", templateDir)
-var jsPath = fmt.Sprintf("%s/app.js", templateDir)
-var cssPath = fmt.Sprintf("%s/global.css", templateDir)
+var serverDir = os.Getenv("SERVER_DIR")
+var indexPath = fmt.Sprintf("%s/templates/index.htm", serverDir)
+var jsPath = fmt.Sprintf("%s/static/app.js", serverDir)
+var cssPath = fmt.Sprintf("%s/static/global.css", serverDir)
 var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
 
