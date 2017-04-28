@@ -60,6 +60,7 @@ func getRow(post Post) (row []string) {
 		post.Title,
 		post.URL,
 		post.Image,
+		strconv.FormatInt(post.Likes, 10),
 	}
 	return
 }
