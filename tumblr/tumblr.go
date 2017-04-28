@@ -57,6 +57,7 @@ func getTumblrOptions(offset int) map[string]string {
 	options := map[string]string{}
 	options["offset"] = strconv.Itoa(offset)
 	options["limit"] = strconv.Itoa(postsLimit)
+	options["notes_info"] = strconv.FormatBool(true)
 	return options
 }
 
