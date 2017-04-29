@@ -20,7 +20,10 @@ func getReadPostsFromTumblr() bool {
 
 func main() {
 	readPosts := getReadPostsFromTumblr()
-	posts := tumblr.GetPosts(readPosts)
-	go tumblr.WritePostsToCSV(posts)
+	posts := make(chan tumblr.Post)
+	go tumblr.GetPosts(readPosts, posts)
+	// Need to split the channel in order for both server.Run and
+	// tumblr.WritePostsToCSV to read all posts
+	// go tumblr.WritePostsToCSV(posts)
 	server.Run(posts)
 }

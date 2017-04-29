@@ -88,8 +88,8 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // Run starts up the HTTP server
-func Run(p []tumblr.Post) {
-	posts = p
+func Run(postChan chan tumblr.Post) {
+	go loadPosts(postChan)
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
 	http.HandleFunc("/", logURL(exactURL(readFile(indexPath), "/")))
@@ -98,4 +98,10 @@ func Run(p []tumblr.Post) {
 	http.HandleFunc(dataURLPath, logURL(dataURLHandler))
 	http.HandleFunc("/search", logURL(searchHandler))
 	http.ListenAndServe(address, nil)
+}
+
+func loadPosts(postChan chan tumblr.Post) {
+	for p := range postChan {
+		posts = append(posts, p)
+	}
 }
