@@ -20,7 +20,7 @@ const (
 // GetPosts returns a list of all Posts
 func GetPosts(getNewPosts bool) []Post {
 	var newPosts []Post
-	posts, _ := getExistingPosts()
+	posts := ReadPostsFromCSV()
 	if !getNewPosts {
 		return posts
 	}
@@ -82,13 +82,4 @@ func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
 		}
 	}
 	return posts
-}
-
-func getExistingPosts() ([]Post, map[int64]bool) {
-	posts := ReadPostsFromCSV()
-	postIds := make(map[int64]bool)
-	for i := 0; i < len(posts); i++ {
-		postIds[posts[i].ID] = true
-	}
-	return posts, postIds
 }
