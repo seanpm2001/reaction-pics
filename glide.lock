@@ -1,5 +1,5 @@
 hash: cb12999648401e4edd8526bf1f7ad1a9a6c47328500bf820f0033d25691223af
-updated: 2017-04-16T17:21:17.963104324-07:00
+updated: 2017-04-29T11:36:08.401479045+08:00
 imports:
 - name: github.com/golang/mock
   version: bd3c8e81be01eef76d4b503f5e687d2d1354d2d9
@@ -15,7 +15,7 @@ imports:
 - name: github.com/MariaTerzieva/gotumblr
   version: 4dbe615141d3a9104560271bed9a3fbeee5f012c
 - name: golang.org/x/net
-  version: ffcf1bedda3b04ebb15a168a59800a73d6dc0f4d
+  version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
   subpackages:
   - html
   - html/atom
