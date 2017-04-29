@@ -1,7 +1,7 @@
 var maxLength = 20;
 var pendingRequest = undefined;
 
-function updateResults(e) {
+function updateResults() {
   var query = $("#query").val();
   if (pendingRequest) {
     pendingRequest.abort();
@@ -42,3 +42,6 @@ function showImage(x, postData) {
 }
 
 $("#query").on('input', updateResults);
+$(function() {
+  updateResults();
+});
