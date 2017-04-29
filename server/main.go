@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"sync"
 )
 
 const dataURLPath = "/data.json"
@@ -18,6 +19,7 @@ var jsPath = fmt.Sprintf("%s/static/app.js", serverDir)
 var cssPath = fmt.Sprintf("%s/static/global.css", serverDir)
 var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
+var postsMutex sync.RWMutex
 
 // logURL is a closure that logs (to stdout) the url and query of requests
 func logURL(
@@ -66,6 +68,8 @@ func readFile(p string) func(http.ResponseWriter, *http.Request) {
 
 // dataURLHandler is an http handler for the dataURLPath response
 func dataURLHandler(w http.ResponseWriter, r *http.Request) {
+	postsMutex.RLock()
+	defer postsMutex.RUnlock()
 	html := tumblr.PostsToJSON(posts)
 	fmt.Fprintf(w, html)
 }
@@ -73,6 +77,8 @@ func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 // searchHandler is an http handler to search data for keywords
 // It matches the query against post titles and then ranks posts by number of likes
 func searchHandler(w http.ResponseWriter, r *http.Request) {
+	postsMutex.RLock()
+	defer postsMutex.RUnlock()
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
 	selectedPosts := []tumblr.Post{}
@@ -102,6 +108,8 @@ func Run(postChan chan tumblr.Post) {
 
 func loadPosts(postChan chan tumblr.Post) {
 	for p := range postChan {
+		postsMutex.Lock()
 		posts = append(posts, p)
+		postsMutex.Unlock()
 	}
 }
