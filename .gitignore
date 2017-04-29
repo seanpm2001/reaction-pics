@@ -27,6 +27,7 @@ _testmain.go
 .env.prod
 reaction-pics
 coverage.txt
+tumblr/data.csv
 
 Godeps
 vendor
