@@ -30,7 +30,6 @@ func ReadPostsFromCSV() (posts []Post) {
 
 // WritePostsToCSV writes a list of posts to a CSV file
 func WritePostsToCSV(posts []Post) {
-	var row []string
 	fmt.Printf("Saving %d posts\n", len(posts))
 	file, err := os.Create(csvLocation)
 	defer file.Close()
@@ -41,7 +40,7 @@ func WritePostsToCSV(posts []Post) {
 	posts = *SortPostsByID(&posts)
 	writer := csv.NewWriter(file)
 	for _, post := range posts {
-		row = getRow(post)
+		row := getRow(post)
 		writer.Write(row)
 		if err := writer.Error(); err != nil {
 			fmt.Println(err)

@@ -11,7 +11,7 @@ import (
 const readPostsFromTumblrEnv = "READ_POSTS_FROM_TUMBLR"
 
 func getReadPostsFromTumblr() bool {
-	var readPostsEnv = os.Getenv(readPostsFromTumblrEnv)
+	readPostsEnv := os.Getenv(readPostsFromTumblrEnv)
 	if strings.ToLower(readPostsEnv) == "true" {
 		return true
 	}
