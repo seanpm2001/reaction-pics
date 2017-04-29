@@ -29,7 +29,11 @@ func ReadPostsFromCSV() (posts []Post) {
 }
 
 // WritePostsToCSV writes a list of posts to a CSV file
-func WritePostsToCSV(posts []Post) {
+func WritePostsToCSV(postChan chan Post) {
+	posts := []Post{}
+	for p := range postChan {
+		posts = append(posts, p)
+	}
 	fmt.Printf("Saving %d posts\n", len(posts))
 	file, err := os.Create(csvLocation)
 	defer file.Close()

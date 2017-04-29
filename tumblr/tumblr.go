@@ -18,17 +18,19 @@ const (
 )
 
 // GetPosts returns a list of all Posts
-func GetPosts(getNewPosts bool) []Post {
+func GetPosts(getNewPosts bool, posts chan Post) {
+	defer func() { close(posts) }()
 	var newPosts []Post
-	posts := ReadPostsFromCSV()
-	if !getNewPosts {
-		return posts
-	}
+	existingPosts := ReadPostsFromCSV()
 	maxPostID := int64(0)
-	for _, p := range posts {
+	for _, p := range existingPosts {
 		if p.ID > maxPostID {
 			maxPostID = p.ID
 		}
+		posts <- p
+	}
+	if !getNewPosts {
+		return
 	}
 	offset := 0
 	client := getTumblrClient()
@@ -39,13 +41,12 @@ func GetPosts(getNewPosts bool) []Post {
 		newPosts = parsePosts(postsResponse)
 		for _, p := range newPosts {
 			if p.ID <= maxPostID {
-				return posts
+				return
 			}
-			posts = append(posts, p)
+			posts <- p
 		}
 		offset += postsLimit
 	}
-	return posts
 }
 
 func getTumblrClient() *gotumblr.TumblrRestClient {

@@ -1,6 +1,7 @@
 package tumblr
 
 import (
+	"fmt"
 	"os"
 	"strings"
 	"testing"
@@ -20,9 +21,13 @@ func cleanup() {
 
 func TestReadPostsFromCSV(t *testing.T) {
 	defer cleanup()
-	posts := []Post{post}
-	WritePostsToCSV(posts)
-	posts = ReadPostsFromCSV()
+	fmt.Println("qwer")
+	postChan := make(chan Post, 1)
+	postChan <- post
+	close(postChan)
+	fmt.Println("asdf")
+	WritePostsToCSV(postChan)
+	posts := ReadPostsFromCSV()
 	if len(posts) != 1 {
 		t.Fail()
 	}
@@ -45,8 +50,10 @@ func TestReadPostsFromCSV(t *testing.T) {
 
 func TestWritePostsToCSV(t *testing.T) {
 	defer cleanup()
-	posts := []Post{post}
-	WritePostsToCSV(posts)
+	postChan := make(chan Post, 1)
+	postChan <- post
+	close(postChan)
+	WritePostsToCSV(postChan)
 	file, err := os.Open(csvLocation)
 	defer file.Close()
 	if err != nil {
