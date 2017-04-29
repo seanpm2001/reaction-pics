@@ -11,6 +11,7 @@ var post = Post{
 	"title",
 	"url",
 	"http://placehold.it/350x150",
+	123,
 }
 
 func cleanup() {
@@ -37,6 +38,9 @@ func TestReadPostsFromCSV(t *testing.T) {
 	if posts[0].Image != "http://placehold.it/350x150" {
 		t.Fail()
 	}
+	if posts[0].Likes != 123 {
+		t.Fail()
+	}
 }
 
 func TestWritePostsToCSV(t *testing.T) {
@@ -50,11 +54,11 @@ func TestWritePostsToCSV(t *testing.T) {
 	}
 	data := make([]byte, 50)
 	length, err := file.Read(data)
-	if length != 43 {
+	if length != 47 {
 		t.Fail()
 	}
-	csvString := strings.TrimSpace(string(data[:43]))
-	if csvString != "1234,title,url,http://placehold.it/350x150" {
+	csvString := strings.TrimSpace(string(data[:47]))
+	if csvString != "1234,title,url,http://placehold.it/350x150,123" {
 		t.Fail()
 	}
 }
@@ -71,6 +75,9 @@ func TestGetRow(t *testing.T) {
 		t.Fail()
 	}
 	if row[3] != "http://placehold.it/350x150" {
+		t.Fail()
+	}
+	if row[4] != "123" {
 		t.Fail()
 	}
 }

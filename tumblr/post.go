@@ -15,16 +15,19 @@ type Post struct {
 	Title string `json:"title"`
 	URL   string `json:"url"`
 	Image string `json:"image"`
+	Likes int64  `json:"likes"`
 }
 
 // GoTumblrToPost converts a gotumblr.TextPost into a Post
 func GoTumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
 	image := getImageFromPostBody(tumblrPost.Body)
+	likes := tumblrPost.Note_count
 	post := Post{
 		ID:    tumblrPost.Id,
 		Title: tumblrPost.Title,
 		URL:   tumblrPost.Post_url,
 		Image: image,
+		Likes: likes,
 	}
 	return &post
 }
@@ -35,11 +38,16 @@ func CSVToPost(row []string) *Post {
 	if err != nil {
 		id = 0
 	}
+	likes, err := strconv.ParseInt(row[4], 10, 64)
+	if err != nil {
+		likes = 0
+	}
 	post := Post{
 		ID:    id,
 		Title: row[1],
 		URL:   row[2],
 		Image: row[3],
+		Likes: likes,
 	}
 	return &post
 }
