@@ -60,7 +60,6 @@ func PostsToJSON(posts []Post) string {
 
 // SortPosts sorts Posts in reverse ID order
 func SortPosts(posts *[]Post) *[]Post {
-	sort.Sort(SortByID(*posts))
 	sort.Sort(sort.Reverse(SortByID(*posts)))
 	return posts
 }
