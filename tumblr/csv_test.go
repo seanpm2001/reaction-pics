@@ -13,7 +13,12 @@ var post = Post{
 	"http://placehold.it/350x150",
 }
 
+func cleanup() {
+	os.Remove(csvLocation)
+}
+
 func TestReadPostsFromCSV(t *testing.T) {
+	defer cleanup()
 	posts := []Post{post}
 	WritePostsToCSV(posts)
 	posts = ReadPostsFromCSV()
@@ -35,6 +40,7 @@ func TestReadPostsFromCSV(t *testing.T) {
 }
 
 func TestWritePostsToCSV(t *testing.T) {
+	defer cleanup()
 	posts := []Post{post}
 	WritePostsToCSV(posts)
 	file, err := os.Open(csvLocation)
