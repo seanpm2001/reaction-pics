@@ -37,7 +37,6 @@ func GetPosts(getNewPosts bool) []Post {
 		options := getTumblrOptions(offset)
 		postsResponse := client.Posts(blogName, blogTypes, options)
 		newPosts = parsePosts(postsResponse)
-		newPosts[5].ID = 1
 		for _, p := range newPosts {
 			if p.ID <= maxPostID {
 				return posts
