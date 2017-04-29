@@ -100,12 +100,12 @@ func TestPostsToJSON(t *testing.T) {
 	}
 }
 
-func TestSort(t *testing.T) {
+func TestSortPostsByID(t *testing.T) {
 	posts := make([]Post, 3)
 	posts[0] = Post{3, "title3", "url3", "http://placehold.it/350x150", 123}
 	posts[1] = Post{1, "title1", "url1", "http://placehold.it/350x150", 124}
 	posts[2] = Post{2, "title2", "url2", "http://placehold.it/350x150", 125}
-	posts = *SortPosts(&posts)
+	posts = *SortPostsByID(&posts)
 	if posts[0].ID != 3 {
 		t.Fail()
 	}
@@ -113,6 +113,23 @@ func TestSort(t *testing.T) {
 		t.Fail()
 	}
 	if posts[2].ID != 1 {
+		t.Fail()
+	}
+}
+
+func TestSortPostsByLikes(t *testing.T) {
+	posts := make([]Post, 3)
+	posts[0] = Post{3, "title3", "url3", "http://placehold.it/350x150", 123}
+	posts[1] = Post{1, "title1", "url1", "http://placehold.it/350x150", 121}
+	posts[2] = Post{2, "title2", "url2", "http://placehold.it/350x150", 122}
+	posts = *SortPostsByLikes(&posts)
+	if posts[0].Likes != 123 {
+		t.Fail()
+	}
+	if posts[1].Likes != 122 {
+		t.Fail()
+	}
+	if posts[2].Likes != 121 {
 		t.Fail()
 	}
 }
