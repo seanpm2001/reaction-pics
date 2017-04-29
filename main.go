@@ -21,6 +21,6 @@ func getReadPostsFromTumblr() bool {
 func main() {
 	readPosts := getReadPostsFromTumblr()
 	posts := tumblr.GetPosts(readPosts)
-	tumblr.WritePostsToCSV(posts)
+	go tumblr.WritePostsToCSV(posts)
 	server.Run(posts)
 }
