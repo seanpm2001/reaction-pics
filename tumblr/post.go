@@ -58,9 +58,8 @@ func PostsToJSON(posts []Post) string {
 	return string(jsonPosts)
 }
 
-// SortPosts sorts Posts in reverse ID order
-func SortPosts(posts *[]Post) *[]Post {
-	sort.Sort(SortByID(*posts))
+// SortPostsByID sorts Posts in reverse ID order
+func SortPostsByID(posts *[]Post) *[]Post {
 	sort.Sort(sort.Reverse(SortByID(*posts)))
 	return posts
 }
@@ -71,6 +70,19 @@ type SortByID []Post
 func (a SortByID) Len() int           { return len(a) }
 func (a SortByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a SortByID) Less(i, j int) bool { return a[i].ID < a[j].ID }
+
+// SortPostsByLikes sorts Posts in reverse number of likes order
+func SortPostsByLikes(posts *[]Post) *[]Post {
+	sort.Sort(sort.Reverse(SortByLikes(*posts)))
+	return posts
+}
+
+// SortByLikes is an interface for Sorting
+type SortByLikes []Post
+
+func (a SortByLikes) Len() int           { return len(a) }
+func (a SortByLikes) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a SortByLikes) Less(i, j int) bool { return a[i].Likes < a[j].Likes }
 
 // getImageFromPostBody parses the body of a post and returns the url of the image
 func getImageFromPostBody(body string) string {

@@ -71,6 +71,7 @@ func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // searchHandler is an http handler to search data for keywords
+// It matches the query against post titles and then ranks posts by number of likes
 func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
@@ -81,6 +82,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 			selectedPosts = append(selectedPosts, post)
 		}
 	}
+	selectedPosts = *tumblr.SortPostsByLikes(&selectedPosts)
 	html := tumblr.PostsToJSON(selectedPosts)
 	fmt.Fprintf(w, html)
 }

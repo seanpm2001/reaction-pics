@@ -38,7 +38,7 @@ func WritePostsToCSV(posts []Post) {
 		fmt.Println(err)
 		return
 	}
-	posts = *SortPosts(&posts)
+	posts = *SortPostsByID(&posts)
 	writer := csv.NewWriter(file)
 	for _, post := range posts {
 		row = getRow(post)

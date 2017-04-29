@@ -36,7 +36,8 @@ function showImage(x, postData) {
   if (postData.url) postHTML += '<a href="' + postData.url + '">';
   postHTML += postData.title;
   if (postData.url) postHTML += '</a></h2>';
-  if (postData.image) postHTML += '<img data-original="' + postData.image + '" class="result-img" />';
+  if (postData.image) postHTML += '<img data-original="' + postData.image + '" class="result-img" /><br />';
+  if (postData.likes) postHTML += postData.likes + ' likes';
   postHTML += '</div>';
   $("#results").append(postHTML);
 }
