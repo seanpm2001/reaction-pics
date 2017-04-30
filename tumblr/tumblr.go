@@ -18,7 +18,7 @@ const (
 )
 
 // GetPosts returns a list of all Posts
-func GetPosts(getNewPosts bool, posts chan Post) {
+func GetPosts(getNewPosts bool, posts chan<- Post) {
 	defer func() { close(posts) }()
 	var newPosts []Post
 	existingPosts := ReadPostsFromCSV()

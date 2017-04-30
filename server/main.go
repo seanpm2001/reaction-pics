@@ -94,7 +94,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // Run starts up the HTTP server
-func Run(postChan chan tumblr.Post) {
+func Run(postChan <-chan tumblr.Post) {
 	go loadPosts(postChan)
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
@@ -106,7 +106,7 @@ func Run(postChan chan tumblr.Post) {
 	http.ListenAndServe(address, nil)
 }
 
-func loadPosts(postChan chan tumblr.Post) {
+func loadPosts(postChan <-chan tumblr.Post) {
 	for p := range postChan {
 		postsMutex.Lock()
 		posts = append(posts, p)

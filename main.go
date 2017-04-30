@@ -18,7 +18,7 @@ func getReadPostsFromTumblr() bool {
 	return false
 }
 
-func duplicateChan(in chan tumblr.Post, out1, out2 chan tumblr.Post) {
+func duplicateChan(in <-chan tumblr.Post, out1, out2 chan<- tumblr.Post) {
 	for p := range in {
 		out1 <- p
 		out2 <- p

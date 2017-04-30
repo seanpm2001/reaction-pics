@@ -29,7 +29,7 @@ func ReadPostsFromCSV() (posts []Post) {
 }
 
 // WritePostsToCSV writes a list of posts to a CSV file
-func WritePostsToCSV(postChan chan Post) {
+func WritePostsToCSV(postChan <-chan Post) {
 	posts := []Post{}
 	for p := range postChan {
 		posts = append(posts, p)
