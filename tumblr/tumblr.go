@@ -12,16 +12,26 @@ import (
 
 const (
 	tumblrURL  = "http://api.tumblr.com"
-	blogName   = "devopsreactions.tumblr.com"
 	blogTypes  = "text"
 	postsLimit = 20
 )
 
+// Blogs is a list of all blogs to read from
+var Blogs = []string{
+	"devopsreactions.tumblr.com",
+}
+
 // GetPosts returns a list of all Posts
 func GetPosts(getNewPosts bool, posts chan<- Post) {
+	for _, blogName := range Blogs {
+		go getBlogPosts(blogName, getNewPosts, posts)
+	}
+}
+
+func getBlogPosts(blogName string, getNewPosts bool, posts chan<- Post) {
 	defer func() { close(posts) }()
 	var newPosts []Post
-	existingPosts := ReadPostsFromCSV()
+	existingPosts := ReadPostsFromCSV(blogName)
 	maxPostID := int64(0)
 	for _, p := range existingPosts {
 		if p.ID > maxPostID {

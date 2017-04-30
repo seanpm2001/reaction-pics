@@ -34,6 +34,6 @@ func main() {
 	posts2 := make(chan tumblr.Post)
 	go tumblr.GetPosts(readPosts, posts)
 	go duplicateChan(posts, posts1, posts2)
-	go tumblr.WritePostsToCSV(posts1)
+	go tumblr.WritePostsToCSV(tumblr.Blogs[0], posts1)
 	server.Run(posts2)
 }

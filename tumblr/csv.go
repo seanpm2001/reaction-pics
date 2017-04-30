@@ -7,10 +7,11 @@ import (
 	"strconv"
 )
 
-const csvLocation = "data.csv"
+const csvDirectory = "tumblr/data/"
 
 // ReadPostsFromCSV reads a CSV file into a list of posts
-func ReadPostsFromCSV() (posts []Post) {
+func ReadPostsFromCSV(blogName string) (posts []Post) {
+	csvLocation := getCSVPath(blogName)
 	file, err := os.Open(csvLocation)
 	defer file.Close()
 	if err != nil {
@@ -29,12 +30,13 @@ func ReadPostsFromCSV() (posts []Post) {
 }
 
 // WritePostsToCSV writes a list of posts to a CSV file
-func WritePostsToCSV(postChan <-chan Post) {
+func WritePostsToCSV(blogName string, postChan <-chan Post) (csvLocation string) {
 	posts := []Post{}
 	for p := range postChan {
 		posts = append(posts, p)
 	}
 	fmt.Printf("Saving %d posts\n", len(posts))
+	csvLocation = getCSVPath(blogName)
 	file, err := os.Create(csvLocation)
 	defer file.Close()
 	if err != nil {
@@ -55,6 +57,7 @@ func WritePostsToCSV(postChan <-chan Post) {
 	if err != nil {
 		fmt.Println(err)
 	}
+	return
 }
 
 func getRow(post Post) (row []string) {
@@ -66,4 +69,9 @@ func getRow(post Post) (row []string) {
 		strconv.FormatInt(post.Likes, 10),
 	}
 	return
+}
+
+func getCSVPath(blogName string) string {
+	rootDir := os.Getenv("ROOT_DIR")
+	return rootDir + "/" + csvDirectory + blogName + ".csv"
 }

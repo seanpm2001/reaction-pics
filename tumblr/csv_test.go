@@ -1,11 +1,12 @@
 package tumblr
 
 import (
-	"fmt"
 	"os"
 	"strings"
 	"testing"
 )
+
+const testBlog = "testBlog"
 
 var post = Post{
 	1234,
@@ -16,18 +17,17 @@ var post = Post{
 }
 
 func cleanup() {
+	csvLocation := getCSVPath(testBlog)
 	os.Remove(csvLocation)
 }
 
 func TestReadPostsFromCSV(t *testing.T) {
 	defer cleanup()
-	fmt.Println("qwer")
 	postChan := make(chan Post, 1)
 	postChan <- post
 	close(postChan)
-	fmt.Println("asdf")
-	WritePostsToCSV(postChan)
-	posts := ReadPostsFromCSV()
+	WritePostsToCSV(testBlog, postChan)
+	posts := ReadPostsFromCSV(testBlog)
 	if len(posts) != 1 {
 		t.Fail()
 	}
@@ -53,7 +53,8 @@ func TestWritePostsToCSV(t *testing.T) {
 	postChan := make(chan Post, 1)
 	postChan <- post
 	close(postChan)
-	WritePostsToCSV(postChan)
+	WritePostsToCSV(testBlog, postChan)
+	csvLocation := getCSVPath(testBlog)
 	file, err := os.Open(csvLocation)
 	defer file.Close()
 	if err != nil {
