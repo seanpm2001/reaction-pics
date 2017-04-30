@@ -21,10 +21,23 @@ var Blogs = []string{
 	"devopsreactions.tumblr.com",
 }
 
+func duplicateChan(in <-chan Post, out1, out2 chan<- Post) {
+	for p := range in {
+		out1 <- p
+		out2 <- p
+	}
+	close(out1)
+	close(out2)
+}
+
 // GetPosts returns a list of all Posts
-func GetPosts(getNewPosts bool, posts chan<- Post) {
+func GetPosts(getNewPosts bool, out1 chan<- Post) {
 	for _, blogName := range Blogs {
+		posts := make(chan Post)
+		out2 := make(chan Post)
+		go duplicateChan(posts, out1, out2)
 		go getBlogPosts(blogName, getNewPosts, posts)
+		go WritePostsToCSV(blogName, out2)
 	}
 }
 
