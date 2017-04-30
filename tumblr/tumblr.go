@@ -20,6 +20,7 @@ const (
 // Blogs is a list of all blogs to read from
 var Blogs = []string{
 	"devopsreactions.tumblr.com",
+	"lifeofasoftwareengineer.tumblr.com",
 }
 
 func duplicateChan(in <-chan Post, out1, out2 chan<- Post, wg *sync.WaitGroup) {
