@@ -11,7 +11,10 @@ import (
 	"sync"
 )
 
-const dataURLPath = "/data.json"
+const (
+	dataURLPath = "/data.json"
+	maxResults  = 20
+)
 
 var serverDir = os.Getenv("SERVER_DIR")
 var indexPath = fmt.Sprintf("%s/templates/index.htm", serverDir)
@@ -82,13 +85,17 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
 	selectedPosts := []tumblr.Post{}
+	numPosts := 0
 	for _, post := range posts {
 		postData := strings.ToLower(post.Title)
 		if strings.Contains(postData, query) {
 			selectedPosts = append(selectedPosts, post)
+			numPosts++
+		}
+		if numPosts >= maxResults {
+			break
 		}
 	}
-	selectedPosts = *tumblr.SortPostsByLikes(&selectedPosts)
 	html := tumblr.PostsToJSON(selectedPosts)
 	fmt.Fprintf(w, html)
 }
@@ -112,4 +119,5 @@ func loadPosts(postChan <-chan tumblr.Post) {
 		posts = append(posts, p)
 		postsMutex.Unlock()
 	}
+	posts = *tumblr.SortPostsByLikes(&posts)
 }
