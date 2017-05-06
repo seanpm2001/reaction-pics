@@ -14,6 +14,9 @@ mkdir -p ~/gocode/pkg/
 git clone git@github.com:albertyw/reaction-pics ~/gocode/src/github.com/albertyw/reaction-pics
 ln -s gocode/src/github.com/albertyw/reaction-pics/ reaction-pics
 
+# Setup env
+ln -s .env.prod ~/reaction-pics/.env
+
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable
 sudo apt-get update
@@ -21,8 +24,8 @@ sudo apt-get install -y nginx
 
 # Configure nginx
 sudo rm -r /etc/nginx/sites-available
-sudo rm -r /etc/nginx/sites-enabled
-sudo ln -s ~/gocode/src/github.com/albertyw/reaction-pics/config/sites-enabled /etc/nginx/sites-enabled
+sudo ln -s ~/gocode/src/github.com/albertyw/reaction-pics/config/sites-available/app reaction.pics-app
+sudo ln -s ~/gocode/src/github.com/albertyw/reaction-pics/config/sites-available/headers reaction.pics-headers
 sudo rm -r /var/www/html
 
 # Secure nginx
