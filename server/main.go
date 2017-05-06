@@ -7,6 +7,7 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 	"sync"
 )
@@ -16,7 +17,7 @@ const (
 	maxResults  = 20
 )
 
-var serverDir = os.Getenv("SERVER_DIR")
+var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var indexPath = fmt.Sprintf("%s/templates/index.htm", serverDir)
 var jsPath = fmt.Sprintf("%s/static/app.js", serverDir)
 var cssPath = fmt.Sprintf("%s/static/global.css", serverDir)
