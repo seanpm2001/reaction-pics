@@ -1,9 +1,11 @@
 export ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 export SERVER_DIR:=$(ROOT_DIR)/server/
 
-all:
+all: test
+
+test:
 	go build
-	./test.sh
+	./bin/test.sh
 
 serve:
 	go build

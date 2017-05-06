@@ -19,5 +19,5 @@ Index of DevOps Reactions
 ## Running tests
 
 ```
-./test.sh
+make test
 ```
