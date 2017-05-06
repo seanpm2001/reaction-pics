@@ -14,6 +14,9 @@ mkdir -p ~/gocode/pkg/
 git clone git@github.com:albertyw/reaction-pics ~/gocode/src/github.com/albertyw/reaction-pics
 ln -s gocode/src/github.com/albertyw/reaction-pics/ reaction-pics
 
+# Setup env
+ln -s .env.prod ~/reaction-pics/.env
+
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable
 sudo apt-get update
