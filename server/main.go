@@ -5,6 +5,7 @@ import (
 	"github.com/albertyw/reaction-pics/tumblr"
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
+	newrelic "github.com/newrelic/go-agent"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -102,15 +103,15 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // Run starts up the HTTP server
-func Run(postChan <-chan tumblr.Post) {
+func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	go loadPosts(postChan)
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
-	http.HandleFunc("/", logURL(exactURL(readFile(indexPath), "/")))
-	http.HandleFunc("/static/app.js", logURL(readFile(jsPath)))
-	http.HandleFunc("/static/global.css", logURL(readFile(cssPath)))
-	http.HandleFunc(dataURLPath, logURL(dataURLHandler))
-	http.HandleFunc("/search", logURL(searchHandler))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(exactURL(readFile(indexPath), "/"))))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/static/app.js", logURL(readFile(jsPath))))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/static/global.css", logURL(readFile(cssPath))))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, dataURLPath, logURL(dataURLHandler)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
 	http.ListenAndServe(address, nil)
 }
 
