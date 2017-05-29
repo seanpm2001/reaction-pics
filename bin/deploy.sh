@@ -9,4 +9,4 @@ go build
 
 # Restart services
 sudo service nginx restart
-sudo systemctl restart goserver
+sudo systemctl restart reaction-pics.service
