@@ -1,9 +1,6 @@
 package: github.com/albertyw/reaction-pics
 import:
 - package: github.com/MariaTerzieva/gotumblr
-  version: master
-  vcs: git
-  repo: git@github.com:albertyw/gotumblr
 - package: github.com/joho/godotenv
   version: master
   subpackages:

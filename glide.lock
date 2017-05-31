@@ -1,5 +1,5 @@
-hash: 88b33f4efc1d7f6e1c982c54f8dda4a1bb5c7f8077d91243360fb0bdd0c31a04
-updated: 2017-04-29T11:33:54.707516901+08:00
+hash: 65cc5173d69597a6d645bc0fee81a563ee8d4de4c0f6b78cb4a342ad9d03f462
+updated: 2017-05-31T00:08:51.254371267-07:00
 imports:
 - name: github.com/golang/mock
   version: bd3c8e81be01eef76d4b503f5e687d2d1354d2d9
@@ -13,9 +13,7 @@ imports:
 - name: github.com/kurrik/oauth1a
   version: cb1b80e32dd4385099f8d09312e4bcf6bdc993ec
 - name: github.com/MariaTerzieva/gotumblr
-  version: 4575d2c544f98590bc75fb019536adde973859c0
-  repo: git@github.com:albertyw/gotumblr
-  vcs: git
+  version: 93ca5e50a3fd2dfb6ed1613853520ba624bbbc64
 - name: golang.org/x/net
   version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
   subpackages:
