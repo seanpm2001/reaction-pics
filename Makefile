@@ -2,10 +2,11 @@ export ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all: test
 
-test:
+bins:
 	go build
+
+test: bins
 	./bin/test.sh
 
-serve:
-	go build
+serve: bins
 	./reaction-pics
