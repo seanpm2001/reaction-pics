@@ -15,3 +15,5 @@ import:
 - package: golang.org/x/net
   subpackages:
   - html
+- package: github.com/newrelic/go-agent
+  version: ^1.9.0
