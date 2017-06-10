@@ -10,3 +10,7 @@ test: bins
 
 serve: bins
 	./reaction-pics
+
+clear-cache:
+	rm tumblr/data/*csv
+	rm tumblr/data/static/*
