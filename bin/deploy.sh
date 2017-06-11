@@ -7,6 +7,9 @@ git pull
 glide install
 go build
 
+# Update permissions
+sudo chmod -R 777 tumblr/data
+
 # Restart services
 sudo service nginx restart
 sudo systemctl restart reaction-pics.service
