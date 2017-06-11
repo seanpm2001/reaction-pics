@@ -7,7 +7,7 @@ import (
 )
 
 func TestReadFile(t *testing.T) {
-	handler := readFile(indexPath)
+	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	request, err := http.NewRequest("GET", "/", nil)
 	if err != nil {
 		t.Fail()
@@ -23,7 +23,7 @@ func TestReadFile(t *testing.T) {
 }
 
 func TestExactURL(t *testing.T) {
-	handler := exactURL(readFile(indexPath), "/")
+	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	request, err := http.NewRequest("GET", "/asdf", nil)
 	if err != nil {
 		t.Fail()
@@ -36,14 +36,14 @@ func TestExactURL(t *testing.T) {
 }
 
 func TestNoExactURL(t *testing.T) {
-	handler := readFile(indexPath)
+	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	request, err := http.NewRequest("GET", "/asdf", nil)
 	if err != nil {
 		t.Fail()
 	}
 	response := httptest.NewRecorder()
 	handler(response, request)
-	if response.Code != 200 {
+	if response.Code != 404 {
 		t.Fail()
 	}
 }

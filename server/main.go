@@ -35,40 +35,8 @@ func logURL(
 	}
 }
 
-// exactURL is a closure that checks that the http match is an exact url path
-// match instead of allowing for net/http's loose match
-func exactURL(
-	targetFunc func(http.ResponseWriter, *http.Request),
-	requestedPath string,
-) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != requestedPath {
-			http.NotFound(w, r)
-			return
-		}
-		targetFunc(w, r)
-		return
-	}
-}
-
-// readFile returns a function that reads the file at a given path and makes a
-// response from it
-func readFile(p string) func(http.ResponseWriter, *http.Request) {
-	path := p
-	return func(w http.ResponseWriter, r *http.Request) {
-		file, err := os.Open(path)
-		if err != nil {
-			http.NotFound(w, r)
-			return
-		}
-		fileInfo, err := os.Stat(path)
-		if err != nil {
-			return
-		}
-		http.ServeContent(w, r, path, fileInfo.ModTime(), file)
-	}
-}
-
+// rewriteFS wraps a static file handler so to rewrite to the static directory
+// and the root path is rewritten to index.htm
 func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 ) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
