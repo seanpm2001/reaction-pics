@@ -19,9 +19,7 @@ const (
 )
 
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
-var indexPath = fmt.Sprintf("%s/templates/index.htm", serverDir)
-var jsPath = fmt.Sprintf("%s/static/app.js", serverDir)
-var cssPath = fmt.Sprintf("%s/static/global.css", serverDir)
+var staticPath = fmt.Sprintf("%s/static", serverDir)
 var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
 var postsMutex sync.RWMutex
@@ -71,6 +69,18 @@ func readFile(p string) func(http.ResponseWriter, *http.Request) {
 	}
 }
 
+func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
+) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		path := strings.TrimPrefix(r.URL.Path, "/static/")
+		if path == "/" {
+			path = "index.htm"
+		}
+		r.URL.Path = path
+		targetFunc(w, r)
+	}
+}
+
 // dataURLHandler is an http handler for the dataURLPath response
 func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 	postsMutex.RLock()
@@ -107,9 +117,8 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	go loadPosts(postChan)
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(exactURL(readFile(indexPath), "/"))))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/static/app.js", logURL(readFile(jsPath))))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/static/global.css", logURL(readFile(cssPath))))
+	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(staticFS)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, dataURLPath, logURL(dataURLHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
 	http.ListenAndServe(address, nil)
