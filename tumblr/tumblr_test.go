@@ -15,7 +15,7 @@ func makeMockPost() gotumblr.PostsResponse {
 	}
 	mockTextPost := gotumblr.TextPost{
 		Title: "title",
-		Body:  "Body",
+		Body:  "<img src=\"http://via.placeholder.com/350x150\">",
 	}
 	mockTextPostJSON, _ := json.Marshal(&mockTextPost)
 	mockTextPostJSONRawMessage := *(*json.RawMessage)(&mockTextPostJSON)

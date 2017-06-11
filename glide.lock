@@ -1,5 +1,5 @@
-hash: 83d9064b09e667a4f4e9bc892081bfe5503996fa28913c054ff3a4f41763fca0
-updated: 2017-06-09T21:56:12.425227204-07:00
+hash: 7ffd0212277b939a7dc0110105753dd028db23294123454cdc5be2f92300d2af
+updated: 2017-06-10T16:35:04.851691758-07:00
 imports:
 - name: github.com/golang/mock
   version: bd3c8e81be01eef76d4b503f5e687d2d1354d2d9
@@ -16,6 +16,14 @@ imports:
   version: 93ca5e50a3fd2dfb6ed1613853520ba624bbbc64
 - name: github.com/newrelic/go-agent
   version: 29ec3cd1bb2f21d21d36da37dae52695cb2c3a17
+  subpackages:
+  - internal
+  - internal/jsonx
+  - internal/logger
+  - internal/sysinfo
+  - internal/utilization
+- name: github.com/satori/go.uuid
+  version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: golang.org/x/net
   version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
   subpackages:
