@@ -12,5 +12,5 @@ serve: bins
 	./reaction-pics
 
 clear-cache:
-	rm tumblr/data/*csv
-	rm tumblr/data/static/*
+	rm -f tumblr/data/*csv
+	rm -f tumblr/data/static/*
