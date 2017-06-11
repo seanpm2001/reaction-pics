@@ -24,7 +24,7 @@ func GoTumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
 	likes := tumblrPost.Note_count
 	post := Post{
 		ID:    tumblrPost.Id,
-		Title: tumblrPost.Title,
+		Title: strings.TrimSpace(tumblrPost.Title),
 		URL:   tumblrPost.Post_url,
 		Image: image,
 		Likes: likes,

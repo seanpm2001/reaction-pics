@@ -117,6 +117,9 @@ func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
 		} else {
 			post := GoTumblrToPost(&tumblrPost)
 			err = getPostImage(post)
+			if len(post.Title) == 0 {
+				continue
+			}
 			if err == nil {
 				posts = append(posts, *post)
 			}
