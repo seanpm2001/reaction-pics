@@ -6,7 +6,11 @@ import (
 	"github.com/MariaTerzieva/gotumblr"
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
+	"github.com/satori/go.uuid"
+	"io"
+	"net/http"
 	"os"
+	"path/filepath"
 	"strconv"
 	"sync"
 )
@@ -112,8 +116,48 @@ func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
 			fmt.Println(err)
 		} else {
 			post := GoTumblrToPost(&tumblrPost)
-			posts = append(posts, *post)
+			err = getPostImage(post)
+			if err == nil {
+				posts = append(posts, *post)
+			}
 		}
 	}
 	return posts
+}
+
+func getPostImage(post *Post) error {
+	imageName, imagePath := getImageNamePath(post.Image)
+	output, err := os.Create(imagePath)
+	if err != nil {
+		fmt.Println("Cannot create ", imagePath)
+		return err
+	}
+	defer output.Close()
+
+	response, err := http.Get(post.Image)
+	if err != nil {
+		fmt.Println("Error downloading", post.Image)
+		return err
+	}
+	defer response.Body.Close()
+
+	_, err = io.Copy(output, response.Body)
+	if err != nil {
+		fmt.Println("Error saving", post.Image)
+		return err
+	}
+
+	post.Image = fmt.Sprintf(getImageURL(imageName))
+	return nil
+}
+
+func getImageNamePath(imageName string) (name, path string) {
+	name = uuid.NewV4().String() + filepath.Ext(imageName)
+	rootDir := os.Getenv("ROOT_DIR")
+	path = fmt.Sprintf("%s/tumblr/data/static/%s", rootDir, name)
+	return
+}
+
+func getImageURL(imageName string) string {
+	return fmt.Sprintf("/static/data/%s", imageName)
 }
