@@ -6,9 +6,12 @@ import (
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	newrelic "github.com/newrelic/go-agent"
+	"html/template"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 )
@@ -19,7 +22,7 @@ const (
 )
 
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
-var staticPath = fmt.Sprintf("%s/static", serverDir)
+var staticPath = fmt.Sprintf("%s/static/", serverDir)
 var uRLFilePaths = map[string]func() (string, error){}
 var posts []tumblr.Post
 var postsMutex sync.RWMutex
@@ -80,6 +83,47 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, html)
 }
 
+func postHandler(w http.ResponseWriter, r *http.Request) {
+	postIDString := strings.TrimPrefix(r.URL.Path, "/post/")
+	postID, err := strconv.ParseInt(postIDString, 10, 64)
+	if err != nil {
+		fmt.Println("Cannot parse post id")
+		http.NotFound(w, r)
+		return
+	}
+	var post tumblr.Post
+	for _, p := range posts {
+		if p.ID == postID {
+			post = p
+		}
+	}
+	if post == (tumblr.Post{}) {
+		fmt.Println("Cannot find post")
+		http.NotFound(w, r)
+		return
+	}
+	templateData, err := ioutil.ReadFile(staticPath + "post.htm")
+	if err != nil {
+		http.Error(w, "Cannot read post template", 500)
+		return
+	}
+	htmlTemplate, err := template.New("page").Parse(string(templateData))
+	if err != nil {
+		http.Error(w, "Cannot parse post template", 500)
+		return
+	}
+	data := struct {
+		Post *tumblr.Post
+	}{
+		Post: &post,
+	}
+	err = htmlTemplate.Execute(w, data)
+	if err != nil {
+		http.Error(w, "Cannot execute post template", 500)
+		return
+	}
+}
+
 // Run starts up the HTTP server
 func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	go loadPosts(postChan)
@@ -89,6 +133,7 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(staticFS)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, dataURLPath, logURL(dataURLHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))
 	http.ListenAndServe(address, nil)
 }
 
