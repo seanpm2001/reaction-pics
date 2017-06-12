@@ -33,7 +33,7 @@ function updateResults() {
 function showImage(x, postData) {
   var postHTML = '<div id="post' + x + '" class="result">';
   postHTML += '<h2>';
-  if (postData.url) postHTML += '<a href="' + postData.url + '">';
+  if (postData.url) postHTML += '<a href="' + postData.internalURL + '">';
   postHTML += postData.title;
   if (postData.url) postHTML += '</a></h2>';
   if (postData.image) postHTML += '<img data-original="' + postData.image + '" class="result-img" /><br />';
