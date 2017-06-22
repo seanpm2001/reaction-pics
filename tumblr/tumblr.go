@@ -72,8 +72,8 @@ func getBlogPosts(blogName string, getNewPosts bool, posts chan<- Post) {
 	}
 	offset := 0
 	client := getTumblrClient()
-	for len(newPosts) == postsLimit || offset == 0 {
-		fmt.Println("Downloading", offset)
+	for len(newPosts) > 0 || offset == 0 {
+		fmt.Println("Downloading", blogName, offset)
 		options := getTumblrOptions(offset)
 		postsResponse := client.Posts(blogName, blogTypes, options)
 		newPosts = parsePosts(postsResponse)
