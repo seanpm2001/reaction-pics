@@ -108,6 +108,9 @@ func getImageFromPostBody(body string) string {
 
 // Return the path to the post
 func getInternalURL(post Post) string {
-	slug := slug.Make(post.Title)[0:30]
+	slug := slug.Make(post.Title)
+	if len(slug) > 30 {
+		slug = slug[0:30]
+	}
 	return "/post/" + strconv.FormatInt(post.ID, 10) + "/" + slug
 }
