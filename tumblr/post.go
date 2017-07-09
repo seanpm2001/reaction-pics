@@ -3,6 +3,7 @@ package tumblr
 import (
 	"encoding/json"
 	"github.com/MariaTerzieva/gotumblr"
+	"github.com/gosimple/slug.git"
 	"golang.org/x/net/html"
 	"sort"
 	"strconv"
@@ -24,13 +25,13 @@ func GoTumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
 	image := getImageFromPostBody(tumblrPost.Body)
 	likes := tumblrPost.Note_count
 	post := Post{
-		ID:          tumblrPost.Id,
-		Title:       strings.TrimSpace(tumblrPost.Title),
-		URL:         tumblrPost.Post_url,
-		Image:       image,
-		Likes:       likes,
-		InternalURL: getInternalURL(tumblrPost.Id),
+		ID:    tumblrPost.Id,
+		Title: strings.TrimSpace(tumblrPost.Title),
+		URL:   tumblrPost.Post_url,
+		Image: image,
+		Likes: likes,
 	}
+	post.InternalURL = getInternalURL(post)
 	return &post
 }
 
@@ -45,13 +46,13 @@ func CSVToPost(row []string) *Post {
 		likes = 0
 	}
 	post := Post{
-		ID:          id,
-		Title:       row[1],
-		URL:         row[2],
-		Image:       row[3],
-		Likes:       likes,
-		InternalURL: getInternalURL(id),
+		ID:    id,
+		Title: row[1],
+		URL:   row[2],
+		Image: row[3],
+		Likes: likes,
 	}
+	post.InternalURL = getInternalURL(post)
 	return &post
 }
 
@@ -106,6 +107,10 @@ func getImageFromPostBody(body string) string {
 }
 
 // Return the path to the post
-func getInternalURL(id int64) string {
-	return "/post/" + strconv.FormatInt(id, 10)
+func getInternalURL(post Post) string {
+	slug := slug.Make(post.Title)
+	if len(slug) > 30 {
+		slug = slug[0:30]
+	}
+	return "/post/" + strconv.FormatInt(post.ID, 10) + "/" + slug
 }
