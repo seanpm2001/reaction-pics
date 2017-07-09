@@ -84,7 +84,8 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func postHandler(w http.ResponseWriter, r *http.Request) {
-	postIDString := strings.TrimPrefix(r.URL.Path, "/post/")
+	pathStrings := strings.Split(r.URL.Path, "/")
+	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
 	if err != nil {
 		fmt.Println("Cannot parse post id")
