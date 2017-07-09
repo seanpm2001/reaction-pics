@@ -1,13 +1,15 @@
-hash: 7ffd0212277b939a7dc0110105753dd028db23294123454cdc5be2f92300d2af
-updated: 2017-06-10T16:35:04.851691758-07:00
+hash: cb23bfb376d5947368c71bb53452b731093df64994f6bb58cbdef2343a77e77e
+updated: 2017-07-08T19:00:40.139123618-07:00
 imports:
 - name: github.com/golang/mock
-  version: bd3c8e81be01eef76d4b503f5e687d2d1354d2d9
+  version: 93f6609a15b7de76bd49259f1f9a6b58df358936
   subpackages:
   - gomock
   - mockgen
+- name: github.com/gosimple/slug.git
+  version: f36922d6568f08b11d4e51b377e3e58291972ccc
 - name: github.com/joho/godotenv
-  version: 325433c502d409f3c3dc820098fb0cfe38d98dc7
+  version: 3ddb2792f3923947290c4932990136e17852a078
   subpackages:
   - autoload
 - name: github.com/kurrik/oauth1a
@@ -22,6 +24,8 @@ imports:
   - internal/logger
   - internal/sysinfo
   - internal/utilization
+- name: github.com/rainycape/unidecode
+  version: cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c
 - name: github.com/satori/go.uuid
   version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: golang.org/x/net
