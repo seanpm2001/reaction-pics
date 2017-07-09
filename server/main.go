@@ -57,7 +57,8 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 	postsMutex.RLock()
 	defer postsMutex.RUnlock()
-	html := tumblr.PostsToJSON(posts)
+	board := tumblr.NewBoard(posts)
+	html := board.PostsToJSON()
 	fmt.Fprintf(w, html)
 }
 
@@ -80,7 +81,8 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
-	html := tumblr.PostsToJSON(selectedPosts)
+	board := tumblr.NewBoard(selectedPosts)
+	html := board.PostsToJSON()
 	fmt.Fprintf(w, html)
 }
 

@@ -77,11 +77,24 @@ func CSVToPost(row []string) *Post {
 	return &post
 }
 
+// Board is a container for Posts that offers serialization, sorting, and
+// parallelization
+type Board struct {
+	Posts []Post
+}
+
+// NewBoard creates a Board from an array of Posts
+func NewBoard(p []Post) Board {
+	return Board{
+		Posts: p,
+	}
+}
+
 // PostsToJSON converts a Post into a JSON string
-func PostsToJSON(posts []Post) string {
-	postsJSON := make([]PostJSON, len(posts))
-	for i := 0; i < len(posts); i++ {
-		postsJSON[i] = posts[i].ToJSONStruct()
+func (b Board) PostsToJSON() string {
+	postsJSON := make([]PostJSON, len(b.Posts))
+	for i := 0; i < len(b.Posts); i++ {
+		postsJSON[i] = b.Posts[i].ToJSONStruct()
 	}
 	marshalledPosts, _ := json.Marshal(postsJSON)
 	return string(marshalledPosts)

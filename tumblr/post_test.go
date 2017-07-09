@@ -95,7 +95,8 @@ func TestPostsToJSON(t *testing.T) {
 	posts := make([]Post, 2)
 	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
 	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
-	json := PostsToJSON(posts)
+	board := NewBoard(posts)
+	json := board.PostsToJSON()
 	expected := "[{\"id\":1,\"title\":\"title1\",\"url\":\"url1\",\"image\":\"http://placehold.it/350x150\",\"likes\":123,\"internalURL\":\"/post/1/title1\"},{\"id\":2,\"title\":\"title2\",\"url\":\"url2\",\"image\":\"http://placehold.it/350x150\",\"likes\":124,\"internalURL\":\"/post/2/title2\"}]"
 	fmt.Println(json)
 	fmt.Println(expected)
