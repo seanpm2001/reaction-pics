@@ -2,8 +2,9 @@ package tumblr
 
 import (
 	"fmt"
-	"github.com/MariaTerzieva/gotumblr"
 	"testing"
+
+	"github.com/MariaTerzieva/gotumblr"
 )
 
 func TestPost(t *testing.T) {

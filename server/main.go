@@ -2,10 +2,6 @@ package server
 
 import (
 	"fmt"
-	"github.com/albertyw/reaction-pics/tumblr"
-	// Used for getting tumblr env vars
-	_ "github.com/joho/godotenv/autoload"
-	newrelic "github.com/newrelic/go-agent"
 	"html/template"
 	"io/ioutil"
 	"net/http"
@@ -14,6 +10,11 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+
+	"github.com/albertyw/reaction-pics/tumblr"
+	// Used for getting tumblr env vars
+	_ "github.com/joho/godotenv/autoload"
+	newrelic "github.com/newrelic/go-agent"
 )
 
 const (

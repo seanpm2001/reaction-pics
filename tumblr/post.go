@@ -2,12 +2,13 @@ package tumblr
 
 import (
 	"encoding/json"
-	"github.com/MariaTerzieva/gotumblr"
-	"github.com/gosimple/slug.git"
-	"golang.org/x/net/html"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/MariaTerzieva/gotumblr"
+	"github.com/gosimple/slug.git"
+	"golang.org/x/net/html"
 )
 
 // Post is a representation of a single tumblr post

@@ -2,8 +2,9 @@ package tumblr
 
 import (
 	"encoding/json"
-	"github.com/MariaTerzieva/gotumblr"
 	"testing"
+
+	"github.com/MariaTerzieva/gotumblr"
 )
 
 func makeMockPost() gotumblr.PostsResponse {

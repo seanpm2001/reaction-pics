@@ -3,16 +3,17 @@ package tumblr
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/MariaTerzieva/gotumblr"
-	// Used for getting tumblr env vars
-	_ "github.com/joho/godotenv/autoload"
-	"github.com/satori/go.uuid"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
 	"sync"
+
+	"github.com/MariaTerzieva/gotumblr"
+	// Used for getting tumblr env vars
+	_ "github.com/joho/godotenv/autoload"
+	"github.com/satori/go.uuid"
 )
 
 const (

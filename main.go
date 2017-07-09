@@ -1,12 +1,13 @@
 package main
 
 import (
+	"os"
+	"strings"
+
 	"github.com/albertyw/reaction-pics/server"
 	"github.com/albertyw/reaction-pics/tumblr"
 	_ "github.com/joho/godotenv/autoload"
 	newrelic "github.com/newrelic/go-agent"
-	"os"
-	"strings"
 )
 
 const readPostsFromTumblrEnv = "READ_POSTS_FROM_TUMBLR"
