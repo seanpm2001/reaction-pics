@@ -139,7 +139,7 @@ func getPostImage(post *Post) error {
 
 	response, err := http.Get(post.Image)
 	if err != nil {
-		fmt.Println("Error downloading", post.Image)
+		fmt.Println("Error downloading", post.Image, " - ", err)
 		return err
 	}
 	defer response.Body.Close()
