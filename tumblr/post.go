@@ -12,12 +12,34 @@ import (
 
 // Post is a representation of a single tumblr post
 type Post struct {
-	ID          int64  `json:"id"`
-	Title       string `json:"title"`
-	URL         string `json:"url"`
-	Image       string `json:"image"`
-	Likes       int64  `json:"likes"`
+	ID    int64  `json:"id"`
+	Title string `json:"title"`
+	URL   string `json:"url"`
+	Image string `json:"image"`
+	Likes int64  `json:"likes"`
+}
+
+// PostJSON is a representation of Post for creating JSON values
+type PostJSON struct {
+	Post
 	InternalURL string `json:"internalURL"`
+}
+
+// InternalURL returns the path to the post
+func (p Post) InternalURL() string {
+	slug := slug.Make(p.Title)
+	if len(slug) > 30 {
+		slug = slug[0:30]
+	}
+	return "/post/" + strconv.FormatInt(p.ID, 10) + "/" + slug
+}
+
+// ToJSONStruct builds a PostJSON based on the Post
+func (p Post) ToJSONStruct() PostJSON {
+	return PostJSON{
+		Post:        p,
+		InternalURL: p.InternalURL(),
+	}
 }
 
 // GoTumblrToPost converts a gotumblr.TextPost into a Post
@@ -31,7 +53,6 @@ func GoTumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
 		Image: image,
 		Likes: likes,
 	}
-	post.InternalURL = getInternalURL(post)
 	return &post
 }
 
@@ -52,14 +73,17 @@ func CSVToPost(row []string) *Post {
 		Image: row[3],
 		Likes: likes,
 	}
-	post.InternalURL = getInternalURL(post)
 	return &post
 }
 
 // PostsToJSON converts a Post into a JSON string
 func PostsToJSON(posts []Post) string {
-	jsonPosts, _ := json.Marshal(posts)
-	return string(jsonPosts)
+	postsJSON := make([]PostJSON, len(posts))
+	for i := 0; i < len(posts); i++ {
+		postsJSON[i] = posts[i].ToJSONStruct()
+	}
+	marshalledPosts, _ := json.Marshal(postsJSON)
+	return string(marshalledPosts)
 }
 
 // SortPostsByID sorts Posts in reverse ID order
@@ -104,13 +128,4 @@ func getImageFromPostBody(body string) string {
 		}
 	}
 	return ""
-}
-
-// Return the path to the post
-func getInternalURL(post Post) string {
-	slug := slug.Make(post.Title)
-	if len(slug) > 30 {
-		slug = slug[0:30]
-	}
-	return "/post/" + strconv.FormatInt(post.ID, 10) + "/" + slug
 }

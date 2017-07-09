@@ -58,7 +58,7 @@ func TestDataURLHandler(t *testing.T) {
 	if response.Code != 200 {
 		t.Fail()
 	}
-	if response.Body.String() != "null" {
+	if response.Body.String() != "[]" {
 		t.Fail()
 	}
 }

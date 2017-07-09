@@ -14,7 +14,6 @@ var post = Post{
 	"url",
 	"http://placehold.it/350x150",
 	123,
-	"/post/1234",
 }
 
 func cleanup() {

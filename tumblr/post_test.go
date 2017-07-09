@@ -13,7 +13,6 @@ func TestPost(t *testing.T) {
 		"url",
 		"http://placehold.it/350x150",
 		123,
-		"/post/1234",
 	}
 	if post.ID != 1234 {
 		t.Fail()
@@ -93,10 +92,10 @@ func TestCorruptPost(t *testing.T) {
 
 func TestPostsToJSON(t *testing.T) {
 	posts := make([]Post, 2)
-	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123, "/post/1"}
-	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124, "/post/2"}
+	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
+	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
 	json := PostsToJSON(posts)
-	expected := "[{\"id\":1,\"title\":\"title1\",\"url\":\"url1\",\"image\":\"http://placehold.it/350x150\",\"likes\":123,\"internalURL\":\"/post/1\"},{\"id\":2,\"title\":\"title2\",\"url\":\"url2\",\"image\":\"http://placehold.it/350x150\",\"likes\":124,\"internalURL\":\"/post/2\"}]"
+	expected := "[{\"id\":1,\"title\":\"title1\",\"url\":\"url1\",\"image\":\"http://placehold.it/350x150\",\"likes\":123,\"internalURL\":\"/post/1/title1\"},{\"id\":2,\"title\":\"title2\",\"url\":\"url2\",\"image\":\"http://placehold.it/350x150\",\"likes\":124,\"internalURL\":\"/post/2/title2\"}]"
 	fmt.Println(json)
 	fmt.Println(expected)
 	if json != expected {
@@ -106,9 +105,9 @@ func TestPostsToJSON(t *testing.T) {
 
 func TestSortPostsByID(t *testing.T) {
 	posts := make([]Post, 3)
-	posts[0] = Post{3, "title3", "url3", "http://placehold.it/350x150", 123, "/post/3"}
-	posts[1] = Post{1, "title1", "url1", "http://placehold.it/350x150", 124, "/post/1"}
-	posts[2] = Post{2, "title2", "url2", "http://placehold.it/350x150", 125, "/post/2"}
+	posts[0] = Post{3, "title3", "url3", "http://placehold.it/350x150", 123}
+	posts[1] = Post{1, "title1", "url1", "http://placehold.it/350x150", 124}
+	posts[2] = Post{2, "title2", "url2", "http://placehold.it/350x150", 125}
 	posts = *SortPostsByID(&posts)
 	if posts[0].ID != 3 {
 		t.Fail()
@@ -123,9 +122,9 @@ func TestSortPostsByID(t *testing.T) {
 
 func TestSortPostsByLikes(t *testing.T) {
 	posts := make([]Post, 3)
-	posts[0] = Post{3, "title3", "url3", "http://placehold.it/350x150", 123, "/post/3"}
-	posts[1] = Post{1, "title1", "url1", "http://placehold.it/350x150", 121, "/post/1"}
-	posts[2] = Post{2, "title2", "url2", "http://placehold.it/350x150", 122, "/post/2"}
+	posts[0] = Post{3, "title3", "url3", "http://placehold.it/350x150", 123}
+	posts[1] = Post{1, "title1", "url1", "http://placehold.it/350x150", 121}
+	posts[2] = Post{2, "title2", "url2", "http://placehold.it/350x150", 122}
 	posts = *SortPostsByLikes(&posts)
 	if posts[0].Likes != 123 {
 		t.Fail()
