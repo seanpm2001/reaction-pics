@@ -31,11 +31,11 @@ func ReadPostsFromCSV(blogName string) (posts []Post) {
 
 // WritePostsToCSV writes a list of posts to a CSV file
 func WritePostsToCSV(blogName string, postChan <-chan Post) (csvLocation string) {
-	posts := []Post{}
+	board := Board{}
 	for p := range postChan {
-		posts = append(posts, p)
+		board.AddPost(p)
 	}
-	fmt.Printf("Saving %d posts\n", len(posts))
+	fmt.Printf("Saving %d posts\n", len(board.Posts))
 	csvLocation = getCSVPath(blogName)
 	file, err := os.Create(csvLocation)
 	defer file.Close()
@@ -43,9 +43,9 @@ func WritePostsToCSV(blogName string, postChan <-chan Post) (csvLocation string)
 		fmt.Println(err)
 		return
 	}
-	posts = *SortPostsByID(&posts)
+	board.SortPostsByID()
 	writer := csv.NewWriter(file)
-	for _, post := range posts {
+	for _, post := range board.Posts {
 		row := getRow(post)
 		writer.Write(row)
 		if err := writer.Error(); err != nil {

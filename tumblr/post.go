@@ -90,6 +90,11 @@ func NewBoard(p []Post) Board {
 	}
 }
 
+// AddPost adds a single post to the board and sorts it
+func (b *Board) AddPost(p Post) {
+	b.Posts = append(b.Posts, p)
+}
+
 // PostsToJSON converts a Post into a JSON string
 func (b Board) PostsToJSON() string {
 	postsJSON := make([]PostJSON, len(b.Posts))
@@ -101,9 +106,8 @@ func (b Board) PostsToJSON() string {
 }
 
 // SortPostsByID sorts Posts in reverse ID order
-func SortPostsByID(posts *[]Post) *[]Post {
-	sort.Sort(sort.Reverse(SortByID(*posts)))
-	return posts
+func (b *Board) SortPostsByID() {
+	sort.Sort(sort.Reverse(SortByID(b.Posts)))
 }
 
 // SortByID is an interface for Sorting
@@ -114,9 +118,8 @@ func (a SortByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a SortByID) Less(i, j int) bool { return a[i].ID < a[j].ID }
 
 // SortPostsByLikes sorts Posts in reverse number of likes order
-func SortPostsByLikes(posts *[]Post) *[]Post {
-	sort.Sort(sort.Reverse(SortByLikes(*posts)))
-	return posts
+func (b *Board) SortPostsByLikes() {
+	sort.Sort(sort.Reverse(SortByLikes(b.Posts)))
 }
 
 // SortByLikes is an interface for Sorting

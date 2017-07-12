@@ -25,7 +25,7 @@ const (
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var staticPath = fmt.Sprintf("%s/static/", serverDir)
 var uRLFilePaths = map[string]func() (string, error){}
-var posts []tumblr.Post
+var board tumblr.Board
 var postsMutex sync.RWMutex
 
 // logURL is a closure that logs (to stdout) the url and query of requests
@@ -57,7 +57,7 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 	postsMutex.RLock()
 	defer postsMutex.RUnlock()
-	board := tumblr.NewBoard(posts)
+	board := tumblr.NewBoard(board.Posts)
 	html := board.PostsToJSON()
 	fmt.Fprintf(w, html)
 }
@@ -71,7 +71,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query = strings.ToLower(query)
 	selectedPosts := []tumblr.Post{}
 	numPosts := 0
-	for _, post := range posts {
+	for _, post := range board.Posts {
 		postData := strings.ToLower(post.Title)
 		if strings.Contains(postData, query) {
 			selectedPosts = append(selectedPosts, post)
@@ -96,7 +96,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var post tumblr.Post
-	for _, p := range posts {
+	for _, p := range board.Posts {
 		if p.ID == postID {
 			post = p
 		}
@@ -144,8 +144,8 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 func loadPosts(postChan <-chan tumblr.Post) {
 	for p := range postChan {
 		postsMutex.Lock()
-		posts = append(posts, p)
+		board.AddPost(p)
+		board.SortPostsByLikes()
 		postsMutex.Unlock()
 	}
-	posts = *tumblr.SortPostsByLikes(&posts)
 }
