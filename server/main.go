@@ -9,7 +9,6 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-	"sync"
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	// Used for getting tumblr env vars
@@ -25,8 +24,7 @@ const (
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var staticPath = fmt.Sprintf("%s/static/", serverDir)
 var uRLFilePaths = map[string]func() (string, error){}
-var board tumblr.Board
-var postsMutex sync.RWMutex
+var board = tumblr.NewBoard([]tumblr.Post{})
 
 // logURL is a closure that logs (to stdout) the url and query of requests
 func logURL(
@@ -55,9 +53,6 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 
 // dataURLHandler is an http handler for the dataURLPath response
 func dataURLHandler(w http.ResponseWriter, r *http.Request) {
-	postsMutex.RLock()
-	defer postsMutex.RUnlock()
-	board := tumblr.NewBoard(board.Posts)
 	html := board.PostsToJSON()
 	fmt.Fprintf(w, html)
 }
@@ -65,24 +60,10 @@ func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 // searchHandler is an http handler to search data for keywords
 // It matches the query against post titles and then ranks posts by number of likes
 func searchHandler(w http.ResponseWriter, r *http.Request) {
-	postsMutex.RLock()
-	defer postsMutex.RUnlock()
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
-	selectedPosts := []tumblr.Post{}
-	numPosts := 0
-	for _, post := range board.Posts {
-		postData := strings.ToLower(post.Title)
-		if strings.Contains(postData, query) {
-			selectedPosts = append(selectedPosts, post)
-			numPosts++
-		}
-		if numPosts >= maxResults {
-			break
-		}
-	}
-	board := tumblr.NewBoard(selectedPosts)
-	html := board.PostsToJSON()
+	queriedBoard := board.FilterBoard(query, maxResults)
+	html := queriedBoard.PostsToJSON()
 	fmt.Fprintf(w, html)
 }
 
@@ -143,9 +124,7 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 
 func loadPosts(postChan <-chan tumblr.Post) {
 	for p := range postChan {
-		postsMutex.Lock()
 		board.AddPost(p)
 		board.SortPostsByLikes()
-		postsMutex.Unlock()
 	}
 }
