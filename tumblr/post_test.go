@@ -106,7 +106,7 @@ func TestPostsToJSON(t *testing.T) {
 }
 
 func TestSortPostsByID(t *testing.T) {
-	board := Board{}
+	board := NewBoard([]Post{})
 	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
 	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 124})
 	board.AddPost(Post{2, "title2", "url2", "http://placehold.it/350x150", 125})
@@ -123,7 +123,7 @@ func TestSortPostsByID(t *testing.T) {
 }
 
 func TestSortPostsByLikes(t *testing.T) {
-	board := Board{}
+	board := NewBoard([]Post{})
 	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
 	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 121})
 	board.AddPost(Post{2, "title2", "url2", "http://placehold.it/350x150", 122})

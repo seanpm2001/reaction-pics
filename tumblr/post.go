@@ -5,6 +5,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/MariaTerzieva/gotumblr"
 	"github.com/gosimple/slug.git"
@@ -81,22 +82,28 @@ func CSVToPost(row []string) *Post {
 // parallelization
 type Board struct {
 	Posts []Post
+	mut   *sync.RWMutex
 }
 
 // NewBoard creates a Board from an array of Posts
 func NewBoard(p []Post) Board {
 	return Board{
 		Posts: p,
+		mut:   &sync.RWMutex{},
 	}
 }
 
 // AddPost adds a single post to the board and sorts it
 func (b *Board) AddPost(p Post) {
+	b.mut.Lock()
+	defer b.mut.Unlock()
 	b.Posts = append(b.Posts, p)
 }
 
 // PostsToJSON converts a Post into a JSON string
-func (b Board) PostsToJSON() string {
+func (b *Board) PostsToJSON() string {
+	b.mut.RLock()
+	defer b.mut.RUnlock()
 	postsJSON := make([]PostJSON, len(b.Posts))
 	for i := 0; i < len(b.Posts); i++ {
 		postsJSON[i] = b.Posts[i].ToJSONStruct()
@@ -105,8 +112,28 @@ func (b Board) PostsToJSON() string {
 	return string(marshalledPosts)
 }
 
+// FilterBoard returns a new Board with a subset of posts filtered by a string
+func (b *Board) FilterBoard(query string, maxResults int) *Board {
+	b.mut.RLock()
+	defer b.mut.RUnlock()
+	selectedPosts := []Post{}
+	for _, post := range b.Posts {
+		postData := strings.ToLower(post.Title)
+		if strings.Contains(postData, query) {
+			selectedPosts = append(selectedPosts, post)
+		}
+		if len(selectedPosts) >= maxResults {
+			break
+		}
+	}
+	board := NewBoard(selectedPosts)
+	return &board
+}
+
 // SortPostsByID sorts Posts in reverse ID order
 func (b *Board) SortPostsByID() {
+	b.mut.Lock()
+	defer b.mut.Unlock()
 	sort.Sort(sort.Reverse(SortByID(b.Posts)))
 }
 
@@ -119,6 +146,8 @@ func (a SortByID) Less(i, j int) bool { return a[i].ID < a[j].ID }
 
 // SortPostsByLikes sorts Posts in reverse number of likes order
 func (b *Board) SortPostsByLikes() {
+	b.mut.Lock()
+	defer b.mut.Unlock()
 	sort.Sort(sort.Reverse(SortByLikes(b.Posts)))
 }
 

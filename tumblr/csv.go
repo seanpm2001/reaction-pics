@@ -31,7 +31,7 @@ func ReadPostsFromCSV(blogName string) (posts []Post) {
 
 // WritePostsToCSV writes a list of posts to a CSV file
 func WritePostsToCSV(blogName string, postChan <-chan Post) (csvLocation string) {
-	board := Board{}
+	board := NewBoard([]Post{})
 	for p := range postChan {
 		board.AddPost(p)
 	}
