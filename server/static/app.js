@@ -42,7 +42,18 @@ function showImage(x, postData) {
   $("#results").append(postHTML);
 }
 
+function indexStats() {
+  $.getJSON(
+    "/indexStats/",
+    function processStats(data) {
+      var line = "Currently indexing " + data.postCount + " posts";
+      $("#indexStat").text(line);
+    }
+  );
+}
+
 $("#query").on('input', updateResults);
 $(function() {
   updateResults();
+  indexStats();
 });

@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"io/ioutil"
@@ -109,6 +110,13 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func indexStatsHandler(w http.ResponseWriter, r *http.Request) {
+	postCount := strconv.Itoa(len(board.Posts))
+	data := map[string]string{"postCount": postCount}
+	stats, _ := json.Marshal(data)
+	fmt.Fprintf(w, string(stats))
+}
+
 // Run starts up the HTTP server
 func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	go loadPosts(postChan)
@@ -119,6 +127,7 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, dataURLPath, logURL(dataURLHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/indexStats/", logURL(indexStatsHandler)))
 	http.ListenAndServe(address, nil)
 }
 
