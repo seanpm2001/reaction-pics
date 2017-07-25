@@ -62,3 +62,18 @@ func TestDataURLHandler(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestStatsHandler(t *testing.T) {
+	request, err := http.NewRequest("GET", "/indexStats/", nil)
+	if err != nil {
+		t.Fail()
+	}
+	response := httptest.NewRecorder()
+	indexStatsHandler(response, request)
+	if response.Code != 200 {
+		t.Fail()
+	}
+	if response.Body.String() != "{\"postCount\":\"0\"}" {
+		t.Fail()
+	}
+}
