@@ -42,9 +42,9 @@ function showImage(x, postData) {
   $("#results").append(postHTML);
 }
 
-function indexStats() {
+function stats() {
   $.getJSON(
-    "/indexStats/",
+    "/stats.json",
     function processStats(data) {
       var line = "Currently indexing " + data.postCount + " posts";
       $("#indexStat").text(line);
@@ -55,5 +55,5 @@ function indexStats() {
 $("#query").on('input', updateResults);
 $(function() {
   updateResults();
-  indexStats();
+  stats();
 });

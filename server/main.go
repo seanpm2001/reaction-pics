@@ -110,7 +110,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func indexStatsHandler(w http.ResponseWriter, r *http.Request) {
+func statsHandler(w http.ResponseWriter, r *http.Request) {
 	postCount := strconv.Itoa(len(board.Posts))
 	data := map[string]string{"postCount": postCount}
 	stats, _ := json.Marshal(data)
@@ -127,7 +127,7 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, dataURLPath, logURL(dataURLHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/indexStats/", logURL(indexStatsHandler)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/stats.json", logURL(statsHandler)))
 	http.ListenAndServe(address, nil)
 }
 

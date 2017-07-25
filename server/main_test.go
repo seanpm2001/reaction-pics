@@ -64,12 +64,12 @@ func TestDataURLHandler(t *testing.T) {
 }
 
 func TestStatsHandler(t *testing.T) {
-	request, err := http.NewRequest("GET", "/indexStats/", nil)
+	request, err := http.NewRequest("GET", "/stats.json", nil)
 	if err != nil {
 		t.Fail()
 	}
 	response := httptest.NewRecorder()
-	indexStatsHandler(response, request)
+	statsHandler(response, request)
 	if response.Code != 200 {
 		t.Fail()
 	}
