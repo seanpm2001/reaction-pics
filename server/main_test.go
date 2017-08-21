@@ -63,6 +63,23 @@ func TestDataURLHandler(t *testing.T) {
 	}
 }
 
+func TestSearchHandler(t *testing.T) {
+	request, err := http.NewRequest("GET", "/search", nil)
+	if err != nil {
+		t.Fail()
+	}
+	q := request.URL.Query()
+	q.Add("query", "searchTerm")
+	response := httptest.NewRecorder()
+	searchHandler(response, request)
+	if response.Code != 200 {
+		t.Fail()
+	}
+	if response.Body.String() != "[]" {
+		t.Fail()
+	}
+}
+
 func TestStatsHandler(t *testing.T) {
 	request, err := http.NewRequest("GET", "/stats.json", nil)
 	if err != nil {
