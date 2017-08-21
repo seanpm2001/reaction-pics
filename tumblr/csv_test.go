@@ -62,6 +62,9 @@ func TestWritePostsToCSV(t *testing.T) {
 	}
 	data := make([]byte, 50)
 	length, err := file.Read(data)
+	if err != nil {
+		t.Fail()
+	}
 	if length != 47 {
 		t.Fail()
 	}
