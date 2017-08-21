@@ -1,7 +1,7 @@
 package tumblr
 
 import (
-	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/MariaTerzieva/gotumblr"
@@ -91,6 +91,22 @@ func TestCorruptPost(t *testing.T) {
 	}
 }
 
+func TestInternalURL(t *testing.T) {
+	post := Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
+	url := post.InternalURL()
+	if url != "/post/1/title1" {
+		t.Fail()
+	}
+}
+
+func TestInternalURLLong(t *testing.T) {
+	post := Post{1, strings.Repeat("a", 50), "url1", "http://placehold.it/350x150", 123}
+	url := post.InternalURL()
+	if url != "/post/1/"+strings.Repeat("a", 30) {
+		t.Fail()
+	}
+}
+
 func TestPostsToJSON(t *testing.T) {
 	posts := make([]Post, 2)
 	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
@@ -98,9 +114,21 @@ func TestPostsToJSON(t *testing.T) {
 	board := NewBoard(posts)
 	json := board.PostsToJSON()
 	expected := "[{\"id\":1,\"title\":\"title1\",\"url\":\"url1\",\"image\":\"http://placehold.it/350x150\",\"likes\":123,\"internalURL\":\"/post/1/title1\"},{\"id\":2,\"title\":\"title2\",\"url\":\"url2\",\"image\":\"http://placehold.it/350x150\",\"likes\":124,\"internalURL\":\"/post/2/title2\"}]"
-	fmt.Println(json)
-	fmt.Println(expected)
 	if json != expected {
+		t.Fail()
+	}
+}
+
+func TestFilterBoard(t *testing.T) {
+	posts := make([]Post, 2)
+	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
+	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
+	board := NewBoard(posts)
+	newBoard := board.FilterBoard("title2", 5)
+	if len(newBoard.Posts) != 1 {
+		t.Fail()
+	}
+	if newBoard.Posts[0].ID != 2 {
 		t.Fail()
 	}
 }
@@ -135,6 +163,54 @@ func TestSortPostsByLikes(t *testing.T) {
 		t.Fail()
 	}
 	if board.Posts[2].Likes != 121 {
+		t.Fail()
+	}
+}
+
+func TestReset(t *testing.T) {
+	board := NewBoard([]Post{})
+	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
+	if len(board.Posts) != 1 {
+		t.Fail()
+	}
+	board.Reset()
+	if len(board.Posts) != 0 {
+		t.Fail()
+	}
+}
+
+func TestURLs(t *testing.T) {
+	board := NewBoard([]Post{})
+	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
+	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 121})
+	board.AddPost(Post{2, "title2", "url2", "http://placehold.it/350x150", 122})
+	urls := board.URLs()
+	if len(urls) != 3 {
+		t.Fail()
+	}
+	if urls[0] != "/post/3/title3" {
+		t.Fail()
+	}
+	if urls[1] != "/post/1/title1" {
+		t.Fail()
+	}
+	if urls[2] != "/post/2/title2" {
+		t.Fail()
+	}
+}
+
+func TestGetImageFromPostBody(t *testing.T) {
+	body := "<img src=\"img.gif\">"
+	image := getImageFromPostBody(body)
+	if image != "img.gif" {
+		t.Fail()
+	}
+}
+
+func TestGetImageFromPostBodyNotFound(t *testing.T) {
+	body := "<div></div>"
+	image := getImageFromPostBody(body)
+	if image != "" {
 		t.Fail()
 	}
 }
