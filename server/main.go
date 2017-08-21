@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"github.com/albertyw/reaction-pics/tumblr"
+	"github.com/ikeikeikeike/go-sitemap-generator/stm"
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	newrelic "github.com/newrelic/go-agent"
@@ -117,6 +118,18 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(stats))
 }
 
+func sitemapHandler(w http.ResponseWriter, r *http.Request) {
+	sm := stm.NewSitemap()
+	sm.SetDefaultHost(os.Getenv("HOST"))
+
+	sm.Create()
+	sm.Add(stm.URL{"loc": "/"})
+	for _, url := range board.URLs() {
+		sm.Add(stm.URL{"loc": url})
+	}
+	w.Write(sm.XMLContent())
+}
+
 // Run starts up the HTTP server
 func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	go loadPosts(postChan)
@@ -128,6 +141,7 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/stats.json", logURL(statsHandler)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/sitemap.xml", logURL(sitemapHandler)))
 	http.ListenAndServe(address, nil)
 }
 

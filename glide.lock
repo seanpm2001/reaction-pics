@@ -1,6 +1,10 @@
-hash: 5b564c1fa0d126ae6f4670e5bf4f26285ba05f0b7e86e96d8963905cf5b7057d
-updated: 2017-08-20T21:29:48.782488975-07:00
+hash: f135152f50f55bbad8fbbabb1369b93fad3c337c27ca51bcb151705f6b0ce222
+updated: 2017-08-20T21:53:25.42396724-07:00
 imports:
+- name: github.com/beevik/etree
+  version: 15a30b44cfd6c5a16a7ddfe271bf146aaf2d3195
+- name: github.com/fatih/structs
+  version: 7e5a8eef611ee84dd359503f3969f80df4c50723
 - name: github.com/golang/mock
   version: 295937593e7f0e284260b19d692f9fdf1a29f73f
   subpackages:
@@ -8,6 +12,12 @@ imports:
   - mockgen
 - name: github.com/gosimple/slug.git
   version: e756f2ec7e1e59e2ef20938fac5e677842641777
+- name: github.com/ikeikeikeike/go-sitemap-generator
+  version: e3c3d374db77838e92e5981ba81f26d1ecea4aa8
+  subpackages:
+  - stm
+- name: github.com/imdario/mergo
+  version: e3000cb3d28c72b837601cac94debd91032d19fe
 - name: github.com/joho/godotenv
   version: 9d9ddadf44b4c17c42bafdc530ddeee1927c067d
   subpackages:

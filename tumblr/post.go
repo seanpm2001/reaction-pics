@@ -165,6 +165,17 @@ func (b *Board) Reset() {
 	b.Posts = []Post{}
 }
 
+// URLs returns an array of URLs of all the posts
+func (b Board) URLs() []string {
+	b.mut.RLock()
+	defer b.mut.RUnlock()
+	urls := []string{}
+	for _, post := range b.Posts {
+		urls = append(urls, post.InternalURL())
+	}
+	return urls
+}
+
 // getImageFromPostBody parses the body of a post and returns the url of the image
 func getImageFromPostBody(body string) string {
 	bodyReader := strings.NewReader(body)
