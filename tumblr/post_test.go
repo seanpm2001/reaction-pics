@@ -1,6 +1,7 @@
 package tumblr
 
 import (
+	"strconv"
 	"strings"
 	"testing"
 
@@ -195,6 +196,36 @@ func TestURLs(t *testing.T) {
 		t.Fail()
 	}
 	if urls[2] != "/post/2/title2" {
+		t.Fail()
+	}
+}
+
+func TestKeywords(t *testing.T) {
+	board := NewBoard([]Post{})
+	board.AddPost(Post{3, "title2", "url3", "http://placehold.it/350x150", 123})
+	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 121})
+	board.AddPost(Post{2, "title1 title2 title2", "url2", "http://placehold.it/350x150", 122})
+	keywords := board.Keywords()
+	if len(keywords) != 2 {
+		t.Fail()
+	}
+	if keywords[0] != "title2" {
+		t.Fail()
+	}
+	if keywords[1] != "title1" {
+		t.Fail()
+	}
+}
+
+func TestKeywordsLong(t *testing.T) {
+	board := NewBoard([]Post{})
+	title := []string{}
+	for x := 0; x < 100; x++ {
+		title = append(title, strconv.FormatInt(int64(x), 10))
+	}
+	board.AddPost(Post{1, strings.Join(title, " "), "url1", "http://placehold.it/350x150", 121})
+	keywords := board.Keywords()
+	if len(keywords) != MaxKeywords {
 		t.Fail()
 	}
 }

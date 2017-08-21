@@ -12,6 +12,9 @@ import (
 	"golang.org/x/net/html"
 )
 
+// MaxKeywords is the maximum number of keywords that can be returned by a board
+const MaxKeywords = 20
+
 // Post is a representation of a single tumblr post
 type Post struct {
 	ID    int64  `json:"id"`
@@ -101,7 +104,7 @@ func (b *Board) AddPost(p Post) {
 }
 
 // PostsToJSON converts a Post into a JSON string
-func (b *Board) PostsToJSON() string {
+func (b Board) PostsToJSON() string {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
 	postsJSON := make([]PostJSON, len(b.Posts))
@@ -113,7 +116,7 @@ func (b *Board) PostsToJSON() string {
 }
 
 // FilterBoard returns a new Board with a subset of posts filtered by a string
-func (b *Board) FilterBoard(query string, maxResults int) *Board {
+func (b Board) FilterBoard(query string, maxResults int) *Board {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
 	selectedPosts := []Post{}
@@ -174,6 +177,34 @@ func (b Board) URLs() []string {
 		urls = append(urls, post.InternalURL())
 	}
 	return urls
+}
+
+// Keywords returns the most popular words in posts
+func (b Board) Keywords() []string {
+	b.mut.RLock()
+	defer b.mut.RUnlock()
+	words := map[string]int{}
+	for _, post := range b.Posts {
+		for _, word := range strings.Fields(post.Title) {
+			words[word]++
+		}
+	}
+	// Reuse Board sort
+	board := NewBoard([]Post{})
+	for word, count := range words {
+		board.AddPost(Post{Title: word, Likes: int64(count)})
+	}
+	board.SortPostsByLikes()
+	count := 0
+	keywords := []string{}
+	for _, post := range board.Posts {
+		keywords = append(keywords, post.Title)
+		count++
+		if count >= MaxKeywords {
+			break
+		}
+	}
+	return keywords
 }
 
 // getImageFromPostBody parses the body of a post and returns the url of the image
