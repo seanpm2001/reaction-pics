@@ -12,9 +12,7 @@ Index of DevOps Reactions
 
 1.  Install Go 1.6.
 2.  Install [Glide](https://github.com/Masterminds/glide/blob/master/README.md)
-3.  `go get -u github.com/golang/lint/golint`
-4.  `go build`
-5.  `./reaction-pics`
+3.  `make serve`
 
 ## Running tests
 
