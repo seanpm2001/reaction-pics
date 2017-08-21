@@ -158,6 +158,13 @@ func (a SortByLikes) Len() int           { return len(a) }
 func (a SortByLikes) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a SortByLikes) Less(i, j int) bool { return a[i].Likes < a[j].Likes }
 
+// Reset will clear all posts from the board
+func (b *Board) Reset() {
+	b.mut.Lock()
+	defer b.mut.Unlock()
+	b.Posts = []Post{}
+}
+
 // getImageFromPostBody parses the body of a post and returns the url of the image
 func getImageFromPostBody(body string) string {
 	bodyReader := strings.NewReader(body)
