@@ -1,15 +1,15 @@
-hash: cb23bfb376d5947368c71bb53452b731093df64994f6bb58cbdef2343a77e77e
-updated: 2017-07-08T19:00:40.139123618-07:00
+hash: 5b564c1fa0d126ae6f4670e5bf4f26285ba05f0b7e86e96d8963905cf5b7057d
+updated: 2017-08-20T21:29:48.782488975-07:00
 imports:
 - name: github.com/golang/mock
-  version: 93f6609a15b7de76bd49259f1f9a6b58df358936
+  version: 295937593e7f0e284260b19d692f9fdf1a29f73f
   subpackages:
   - gomock
   - mockgen
 - name: github.com/gosimple/slug.git
-  version: f36922d6568f08b11d4e51b377e3e58291972ccc
+  version: e756f2ec7e1e59e2ef20938fac5e677842641777
 - name: github.com/joho/godotenv
-  version: 3ddb2792f3923947290c4932990136e17852a078
+  version: 9d9ddadf44b4c17c42bafdc530ddeee1927c067d
   subpackages:
   - autoload
 - name: github.com/kurrik/oauth1a
@@ -29,7 +29,7 @@ imports:
 - name: github.com/satori/go.uuid
   version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: golang.org/x/net
-  version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
+  version: 1c05540f6879653db88113bc4a2b70aec4bd491f
   subpackages:
   - html
   - html/atom
