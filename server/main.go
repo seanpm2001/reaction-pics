@@ -113,7 +113,10 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 
 func statsHandler(w http.ResponseWriter, r *http.Request) {
 	postCount := strconv.Itoa(len(board.Posts))
-	data := map[string]string{"postCount": postCount}
+	data := map[string]interface{}{
+		"postCount": postCount,
+		"keywords":  board.Keywords(),
+	}
 	stats, _ := json.Marshal(data)
 	fmt.Fprintf(w, string(stats))
 }

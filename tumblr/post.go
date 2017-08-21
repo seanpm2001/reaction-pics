@@ -186,7 +186,9 @@ func (b Board) Keywords() []string {
 	words := map[string]int{}
 	for _, post := range b.Posts {
 		for _, word := range strings.Fields(post.Title) {
-			words[word]++
+			if len(word) > 4 {
+				words[word]++
+			}
 		}
 	}
 	// Reuse Board sort
