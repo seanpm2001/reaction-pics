@@ -36,8 +36,12 @@ function showImage(x, postData) {
   if (postData.url) postHTML += '<a href="' + postData.internalURL + '">';
   postHTML += postData.title;
   if (postData.url) postHTML += '</a></h2>';
-  if (postData.image) postHTML += '<img data-original="' + postData.image + '" class="result-img" /><br />';
-  if (postData.likes) postHTML += postData.likes + ' likes';
+  if (postData.image) postHTML += '<p><img data-original="' + postData.image + '" class="result-img" /></p>';
+  if (postData.likes) {
+      postHTML += '<p><a href="#" id="likes" class="btn btn-success disabled">';
+      postHTML += postData.likes + ' <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>';
+      postHTML += '</a></p>';
+  }
   postHTML += '</div>';
   $("#results").append(postHTML);
 }
