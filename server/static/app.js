@@ -54,6 +54,9 @@ function stats() {
 
 $("#query").on('input', updateResults);
 $(function() {
-  updateResults();
+  var results = $("#results").html();
+  if ($.trim(results).length === 0) {
+    updateResults();
+  }
   stats();
 });

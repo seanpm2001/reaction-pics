@@ -33,18 +33,20 @@
         <h1>Reaction Pics</h1>
         <h2>Search various programming memes</h2>
         <br />
-        <div>
-          <strong><a href="/">Search</a></strong>
+        <div id="search">
+          <input type="text" id="query" placeholder="outage" class="form-control" autofocus="true" />
         </div>
       </div>
       <div id="main">
-        <h2>{{.Post.Title}}</h2>
-        <img src="{{.Post.Image}}" />
-        <div id="likes">
-          {{.Post.Likes}} Likes
+        <div id="results">
+          <h2>{{.Post.Title}}</h2>
+          <img src="{{.Post.Image}}" />
+          <div id="likes">
+            {{.Post.Likes}} Likes
+          </div>
+          <a href="{{.Post.URL}}">Original</a>
+          <br />
         </div>
-        <a href="{{.Post.URL}}">Original</a>
-        <br />
       </div>
       <footer id="footer">
         Contribute and file issues on <a href="https://github.com/albertyw/reaction-pics">Github</a>.<br />
