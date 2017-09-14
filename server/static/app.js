@@ -1,4 +1,3 @@
-var maxLength = 20;
 var pendingRequest = undefined;
 
 function updateResults() {
@@ -10,16 +9,10 @@ function updateResults() {
     "/search",
     {query: query},
     function processQueryResult(data) {
-      $("#results").html("");
+      clearResults();
       for (var x=0; x<data.length; x++) {
         var post = data[x];
-        showImage(x, post);
-        if (x >= maxLength) {
-          showImage(x, {
-            title: "Refine your search for more results"
-          });
-          break;
-        }
+        addResult(post);
       }
       $('img.result-img').lazyload({
         effect: "fadeIn",
@@ -30,8 +23,12 @@ function updateResults() {
   );
 }
 
-function showImage(x, postData) {
-  var postHTML = '<div id="post' + x + '" class="result">';
+function clearResults() {
+  $("#results").html("");
+}
+
+function addResult(postData) {
+  var postHTML = '<div class="result">';
   postHTML += '<h2>';
   if (postData.url) postHTML += '<a href="' + postData.internalURL + '">';
   postHTML += postData.title;
