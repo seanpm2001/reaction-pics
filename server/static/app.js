@@ -1,5 +1,8 @@
 var pendingRequest = undefined;
 
+function showPost(postID) {
+}
+
 function updateResults() {
   var query = $("#query").val();
   if (pendingRequest) {
@@ -53,10 +56,12 @@ function stats() {
   );
 }
 
-$("#query").on('input', updateResults);
 $(function() {
-  var results = $("#results").html();
-  if ($.trim(results).length === 0) {
+  $("#query").on('input', updateResults);
+  var urlPath = window.location.pathname.split('/');
+  if (urlPath[1] === 'post') {
+    showPost(urlPath[2]);
+  } else {
     updateResults();
   }
   stats();
