@@ -1,5 +1,20 @@
 var pendingRequest = undefined;
 
+function showPost(postID) {
+  $.getJSON(
+    "/postdata/" + postID,
+    function processPostResult(post) {
+      clearResults();
+      addResult(post);
+      $('img.result-img').lazyload({
+        effect: "fadeIn",
+        threshold: 1000,
+        skip_invisible: true
+      });
+    }
+  );
+}
+
 function updateResults() {
   var query = $("#query").val();
   if (pendingRequest) {
@@ -38,6 +53,7 @@ function addResult(postData) {
       postHTML += '<p><a href="#" id="likes" class="btn btn-success disabled">';
       postHTML += postData.likes + ' <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>';
       postHTML += '</a></p>';
+      postHTML += '<p><a href="' + postData.url + '">Original</a></p>';
   }
   postHTML += '</div>';
   $("#results").append(postHTML);
@@ -53,10 +69,12 @@ function stats() {
   );
 }
 
-$("#query").on('input', updateResults);
 $(function() {
-  var results = $("#results").html();
-  if ($.trim(results).length === 0) {
+  $("#query").on('input', updateResults);
+  var urlPath = window.location.pathname.split('/');
+  if (urlPath[1] === 'post') {
+    showPost(urlPath[2]);
+  } else {
     updateResults();
   }
   stats();

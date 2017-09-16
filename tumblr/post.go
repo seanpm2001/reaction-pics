@@ -133,6 +133,18 @@ func (b Board) FilterBoard(query string, maxResults int) *Board {
 	return &board
 }
 
+// GetPostByID returns a post that matches the postID
+func (b Board) GetPostByID(postID int64) *Post {
+	b.mut.RLock()
+	defer b.mut.RUnlock()
+	for _, post := range b.Posts {
+		if post.ID == postID {
+			return &post
+		}
+	}
+	return nil
+}
+
 // SortPostsByID sorts Posts in reverse ID order
 func (b *Board) SortPostsByID() {
 	b.mut.Lock()
