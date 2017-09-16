@@ -134,7 +134,7 @@ func TestStatsHandler(t *testing.T) {
 	if response.Code != 200 {
 		t.Fail()
 	}
-	if response.Body.String() != "{\"postCount\":\"0\"}" {
+	if response.Body.String() != "{\"keywords\":[],\"postCount\":\"0\"}" {
 		t.Fail()
 	}
 }

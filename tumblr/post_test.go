@@ -220,7 +220,7 @@ func TestKeywords(t *testing.T) {
 func TestKeywordsLong(t *testing.T) {
 	board := NewBoard([]Post{})
 	title := []string{}
-	for x := 0; x < 100; x++ {
+	for x := 10000; x < 10100; x++ {
 		title = append(title, strconv.FormatInt(int64(x), 10))
 	}
 	board.AddPost(Post{1, strings.Join(title, " "), "url1", "http://placehold.it/350x150", 121})
