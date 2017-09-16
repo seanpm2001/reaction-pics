@@ -69,6 +69,21 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, html)
 }
 
+// postDataHandler is an http handler to return post data by ID
+func postDataHandler(w http.ResponseWriter, r *http.Request) {
+	pathStrings := strings.Split(r.URL.Path, "/")
+	postIDString := pathStrings[2]
+	postID, err := strconv.ParseInt(postIDString, 10, 64)
+	if err != nil {
+		fmt.Println("Cannot parse post id")
+		http.NotFound(w, r)
+		return
+	}
+	post := board.GetPostByID(postID)
+	marshalledPost, _ := json.Marshal(post.ToJSONStruct())
+	fmt.Fprintf(w, string(marshalledPost))
+}
+
 func postHandler(w http.ResponseWriter, r *http.Request) {
 	pathStrings := strings.Split(r.URL.Path, "/")
 	postIDString := pathStrings[2]
@@ -142,6 +157,7 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(staticFS)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, dataURLPath, logURL(dataURLHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/postdata/", logURL(postDataHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/stats.json", logURL(statsHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/sitemap.xml", logURL(sitemapHandler)))
