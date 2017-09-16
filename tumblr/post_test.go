@@ -134,6 +134,23 @@ func TestFilterBoard(t *testing.T) {
 	}
 }
 
+func TestGetPostByID(t *testing.T) {
+	posts := make([]Post, 1)
+	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
+	board := NewBoard(posts)
+	post := board.GetPostByID(1)
+	if post == nil {
+		t.Fail()
+	}
+	if post.Title != "title1" {
+		t.Fail()
+	}
+	post = board.GetPostByID(2)
+	if post != nil {
+		t.Fail()
+	}
+}
+
 func TestSortPostsByID(t *testing.T) {
 	board := NewBoard([]Post{})
 	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
