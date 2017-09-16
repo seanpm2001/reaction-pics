@@ -80,6 +80,11 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	post := board.GetPostByID(postID)
+	if post == nil {
+		fmt.Println("Cannot find post")
+		http.NotFound(w, r)
+		return
+	}
 	marshalledPost, _ := json.Marshal(post.ToJSONStruct())
 	fmt.Fprintf(w, string(marshalledPost))
 }

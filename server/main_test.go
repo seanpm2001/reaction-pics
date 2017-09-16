@@ -124,6 +124,48 @@ func TestPostHandler(t *testing.T) {
 	}
 }
 
+func TestPostDataHandler(t *testing.T) {
+	post := tumblr.Post{ID: 1234}
+	board.AddPost(post)
+	defer func() { board.Reset() }()
+	request, err := http.NewRequest("GET", "/postdata/1234", nil)
+	if err != nil {
+		t.Fail()
+	}
+	response := httptest.NewRecorder()
+	postDataHandler(response, request)
+	if response.Code != 200 {
+		t.Fail()
+	}
+	if len(response.Body.String()) == 0 {
+		t.Fail()
+	}
+}
+
+func TestPostDataHandlerMalformed(t *testing.T) {
+	request, err := http.NewRequest("GET", "/postdata/asdf", nil)
+	if err != nil {
+		t.Fail()
+	}
+	response := httptest.NewRecorder()
+	postDataHandler(response, request)
+	if response.Code != 404 {
+		t.Fail()
+	}
+}
+
+func TestPostDataHandlerUnknown(t *testing.T) {
+	request, err := http.NewRequest("GET", "/postdata/1234", nil)
+	if err != nil {
+		t.Fail()
+	}
+	response := httptest.NewRecorder()
+	postDataHandler(response, request)
+	if response.Code != 404 {
+		t.Fail()
+	}
+}
+
 func TestStatsHandler(t *testing.T) {
 	request, err := http.NewRequest("GET", "/stats.json", nil)
 	if err != nil {
