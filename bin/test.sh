@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cd -P `pwd`
 echo "" > coverage.txt
 for godir in $(go list ./... | grep -v vendor); do
