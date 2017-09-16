@@ -1,6 +1,18 @@
 var pendingRequest = undefined;
 
 function showPost(postID) {
+  $.getJSON(
+    "/postdata/" + postID,
+    function processPostResult(post) {
+      clearResults();
+      addResult(post);
+      $('img.result-img').lazyload({
+        effect: "fadeIn",
+        threshold: 1000,
+        skip_invisible: true
+      });
+    }
+  );
 }
 
 function updateResults() {
@@ -41,6 +53,7 @@ function addResult(postData) {
       postHTML += '<p><a href="#" id="likes" class="btn btn-success disabled">';
       postHTML += postData.likes + ' <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>';
       postHTML += '</a></p>';
+      postHTML += '<p><a href="' + postData.url + '">Original</a></p>';
   }
   postHTML += '</div>';
   $("#results").append(postHTML);
