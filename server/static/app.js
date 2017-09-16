@@ -5,12 +5,7 @@ function showPost(postID) {
     "/postdata/" + postID,
     function processPostResult(post) {
       clearResults();
-      addResult(post);
-      $('img.result-img').lazyload({
-        effect: "fadeIn",
-        threshold: 1000,
-        skip_invisible: true
-      });
+      addResults([post]);
     }
   );
 }
@@ -25,21 +20,25 @@ function updateResults() {
     {query: query},
     function processQueryResult(data) {
       clearResults();
-      for (var x=0; x<data.length; x++) {
-        var post = data[x];
-        addResult(post);
-      }
-      $('img.result-img').lazyload({
-        effect: "fadeIn",
-        threshold: 1000,
-        skip_invisible: true
-      });
+      addResults(data);
     }
   );
 }
 
 function clearResults() {
   $("#results").html("");
+}
+
+function addResults(data) {
+  for (var x=0; x<data.length; x++) {
+    var post = data[x];
+    addResult(post);
+  }
+  $('img.result-img').lazyload({
+    effect: "fadeIn",
+    threshold: 1000,
+    skip_invisible: true
+  });
 }
 
 function addResult(postData) {
