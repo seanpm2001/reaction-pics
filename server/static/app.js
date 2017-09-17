@@ -20,6 +20,7 @@ function updateResults() {
     {query: query},
     function processQueryResult(data) {
       clearResults();
+      updateURL();
       addResults(data);
     }
   );
@@ -27,6 +28,16 @@ function updateResults() {
 
 function clearResults() {
   $("#results").html("");
+}
+
+function updateURL() {
+  var url = "/";
+  var urlPath = window.location.pathname.split('/');
+  if (urlPath[1] === 'post') {
+    history.pushState({}, "Reaction Pics", url);
+  } else {
+    history.replaceState({}, "Reaction Pics", url);
+  }
 }
 
 function addResults(data) {
