@@ -20,7 +20,7 @@ function updateResults() {
     {query: query},
     function processQueryResult(data) {
       clearResults();
-      updateURL();
+      updateURL(query);
       addResults(data);
     }
   );
@@ -30,8 +30,11 @@ function clearResults() {
   $("#results").html("");
 }
 
-function updateURL() {
+function updateURL(query) {
   var url = "/";
+  if (query !== undefined && query !== "") {
+    url += "?query=" + query;
+  }
   var urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     history.pushState({}, "Reaction Pics", url);
@@ -79,7 +82,21 @@ function stats() {
   );
 }
 
+function getParameterByName(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 $(function() {
+  var query = getParameterByName('query');
+  if (query !== undefined && query !== '') {
+    $("#query").val(query);
+  }
   $("#query").on('input', updateResults);
   var urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
