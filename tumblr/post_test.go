@@ -125,7 +125,7 @@ func TestFilterBoard(t *testing.T) {
 	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
 	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
 	board := NewBoard(posts)
-	newBoard := board.FilterBoard("title2", 5)
+	newBoard := board.FilterBoard("title2")
 	if len(newBoard.Posts) != 1 {
 		t.Fail()
 	}

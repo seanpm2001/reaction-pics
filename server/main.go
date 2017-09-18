@@ -64,7 +64,7 @@ func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
-	queriedBoard := board.FilterBoard(query, maxResults)
+	queriedBoard := board.FilterBoard(query)
 	html := queriedBoard.PostsToJSON()
 	fmt.Fprintf(w, html)
 }
