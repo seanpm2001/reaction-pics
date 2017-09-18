@@ -168,6 +168,10 @@ func TestLimitBoard(t *testing.T) {
 	if len(board.Posts) != 0 {
 		t.Fail()
 	}
+	board.LimitBoard(10, 1)
+	if len(board.Posts) != 0 {
+		t.Fail()
+	}
 }
 
 func TestGetPostByID(t *testing.T) {

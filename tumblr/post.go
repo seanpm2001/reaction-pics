@@ -142,6 +142,9 @@ func (b Board) GetPostByID(postID int64) *Post {
 
 // LimitBoard returns a board with maxResults posts starting at offset
 func (b *Board) LimitBoard(offset, maxResults int) {
+	if offset > len(b.Posts) {
+		offset = len(b.Posts)
+	}
 	endIndex := offset + maxResults
 	if endIndex > len(b.Posts) {
 		endIndex = len(b.Posts)
