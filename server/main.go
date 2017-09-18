@@ -55,8 +55,9 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 
 // dataURLHandler is an http handler for the dataURLPath response
 func dataURLHandler(w http.ResponseWriter, r *http.Request) {
-	html := board.PostsToJSON()
-	fmt.Fprintf(w, html)
+	data := board.PostsToJSON()
+	dataBytes, _ := json.Marshal(data)
+	fmt.Fprintf(w, string(dataBytes))
 }
 
 // searchHandler is an http handler to search data for keywords
@@ -64,9 +65,20 @@ func dataURLHandler(w http.ResponseWriter, r *http.Request) {
 func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
-	queriedBoard := board.FilterBoard(query, maxResults)
-	html := queriedBoard.PostsToJSON()
-	fmt.Fprintf(w, html)
+	queriedBoard := board.FilterBoard(query)
+	offsetString := r.URL.Query().Get("offset")
+	offset, err := strconv.Atoi(offsetString)
+	if err != nil {
+		offset = 0
+	}
+	data := map[string]interface{}{
+		"offset":       offset,
+		"totalResults": len(queriedBoard.Posts),
+	}
+	queriedBoard.LimitBoard(offset, maxResults)
+	data["data"] = queriedBoard.PostsToJSON()
+	dataBytes, _ := json.Marshal(data)
+	fmt.Fprintf(w, string(dataBytes))
 }
 
 // postDataHandler is an http handler to return post data by ID

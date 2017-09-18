@@ -77,7 +77,41 @@ func TestSearchHandler(t *testing.T) {
 	if response.Code != 200 {
 		t.Fail()
 	}
-	if response.Body.String() != "[]" {
+	if response.Body.String() != "{\"data\":[],\"offset\":0,\"totalResults\":0}" {
+		t.Fail()
+	}
+}
+
+func TestSearchHandlerOffset(t *testing.T) {
+	request, err := http.NewRequest("GET", "/search?offset=1", nil)
+	if err != nil {
+		t.Fail()
+	}
+	q := request.URL.Query()
+	q.Add("query", "searchTerm")
+	response := httptest.NewRecorder()
+	searchHandler(response, request)
+	if response.Code != 200 {
+		t.Fail()
+	}
+	if response.Body.String() != "{\"data\":[],\"offset\":1,\"totalResults\":0}" {
+		t.Fail()
+	}
+}
+
+func TestSearchHandlerMalformedOffset(t *testing.T) {
+	request, err := http.NewRequest("GET", "/search?offset=asdf", nil)
+	if err != nil {
+		t.Fail()
+	}
+	q := request.URL.Query()
+	q.Add("query", "searchTerm")
+	response := httptest.NewRecorder()
+	searchHandler(response, request)
+	if response.Code != 200 {
+		t.Fail()
+	}
+	if response.Body.String() != "{\"data\":[],\"offset\":0,\"totalResults\":0}" {
 		t.Fail()
 	}
 }

@@ -1,7 +1,6 @@
 package tumblr
 
 import (
-	"encoding/json"
 	"sort"
 	"strconv"
 	"strings"
@@ -104,19 +103,18 @@ func (b *Board) AddPost(p Post) {
 }
 
 // PostsToJSON converts a Post into a JSON string
-func (b Board) PostsToJSON() string {
+func (b Board) PostsToJSON() *[]PostJSON {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
 	postsJSON := make([]PostJSON, len(b.Posts))
 	for i := 0; i < len(b.Posts); i++ {
 		postsJSON[i] = b.Posts[i].ToJSONStruct()
 	}
-	marshalledPosts, _ := json.Marshal(postsJSON)
-	return string(marshalledPosts)
+	return &postsJSON
 }
 
 // FilterBoard returns a new Board with a subset of posts filtered by a string
-func (b Board) FilterBoard(query string, maxResults int) *Board {
+func (b Board) FilterBoard(query string) *Board {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
 	selectedPosts := []Post{}
@@ -124,9 +122,6 @@ func (b Board) FilterBoard(query string, maxResults int) *Board {
 		postData := strings.ToLower(post.Title)
 		if strings.Contains(postData, query) {
 			selectedPosts = append(selectedPosts, post)
-		}
-		if len(selectedPosts) >= maxResults {
-			break
 		}
 	}
 	board := NewBoard(selectedPosts)
@@ -143,6 +138,18 @@ func (b Board) GetPostByID(postID int64) *Post {
 		}
 	}
 	return nil
+}
+
+// LimitBoard returns a board with maxResults posts starting at offset
+func (b *Board) LimitBoard(offset, maxResults int) {
+	if offset > len(b.Posts) {
+		offset = len(b.Posts)
+	}
+	endIndex := offset + maxResults
+	if endIndex > len(b.Posts) {
+		endIndex = len(b.Posts)
+	}
+	b.Posts = b.Posts[offset:endIndex]
 }
 
 // SortPostsByID sorts Posts in reverse ID order

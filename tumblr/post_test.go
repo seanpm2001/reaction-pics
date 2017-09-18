@@ -113,9 +113,27 @@ func TestPostsToJSON(t *testing.T) {
 	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
 	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
 	board := NewBoard(posts)
-	json := board.PostsToJSON()
-	expected := "[{\"id\":1,\"title\":\"title1\",\"url\":\"url1\",\"image\":\"http://placehold.it/350x150\",\"likes\":123,\"internalURL\":\"/post/1/title1\"},{\"id\":2,\"title\":\"title2\",\"url\":\"url2\",\"image\":\"http://placehold.it/350x150\",\"likes\":124,\"internalURL\":\"/post/2/title2\"}]"
-	if json != expected {
+	data := board.PostsToJSON()
+	if len(*data) != 2 {
+		t.Fail()
+	}
+	post := (*data)[0]
+	if post.ID != 1 {
+		t.Fail()
+	}
+	if post.Title != "title1" {
+		t.Fail()
+	}
+	if post.URL != "url1" {
+		t.Fail()
+	}
+	if post.Image != "http://placehold.it/350x150" {
+		t.Fail()
+	}
+	if post.Likes != 123 {
+		t.Fail()
+	}
+	if post.InternalURL != "/post/1/title1" {
 		t.Fail()
 	}
 }
@@ -125,11 +143,33 @@ func TestFilterBoard(t *testing.T) {
 	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
 	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
 	board := NewBoard(posts)
-	newBoard := board.FilterBoard("title2", 5)
+	newBoard := board.FilterBoard("title2")
 	if len(newBoard.Posts) != 1 {
 		t.Fail()
 	}
 	if newBoard.Posts[0].ID != 2 {
+		t.Fail()
+	}
+}
+
+func TestLimitBoard(t *testing.T) {
+	posts := make([]Post, 2)
+	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
+	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
+	board := NewBoard(posts)
+	board.LimitBoard(1, 1)
+	if len(board.Posts) != 1 {
+		t.Fail()
+	}
+	if board.Posts[0].ID != 2 {
+		t.Fail()
+	}
+	board.LimitBoard(1, 3)
+	if len(board.Posts) != 0 {
+		t.Fail()
+	}
+	board.LimitBoard(10, 1)
+	if len(board.Posts) != 0 {
 		t.Fail()
 	}
 }
