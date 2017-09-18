@@ -1,7 +1,6 @@
 package tumblr
 
 import (
-	"encoding/json"
 	"sort"
 	"strconv"
 	"strings"
@@ -104,15 +103,14 @@ func (b *Board) AddPost(p Post) {
 }
 
 // PostsToJSON converts a Post into a JSON string
-func (b Board) PostsToJSON() string {
+func (b Board) PostsToJSON() *[]PostJSON {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
 	postsJSON := make([]PostJSON, len(b.Posts))
 	for i := 0; i < len(b.Posts); i++ {
 		postsJSON[i] = b.Posts[i].ToJSONStruct()
 	}
-	marshalledPosts, _ := json.Marshal(postsJSON)
-	return string(marshalledPosts)
+	return &postsJSON
 }
 
 // FilterBoard returns a new Board with a subset of posts filtered by a string

@@ -77,7 +77,7 @@ func TestSearchHandler(t *testing.T) {
 	if response.Code != 200 {
 		t.Fail()
 	}
-	if response.Body.String() != "[]" {
+	if response.Body.String() != "{\"data\":[],\"offset\":0,\"totalResults\":0}" {
 		t.Fail()
 	}
 }
