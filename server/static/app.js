@@ -10,16 +10,20 @@ function showPost(postID) {
   );
 }
 
-function updateResults() {
+function updateResults(offset) {
   var query = $("#query").val();
   if (pendingRequest) {
     pendingRequest.abort();
   }
   pendingRequest = $.getJSON(
     "/search",
-    {query: query},
+    {
+      query: query,
+      offset: offset,
+    },
     function processQueryResult(data) {
       clearResults();
+      saveQuery(query, data);
       updateURL(query);
       addResults(data);
     }
@@ -28,6 +32,14 @@ function updateResults() {
 
 function clearResults() {
   $("#results").html("");
+}
+
+function saveQuery(query, data) {
+  $("#data").html("");
+  $("#data").append('<input type="hidden" id="query" value="' + query + '">');
+  $("#data").append('<input type="hidden" id="paginateCount" value="' + data.data.length + '">');
+  $("#data").append('<input type="hidden" id="offset" value="' + data.offset + '">');
+  $("#data").append('<input type="hidden" id="totalResults" value="' + data.totalResults + '">');
 }
 
 function updateURL(query) {
@@ -44,15 +56,25 @@ function updateURL(query) {
 }
 
 function addResults(data) {
-  for (var x=0; x<data.length; x++) {
-    var post = data[x];
+  for (var x=0; x<data.data.length; x++) {
+    var post = data.data[x];
     addResult(post);
+  }
+  if (data.data.length + data.offset < data.totalResults) {
+    var paginateHTML = '<a href="javascript:paginateNext()">Next</a>';
+    $("#results").append(paginateHTML);
   }
   $('img.result-img').lazyload({
     effect: "fadeIn",
     threshold: 1000,
     skip_invisible: true
   });
+}
+
+function paginateNext() {
+  var offset = parseInt($("#offset").val(), 10);
+  offset += parseInt($("#paginateCount").val(), 10);
+  updateResults(offset);
 }
 
 function addResult(postData) {
@@ -97,7 +119,7 @@ $(function() {
   if (query !== undefined && query !== '') {
     $("#query").val(query);
   }
-  $("#query").on('input', updateResults);
+  $("#query").on('input', function(){updateResults()});
   var urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     showPost(urlPath[2]);
