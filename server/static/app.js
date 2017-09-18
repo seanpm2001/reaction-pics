@@ -26,6 +26,7 @@ function updateResults(offset) {
       saveQuery(query, data);
       updateURL(query);
       addResults(data);
+      window.scrollTo(0, 0);
     }
   );
 }
@@ -61,7 +62,9 @@ function addResults(data) {
     addResult(post);
   }
   if (data.data.length + data.offset < data.totalResults) {
-    var paginateHTML = '<a href="javascript:paginateNext()">Next</a>';
+    var paginateHTML = '<a href="javascript:paginateNext()">';
+    paginateHTML += 'Next Page <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
+    paginateHTML += '</a>';
     $("#results").append(paginateHTML);
   }
   $('img.result-img').lazyload({
