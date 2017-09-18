@@ -66,7 +66,11 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
 	queriedBoard := board.FilterBoard(query)
-	offset := 0
+	offsetString := r.URL.Query().Get("offset")
+	offset, err := strconv.Atoi(offsetString)
+	if err != nil {
+		offset = 0
+	}
 	data := map[string]interface{}{
 		"offset":       offset,
 		"totalResults": len(queriedBoard.Posts),
