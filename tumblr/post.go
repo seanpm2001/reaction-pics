@@ -142,6 +142,15 @@ func (b Board) GetPostByID(postID int64) *Post {
 	return nil
 }
 
+// LimitBoard returns a board with maxResults posts starting at offset
+func (b *Board) LimitBoard(offset, maxResults int) {
+	endIndex := offset + maxResults
+	if endIndex > len(b.Posts) {
+		endIndex = len(b.Posts)
+	}
+	b.Posts = b.Posts[offset:endIndex]
+}
+
 // SortPostsByID sorts Posts in reverse ID order
 func (b *Board) SortPostsByID() {
 	b.mut.Lock()

@@ -134,6 +134,24 @@ func TestFilterBoard(t *testing.T) {
 	}
 }
 
+func TestLimitBoard(t *testing.T) {
+	posts := make([]Post, 2)
+	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
+	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
+	board := NewBoard(posts)
+	board.LimitBoard(1, 1)
+	if len(board.Posts) != 1 {
+		t.Fail()
+	}
+	if board.Posts[0].ID != 2 {
+		t.Fail()
+	}
+	board.LimitBoard(1, 3)
+	if len(board.Posts) != 0 {
+		t.Fail()
+	}
+}
+
 func TestGetPostByID(t *testing.T) {
 	posts := make([]Post, 1)
 	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
