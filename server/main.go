@@ -19,8 +19,7 @@ import (
 )
 
 const (
-	dataURLPath = "/data.json"
-	maxResults  = 20
+	maxResults = 20
 )
 
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
@@ -51,13 +50,6 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 		r.URL.Path = path
 		targetFunc(w, r)
 	}
-}
-
-// dataURLHandler is an http handler for the dataURLPath response
-func dataURLHandler(w http.ResponseWriter, r *http.Request) {
-	data := board.PostsToJSON()
-	dataBytes, _ := json.Marshal(data)
-	fmt.Fprintf(w, string(dataBytes))
 }
 
 // searchHandler is an http handler to search data for keywords
@@ -177,7 +169,6 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	fmt.Println("server listening on", address)
 	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(staticFS)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, dataURLPath, logURL(dataURLHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/postdata/", logURL(postDataHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))

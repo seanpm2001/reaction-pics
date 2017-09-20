@@ -49,22 +49,6 @@ func TestNoExactURL(t *testing.T) {
 		t.Fail()
 	}
 }
-
-func TestDataURLHandler(t *testing.T) {
-	request, err := http.NewRequest("GET", "/data.json", nil)
-	if err != nil {
-		t.Fail()
-	}
-	response := httptest.NewRecorder()
-	dataURLHandler(response, request)
-	if response.Code != 200 {
-		t.Fail()
-	}
-	if response.Body.String() != "[]" {
-		t.Fail()
-	}
-}
-
 func TestSearchHandler(t *testing.T) {
 	request, err := http.NewRequest("GET", "/search", nil)
 	if err != nil {
