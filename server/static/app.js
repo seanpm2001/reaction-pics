@@ -3,9 +3,9 @@ var pendingRequest = undefined;
 function showPost(postID) {
   $.getJSON(
     "/postdata/" + postID,
-    function processPostResult(post) {
+    function processPostResult(data) {
       clearResults();
-      addResults([post]);
+      addResults(data);
     }
   );
 }

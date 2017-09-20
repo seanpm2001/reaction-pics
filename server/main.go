@@ -97,7 +97,12 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	marshalledPost, _ := json.Marshal(post.ToJSONStruct())
+	data := map[string]interface{}{
+		"offset":       0,
+		"totalResults": 1,
+		"data":         []tumblr.PostJSON{post.ToJSONStruct()},
+	}
+	marshalledPost, _ := json.Marshal(data)
 	fmt.Fprintf(w, string(marshalledPost))
 }
 
