@@ -107,13 +107,13 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	var post tumblr.Post
+	foundPost := false
 	for _, p := range board.Posts {
 		if p.ID == postID {
-			post = p
+			foundPost = true
 		}
 	}
-	if post == (tumblr.Post{}) {
+	if !foundPost {
 		fmt.Println("Cannot find post")
 		http.NotFound(w, r)
 		return
@@ -128,12 +128,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Cannot parse post template", 500)
 		return
 	}
-	data := struct {
-		Post *tumblr.Post
-	}{
-		Post: &post,
-	}
-	err = htmlTemplate.Execute(w, data)
+	err = htmlTemplate.Execute(w, struct{}{})
 	if err != nil {
 		http.Error(w, "Cannot execute post template", 500)
 		return
