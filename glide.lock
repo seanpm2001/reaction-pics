@@ -1,17 +1,17 @@
 hash: f135152f50f55bbad8fbbabb1369b93fad3c337c27ca51bcb151705f6b0ce222
-updated: 2017-08-20T21:53:25.42396724-07:00
+updated: 2017-09-20T21:56:35.119030611-07:00
 imports:
 - name: github.com/beevik/etree
   version: 15a30b44cfd6c5a16a7ddfe271bf146aaf2d3195
 - name: github.com/fatih/structs
   version: 7e5a8eef611ee84dd359503f3969f80df4c50723
 - name: github.com/golang/mock
-  version: 295937593e7f0e284260b19d692f9fdf1a29f73f
+  version: c7d0ee73a597d1349404607d9f692cacd09cdc06
   subpackages:
   - gomock
   - mockgen
 - name: github.com/gosimple/slug.git
-  version: e756f2ec7e1e59e2ef20938fac5e677842641777
+  version: e9f42fa127660e552d0ad2b589868d403a9be7c6
 - name: github.com/ikeikeikeike/go-sitemap-generator
   version: e3c3d374db77838e92e5981ba81f26d1ecea4aa8
   subpackages:
@@ -19,7 +19,7 @@ imports:
 - name: github.com/imdario/mergo
   version: e3000cb3d28c72b837601cac94debd91032d19fe
 - name: github.com/joho/godotenv
-  version: 9d9ddadf44b4c17c42bafdc530ddeee1927c067d
+  version: a79fa1e548e2c689c241d10173efd51e5d689d5b
   subpackages:
   - autoload
 - name: github.com/kurrik/oauth1a
@@ -39,7 +39,7 @@ imports:
 - name: github.com/satori/go.uuid
   version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: golang.org/x/net
-  version: 1c05540f6879653db88113bc4a2b70aec4bd491f
+  version: b60f3a92103dfd93dfcb900ec77c6d0643510868
   subpackages:
   - html
   - html/atom
