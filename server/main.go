@@ -3,7 +3,6 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -123,16 +122,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Cannot read post template", 500)
 		return
 	}
-	htmlTemplate, err := template.New("page").Parse(string(templateData))
-	if err != nil {
-		http.Error(w, "Cannot parse post template", 500)
-		return
-	}
-	err = htmlTemplate.Execute(w, struct{}{})
-	if err != nil {
-		http.Error(w, "Cannot execute post template", 500)
-		return
-	}
+	fmt.Fprintf(w, string(templateData))
 }
 
 func statsHandler(w http.ResponseWriter, r *http.Request) {
