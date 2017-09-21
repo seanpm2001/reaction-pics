@@ -118,7 +118,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	templateData, err := ioutil.ReadFile(staticPath + "post.htm")
+	templateData, err := ioutil.ReadFile(staticPath + "index.htm")
 	if err != nil {
 		http.Error(w, "Cannot read post template", 500)
 		return
