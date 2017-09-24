@@ -16,6 +16,7 @@ import (
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	newrelic "github.com/newrelic/go-agent"
+	"github.com/stvp/rollbar"
 )
 
 const (
@@ -81,6 +82,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		err = errors.Wrap(err, "Cannot parse post id")
 		fmt.Println(err)
+		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
 	}
@@ -88,6 +90,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 	if post == nil {
 		err = errors.New("Cannot find post")
 		fmt.Println(err)
+		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
 	}
@@ -107,6 +110,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		err = errors.Wrap(err, "Cannot parse post id")
 		fmt.Println(err)
+		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
 	}
@@ -119,6 +123,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	if !foundPost {
 		err = errors.New("Cannot find post")
 		fmt.Println(err)
+		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
 	}
@@ -126,6 +131,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		err = errors.New("Cannot read post template")
 		fmt.Println(err)
+		rollbar.RequestError(rollbar.WARN, r, err)
 		http.Error(w, err.Error(), 500)
 		return
 	}

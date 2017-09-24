@@ -15,6 +15,7 @@ import (
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/satori/go.uuid"
+	"github.com/stvp/rollbar"
 )
 
 const (
@@ -115,6 +116,7 @@ func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
 	for _, element := range postsResponse.Posts {
 		err := json.Unmarshal(element, &tumblrPost)
 		if err != nil {
+			rollbar.Error(rollbar.ERR, err)
 			fmt.Println(err)
 		} else {
 			post := GoTumblrToPost(&tumblrPost)
@@ -136,6 +138,7 @@ func getPostImage(post *Post) error {
 	if err != nil {
 		err = errors.Wrapf(err, "Cannot create %s", imagePath)
 		fmt.Println(err)
+		rollbar.Error(rollbar.ERR, err)
 		return err
 	}
 	defer output.Close()
@@ -144,6 +147,7 @@ func getPostImage(post *Post) error {
 	if err != nil {
 		err = errors.Wrapf(err, "Error downloading", post.Image)
 		fmt.Println(err)
+		rollbar.Error(rollbar.ERR, err)
 		return err
 	}
 	defer response.Body.Close()
@@ -152,6 +156,7 @@ func getPostImage(post *Post) error {
 	if err != nil {
 		err = errors.Wrapf(err, "Eror saving", post.Image)
 		fmt.Println(err)
+		rollbar.Error(rollbar.ERR, err)
 		return err
 	}
 
