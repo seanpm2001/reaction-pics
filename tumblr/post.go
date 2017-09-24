@@ -8,6 +8,8 @@ import (
 
 	"github.com/MariaTerzieva/gotumblr"
 	"github.com/gosimple/slug.git"
+	"github.com/pkg/errors"
+	"github.com/stvp/rollbar"
 	"golang.org/x/net/html"
 )
 
@@ -64,10 +66,13 @@ func GoTumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
 func CSVToPost(row []string) *Post {
 	id, err := strconv.ParseInt(row[0], 10, 64)
 	if err != nil {
+		err = errors.Wrapf(err, "Cannot parse id for %s", row[0])
 		id = 0
 	}
 	likes, err := strconv.ParseInt(row[4], 10, 64)
 	if err != nil {
+		err = errors.Wrapf(err, "Cannot parse likes for %s", row[4])
+		rollbar.Error(rollbar.ERR, err)
 		likes = 0
 	}
 	post := Post{
