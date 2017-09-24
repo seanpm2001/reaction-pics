@@ -12,6 +12,7 @@ import (
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/ikeikeikeike/go-sitemap-generator/stm"
+	"github.com/pkg/errors"
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	newrelic "github.com/newrelic/go-agent"
@@ -78,13 +79,15 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
 	if err != nil {
-		fmt.Println("Cannot parse post id")
+		err = errors.Wrap(err, "Cannot parse post id")
+		fmt.Println(err)
 		http.NotFound(w, r)
 		return
 	}
 	post := board.GetPostByID(postID)
 	if post == nil {
-		fmt.Println("Cannot find post")
+		err = errors.New("Cannot find post")
+		fmt.Println(err)
 		http.NotFound(w, r)
 		return
 	}
@@ -102,7 +105,8 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
 	if err != nil {
-		fmt.Println("Cannot parse post id")
+		err = errors.Wrap(err, "Cannot parse post id")
+		fmt.Println(err)
 		http.NotFound(w, r)
 		return
 	}
@@ -113,13 +117,16 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if !foundPost {
-		fmt.Println("Cannot find post")
+		err = errors.New("Cannot find post")
+		fmt.Println(err)
 		http.NotFound(w, r)
 		return
 	}
 	templateData, err := ioutil.ReadFile(staticPath + "index.htm")
 	if err != nil {
-		http.Error(w, "Cannot read post template", 500)
+		err = errors.New("Cannot read post template")
+		fmt.Println(err)
+		http.Error(w, err.Error(), 500)
 		return
 	}
 	fmt.Fprintf(w, string(templateData))

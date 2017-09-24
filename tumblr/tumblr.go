@@ -11,6 +11,7 @@ import (
 	"sync"
 
 	"github.com/MariaTerzieva/gotumblr"
+	"github.com/pkg/errors"
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/satori/go.uuid"
@@ -133,21 +134,24 @@ func getPostImage(post *Post) error {
 	imageName, imagePath := getImageNamePath(post.Image)
 	output, err := os.Create(imagePath)
 	if err != nil {
-		fmt.Println("Cannot create ", imagePath)
+		err = errors.Wrapf(err, "Cannot create %s", imagePath)
+		fmt.Println(err)
 		return err
 	}
 	defer output.Close()
 
 	response, err := http.Get(post.Image)
 	if err != nil {
-		fmt.Println("Error downloading", post.Image, " - ", err)
+		err = errors.Wrapf(err, "Error downloading", post.Image)
+		fmt.Println(err)
 		return err
 	}
 	defer response.Body.Close()
 
 	_, err = io.Copy(output, response.Body)
 	if err != nil {
-		fmt.Println("Error saving", post.Image)
+		err = errors.Wrapf(err, "Eror saving", post.Image)
+		fmt.Println(err)
 		return err
 	}
 
