@@ -8,6 +8,7 @@ import (
 	"github.com/albertyw/reaction-pics/tumblr"
 	_ "github.com/joho/godotenv/autoload"
 	newrelic "github.com/newrelic/go-agent"
+	"github.com/stvp/rollbar"
 )
 
 const readPostsFromTumblrEnv = "READ_POSTS_FROM_TUMBLR"
@@ -28,6 +29,11 @@ func getNewRelicApp() newrelic.Application {
 		panic(err)
 	}
 	return app
+}
+
+func setupRollbar() {
+	rollbar.Token = os.Getenv("ROLLBAR_SERVER_TOKEN")
+	rollbar.Environment = os.Getenv("ENVIRONMENT")
 }
 
 func main() {
