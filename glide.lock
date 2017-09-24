@@ -1,5 +1,5 @@
-hash: f135152f50f55bbad8fbbabb1369b93fad3c337c27ca51bcb151705f6b0ce222
-updated: 2017-09-20T21:56:35.119030611-07:00
+hash: 5d088105ed9c20f09d146f8427f2eb1c7ebc4bbea072f864f1e69a54df71ef43
+updated: 2017-09-24T00:43:23.475038157-07:00
 imports:
 - name: github.com/beevik/etree
   version: 15a30b44cfd6c5a16a7ddfe271bf146aaf2d3195
@@ -34,12 +34,14 @@ imports:
   - internal/logger
   - internal/sysinfo
   - internal/utilization
+- name: github.com/pkg/errors
+  version: 645ef00459ed84a119197bfb8d8205042c6df63d
 - name: github.com/rainycape/unidecode
   version: cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c
 - name: github.com/satori/go.uuid
   version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: golang.org/x/net
-  version: b60f3a92103dfd93dfcb900ec77c6d0643510868
+  version: 0744d001aa8470aaa53df28d32e5ceeb8af9bd70
   subpackages:
   - html
   - html/atom
