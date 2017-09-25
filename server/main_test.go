@@ -217,3 +217,17 @@ func TestAddPost(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestCacheString(t *testing.T) {
+	tempStaticPath := staticPath
+	defer func() { staticPath = tempStaticPath }()
+	cacheString := appCacheString()
+	if cacheString == "" {
+		t.Fail()
+	}
+	staticPath = ""
+	cacheString = appCacheString()
+	if cacheString != "" {
+		t.Fail()
+	}
+}
