@@ -137,7 +137,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	templateData := struct {
 		CacheString string
-	}{"asdf"}
+	}{appCacheString()}
 	err = t.Execute(w, templateData)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot execute template")
@@ -190,4 +190,16 @@ func loadPosts(postChan <-chan tumblr.Post) {
 		board.AddPost(p)
 		board.SortPostsByLikes()
 	}
+}
+
+func appCacheString() string {
+	appFile := staticPath + "app.js"
+	info, err := os.Stat(appFile)
+	if err != nil {
+		fmt.Println(err)
+		rollbar.Error(rollbar.ERR, err)
+		return ""
+	}
+	cacheString := strconv.FormatInt(info.ModTime().Unix(), 10)
+	return cacheString
 }
