@@ -45,11 +45,31 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 ) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		path := strings.TrimPrefix(r.URL.Path, "/static/")
-		if path == "/" {
-			path = "index.htm"
-		}
 		r.URL.Path = path
 		targetFunc(w, r)
+	}
+}
+
+// indexHandler returns the index page template
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles(staticPath + "index.htm")
+	if err != nil {
+		err = errors.New("Cannot read post template")
+		fmt.Println(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	templateData := struct {
+		CacheString string
+	}{appCacheString()}
+	err = t.Execute(w, templateData)
+	if err != nil {
+		err = errors.Wrap(err, "Cannot execute template")
+		fmt.Println(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
 	}
 }
 
@@ -127,25 +147,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	t, err := template.ParseFiles(staticPath + "index.htm")
-	if err != nil {
-		err = errors.New("Cannot read post template")
-		fmt.Println(err)
-		rollbar.RequestError(rollbar.ERR, r, err)
-		http.Error(w, err.Error(), 500)
-		return
-	}
-	templateData := struct {
-		CacheString string
-	}{appCacheString()}
-	err = t.Execute(w, templateData)
-	if err != nil {
-		err = errors.Wrap(err, "Cannot execute template")
-		fmt.Println(err)
-		rollbar.RequestError(rollbar.ERR, r, err)
-		http.Error(w, err.Error(), 500)
-		return
-	}
+	indexHandler(w, r)
 }
 
 func statsHandler(w http.ResponseWriter, r *http.Request) {
@@ -176,7 +178,8 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
 	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(staticFS)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(indexHandler)))
+	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/static/", logURL(staticFS)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/postdata/", logURL(postDataHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))
