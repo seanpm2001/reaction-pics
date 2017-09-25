@@ -3,12 +3,29 @@ package server
 import (
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/albertyw/reaction-pics/tumblr"
 )
 
 func TestReadFile(t *testing.T) {
+	request, err := http.NewRequest("GET", "/app.js", nil)
+	if err != nil {
+		t.Fail()
+	}
+	response := httptest.NewRecorder()
+	indexHandler(response, request)
+	if response.Code != 200 {
+		t.Fail()
+	}
+	cacheString := appCacheString()
+	if !strings.Contains(response.Body.String(), cacheString) {
+		t.Fail()
+	}
+}
+
+func TestIndexFile(t *testing.T) {
 	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	request, err := http.NewRequest("GET", "/", nil)
 	if err != nil {
