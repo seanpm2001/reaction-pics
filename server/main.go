@@ -3,7 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"html/template"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -127,15 +127,25 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	templateData, err := ioutil.ReadFile(staticPath + "index.htm")
+	t, err := template.ParseFiles(staticPath + "index.htm")
 	if err != nil {
 		err = errors.New("Cannot read post template")
 		fmt.Println(err)
-		rollbar.RequestError(rollbar.WARN, r, err)
+		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
 	}
-	fmt.Fprintf(w, string(templateData))
+	templateData := struct {
+		CacheString string
+	}{"asdf"}
+	err = t.Execute(w, templateData)
+	if err != nil {
+		err = errors.Wrap(err, "Cannot execute template")
+		fmt.Println(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
 func statsHandler(w http.ResponseWriter, r *http.Request) {
