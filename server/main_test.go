@@ -218,9 +218,9 @@ func TestStatsHandler(t *testing.T) {
 
 func TestAddPost(t *testing.T) {
 	oldLength := len(board.Posts)
-	post1 := tumblr.Post{ID: 1}
-	post2 := tumblr.Post{ID: 2}
-	post3 := tumblr.Post{ID: 3}
+	post1 := tumblr.Post{ID: 1, Title: "1"}
+	post2 := tumblr.Post{ID: 2, Title: "2"}
+	post3 := tumblr.Post{ID: 3, Title: "3"}
 	postChan := make(chan tumblr.Post, 1)
 	defer func() { close(postChan) }()
 	go loadPosts(postChan)
