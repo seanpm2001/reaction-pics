@@ -104,6 +104,11 @@ func NewBoard(p []Post) Board {
 func (b *Board) AddPost(p Post) {
 	b.mut.Lock()
 	defer b.mut.Unlock()
+	for i := 0; i < len(b.Posts); i++ {
+		if b.Posts[i].Title == p.Title {
+			return
+		}
+	}
 	b.Posts = append(b.Posts, p)
 }
 

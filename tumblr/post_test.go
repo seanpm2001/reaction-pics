@@ -108,6 +108,22 @@ func TestInternalURLLong(t *testing.T) {
 	}
 }
 
+func TestAddPost(t *testing.T) {
+	post := Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
+	board := NewBoard([]Post{})
+	board.AddPost(post)
+	if len(board.Posts) != 1 {
+		t.Fail()
+	}
+	if board.Posts[0].Title != "title1" {
+		t.Fail()
+	}
+	board.AddPost(post)
+	if len(board.Posts) != 1 {
+		t.Fail()
+	}
+}
+
 func TestPostsToJSON(t *testing.T) {
 	posts := make([]Post, 2)
 	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
