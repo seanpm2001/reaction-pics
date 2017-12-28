@@ -1,12 +1,12 @@
 hash: 9ced3a31ea9c69217f3c9393dce47c0a6af792c28622f49787f4bd9d596336ed
-updated: 2017-09-24T15:10:33.245903484-07:00
+updated: 2017-12-29T00:19:51.511182504+08:00
 imports:
 - name: github.com/beevik/etree
-  version: 15a30b44cfd6c5a16a7ddfe271bf146aaf2d3195
+  version: af219c0c7ea1b67ec263c0b1b1b96d284a9181ce
 - name: github.com/fatih/structs
-  version: 7e5a8eef611ee84dd359503f3969f80df4c50723
+  version: f5faa72e73092639913f5833b75e1ac1d6bc7a63
 - name: github.com/golang/mock
-  version: c7d0ee73a597d1349404607d9f692cacd09cdc06
+  version: b3e60bcdc577185fce3cf625fc96b62857ce5574
   subpackages:
   - gomock
   - mockgen
@@ -17,9 +17,9 @@ imports:
   subpackages:
   - stm
 - name: github.com/imdario/mergo
-  version: e3000cb3d28c72b837601cac94debd91032d19fe
+  version: 7fe0c75c13abdee74b09fcacef5ea1c6bba6a874
 - name: github.com/joho/godotenv
-  version: a79fa1e548e2c689c241d10173efd51e5d689d5b
+  version: 06e67b5ef3bef2e1a8696e1c04b94b44cbc5d9a5
   subpackages:
   - autoload
 - name: github.com/kurrik/oauth1a
@@ -27,9 +27,10 @@ imports:
 - name: github.com/MariaTerzieva/gotumblr
   version: 93ca5e50a3fd2dfb6ed1613853520ba624bbbc64
 - name: github.com/newrelic/go-agent
-  version: 29ec3cd1bb2f21d21d36da37dae52695cb2c3a17
+  version: f5bce3387232559bcbe6a5f8227c4bf508dac1ba
   subpackages:
   - internal
+  - internal/cat
   - internal/jsonx
   - internal/logger
   - internal/sysinfo
@@ -41,9 +42,9 @@ imports:
 - name: github.com/satori/go.uuid
   version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: github.com/stvp/rollbar
-  version: caefb75816bddf0dfab37b5490265c09511c962d
+  version: b20261800d8cda3be14dcef0d1a8320779bba61a
 - name: golang.org/x/net
-  version: 0744d001aa8470aaa53df28d32e5ceeb8af9bd70
+  version: d866cfc389cec985d6fda2859936a575a55a3ab6
   subpackages:
   - html
   - html/atom
