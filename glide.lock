@@ -1,10 +1,12 @@
-hash: a813c576a3aca7773f837f5a8734d5869bb0b304026d9dc03a0f4248fdd11f3c
-updated: 2018-08-29T22:52:41.047420428-07:00
+hash: 6387cc833497ba4d7c22bd98546f7dff7655dfb43521b0e1c6e866696aa4e441
+updated: 2018-08-29T22:54:37.648284929-07:00
 imports:
 - name: github.com/beevik/etree
   version: af219c0c7ea1b67ec263c0b1b1b96d284a9181ce
 - name: github.com/fatih/structs
   version: f5faa72e73092639913f5833b75e1ac1d6bc7a63
+- name: github.com/gofrs/uuid
+  version: d41eeda0759468834c84365a32d1b1ec4264c75f
 - name: github.com/golang/mock
   version: 600781dde9cca80734169b9e969d9054ccc57937
   subpackages:
@@ -39,8 +41,6 @@ imports:
   version: 645ef00459ed84a119197bfb8d8205042c6df63d
 - name: github.com/rainycape/unidecode
   version: cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c
-- name: github.com/satori/go.uuid
-  version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: github.com/stvp/rollbar
   version: b20261800d8cda3be14dcef0d1a8320779bba61a
 - name: golang.org/x/net

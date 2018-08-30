@@ -11,11 +11,12 @@ import (
 	"sync"
 
 	"github.com/MariaTerzieva/gotumblr"
+	"github.com/gofrs/uuid"
 	"github.com/pkg/errors"
+	"github.com/stvp/rollbar"
+
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
-	"github.com/satori/go.uuid"
-	"github.com/stvp/rollbar"
 )
 
 const (
@@ -133,7 +134,13 @@ func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
 }
 
 func getPostImage(post *Post) error {
-	imageName, imagePath := getImageNamePath(post.Image)
+	imageName, imagePath, err := getImageNamePath(post.Image)
+	if err != nil {
+		err = errors.Wrap(err, "Cannot generate image name and path")
+		fmt.Println(err)
+		rollbar.Error(rollbar.ERR, err)
+		return err
+	}
 	output, err := os.Create(imagePath)
 	if err != nil {
 		err = errors.Wrapf(err, "Cannot create %s", imagePath)
@@ -164,8 +171,12 @@ func getPostImage(post *Post) error {
 	return nil
 }
 
-func getImageNamePath(imageName string) (name, path string) {
-	name = uuid.NewV4().String() + filepath.Ext(imageName)
+func getImageNamePath(imageName string) (name, path string, err error) {
+	genUUID, err := uuid.NewV4()
+	if err != nil {
+		return
+	}
+	name = genUUID.String() + filepath.Ext(imageName)
 	rootDir := os.Getenv("ROOT_DIR")
 	path = fmt.Sprintf("%s/tumblr/data/static/%s", rootDir, name)
 	return
