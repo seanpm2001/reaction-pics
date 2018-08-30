@@ -10,18 +10,20 @@
   revision = "93ca5e50a3fd2dfb6ed1613853520ba624bbbc64"
 
 [[projects]]
-  digest = "1:86f4db2ebb890731d1e9d65057afe43f27616b27a72db53e35605b16525c7a4b"
+  digest = "1:f25dfe4538112147d22e4c8437efbc2e216112bec37277534ffe146935064ea8"
   name = "github.com/beevik/etree"
   packages = ["."]
   pruneopts = "UT"
-  revision = "af219c0c7ea1b67ec263c0b1b1b96d284a9181ce"
+  revision = "9d7e8feddccb4ed1b8afb54e368bd323d2ff652c"
+  version = "v1.0.1"
 
 [[projects]]
-  digest = "1:e80d6e86264816fc5f6599ddbd3c9b0d968f798d3e945032a0655502714fcd0e"
+  digest = "1:ca82a3b99694824c627573c2a76d0e49719b4a9c02d1d85a2ac91f1c1f52ab9b"
   name = "github.com/fatih/structs"
   packages = ["."]
   pruneopts = "UT"
-  revision = "f5faa72e73092639913f5833b75e1ac1d6bc7a63"
+  revision = "a720dfa8df582c51dee1b36feabb906bde1588bd"
+  version = "v1.0"
 
 [[projects]]
   digest = "1:26f2ad8a198a88c3605401186a6be538326e7fbf1f14cb3ef4e0027c4f755f2a"
@@ -40,19 +42,20 @@
   version = "v1.2.0"
 
 [[projects]]
-  digest = "1:562da11ceb80f0aab17651392cd0a208a2a0fdf0ec1e6f2f2c13609004019ab7"
+  branch = "master"
+  digest = "1:95db0b6e6783a53cc44aca202cd68267843c1daac4c2850564cd85507573b960"
   name = "github.com/ikeikeikeike/go-sitemap-generator"
   packages = ["stm"]
   pruneopts = "UT"
-  revision = "e3c3d374db77838e92e5981ba81f26d1ecea4aa8"
+  revision = "34e2328f3f18422765314ad5aa2c57258ad521f0"
 
 [[projects]]
-  digest = "1:1069357a2767ba898fd6c715fb15d005403e5becf9b2e747630fbdde2a340302"
+  digest = "1:8eb1de8112c9924d59bf1d3e5c26f5eaa2bfc2a5fcbb92dc1c2e4546d695f277"
   name = "github.com/imdario/mergo"
   packages = ["."]
   pruneopts = "UT"
-  revision = "7fe0c75c13abdee74b09fcacef5ea1c6bba6a874"
-  version = "0.2.4"
+  revision = "9f23e2d6bd2a77f959b2bf6acdbefd708a83a4a4"
+  version = "v0.3.6"
 
 [[projects]]
   branch = "master"
@@ -114,14 +117,15 @@
   version = "v0.5.1"
 
 [[projects]]
-  digest = "1:f5f18cb8b3d01ab31615218fa06c1c7d4f5b80556e66b2adcc6b6f0c09c92101"
+  branch = "master"
+  digest = "1:0185c27476ac2aa653c9b932843b41409b9a42a8f38b09c8e25c8fb1fcd499c5"
   name = "golang.org/x/net"
   packages = [
     "html",
     "html/atom",
   ]
   pruneopts = "UT"
-  revision = "d866cfc389cec985d6fda2859936a575a55a3ab6"
+  revision = "8a410e7b638dca158bf9e766925842f6651ff828"
 
 [solve-meta]
   analyzer-name = "dep"
