@@ -11,7 +11,7 @@ Index of DevOps Reactions
 
 ## Installation
 
-1.  Install Go 1.6.
+1.  Install Go 1.10.
 2.  Install [Glide](https://github.com/Masterminds/glide/blob/master/README.md)
 3.  `make serve`
 
