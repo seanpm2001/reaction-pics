@@ -1,17 +1,19 @@
-hash: 9ced3a31ea9c69217f3c9393dce47c0a6af792c28622f49787f4bd9d596336ed
-updated: 2017-12-29T00:19:51.511182504+08:00
+hash: 6387cc833497ba4d7c22bd98546f7dff7655dfb43521b0e1c6e866696aa4e441
+updated: 2018-08-29T22:54:37.648284929-07:00
 imports:
 - name: github.com/beevik/etree
   version: af219c0c7ea1b67ec263c0b1b1b96d284a9181ce
 - name: github.com/fatih/structs
   version: f5faa72e73092639913f5833b75e1ac1d6bc7a63
+- name: github.com/gofrs/uuid
+  version: d41eeda0759468834c84365a32d1b1ec4264c75f
 - name: github.com/golang/mock
-  version: b3e60bcdc577185fce3cf625fc96b62857ce5574
+  version: 600781dde9cca80734169b9e969d9054ccc57937
   subpackages:
   - gomock
   - mockgen
 - name: github.com/gosimple/slug.git
-  version: e9f42fa127660e552d0ad2b589868d403a9be7c6
+  version: 91d42f4c3433698e88e87b17a3efbfe40b67c323
 - name: github.com/ikeikeikeike/go-sitemap-generator
   version: e3c3d374db77838e92e5981ba81f26d1ecea4aa8
   subpackages:
@@ -19,7 +21,7 @@ imports:
 - name: github.com/imdario/mergo
   version: 7fe0c75c13abdee74b09fcacef5ea1c6bba6a874
 - name: github.com/joho/godotenv
-  version: 06e67b5ef3bef2e1a8696e1c04b94b44cbc5d9a5
+  version: 1709ab122c988931ad53508747b3c061400c2984
   subpackages:
   - autoload
 - name: github.com/kurrik/oauth1a
@@ -27,7 +29,7 @@ imports:
 - name: github.com/MariaTerzieva/gotumblr
   version: 93ca5e50a3fd2dfb6ed1613853520ba624bbbc64
 - name: github.com/newrelic/go-agent
-  version: f5bce3387232559bcbe6a5f8227c4bf508dac1ba
+  version: 46d73e6be8b4faeee70850d0df829e4fe00d6819
   subpackages:
   - internal
   - internal/cat
@@ -39,8 +41,6 @@ imports:
   version: 645ef00459ed84a119197bfb8d8205042c6df63d
 - name: github.com/rainycape/unidecode
   version: cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c
-- name: github.com/satori/go.uuid
-  version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 - name: github.com/stvp/rollbar
   version: b20261800d8cda3be14dcef0d1a8320779bba61a
 - name: golang.org/x/net

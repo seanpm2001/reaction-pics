@@ -16,8 +16,9 @@ import:
   subpackages:
   - html
 - package: github.com/newrelic/go-agent
-  version: ^1.9.0
-- package: github.com/satori/go.uuid
+  version: ^2.1.0
+- package: github.com/gofrs/uuid
+  version: ^3.1.0
 - package: github.com/gosimple/slug.git
   version: ^1.1.0
 - package: github.com/ikeikeikeike/go-sitemap-generator
