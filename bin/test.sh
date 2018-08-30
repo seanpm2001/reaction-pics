@@ -13,17 +13,15 @@ for godir in $(go list ./... | grep -v vendor); do
 done
 rm coverage.out
 
-gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
-govet_errors=""
-for gofile in $gofiles; do
-    govet_errors+=$(go vet $gofile 2>&1)
-done
+govet_errors=$(go vet ./...)
 if [ -n "$govet_errors" ]; then
     echo "Vet failures on:"
     echo "$govet_errors"
     exit 1
 fi
+
+gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
 fmt_errors=""
 for gofile in $gofiles; do
