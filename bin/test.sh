@@ -23,10 +23,7 @@ fi
 
 gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
-fmt_errors=""
-for gofile in $gofiles; do
-    fmt_errors+=$(gofmt -e -l -d $gofile)
-done
+fmt_errors=$(gofmt -e -l -d $gofiles)
 if [ -n "$fmt_errors" ]; then
     echo "Fmt failures on:"
     echo "$fmt_errors"
