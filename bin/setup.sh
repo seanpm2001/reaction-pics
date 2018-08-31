@@ -35,14 +35,10 @@ sudo openssl dhparam -out /etc/nginx/ssl/dhparams.pem 2048
 sudo service nginx restart
 
 # Compile
-wget https://github.com/Masterminds/glide/releases/download/v0.12.3/glide-v0.12.3-linux-amd64.tar.gz
-tar xvf glide-v0.12.3-linux-amd64.tar.gz
-mv linux-amd64/glide ~/gocode/bin/
-rm -r linux-amd64
-rm ~/glide-v0.12.3-linux-amd64.tar.gz
+curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 cd ~/gocode/src/github.com/albertyw/reaction-pics
-glide install
-go build
+dep ensure
+make bins
 
 # Set up go server service
 sudo systemctl enable /home/ubuntu/gocode/src/github.com/albertyw/reaction-pics/config/reaction-pics.service

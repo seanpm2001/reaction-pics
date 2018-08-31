@@ -4,7 +4,7 @@
 cd ~/gocode/src/github.com/albertyw/reaction-pics/ || exit 1
 git checkout master
 git pull
-glide install
+dep ensure
 go build
 
 # Update permissions
