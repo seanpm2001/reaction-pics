@@ -18,12 +18,6 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 )
 
-const (
-	tumblrURL  = "http://api.tumblr.com"
-	blogTypes  = "text"
-	postsLimit = 20
-)
-
 // Blogs is a list of all blogs to read from
 var Blogs = []string{
 	"devopsreactions.tumblr.com",
