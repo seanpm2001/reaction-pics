@@ -13,9 +13,7 @@ import (
 func setupEnv() {
 	err := godotenv.Load()
 	if err != nil {
-		fmt.Println("Cannot load dotenv")
-		fmt.Println(err)
-		os.Exit(1)
+		panic(err)
 	}
 }
 
