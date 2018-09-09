@@ -26,10 +26,6 @@
 
 
 [[constraint]]
-  branch = "master"
-  name = "github.com/MariaTerzieva/gotumblr"
-
-[[constraint]]
   name = "github.com/gofrs/uuid"
   version = "3.1.0"
 

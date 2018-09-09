@@ -2,14 +2,6 @@
 
 
 [[projects]]
-  branch = "master"
-  digest = "1:1679c6d3f70383663742989fe101ef2134fd21fd3255741d6c26937cfe5aa98c"
-  name = "github.com/MariaTerzieva/gotumblr"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "93ca5e50a3fd2dfb6ed1613853520ba624bbbc64"
-
-[[projects]]
   digest = "1:f25dfe4538112147d22e4c8437efbc2e216112bec37277534ffe146935064ea8"
   name = "github.com/beevik/etree"
   packages = ["."]
@@ -69,14 +61,6 @@
   revision = "1709ab122c988931ad53508747b3c061400c2984"
 
 [[projects]]
-  branch = "master"
-  digest = "1:015ec2f58ecfce943d539c530d1284d08e257c418bc717d79b173c635df8dd6b"
-  name = "github.com/kurrik/oauth1a"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "cb1b80e32dd4385099f8d09312e4bcf6bdc993ec"
-
-[[projects]]
   digest = "1:01f60ec456e70c9be269902c08fa189a9d47056a419c4a91a02f19df5e36ab59"
   name = "github.com/newrelic/go-agent"
   packages = [
@@ -131,7 +115,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/MariaTerzieva/gotumblr",
     "github.com/gofrs/uuid",
     "github.com/gosimple/slug.git",
     "github.com/ikeikeikeike/go-sitemap-generator/stm",
