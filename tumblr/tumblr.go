@@ -42,7 +42,7 @@ func duplicateChan(in <-chan Post, out1, out2 chan<- Post, wg *sync.WaitGroup) {
 }
 
 // GetPosts returns a list of all Posts
-func GetPosts(getNewPosts bool, out1 chan<- Post) {
+func GetPosts(out1 chan<- Post) {
 	var wg sync.WaitGroup
 	channels := [](chan<- Post){out1}
 	for _, blogName := range Blogs {
@@ -51,7 +51,7 @@ func GetPosts(getNewPosts bool, out1 chan<- Post) {
 		channels = append(channels, out2)
 		wg.Add(1)
 		go duplicateChan(posts, out1, out2, &wg)
-		go getBlogPosts(blogName, getNewPosts, posts)
+		go getBlogPosts(blogName, posts)
 		go WritePostsToCSV(blogName, out2)
 	}
 	wg.Wait()
@@ -60,9 +60,8 @@ func GetPosts(getNewPosts bool, out1 chan<- Post) {
 	}
 }
 
-func getBlogPosts(blogName string, getNewPosts bool, posts chan<- Post) {
+func getBlogPosts(blogName string, posts chan<- Post) {
 	defer func() { close(posts) }()
-	var newPosts []Post
 	existingPosts := ReadPostsFromCSV(blogName)
 	maxPostID := int64(0)
 	for _, p := range existingPosts {
@@ -70,24 +69,6 @@ func getBlogPosts(blogName string, getNewPosts bool, posts chan<- Post) {
 			maxPostID = p.ID
 		}
 		posts <- p
-	}
-	if !getNewPosts {
-		return
-	}
-	offset := 0
-	client := getTumblrClient()
-	for len(newPosts) > 0 || offset == 0 {
-		fmt.Println("Downloading", blogName, offset)
-		options := getTumblrOptions(offset)
-		postsResponse := client.Posts(blogName, blogTypes, options)
-		newPosts = parsePosts(postsResponse)
-		for _, p := range newPosts {
-			if p.ID <= maxPostID {
-				return
-			}
-			posts <- p
-		}
-		offset += postsLimit
 	}
 }
 
