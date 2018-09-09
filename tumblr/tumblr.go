@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strconv"
 	"sync"
 
 	"github.com/MariaTerzieva/gotumblr"
@@ -70,26 +69,6 @@ func getBlogPosts(blogName string, posts chan<- Post) {
 		}
 		posts <- p
 	}
-}
-
-func getTumblrClient() *gotumblr.TumblrRestClient {
-	client := gotumblr.NewTumblrRestClient(
-		os.Getenv("CONSUMER_KEY"),
-		os.Getenv("CONSUMER_SECRET"),
-		os.Getenv("TOKEN"),
-		os.Getenv("TOKEN_SECRET"),
-		"https://www.albertyw.com/",
-		tumblrURL,
-	)
-	return client
-}
-
-func getTumblrOptions(offset int) map[string]string {
-	options := map[string]string{}
-	options["offset"] = strconv.Itoa(offset)
-	options["limit"] = strconv.Itoa(postsLimit)
-	options["notes_info"] = strconv.FormatBool(true)
-	return options
 }
 
 func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
