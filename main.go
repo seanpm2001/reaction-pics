@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"strings"
 
 	"github.com/albertyw/reaction-pics/server"
 	"github.com/albertyw/reaction-pics/tumblr"
@@ -10,16 +9,6 @@ import (
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/stvp/rollbar"
 )
-
-const readPostsFromTumblrEnv = "READ_POSTS_FROM_TUMBLR"
-
-func getReadPostsFromTumblr() bool {
-	readPostsEnv := os.Getenv(readPostsFromTumblrEnv)
-	if strings.ToLower(readPostsEnv) == "true" {
-		return true
-	}
-	return false
-}
 
 func getNewRelicApp() newrelic.Application {
 	newrelicKey := os.Getenv("NEWRELIC_KEY")
@@ -38,8 +27,7 @@ func setupRollbar() {
 
 func main() {
 	newrelicApp := getNewRelicApp()
-	readPosts := getReadPostsFromTumblr()
 	posts := make(chan tumblr.Post)
-	go tumblr.GetPosts(readPosts, posts)
+	go tumblr.GetPosts(posts)
 	server.Run(posts, newrelicApp)
 }

@@ -6,7 +6,6 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/MariaTerzieva/gotumblr"
 	"github.com/gosimple/slug.git"
 	"github.com/pkg/errors"
 	"github.com/stvp/rollbar"
@@ -46,20 +45,6 @@ func (p Post) ToJSONStruct() PostJSON {
 		Post:        p,
 		InternalURL: p.InternalURL(),
 	}
-}
-
-// GoTumblrToPost converts a gotumblr.TextPost into a Post
-func GoTumblrToPost(tumblrPost *gotumblr.TextPost) *Post {
-	image := getImageFromPostBody(tumblrPost.Body)
-	likes := tumblrPost.Note_count
-	post := Post{
-		ID:    tumblrPost.Id,
-		Title: strings.TrimSpace(tumblrPost.Title),
-		URL:   tumblrPost.Post_url,
-		Image: image,
-		Likes: likes,
-	}
-	return &post
 }
 
 // CSVToPost converts a CSV row into a Post

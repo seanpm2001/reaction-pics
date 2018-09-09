@@ -4,8 +4,6 @@ import (
 	"strconv"
 	"strings"
 	"testing"
-
-	"github.com/MariaTerzieva/gotumblr"
 )
 
 func TestPost(t *testing.T) {
@@ -16,32 +14,6 @@ func TestPost(t *testing.T) {
 		"http://placehold.it/350x150",
 		123,
 	}
-	if post.ID != 1234 {
-		t.Fail()
-	}
-	if post.Title != "title" {
-		t.Fail()
-	}
-	if post.URL != "url" {
-		t.Fail()
-	}
-	if post.Image != "http://placehold.it/350x150" {
-		t.Fail()
-	}
-	if post.Likes != 123 {
-		t.Fail()
-	}
-}
-
-func TestGoTumblrToPost(t *testing.T) {
-	tumblrPost := gotumblr.TextPost{
-		Title: "title",
-	}
-	tumblrPost.Id = 1234
-	tumblrPost.Post_url = "url"
-	tumblrPost.Body = "<img src=\"http://placehold.it/350x150\" />"
-	tumblrPost.Note_count = 123
-	post := GoTumblrToPost(&tumblrPost)
 	if post.ID != 1234 {
 		t.Fail()
 	}
