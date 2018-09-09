@@ -12,10 +12,8 @@ import (
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/ikeikeikeike/go-sitemap-generator/stm"
-	"github.com/pkg/errors"
-	// Used for getting tumblr env vars
-	_ "github.com/joho/godotenv/autoload"
 	newrelic "github.com/newrelic/go-agent"
+	"github.com/pkg/errors"
 	"github.com/stvp/rollbar"
 )
 

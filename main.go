@@ -5,10 +5,19 @@ import (
 
 	"github.com/albertyw/reaction-pics/server"
 	"github.com/albertyw/reaction-pics/tumblr"
-	_ "github.com/joho/godotenv/autoload"
+	"github.com/joho/godotenv"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/stvp/rollbar"
 )
+
+func setupEnv() {
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("Cannot load dotenv")
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
 
 func getNewRelicApp() newrelic.Application {
 	newrelicKey := os.Getenv("NEWRELIC_KEY")
@@ -26,6 +35,7 @@ func setupRollbar() {
 }
 
 func main() {
+	setupEnv()
 	newrelicApp := getNewRelicApp()
 	posts := make(chan tumblr.Post)
 	go tumblr.GetPosts(posts)

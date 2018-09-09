@@ -7,9 +7,6 @@ import (
 	"sync"
 
 	"github.com/gofrs/uuid"
-
-	// Used for getting tumblr env vars
-	_ "github.com/joho/godotenv/autoload"
 )
 
 // Blogs is a list of all blogs to read from
