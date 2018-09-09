@@ -1,18 +1,12 @@
 package tumblr
 
 import (
-	"encoding/json"
 	"fmt"
-	"io"
-	"net/http"
 	"os"
 	"path/filepath"
 	"sync"
 
-	"github.com/MariaTerzieva/gotumblr"
 	"github.com/gofrs/uuid"
-	"github.com/pkg/errors"
-	"github.com/stvp/rollbar"
 
 	// Used for getting tumblr env vars
 	_ "github.com/joho/godotenv/autoload"
@@ -63,66 +57,6 @@ func getBlogPosts(blogName string, posts chan<- Post) {
 		}
 		posts <- p
 	}
-}
-
-func parsePosts(postsResponse gotumblr.PostsResponse) []Post {
-	var posts []Post
-	var tumblrPost gotumblr.TextPost
-	for _, element := range postsResponse.Posts {
-		err := json.Unmarshal(element, &tumblrPost)
-		if err != nil {
-			rollbar.Error(rollbar.ERR, err)
-			fmt.Println(err)
-		} else {
-			post := GoTumblrToPost(&tumblrPost)
-			err = getPostImage(post)
-			if len(post.Title) == 0 {
-				continue
-			}
-			if err == nil {
-				posts = append(posts, *post)
-			}
-		}
-	}
-	return posts
-}
-
-func getPostImage(post *Post) error {
-	imageName, imagePath, err := getImageNamePath(post.Image)
-	if err != nil {
-		err = errors.Wrap(err, "Cannot generate image name and path")
-		fmt.Println(err)
-		rollbar.Error(rollbar.ERR, err)
-		return err
-	}
-	output, err := os.Create(imagePath)
-	if err != nil {
-		err = errors.Wrapf(err, "Cannot create %s", imagePath)
-		fmt.Println(err)
-		rollbar.Error(rollbar.ERR, err)
-		return err
-	}
-	defer output.Close()
-
-	response, err := http.Get(post.Image)
-	if err != nil {
-		err = errors.Wrapf(err, "Error downloading", post.Image)
-		fmt.Println(err)
-		rollbar.Error(rollbar.ERR, err)
-		return err
-	}
-	defer response.Body.Close()
-
-	_, err = io.Copy(output, response.Body)
-	if err != nil {
-		err = errors.Wrapf(err, "Eror saving", post.Image)
-		fmt.Println(err)
-		rollbar.Error(rollbar.ERR, err)
-		return err
-	}
-
-	post.Image = fmt.Sprintf(getImageURL(imageName))
-	return nil
 }
 
 func getImageNamePath(imageName string) (name, path string, err error) {
