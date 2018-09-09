@@ -14,7 +14,7 @@ import (
 	"github.com/ikeikeikeike/go-sitemap-generator/stm"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/pkg/errors"
-	"github.com/stvp/rollbar"
+	"github.com/rollbar/rollbar-go"
 )
 
 const (

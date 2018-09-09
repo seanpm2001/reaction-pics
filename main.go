@@ -7,7 +7,7 @@ import (
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/joho/godotenv"
 	newrelic "github.com/newrelic/go-agent"
-	"github.com/stvp/rollbar"
+	"github.com/rollbar/rollbar-go"
 )
 
 func setupEnv() {
@@ -28,8 +28,8 @@ func getNewRelicApp() newrelic.Application {
 }
 
 func setupRollbar() {
-	rollbar.Token = os.Getenv("ROLLBAR_SERVER_TOKEN")
-	rollbar.Environment = os.Getenv("ENVIRONMENT")
+	rollbar.SetToken(os.Getenv("ROLLBAR_SERVER_TOKEN"))
+	rollbar.SetEnvironment(os.Getenv("ENVIRONMENT"))
 }
 
 func main() {

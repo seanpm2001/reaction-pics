@@ -8,7 +8,7 @@ import (
 
 	"github.com/gosimple/slug.git"
 	"github.com/pkg/errors"
-	"github.com/stvp/rollbar"
+	"github.com/rollbar/rollbar-go"
 	"golang.org/x/net/html"
 )
 

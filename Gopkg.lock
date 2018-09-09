@@ -51,12 +51,9 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4284fea71b1cc4c0f70b09b7644ece56803ef9fe33ea58d6fd0b8aa6b84c21e6"
+  digest = "1:d166a4b3543a71d87e34767ace94e8b516e79ba45111730306f07c8d6f797f1f"
   name = "github.com/joho/godotenv"
-  packages = [
-    ".",
-    "autoload",
-  ]
+  packages = ["."]
   pruneopts = "UT"
   revision = "1709ab122c988931ad53508747b3c061400c2984"
 
@@ -93,12 +90,12 @@
   revision = "cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c"
 
 [[projects]]
-  digest = "1:6dbdda95b5aacc0d4da77582c45e351d098f30fc32856058eaa774cde684d28a"
-  name = "github.com/stvp/rollbar"
+  digest = "1:8b6db3b490230af0836cd57f2da94e092ac0c2837fe24e762458006531749b53"
+  name = "github.com/rollbar/rollbar-go"
   packages = ["."]
   pruneopts = "UT"
-  revision = "b20261800d8cda3be14dcef0d1a8320779bba61a"
-  version = "v0.5.1"
+  revision = "5f41889d7c6a59e4add07998cf776b1d335d287f"
+  version = "v1.0.1"
 
 [[projects]]
   branch = "master"
@@ -118,10 +115,10 @@
     "github.com/gofrs/uuid",
     "github.com/gosimple/slug.git",
     "github.com/ikeikeikeike/go-sitemap-generator/stm",
-    "github.com/joho/godotenv/autoload",
+    "github.com/joho/godotenv",
     "github.com/newrelic/go-agent",
     "github.com/pkg/errors",
-    "github.com/stvp/rollbar",
+    "github.com/rollbar/rollbar-go",
     "golang.org/x/net/html",
   ]
   solver-name = "gps-cdcl"
