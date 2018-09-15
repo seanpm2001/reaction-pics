@@ -6,9 +6,9 @@ cd $DIR/..
 # Set locale
 sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
-# Install go
+# Install go and git
 apt-get update
-apt-get install -y golang-go
+apt-get install -y golang-go git
 
 # Setup env
 rm -rf .env

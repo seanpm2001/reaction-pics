@@ -14,8 +14,8 @@ sudo apt-get install -y nginx
 
 # Configure nginx
 sudo rm -r /etc/nginx/sites-available
-sudo ln -s ~/gocode/src/github.com/albertyw/reaction-pics/config/sites-available/app reaction.pics-app
-sudo ln -s ~/gocode/src/github.com/albertyw/reaction-pics/config/sites-available/headers reaction.pics-headers
+sudo ln -s ~/reaction-pics/config/sites-available/app /etc/nginx/sites-enabled/reaction.pics-app
+sudo ln -s ~/reaction-pics/config/sites-available/headers /etc/nginx/sites-enabled/reaction.pics-headers
 sudo rm -r /var/www/html
 
 # Secure nginx
