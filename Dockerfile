@@ -16,7 +16,6 @@ ENV GOPATH /root/gocode
 # Set up directory structures
 RUN mkdir -p /root/gocode/src/github.com/albertyw/reaction-pics
 COPY . /root/gocode/src/github.com/albertyw/reaction-pics
-ADD tumblr/data tumblr/data
 WORKDIR /root/gocode/src/github.com/albertyw/reaction-pics
 
 # App-specific setup
