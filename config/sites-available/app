@@ -59,9 +59,9 @@ server {
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
 
     # static files used for the website
-    location /static {
+    location /static/data {
         include      sites-enabled/reaction.pics-headers;
-        alias        "/home/ubuntu/gocode/src/github.com/albertyw/reaction-pics/server/static/";
+        alias        "/home/albertyw/reaction-pics/server/static/data/";
         try_files $uri.html $uri $uri/ =404;
         expires     7d;
         add_header Cache-Control "public";
