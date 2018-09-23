@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"sync"
 
 	"github.com/gofrs/uuid"
 )
@@ -15,14 +14,6 @@ var Blogs = []string{
 	"lifeofasoftwareengineer.tumblr.com",
 	"dbareactions.tumblr.com",
 	"securityreactions.tumblr.com",
-}
-
-func duplicateChan(in <-chan Post, out1, out2 chan<- Post, wg *sync.WaitGroup) {
-	for p := range in {
-		out1 <- p
-		out2 <- p
-	}
-	wg.Done()
 }
 
 // GetPosts returns a list of all Posts
