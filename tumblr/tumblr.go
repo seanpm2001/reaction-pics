@@ -31,7 +31,3 @@ func getImageNamePath(imageName string) (name, path string, err error) {
 	path = fmt.Sprintf("%s/tumblr/data/static/%s", rootDir, name)
 	return
 }
-
-func getImageURL(imageName string) string {
-	return fmt.Sprintf("/static/data/%s", imageName)
-}
