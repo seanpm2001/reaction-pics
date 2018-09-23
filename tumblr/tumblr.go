@@ -8,23 +8,9 @@ import (
 	"github.com/gofrs/uuid"
 )
 
-// Blogs is a list of all blogs to read from
-var Blogs = []string{
-	"devopsreactions.tumblr.com",
-	"lifeofasoftwareengineer.tumblr.com",
-	"dbareactions.tumblr.com",
-	"securityreactions.tumblr.com",
-}
-
 // GetPosts returns a list of all Posts
 func GetPosts(posts chan<- Post) {
 	defer func() { close(posts) }()
-	for range Blogs {
-		getBlogPosts(posts)
-	}
-}
-
-func getBlogPosts(posts chan<- Post) {
 	existingPosts := ReadPostsFromCSV()
 	maxPostID := int64(0)
 	for _, p := range existingPosts {
