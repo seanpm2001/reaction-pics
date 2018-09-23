@@ -3,7 +3,6 @@ package tumblr
 import (
 	"encoding/csv"
 	"os"
-	"strconv"
 )
 
 const csvDirectory = "tumblr/data/"
@@ -26,17 +25,6 @@ func ReadPostsFromCSV(blogName string) (posts []Post) {
 		posts = append(posts, *post)
 	}
 	return posts
-}
-
-func getRow(post Post) (row []string) {
-	row = []string{
-		strconv.FormatInt(post.ID, 10),
-		post.Title,
-		post.URL,
-		post.Image,
-		strconv.FormatInt(post.Likes, 10),
-	}
-	return
 }
 
 func getCSVPath(blogName string) string {

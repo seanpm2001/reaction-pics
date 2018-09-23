@@ -45,22 +45,3 @@ func TestReadPostsFromCSV(t *testing.T) {
 		t.Fail()
 	}
 }
-
-func TestGetRow(t *testing.T) {
-	row := getRow(post)
-	if row[0] != "1234" {
-		t.Fail()
-	}
-	if row[1] != "title" {
-		t.Fail()
-	}
-	if row[2] != "url" {
-		t.Fail()
-	}
-	if row[3] != "http://placehold.it/350x150" {
-		t.Fail()
-	}
-	if row[4] != "123" {
-		t.Fail()
-	}
-}
