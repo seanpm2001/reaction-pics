@@ -18,14 +18,6 @@
   version = "v1.0"
 
 [[projects]]
-  digest = "1:26f2ad8a198a88c3605401186a6be538326e7fbf1f14cb3ef4e0027c4f755f2a"
-  name = "github.com/gofrs/uuid"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "d41eeda0759468834c84365a32d1b1ec4264c75f"
-  version = "v3.1.0"
-
-[[projects]]
   digest = "1:492ed619f52ea17d1139585493efe633bd4307dbde75bd054284052250a6370a"
   name = "github.com/gosimple/slug.git"
   packages = ["."]
@@ -112,7 +104,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/gofrs/uuid",
     "github.com/gosimple/slug.git",
     "github.com/ikeikeikeike/go-sitemap-generator/stm",
     "github.com/joho/godotenv",

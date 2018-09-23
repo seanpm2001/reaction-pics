@@ -26,10 +26,6 @@
 
 
 [[constraint]]
-  name = "github.com/gofrs/uuid"
-  version = "3.1.0"
-
-[[constraint]]
   name = "github.com/gosimple/slug.git"
   version = "1.1.0"
 
