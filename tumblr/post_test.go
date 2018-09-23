@@ -162,40 +162,6 @@ func TestLimitBoard(t *testing.T) {
 	}
 }
 
-func TestGetPostByID(t *testing.T) {
-	posts := make([]Post, 1)
-	posts[0] = Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
-	board := NewBoard(posts)
-	post := board.GetPostByID(1)
-	if post == nil {
-		t.Fail()
-	}
-	if post.Title != "title1" {
-		t.Fail()
-	}
-	post = board.GetPostByID(2)
-	if post != nil {
-		t.Fail()
-	}
-}
-
-func TestSortPostsByID(t *testing.T) {
-	board := NewBoard([]Post{})
-	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
-	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 124})
-	board.AddPost(Post{2, "title2", "url2", "http://placehold.it/350x150", 125})
-	board.SortPostsByID()
-	if board.Posts[0].ID != 3 {
-		t.Fail()
-	}
-	if board.Posts[1].ID != 2 {
-		t.Fail()
-	}
-	if board.Posts[2].ID != 1 {
-		t.Fail()
-	}
-}
-
 func TestSortPostsByLikes(t *testing.T) {
 	board := NewBoard([]Post{})
 	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
