@@ -147,20 +147,6 @@ func (b *Board) LimitBoard(offset, maxResults int) {
 	b.Posts = b.Posts[offset:endIndex]
 }
 
-// SortPostsByID sorts Posts in reverse ID order
-func (b *Board) SortPostsByID() {
-	b.mut.Lock()
-	defer b.mut.Unlock()
-	sort.Sort(sort.Reverse(SortByID(b.Posts)))
-}
-
-// SortByID is an interface for Sorting
-type SortByID []Post
-
-func (a SortByID) Len() int           { return len(a) }
-func (a SortByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a SortByID) Less(i, j int) bool { return a[i].ID < a[j].ID }
-
 // SortPostsByLikes sorts Posts in reverse number of likes order
 func (b *Board) SortPostsByLikes() {
 	b.mut.Lock()
