@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/joho/godotenv"
+	"github.com/stretchr/testify/assert"
 )
 
 const (
@@ -29,31 +30,17 @@ func TestReadPostsFromCSV(t *testing.T) {
 	defer cleanup()
 	dotenvPath := os.Getenv("ROOT_DIR") + "/.env"
 	err := godotenv.Load(dotenvPath)
-	if err != nil {
-		t.Fail()
-	}
+	assert.NoError(t, err)
+
 	data := []byte("1234,title,url,http://placehold.it/350x150,123")
 	err = ioutil.WriteFile(getCSVPath(), data, 0644)
-	if err != nil {
-		t.Fail()
-	}
+	assert.NoError(t, err)
+
 	posts := ReadPostsFromCSV()
-	if len(posts) != 1 {
-		t.Fail()
-	}
-	if posts[0].ID != 1234 {
-		t.Fail()
-	}
-	if posts[0].Title != "title" {
-		t.Fail()
-	}
-	if posts[0].URL != "url" {
-		t.Fail()
-	}
-	if posts[0].Image != "http://placehold.it/350x150" {
-		t.Fail()
-	}
-	if posts[0].Likes != 123 {
-		t.Fail()
-	}
+	assert.Equal(t, len(posts), 1)
+	assert.Equal(t, posts[0].ID, int64(1234))
+	assert.Equal(t, posts[0].Title, "title")
+	assert.Equal(t, posts[0].URL, "url")
+	assert.Equal(t, posts[0].Image, "http://placehold.it/350x150")
+	assert.Equal(t, posts[0].Likes, int64(123))
 }
