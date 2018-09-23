@@ -19,13 +19,13 @@ var Blogs = []string{
 // GetPosts returns a list of all Posts
 func GetPosts(posts chan<- Post) {
 	defer func() { close(posts) }()
-	for _, blogName := range Blogs {
-		getBlogPosts(blogName, posts)
+	for range Blogs {
+		getBlogPosts(posts)
 	}
 }
 
-func getBlogPosts(blogName string, posts chan<- Post) {
-	existingPosts := ReadPostsFromCSV(blogName)
+func getBlogPosts(posts chan<- Post) {
+	existingPosts := ReadPostsFromCSV()
 	maxPostID := int64(0)
 	for _, p := range existingPosts {
 		if p.ID > maxPostID {
