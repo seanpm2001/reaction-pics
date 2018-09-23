@@ -4,6 +4,8 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPost(t *testing.T) {
@@ -14,21 +16,11 @@ func TestPost(t *testing.T) {
 		"http://placehold.it/350x150",
 		123,
 	}
-	if post.ID != 1234 {
-		t.Fail()
-	}
-	if post.Title != "title" {
-		t.Fail()
-	}
-	if post.URL != "url" {
-		t.Fail()
-	}
-	if post.Image != "http://placehold.it/350x150" {
-		t.Fail()
-	}
-	if post.Likes != 123 {
-		t.Fail()
-	}
+	assert.Equal(t, post.ID, int64(1234))
+	assert.Equal(t, post.Title, "title")
+	assert.Equal(t, post.URL, "url")
+	assert.Equal(t, post.Image, "http://placehold.it/350x150")
+	assert.Equal(t, post.Likes, int64(123))
 }
 
 func TestCSVToPost(t *testing.T) {
@@ -39,61 +31,40 @@ func TestCSVToPost(t *testing.T) {
 	row[3] = "http://placehold.it/350x150"
 	row[4] = "123"
 	post := CSVToPost(row)
-	if post.ID != 1234 {
-		t.Fail()
-	}
-	if post.Title != "title" {
-		t.Fail()
-	}
-	if post.URL != "url" {
-		t.Fail()
-	}
-	if post.Image != "http://placehold.it/350x150" {
-		t.Fail()
-	}
-	if post.Likes != 123 {
-		t.Fail()
-	}
+	assert.Equal(t, post.ID, int64(1234))
+	assert.Equal(t, post.Title, "title")
+	assert.Equal(t, post.URL, "url")
+	assert.Equal(t, post.Image, "http://placehold.it/350x150")
+	assert.Equal(t, post.Likes, int64(123))
 }
 
 func TestCorruptPost(t *testing.T) {
 	row := make([]string, 5)
 	post := CSVToPost(row)
-	if post.ID != 0 {
-		t.Fail()
-	}
+	assert.Equal(t, post.ID, int64(0))
 }
 
 func TestInternalURL(t *testing.T) {
 	post := Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
 	url := post.InternalURL()
-	if url != "/post/1/title1" {
-		t.Fail()
-	}
+	assert.Equal(t, url, "/post/1/title1")
 }
 
 func TestInternalURLLong(t *testing.T) {
 	post := Post{1, strings.Repeat("a", 50), "url1", "http://placehold.it/350x150", 123}
 	url := post.InternalURL()
-	if url != "/post/1/"+strings.Repeat("a", 30) {
-		t.Fail()
-	}
+	assert.Equal(t, url, "/post/1/"+strings.Repeat("a", 30))
 }
 
 func TestAddPost(t *testing.T) {
 	post := Post{1, "title1", "url1", "http://placehold.it/350x150", 123}
 	board := NewBoard([]Post{})
 	board.AddPost(post)
-	if len(board.Posts) != 1 {
-		t.Fail()
-	}
-	if board.Posts[0].Title != "title1" {
-		t.Fail()
-	}
+	assert.Equal(t, len(board.Posts), 1)
+	assert.Equal(t, board.Posts[0].Title, "title1")
+
 	board.AddPost(post)
-	if len(board.Posts) != 1 {
-		t.Fail()
-	}
+	assert.Equal(t, len(board.Posts), 1)
 }
 
 func TestPostsToJSON(t *testing.T) {
@@ -102,28 +73,15 @@ func TestPostsToJSON(t *testing.T) {
 	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
 	board := NewBoard(posts)
 	data := board.PostsToJSON()
-	if len(*data) != 2 {
-		t.Fail()
-	}
+	assert.Equal(t, len(*data), 2)
+
 	post := (*data)[0]
-	if post.ID != 1 {
-		t.Fail()
-	}
-	if post.Title != "title1" {
-		t.Fail()
-	}
-	if post.URL != "url1" {
-		t.Fail()
-	}
-	if post.Image != "http://placehold.it/350x150" {
-		t.Fail()
-	}
-	if post.Likes != 123 {
-		t.Fail()
-	}
-	if post.InternalURL != "/post/1/title1" {
-		t.Fail()
-	}
+	assert.Equal(t, post.ID, int64(1))
+	assert.Equal(t, post.Title, "title1")
+	assert.Equal(t, post.URL, "url1")
+	assert.Equal(t, post.Image, "http://placehold.it/350x150")
+	assert.Equal(t, post.Likes, int64(123))
+	assert.Equal(t, post.InternalURL, "/post/1/title1")
 }
 
 func TestFilterBoard(t *testing.T) {
@@ -132,12 +90,8 @@ func TestFilterBoard(t *testing.T) {
 	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
 	board := NewBoard(posts)
 	newBoard := board.FilterBoard("title2")
-	if len(newBoard.Posts) != 1 {
-		t.Fail()
-	}
-	if newBoard.Posts[0].ID != 2 {
-		t.Fail()
-	}
+	assert.Equal(t, len(newBoard.Posts), 1)
+	assert.Equal(t, newBoard.Posts[0].ID, int64(2))
 }
 
 func TestLimitBoard(t *testing.T) {
@@ -146,20 +100,14 @@ func TestLimitBoard(t *testing.T) {
 	posts[1] = Post{2, "title2", "url2", "http://placehold.it/350x150", 124}
 	board := NewBoard(posts)
 	board.LimitBoard(1, 1)
-	if len(board.Posts) != 1 {
-		t.Fail()
-	}
-	if board.Posts[0].ID != 2 {
-		t.Fail()
-	}
+	assert.Equal(t, len(board.Posts), 1)
+	assert.Equal(t, board.Posts[0].ID, int64(2))
+
 	board.LimitBoard(1, 3)
-	if len(board.Posts) != 0 {
-		t.Fail()
-	}
+	assert.Equal(t, len(board.Posts), 0)
+
 	board.LimitBoard(10, 1)
-	if len(board.Posts) != 0 {
-		t.Fail()
-	}
+	assert.Equal(t, len(board.Posts), 0)
 }
 
 func TestSortPostsByLikes(t *testing.T) {
@@ -168,27 +116,18 @@ func TestSortPostsByLikes(t *testing.T) {
 	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 121})
 	board.AddPost(Post{2, "title2", "url2", "http://placehold.it/350x150", 122})
 	board.SortPostsByLikes()
-	if board.Posts[0].Likes != 123 {
-		t.Fail()
-	}
-	if board.Posts[1].Likes != 122 {
-		t.Fail()
-	}
-	if board.Posts[2].Likes != 121 {
-		t.Fail()
-	}
+	assert.Equal(t, board.Posts[0].Likes, int64(123))
+	assert.Equal(t, board.Posts[1].Likes, int64(122))
+	assert.Equal(t, board.Posts[2].Likes, int64(121))
 }
 
 func TestReset(t *testing.T) {
 	board := NewBoard([]Post{})
 	board.AddPost(Post{3, "title3", "url3", "http://placehold.it/350x150", 123})
-	if len(board.Posts) != 1 {
-		t.Fail()
-	}
+	assert.Equal(t, len(board.Posts), 1)
+
 	board.Reset()
-	if len(board.Posts) != 0 {
-		t.Fail()
-	}
+	assert.Equal(t, len(board.Posts), 0)
 }
 
 func TestURLs(t *testing.T) {
@@ -197,18 +136,10 @@ func TestURLs(t *testing.T) {
 	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 121})
 	board.AddPost(Post{2, "title2", "url2", "http://placehold.it/350x150", 122})
 	urls := board.URLs()
-	if len(urls) != 3 {
-		t.Fail()
-	}
-	if urls[0] != "/post/3/title3" {
-		t.Fail()
-	}
-	if urls[1] != "/post/1/title1" {
-		t.Fail()
-	}
-	if urls[2] != "/post/2/title2" {
-		t.Fail()
-	}
+	assert.Equal(t, len(urls), 3)
+	assert.Equal(t, urls[0], "/post/3/title3")
+	assert.Equal(t, urls[1], "/post/1/title1")
+	assert.Equal(t, urls[2], "/post/2/title2")
 }
 
 func TestKeywords(t *testing.T) {
@@ -217,15 +148,9 @@ func TestKeywords(t *testing.T) {
 	board.AddPost(Post{1, "title1", "url1", "http://placehold.it/350x150", 121})
 	board.AddPost(Post{2, "title1 title2 title2", "url2", "http://placehold.it/350x150", 122})
 	keywords := board.Keywords()
-	if len(keywords) != 2 {
-		t.Fail()
-	}
-	if keywords[0] != "title2" {
-		t.Fail()
-	}
-	if keywords[1] != "title1" {
-		t.Fail()
-	}
+	assert.Equal(t, len(keywords), 2)
+	assert.Equal(t, keywords[0], "title2")
+	assert.Equal(t, keywords[1], "title1")
 }
 
 func TestKeywordsLong(t *testing.T) {
@@ -236,23 +161,17 @@ func TestKeywordsLong(t *testing.T) {
 	}
 	board.AddPost(Post{1, strings.Join(title, " "), "url1", "http://placehold.it/350x150", 121})
 	keywords := board.Keywords()
-	if len(keywords) != MaxKeywords {
-		t.Fail()
-	}
+	assert.Equal(t, len(keywords), MaxKeywords)
 }
 
 func TestGetImageFromPostBody(t *testing.T) {
 	body := "<img src=\"img.gif\">"
 	image := getImageFromPostBody(body)
-	if image != "img.gif" {
-		t.Fail()
-	}
+	assert.Equal(t, image, "img.gif")
 }
 
 func TestGetImageFromPostBodyNotFound(t *testing.T) {
 	body := "<div></div>"
 	image := getImageFromPostBody(body)
-	if image != "" {
-		t.Fail()
-	}
+	assert.Equal(t, image, "")
 }
