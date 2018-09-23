@@ -4,9 +4,13 @@ import (
 	"io/ioutil"
 	"os"
 	"testing"
+
+	"github.com/joho/godotenv"
 )
 
-const testBlog = "testBlog"
+const (
+	testBlog = "testBlog"
+)
 
 var post = Post{
 	1234,
@@ -17,15 +21,23 @@ var post = Post{
 }
 
 func cleanup() {
-	csvLocation := getCSVPath(testBlog)
+	csvLocation := getCSVPath()
 	os.Remove(csvLocation)
 }
 
 func TestReadPostsFromCSV(t *testing.T) {
 	defer cleanup()
+	dotenvPath := os.Getenv("ROOT_DIR") + "/.env"
+	err := godotenv.Load(dotenvPath)
+	if err != nil {
+		t.Fail()
+	}
 	data := []byte("1234,title,url,http://placehold.it/350x150,123")
-	ioutil.WriteFile(getCSVPath(testBlog), data, 0644)
-	posts := ReadPostsFromCSV(testBlog)
+	err = ioutil.WriteFile(getCSVPath(), data, 0644)
+	if err != nil {
+		t.Fail()
+	}
+	posts := ReadPostsFromCSV()
 	if len(posts) != 1 {
 		t.Fail()
 	}

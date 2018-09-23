@@ -5,12 +5,14 @@ import (
 	"os"
 )
 
-const csvDirectory = "tumblr/data/"
+const (
+	prodCSVPath = "tumblr/data/posts.csv"
+	testCSVPath = "tumblr/data/posts_test.csv"
+)
 
 // ReadPostsFromCSV reads a CSV file into a list of posts
-func ReadPostsFromCSV(blogName string) (posts []Post) {
-	csvLocation := getCSVPath(blogName)
-	file, err := os.Open(csvLocation)
+func ReadPostsFromCSV() (posts []Post) {
+	file, err := os.Open(getCSVPath())
 	defer file.Close()
 	if err != nil {
 		return
@@ -27,7 +29,12 @@ func ReadPostsFromCSV(blogName string) (posts []Post) {
 	return posts
 }
 
-func getCSVPath(blogName string) string {
-	rootDir := os.Getenv("ROOT_DIR")
-	return rootDir + "/" + csvDirectory + blogName + ".csv"
+func getCSVPath() string {
+	env := os.Getenv("ENVIRONMENT")
+	path := testCSVPath
+	if env == "production" {
+		path = prodCSVPath
+	}
+	path = os.Getenv("ROOT_DIR") + "/" + path
+	return path
 }
