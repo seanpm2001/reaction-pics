@@ -68,6 +68,7 @@ server {
         sendfile           on;
         sendfile_max_chunk 1m;
         tcp_nopush         on;
+        # aio is not available on debian/ubuntu
     }
 
     location / {
