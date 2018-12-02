@@ -2,10 +2,22 @@
 
 # Increase file descriptor limit (https://underyx.me/2015/05/18/raising-the-maximum-number-of-file-descriptors)
 # Add this to /etc/nginx/nginx.conf
+# worker_processes 4;
 # events {
 #     worker_connections 1024;
 # }
 
+http {
+    client_body_buffer_size 10K;
+    client_header_buffer_size 1k;
+    client_max_body_size 8m;
+    large_client_header_buffers 4 4k;
+
+    client_body_timeout 12;
+    client_header_timeout 12;
+    keepalive_timeout 15;
+    send_timeout 10;
+}
 
 # Change IP address to domain name
 server {
