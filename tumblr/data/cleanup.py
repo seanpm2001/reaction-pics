@@ -1,21 +1,11 @@
 import os
 
-def remove_image_from_csvs(image):
-    for csv in os.listdir("."):
-        if csv[-4:] != ".csv":
-            continue
-        with open(csv, "r") as h:
-            lines = h.readlines()
-        modified = False
-        for x in range(len(lines)):
-            if image in lines[x]:
-                lines[x] = lines[x].replace(image, image+".gif")
-                modified = True
-                print(lines[x])
-        if not modified:
-            continue
-        with open(csv, "w") as h:
-            h.write("".join(lines))
+data = ""
+for csv in os.listdir("."):
+    if csv[-4:] != ".csv":
+        continue
+    with open(csv, "r") as h:
+        data += h.read()
 
 
 images = os.listdir("static")
@@ -24,8 +14,6 @@ for image in images:
         continue
     path = os.path.join("static", image)
     size = os.path.getsize(path)
-    if "." in image:
-        continue
-    print(image)
-    remove_image_from_csvs(image)
-    os.rename(path, path+".gif")
+    if image not in data:
+        print(image)
+        os.remove(path)
