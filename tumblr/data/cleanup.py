@@ -6,10 +6,14 @@ def remove_image_from_csvs(image):
             continue
         with open(csv, "r") as h:
             lines = h.readlines()
-        for line in lines:
-            if image in line:
-                print(line)
-        lines = [x for x in lines if image not in x]
+        modified = False
+        for x in range(len(lines)):
+            if image in lines[x]:
+                del lines[x]
+                modified = True
+                print(lines[x])
+        if not modified:
+            continue
         with open(csv, "w") as h:
             h.write("".join(lines))
 
