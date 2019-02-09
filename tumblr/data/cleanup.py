@@ -9,7 +9,7 @@ def remove_image_from_csvs(image):
         modified = False
         for x in range(len(lines)):
             if image in lines[x]:
-                del lines[x]
+                lines[x] = lines[x].replace(image, image+".gif")
                 modified = True
                 print(lines[x])
         if not modified:
@@ -24,8 +24,8 @@ for image in images:
         continue
     path = os.path.join("static", image)
     size = os.path.getsize(path)
-    if size != 0:
+    if "." in image:
         continue
     print(image)
     remove_image_from_csvs(image)
-    os.remove(path)
+    os.rename(path, path+".gif")
