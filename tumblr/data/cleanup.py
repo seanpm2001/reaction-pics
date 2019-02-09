@@ -1,19 +1,15 @@
 import os
 
-data = ""
-for csv in os.listdir("."):
-    if csv[-4:] != ".csv":
-        continue
-    with open(csv, "r") as h:
-        data += h.read()
-
-
 images = os.listdir("static")
-for image in images:
-    if image == ".gitkeep":
+with open("posts.csv", "r") as h:
+    lines = h.readlines()
+
+x = 0
+while x < len(lines):
+    line = lines[x]
+    line_image = line[line.rfind("/")+1:line.rfind(",")]
+    if line_image not in images:
+        print(line)
+        del lines[x]
         continue
-    path = os.path.join("static", image)
-    size = os.path.getsize(path)
-    if image not in data:
-        print(image)
-        os.remove(path)
+    x += 1
