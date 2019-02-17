@@ -2,12 +2,12 @@
 
 
 [[projects]]
-  digest = "1:f25dfe4538112147d22e4c8437efbc2e216112bec37277534ffe146935064ea8"
+  digest = "1:bd8bc15ce3a9929e2777651cbc271fca5561c0d5f42187edb4720e638d24662d"
   name = "github.com/beevik/etree"
   packages = ["."]
   pruneopts = "UT"
-  revision = "9d7e8feddccb4ed1b8afb54e368bd323d2ff652c"
-  version = "v1.0.1"
+  revision = "8aee6516be3b1163bb6450c35c50e4969e3a3aa8"
+  version = "v1.1.0"
 
 [[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
@@ -18,47 +18,39 @@
   version = "v1.1.1"
 
 [[projects]]
-  digest = "1:ca82a3b99694824c627573c2a76d0e49719b4a9c02d1d85a2ac91f1c1f52ab9b"
+  digest = "1:af43bdaaf86655a2343f113e9b293bbc16b12099eaeb223982bbe4d4c22ba14d"
   name = "github.com/fatih/structs"
   packages = ["."]
   pruneopts = "UT"
-  revision = "a720dfa8df582c51dee1b36feabb906bde1588bd"
-  version = "v1.0"
+  revision = "4966fc68f5b7593aafa6cbbba2d65ec6e1416047"
+  version = "v1.1.0"
 
 [[projects]]
-  digest = "1:492ed619f52ea17d1139585493efe633bd4307dbde75bd054284052250a6370a"
-  name = "github.com/gosimple/slug.git"
+  digest = "1:e1aa8e520787bfd8623c7df394352be3183ef207039cfb513ba40dc00c82fa6d"
+  name = "github.com/gosimple/slug"
   packages = ["."]
   pruneopts = "UT"
-  revision = "91d42f4c3433698e88e87b17a3efbfe40b67c323"
-  version = "v1.2.0"
+  revision = "42ac18c34c2c6f4843fa48167317dcaa9416d1e2"
+  version = "v1.4.2"
 
 [[projects]]
-  branch = "master"
-  digest = "1:95db0b6e6783a53cc44aca202cd68267843c1daac4c2850564cd85507573b960"
+  digest = "1:2ce7bc6ca53267f9f68d84a00fa265e908f2de68c53a3c5ff4c11395ae186eeb"
   name = "github.com/ikeikeikeike/go-sitemap-generator"
   packages = ["stm"]
   pruneopts = "UT"
-  revision = "34e2328f3f18422765314ad5aa2c57258ad521f0"
-
-[[projects]]
-  digest = "1:8eb1de8112c9924d59bf1d3e5c26f5eaa2bfc2a5fcbb92dc1c2e4546d695f277"
-  name = "github.com/imdario/mergo"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "9f23e2d6bd2a77f959b2bf6acdbefd708a83a4a4"
-  version = "v0.3.6"
+  revision = "caae15179f10529eae19a9b565418fd6b204beb2"
+  version = "v2.0.1"
 
 [[projects]]
   branch = "master"
-  digest = "1:d166a4b3543a71d87e34767ace94e8b516e79ba45111730306f07c8d6f797f1f"
+  digest = "1:3c4a622f11164d31a986a58fb5dbb31cab4c8b745d3feab0ff8f8daf7661b5b6"
   name = "github.com/joho/godotenv"
   packages = ["."]
   pruneopts = "UT"
-  revision = "1709ab122c988931ad53508747b3c061400c2984"
+  revision = "5c0e6c6ab1a0a9ef0a8822cba3a05d62f7dad941"
 
 [[projects]]
-  digest = "1:01f60ec456e70c9be269902c08fa189a9d47056a419c4a91a02f19df5e36ab59"
+  digest = "1:a440a51547995862e3fe9f8e196e00997d06d85278bab80e0d6b5ae4e3b5afe1"
   name = "github.com/newrelic/go-agent"
   packages = [
     ".",
@@ -70,16 +62,16 @@
     "internal/utilization",
   ]
   pruneopts = "UT"
-  revision = "46d73e6be8b4faeee70850d0df829e4fe00d6819"
-  version = "v2.1.0"
+  revision = "c883b8ea425d136353b44cc435c3bf8d6c5d3d47"
+  version = "v2.5.0"
 
 [[projects]]
-  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
   name = "github.com/pkg/errors"
   packages = ["."]
   pruneopts = "UT"
-  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
-  version = "v0.8.0"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
 
 [[projects]]
   digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
@@ -98,37 +90,37 @@
   revision = "cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c"
 
 [[projects]]
-  digest = "1:8b6db3b490230af0836cd57f2da94e092ac0c2837fe24e762458006531749b53"
+  digest = "1:03a89169777b38862145711ef2317a36e19e1cdf717ab622e196f6a851b71ad9"
   name = "github.com/rollbar/rollbar-go"
   packages = ["."]
   pruneopts = "UT"
-  revision = "5f41889d7c6a59e4add07998cf776b1d335d287f"
-  version = "v1.0.1"
+  revision = "d450a931d7a085523b60f0f7c98487333a8ce5fa"
+  version = "v1.0.2"
 
 [[projects]]
-  digest = "1:18752d0b95816a1b777505a97f71c7467a8445b8ffb55631a7bf779f6ba4fa83"
+  digest = "1:972c2427413d41a1e06ca4897e8528e5a1622894050e2f527b38ddf0f343f759"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
   pruneopts = "UT"
-  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
-  version = "v1.2.2"
+  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
+  version = "v1.3.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:0185c27476ac2aa653c9b932843b41409b9a42a8f38b09c8e25c8fb1fcd499c5"
+  digest = "1:de4815ce3ca5b624af2733716ecd471de1ef50cda8afec39491aab517f73139c"
   name = "golang.org/x/net"
   packages = [
     "html",
     "html/atom",
   ]
   pruneopts = "UT"
-  revision = "8a410e7b638dca158bf9e766925842f6651ff828"
+  revision = "3a22650c66bd7f4fb6d1e8072ffd7b75c8a27898"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/gosimple/slug.git",
+    "github.com/gosimple/slug",
     "github.com/ikeikeikeike/go-sitemap-generator/stm",
     "github.com/joho/godotenv",
     "github.com/newrelic/go-agent",
