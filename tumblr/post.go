@@ -13,7 +13,10 @@ import (
 )
 
 // MaxKeywords is the maximum number of keywords that can be returned by a board
-const MaxKeywords = 20
+const (
+	MaxKeywords   = 20
+	imageRootPath = "http://static.reaction.pics/img/"
+)
 
 // Post is a representation of a single tumblr post
 type Post struct {
@@ -54,6 +57,9 @@ func CSVToPost(row []string) *Post {
 		err = errors.Wrapf(err, "Cannot parse id for %s", row[0])
 		id = 0
 	}
+
+	imageURL := imageRootPath + row[3]
+
 	likes, err := strconv.ParseInt(row[4], 10, 64)
 	if err != nil {
 		err = errors.Wrapf(err, "Cannot parse likes for %s", row[4])
@@ -64,7 +70,7 @@ func CSVToPost(row []string) *Post {
 		ID:    id,
 		Title: row[1],
 		URL:   row[2],
-		Image: row[3],
+		Image: imageURL,
 		Likes: likes,
 	}
 	return &post
