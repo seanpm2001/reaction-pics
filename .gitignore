@@ -30,3 +30,5 @@ coverage.txt
 
 Godeps
 vendor
+
+tumblr/data/static
