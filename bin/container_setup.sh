@@ -7,6 +7,7 @@ cd $DIR/..
 sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
 # Install go and git
+sudo add-apt-repository ppa:longsleep/golang-backports
 apt-get update
 apt-get install -y golang-go git
 
