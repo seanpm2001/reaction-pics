@@ -159,13 +159,13 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func sitemapHandler(w http.ResponseWriter, r *http.Request) {
-	sm := stm.NewSitemap()
+	sm := stm.NewSitemap(0)
 	sm.SetDefaultHost(os.Getenv("HOST"))
 
 	sm.Create()
-	sm.Add(stm.URL{"loc": "/"})
+	sm.Add(stm.URL{{"loc", "/"}})
 	for _, url := range board.URLs() {
-		sm.Add(stm.URL{"loc": url})
+		sm.Add(stm.URL{{"loc", url}})
 	}
 	w.Write(sm.XMLContent())
 }
