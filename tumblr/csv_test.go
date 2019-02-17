@@ -13,14 +13,6 @@ const (
 	testBlog = "testBlog"
 )
 
-var post = Post{
-	1234,
-	"title",
-	"url",
-	"http://placehold.it/350x150",
-	123,
-}
-
 func cleanup() {
 	csvLocation := getCSVPath()
 	os.Remove(csvLocation)
