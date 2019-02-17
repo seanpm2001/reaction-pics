@@ -6,7 +6,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gosimple/slug.git"
+	"github.com/gosimple/slug"
 	"github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
 	"golang.org/x/net/html"

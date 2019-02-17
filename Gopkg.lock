@@ -27,7 +27,7 @@
 
 [[projects]]
   digest = "1:e1aa8e520787bfd8623c7df394352be3183ef207039cfb513ba40dc00c82fa6d"
-  name = "github.com/gosimple/slug.git"
+  name = "github.com/gosimple/slug"
   packages = ["."]
   pruneopts = "UT"
   revision = "42ac18c34c2c6f4843fa48167317dcaa9416d1e2"
@@ -120,7 +120,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/gosimple/slug.git",
+    "github.com/gosimple/slug",
     "github.com/ikeikeikeike/go-sitemap-generator/stm",
     "github.com/joho/godotenv",
     "github.com/newrelic/go-agent",
