@@ -28,13 +28,13 @@ func TestCSVToPost(t *testing.T) {
 	row[0] = "1234"
 	row[1] = "title"
 	row[2] = "url"
-	row[3] = "http://placehold.it/350x150"
+	row[3] = "abcd.gif"
 	row[4] = "123"
 	post := CSVToPost(row)
 	assert.Equal(t, post.ID, int64(1234))
 	assert.Equal(t, post.Title, "title")
 	assert.Equal(t, post.URL, "url")
-	assert.Equal(t, post.Image, "http://placehold.it/350x150")
+	assert.Equal(t, post.Image, "http://static.reaction.pics/img/abcd.gif")
 	assert.Equal(t, post.Likes, int64(123))
 }
 

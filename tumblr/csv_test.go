@@ -32,7 +32,7 @@ func TestReadPostsFromCSV(t *testing.T) {
 	err := godotenv.Load(dotenvPath)
 	assert.NoError(t, err)
 
-	data := []byte("1234,title,url,http://placehold.it/350x150,123")
+	data := []byte("1234,title,url,abcd.gif,123")
 	err = ioutil.WriteFile(getCSVPath(), data, 0644)
 	assert.NoError(t, err)
 
@@ -41,6 +41,6 @@ func TestReadPostsFromCSV(t *testing.T) {
 	assert.Equal(t, posts[0].ID, int64(1234))
 	assert.Equal(t, posts[0].Title, "title")
 	assert.Equal(t, posts[0].URL, "url")
-	assert.Equal(t, posts[0].Image, "http://placehold.it/350x150")
+	assert.Equal(t, posts[0].Image, "http://static.reaction.pics/img/abcd.gif")
 	assert.Equal(t, posts[0].Likes, int64(123))
 }
