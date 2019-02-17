@@ -10,6 +10,3 @@ test: bins
 
 serve: bins
 	./reaction-pics
-
-clear-cache:
-	rm -f tumblr/data/static/*

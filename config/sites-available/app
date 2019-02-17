@@ -1,24 +1,5 @@
 ### Redirects ###
 
-# Increase file descriptor limit (https://underyx.me/2015/05/18/raising-the-maximum-number-of-file-descriptors)
-# Add this to /etc/nginx/nginx.conf
-# worker_processes 4;
-# events {
-#     worker_connections 1024;
-# }
-
-# http {
-#     client_body_buffer_size 10K;
-#     client_header_buffer_size 1k;
-#     client_max_body_size 8m;
-#     large_client_header_buffers 4 4k;
-#
-#     client_body_timeout 12;
-#     client_header_timeout 12;
-#     keepalive_timeout 15;
-#     send_timeout 10;
-# }
-
 # Change IP address to domain name
 server {
     listen          80;
@@ -76,19 +57,6 @@ server {
     gzip_buffers 16 8k;
     gzip_http_version 1.1;
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
-
-    # static files used for the website
-    location /static/data {
-        include            sites-enabled/reaction.pics-headers;
-        alias              "/home/albertyw/reaction-pics/server/static/data/";
-        try_files          $uri.html $uri $uri/ =404;
-        expires            7d;
-        add_header         Cache-Control "public";
-        sendfile           on;
-        sendfile_max_chunk 1m;
-        tcp_nopush         on;
-        # aio is not available on debian/ubuntu
-    }
 
     location / {
         include          sites-enabled/reaction.pics-headers;
