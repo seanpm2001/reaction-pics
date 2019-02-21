@@ -7,7 +7,6 @@ import (
 
 const (
 	prodCSVPath = "tumblr/data/posts.csv"
-	testCSVPath = "tumblr/data/posts_test.csv"
 )
 
 // ReadPostsFromCSV reads a CSV file into a list of posts
@@ -30,11 +29,7 @@ func ReadPostsFromCSV() (posts []Post) {
 }
 
 func getCSVPath() string {
-	env := os.Getenv("ENVIRONMENT")
-	path := testCSVPath
-	if env == "production" {
-		path = prodCSVPath
-	}
+	path := prodCSVPath
 	path = os.Getenv("ROOT_DIR") + "/" + path
 	return path
 }
