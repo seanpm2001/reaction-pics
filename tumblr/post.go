@@ -83,12 +83,27 @@ type Board struct {
 	mut   *sync.RWMutex
 }
 
+// InitializeBoard means to create a new board and start writing reading saved
+// posts into it
+func InitializeBoard() *Board {
+	board := NewBoard([]Post{})
+	go board.populateBoardFromCSV()
+	return &board
+}
+
 // NewBoard creates a Board from an array of Posts
 func NewBoard(p []Post) Board {
 	return Board{
 		Posts: p,
 		mut:   &sync.RWMutex{},
 	}
+}
+
+func (b *Board) populateBoardFromCSV() {
+	b.mut.Lock()
+	defer b.mut.Unlock()
+	posts := ReadPostsFromCSV(getCSVPath(false))
+	b.Posts = append(b.Posts, posts...)
 }
 
 // AddPost adds a single post to the board and sorts it
