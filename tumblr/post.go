@@ -9,7 +9,6 @@ import (
 	"github.com/gosimple/slug"
 	"github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
-	"golang.org/x/net/html"
 )
 
 // MaxKeywords is the maximum number of keywords that can be returned by a board
@@ -213,22 +212,4 @@ func (b Board) Keywords() []string {
 		}
 	}
 	return keywords
-}
-
-// getImageFromPostBody parses the body of a post and returns the url of the image
-func getImageFromPostBody(body string) string {
-	bodyReader := strings.NewReader(body)
-	tokenizer := html.NewTokenizer(bodyReader)
-
-	for tokenizer.Next() != html.ErrorToken {
-		token := tokenizer.Token()
-		if token.Data == "img" {
-			for _, attr := range token.Attr {
-				if attr.Key == "src" {
-					return attr.Val
-				}
-			}
-		}
-	}
-	return ""
 }

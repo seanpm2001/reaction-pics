@@ -163,15 +163,3 @@ func TestKeywordsLong(t *testing.T) {
 	keywords := board.Keywords()
 	assert.Equal(t, len(keywords), MaxKeywords)
 }
-
-func TestGetImageFromPostBody(t *testing.T) {
-	body := "<img src=\"img.gif\">"
-	image := getImageFromPostBody(body)
-	assert.Equal(t, image, "img.gif")
-}
-
-func TestGetImageFromPostBodyNotFound(t *testing.T) {
-	body := "<div></div>"
-	image := getImageFromPostBody(body)
-	assert.Equal(t, image, "")
-}
