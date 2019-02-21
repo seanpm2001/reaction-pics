@@ -52,6 +52,20 @@ func TestNoExactURL(t *testing.T) {
 	handler(response, request)
 	assert.Equal(t, response.Code, 404)
 }
+
+func TestRedirectS3URL(t *testing.T) {
+	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
+	request, err := http.NewRequest("GET", "/static/data/asdf.gif", nil)
+	assert.NoError(t, err)
+
+	response := httptest.NewRecorder()
+	handler(response, request)
+	assert.Equal(t, response.Code, 307)
+	url, err := response.Result().Location()
+	assert.NoError(t, err)
+	assert.Equal(t, url.String(), "http://static.reaction.pics/img/asdf.gif")
+}
+
 func TestSearchHandler(t *testing.T) {
 	request, err := http.NewRequest("GET", "/search", nil)
 	assert.NoError(t, err)
