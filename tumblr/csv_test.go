@@ -5,27 +5,19 @@ import (
 	"os"
 	"testing"
 
-	"github.com/joho/godotenv"
 	"github.com/stretchr/testify/assert"
 )
 
-const (
-	testBlog = "testBlog"
-)
-
 func cleanup() {
-	csvLocation := getCSVPath()
-	os.Remove(csvLocation)
+	os.Rename(getCSVPath()+".bak", getCSVPath())
 }
 
 func TestReadPostsFromCSV(t *testing.T) {
+	os.Rename(getCSVPath(), getCSVPath()+".bak")
 	defer cleanup()
-	dotenvPath := os.Getenv("ROOT_DIR") + "/.env"
-	err := godotenv.Load(dotenvPath)
-	assert.NoError(t, err)
 
 	data := []byte("1234,title,url,abcd.gif,123")
-	err = ioutil.WriteFile(getCSVPath(), data, 0644)
+	err := ioutil.WriteFile(getCSVPath(), data, 0644)
 	assert.NoError(t, err)
 
 	posts := ReadPostsFromCSV()
