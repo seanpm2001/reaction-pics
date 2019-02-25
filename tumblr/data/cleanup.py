@@ -1,16 +1,12 @@
 import os
-import shutil
 
-from PIL import Image
 
-for image in os.listdir('static'):
-    if image == '.gitkeep':
-        continue
-    path = 'static/' + image
-    try:
-        im = Image.open(path)
-        im.verify()
-    except Exception as e:
-        shutil.move(path, 'corrupt/' + image)
-        # print(path, e)
-        print(image)
+images = os.listdir('corrupt')
+
+with open('posts.csv', 'r') as h:
+    data = h.readlines()
+
+data = [l for l in data if not any([i in l for i in images])]
+
+with open('posts.csv', 'w') as h:
+    h.write("".join(data))

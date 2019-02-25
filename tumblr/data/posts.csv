@@ -1044,7 +1044,6 @@
 38459334469,Trying to stay awake for 20hrs fixing a catastrophic failure,http://devopsreactions.tumblr.com/post/38459334469/trying-to-stay-awake-for-20hrs-fixing-a,9ed519ed-a4c9-4b52-900f-0da8c57f2102.gif,40
 38457300524,Suggesting a python book to an empirical learner after looking at his code,http://devopsreactions.tumblr.com/post/38457300524/suggesting-a-python-book-to-an-empirical-learner,11643091-d6dd-4e51-90c0-1cc48aedec76.gif,22
 38376245688,Deciding whether to perform a risky break/fix,http://devopsreactions.tumblr.com/post/38376245688/deciding-whether-to-perform-a-risky-breakfix,26de9876-a4c7-4fe9-9fd7-594a103b3879.gif,26
-38296991999,Vendor EOL notice contains all of your current hardware,http://devopsreactions.tumblr.com/post/38296991999/vendor-eol-notice-contains-all-of-your-current,5f21df83-06db-435a-96f9-ab1f503bebe0.gif,8
 38296984861,"After reading the ""Pro Git"" book",http://devopsreactions.tumblr.com/post/38296984861/after-reading-the-pro-git-book,6d0788b9-3f5a-4a95-812d-df9152c2bf74.gif,52
 38218705350,Finding an interesting side-issue while dealing with something else,http://devopsreactions.tumblr.com/post/38218705350/finding-an-interesting-side-issue-while-dealing,e1505431-41f5-419c-a1cc-d334917d325b.gif,46
 38138462732,The Operations room after a successful release,http://devopsreactions.tumblr.com/post/38138462732/the-operations-room-after-a-successful-release,a15fd20a-7e64-4fcd-9e89-b0e39b2a76ab.gif,22
@@ -1113,7 +1112,6 @@
 152700972298,Scariest pumpkin of them all,http://lifeofasoftwareengineer.tumblr.com/post/152700972298/scariest-pumpkin-of-them-all,7403fc15-dbd3-4106-9d92-2a0b9699a8d4.png,18
 152697875683,Getting code reviews that only change whitespace,http://lifeofasoftwareengineer.tumblr.com/post/152697875683/getting-code-reviews-that-only-change-whitespace,ec362511-a66c-4bf3-9f6a-f654faf5dc0d.gif,4
 152697787893,The lead software engineer at the end of the day,http://lifeofasoftwareengineer.tumblr.com/post/152697787893/the-lead-software-engineer-at-the-end-of-the-day,4d91c875-9667-4799-ab6a-4426f270d037.gif,13
-144470759463,Motto of the senior engineer,http://lifeofasoftwareengineer.tumblr.com/post/144470759463/motto-of-the-senior-engineer,0d518ff1-d230-4ec4-b036-3fb5268bfe6d.jpg,12
 144470687798,Shipping a really old feature branch,http://lifeofasoftwareengineer.tumblr.com/post/144470687798/shipping-a-really-old-feature-branch,a8354fb2-ce3c-4f30-a6ba-d014b3c69219.gif,3
 142037100868,Every time I try to configure Xcode build settings,http://lifeofasoftwareengineer.tumblr.com/post/142037100868/every-time-i-try-to-configure-xcode-build-settings,2c0f5d51-0499-4cf5-a2db-8d43bdb8f2b3.gif,7
 140633923623,Essential Reading.,http://lifeofasoftwareengineer.tumblr.com/post/140633923623/essential-reading,1ee2e9d4-4de2-4c1c-bda5-5238b2231d8c.jpg,40
@@ -1193,7 +1191,6 @@
 97077187320,[PG13] QA when a non-regression bug comes in close to release,http://lifeofasoftwareengineer.tumblr.com/post/97077187320/pg13-qa-when-a-non-regression-bug-comes-in-close,7aeba09f-acb3-4ec3-8e26-eb190255cc18.gif,3
 96940447378,Trying to cancel a git push,http://lifeofasoftwareengineer.tumblr.com/post/96940447378/trying-to-cancel-a-git-push,1aa004ac-a7ed-4dbe-a4f0-e886fcfe65b0.gif,5
 96591461108,When the boss is looking for an engineer for a midnight release.,http://lifeofasoftwareengineer.tumblr.com/post/96591461108/when-the-boss-is-looking-for-an-engineer-for-a,faa70eac-984a-4178-b684-1b53a63c861a.gif,5
-95955488438,Just deleted a huge swath of unused code,http://lifeofasoftwareengineer.tumblr.com/post/95955488438/just-deleted-a-huge-swath-of-unused-code,9329c2a2-93c9-4928-9302-e51f5e2eeaad.gif,19
 95755391873,First demo run to management,http://lifeofasoftwareengineer.tumblr.com/post/95755391873/first-demo-run-to-management,0f6ee0ff-2720-4734-9856-74b69b4f2f88.gif,15
 95733715738,Autobiography of a Software Engineer,http://lifeofasoftwareengineer.tumblr.com/post/95733715738/autobiography-of-a-software-engineer,7173e586-ef3f-407a-98f6-f9a1436f36fd.png,33
 95260247328,Project Development Lifecycle Visualized,http://lifeofasoftwareengineer.tumblr.com/post/95260247328/project-development-lifecycle-visualized,f0414108-9311-41e8-b7c3-7f9bbddad18c.gif,16
@@ -1202,7 +1199,6 @@
 93983233318,"""make clean""",http://lifeofasoftwareengineer.tumblr.com/post/93983233318/make-clean,4d45436a-175a-4b44-9e22-841e00a6beec.gif,6
 93813639818,MFW someone tries to solve a concurrency problem by manipulating the run loop,http://lifeofasoftwareengineer.tumblr.com/post/93813639818/mfw-someone-tries-to-solve-a-concurrency-problem,88d72dbe-6279-4d10-a073-44ceb7930590.gif,6
 93803270693,Trying to sneak a non-critical bug past QA for a production release.,http://lifeofasoftwareengineer.tumblr.com/post/93803270693/trying-to-sneak-a-non-critical-bug-past-qa-for-a,199aff82-060f-4b62-816a-eb1e68568e47.gif,4
-93223616498,When someone asks me to make a big change to the code the day before ship,http://lifeofasoftwareengineer.tumblr.com/post/93223616498/when-someone-asks-me-to-make-a-big-change-to-the,89da30a5-1c84-4ab8-90c9-ec2583009336.gif,11
 92862089273,When someone mentions free food at a meeting,http://lifeofasoftwareengineer.tumblr.com/post/92862089273/when-someone-mentions-free-food-at-a-meeting,50f771cc-9e88-4fd3-9f93-39ccd3ae2a69.gif,2
 92732360253,The customer's reply whenever I ask them to do something on their computer,http://lifeofasoftwareengineer.tumblr.com/post/92732360253/the-customers-reply-whenever-i-ask-them-to-do,0de04207-fe6d-497b-82a6-766e042f094f.gif,6
 92635292143,When I move all my RC and Configs to my work computer,http://lifeofasoftwareengineer.tumblr.com/post/92635292143/when-i-move-all-my-rc-and-configs-to-my-work,1f97b5ce-2633-4868-a936-f13263b4a81b.gif,3
@@ -1274,7 +1270,6 @@
 70205046974,Getting away with a hotfix in production without anyone noticing,http://lifeofasoftwareengineer.tumblr.com/post/70205046974/getting-away-with-a-hotfix-in-production-without,8b7ae2f1-2980-48a6-baa7-2ae93a1a89d6.jpg,7
 69787385274,"When the ""screw this, I'm rewriting it"" moment is reached",http://lifeofasoftwareengineer.tumblr.com/post/69787385274/when-the-screw-this-im-rewriting-it-moment-is,1964adec-4e04-42bb-8a1f-3779a6f0df83.gif,19
 69685949653,When the Chief Engineer finally acknowledges that I have a good design,http://lifeofasoftwareengineer.tumblr.com/post/69685949653/when-the-chief-engineer-finally-acknowledges-that,6d1f707d-6fb6-40d7-a3ab-cfe3adb7d805.gif,4
-69584087642,When I try to explain my code at a code review,http://lifeofasoftwareengineer.tumblr.com/post/69584087642/when-i-try-to-explain-my-code-at-a-code-review,e71911af-3f6d-474e-96ec-ed61031dccd9.jpg,8
 69497877099,Devs being invited to a hackathon,http://lifeofasoftwareengineer.tumblr.com/post/69497877099/devs-being-invited-to-a-hackathon,e5b4561c-8986-4317-b21d-966a63acdb2d.gif,2
 69497492504,When you notice the app going into a bad state during a demo,http://lifeofasoftwareengineer.tumblr.com/post/69497492504/when-you-notice-the-app-going-into-a-bad-state,0b756512-f1f4-45df-91fd-9958f8f9639a.gif,4
 69082626595,Using private API,http://lifeofasoftwareengineer.tumblr.com/post/69082626595/using-private-api,f4328833-c6f5-4369-9e20-931945dbb068.gif,1
@@ -1372,12 +1367,6 @@
 44223584225,Looking for memory leaks,http://lifeofasoftwareengineer.tumblr.com/post/44223584225/looking-for-memory-leaks,34d8f605-2546-4e08-956c-7cf4cc192d36.gif,7
 43987370699,Coming to work on Mondays and realizing that freshly installed product isn't working in the production.,http://lifeofasoftwareengineer.tumblr.com/post/43987370699/coming-to-work-on-mondays-and-realizing-that,9e05d10b-c97b-49bc-8446-f90c7ec1ce34.gif,4
 43410498801,Every day at lunch,http://lifeofasoftwareengineer.tumblr.com/post/43410498801/every-day-at-lunch,ab6cbd41-fca2-46ed-9fda-7832f32f280d.gif,2
-43361886760,Hate it when this happens,http://lifeofasoftwareengineer.tumblr.com/post/43361886760/hate-it-when-this-happens,d6ae19bd-1f3d-4a8b-803b-823a4ce92a40.jpg,5
-43361680366,True facts (working with a new technology),http://lifeofasoftwareengineer.tumblr.com/post/43361680366/true-facts-working-with-a-new-technology,7ec2b61b-24c1-42db-9f67-174bf88a6063.png,1
-43361099771,Some sponsors,http://lifeofasoftwareengineer.tumblr.com/post/43361099771/some-sponsors,06fbf792-aec5-4709-bf26-4e9c566c386a.png,2
-43360881427,"When you do a ""git reset --hard"" to the wrong hash",http://lifeofasoftwareengineer.tumblr.com/post/43360881427/when-you-do-a-git-reset-hard-to-the-wrong-hash,c4001ae4-09e6-4cf3-b99a-588ccfc4760f.gif,1
-43360582175,When someone reply-alls to a mass email,http://lifeofasoftwareengineer.tumblr.com/post/43360582175/when-someone-reply-alls-to-a-mass-email,5a3871e1-2049-440a-8804-af618d56c5f5.gif,1
-43360420592,When you've been working with Hibernate mappings for too long,http://lifeofasoftwareengineer.tumblr.com/post/43360420592/when-youve-been-working-with-hibernate-mappings,c27be76b-f53e-4d60-81e3-85ea6a1c98e4.gif,0
 43332898439,When I show to my boss that I have fixed a bug,http://lifeofasoftwareengineer.tumblr.com/post/43332898439/when-i-show-to-my-boss-that-i-have-fixed-a-bug,47cef2c1-aa6e-49f1-86ee-12ca4a63462c.jpg,14
 41288019235,After pressing the compile button,http://lifeofasoftwareengineer.tumblr.com/post/41288019235/after-pressing-the-compile-button,66786f2a-beb2-4883-9bea-f421c71eeba6.gif,30
 41287863868,Seeing FIXMEs in comments without a bug ticket,http://lifeofasoftwareengineer.tumblr.com/post/41287863868/seeing-fixmes-in-comments-without-a-bug-ticket,1b1b4ddf-5b49-4312-b872-7c3535d1af09.gif,2
@@ -1385,107 +1374,44 @@
 41287692377,Whenever you get a code review from /that/ guy,http://lifeofasoftwareengineer.tumblr.com/post/41287692377/whenever-you-get-a-code-review-from-that-guy,14f4ebda-29aa-4604-96b1-619b7a85b5af.gif,0
 41287611202,Merging with top of tree after a week,http://lifeofasoftwareengineer.tumblr.com/post/41287611202/merging-with-top-of-tree-after-a-week,35c45000-93ce-4110-b93b-77c13fe6b19d.gif,0
 41287442049,When your roommates fix your hours long problem in 5 minutes,http://lifeofasoftwareengineer.tumblr.com/post/41287442049/when-your-roommates-fix-your-hours-long-problem-in,8fd77e52-db95-4f2c-b135-1e3777d13fcd.jpg,2
-40533804114,Pressing the compile button after a massive refactoring,http://lifeofasoftwareengineer.tumblr.com/post/40533804114/pressing-the-compile-button-after-a-massive,b89891ca-c091-49d1-832e-f11d0fc0bb25.gif,5
 40502573825,Whenever I have to do complex math in a method,http://lifeofasoftwareengineer.tumblr.com/post/40502573825/whenever-i-have-to-do-complex-math-in-a-method,215bf655-e770-4d2c-8fa7-dcb9548082ee.gif,3
 40502056891,"""Well, we could throw everything out and start over""",http://lifeofasoftwareengineer.tumblr.com/post/40502056891/well-we-could-throw-everything-out-and-start,bd264d8b-3fa7-410d-a838-fc6377ae9340.gif,0
 40501790380,Landing the patch,http://lifeofasoftwareengineer.tumblr.com/post/40501790380/landing-the-patch,7a78d50d-16ba-4552-96e4-aa58c1e5faef.gif,0
 40501764030,When you see stringly typed functions parsing their arguments,http://lifeofasoftwareengineer.tumblr.com/post/40501764030/when-you-see-stringly-typed-functions-parsing,18b20472-fd61-486d-949e-1bd92cd39d50.gif,2
 40501658757,Submitting your resume for your first job,http://lifeofasoftwareengineer.tumblr.com/post/40501658757/submitting-your-resume-for-your-first-job,3664487d-a7a2-4c85-b376-9555a6e046c8.gif,10
 40501620220,Last code review of the day,http://lifeofasoftwareengineer.tumblr.com/post/40501620220/last-code-review-of-the-day,48d6e084-0e92-4758-9519-593bc4784768.jpg,2
-39448502749,A few days before the milestone,http://lifeofasoftwareengineer.tumblr.com/post/39448502749/a-few-days-before-the-milestone,6a64817a-f2ab-4583-9158-32cd9afcd6d3.jpg,2
 39448263402,UI Design Discussions,http://lifeofasoftwareengineer.tumblr.com/post/39448263402/ui-design-discussions,445b4ac2-1e82-4f38-8f97-568dad48f370.gif,9
-39447277021,"""Nailed it!""",http://lifeofasoftwareengineer.tumblr.com/post/39447277021/nailed-it,ed8bace0-bd32-4808-b41e-5d488d803658.gif,10
-39447092911,Whenever I make a test pass using a mock object,http://lifeofasoftwareengineer.tumblr.com/post/39447092911/whenever-i-make-a-test-pass-using-a-mock-object,193984eb-d54d-4cdf-aad5-b6ef7639d3e1.png,0
-39447040856,When you accidentally clean and have to rebuild the entire project,http://lifeofasoftwareengineer.tumblr.com/post/39447040856/when-you-accidentally-clean-and-have-to-rebuild,3e3bef13-c3d5-4482-a200-0d101ed39402.gif,0
-39446872285,Code reviews gone physical,http://lifeofasoftwareengineer.tumblr.com/post/39446872285/code-reviews-gone-physical,58825f09-73e6-470e-bae1-50dec2a95670.gif,1
-39446757942,Spotting an unnecessary singleton,http://lifeofasoftwareengineer.tumblr.com/post/39446757942/spotting-an-unnecessary-singleton,8017ea98-6fdc-4de1-a149-ce9b158b6a67.gif,1
-39446594748,First attempts at multithreading/concurrency,http://lifeofasoftwareengineer.tumblr.com/post/39446594748/first-attempts-at-multithreadingconcurrency,9d1fc9d4-a97d-456b-af32-811f45d44dda.png,3
-39446264275,Whenever I don't sanitize form inputs,http://lifeofasoftwareengineer.tumblr.com/post/39446264275/whenever-i-dont-sanitize-form-inputs,cb7e8acc-c21b-4ddf-86cd-fe1ebe8f655c.jpeg,4
-39446201276,The build,http://lifeofasoftwareengineer.tumblr.com/post/39446201276/the-build,65f6f17a-826c-4d25-934f-df945c36389f.jpg,1
 39446083897,During postmortems,http://lifeofasoftwareengineer.tumblr.com/post/39446083897/during-postmortems,b848a53c-4895-4a1c-a6f7-fcf08e9009d7.gif,9
 37586741199,When the CS department teaches design patterns,http://lifeofasoftwareengineer.tumblr.com/post/37586741199/when-the-cs-department-teaches-design-patterns,1b76437e-6cf6-4370-8a38-89de3d333e59.gif,2
 37586719250,After my SCM auto-merges something I didn't expect it too,http://lifeofasoftwareengineer.tumblr.com/post/37586719250/after-my-scm-auto-merges-something-i-didnt-expect,17b15ff3-c3ec-47d7-84aa-d069fa7f5c37.gif,0
 37586699077,Starting a Rails project,http://lifeofasoftwareengineer.tumblr.com/post/37586699077/starting-a-rails-project,5ef4ead2-ce64-4171-9017-8d5b18b0408c.gif,1
 37586611496,When the project finally gets released,http://lifeofasoftwareengineer.tumblr.com/post/37586611496/when-the-project-finally-gets-released,46639ee9-5b19-405a-ac31-34215715616d.gif,1
-34675515617,Whenever I get conflicting requirements,http://lifeofasoftwareengineer.tumblr.com/post/34675515617/whenever-i-get-conflicting-requirements,f53a9d7b-da08-4c27-827f-06e20ee8dec0.gif,7
-34675399021,"Forgetting to clean the build after wondering ""Why doesn't this work!?""",http://lifeofasoftwareengineer.tumblr.com/post/34675399021/forgetting-to-clean-the-build-after-wondering-why,aecb273b-03f5-4866-b732-289ea556722b.gif,0
-34675254045,Getting a build failure email,http://lifeofasoftwareengineer.tumblr.com/post/34675254045/getting-a-build-failure-email,394ca889-98dd-41ad-85c2-19de1c745ce1.gif,2
-34675205873,When I'm totally 100% sure I fixed a bug so I post it immediately for review,http://lifeofasoftwareengineer.tumblr.com/post/34675205873/when-im-totally-100-sure-i-fixed-a-bug-so-i-post,362063e5-d4e7-4d63-a1dc-48d7ab2e34de.gif,6
-34674805607,When someone proposes using a singleton,http://lifeofasoftwareengineer.tumblr.com/post/34674805607/when-someone-proposes-using-a-singleton,135d4e92-517c-4105-84b7-1e572309b003.gif,4
-34674750378,Three months into the job,http://lifeofasoftwareengineer.tumblr.com/post/34674750378/three-months-into-the-job,ddc763e8-37e8-4b6e-a4f1-3e9327871df5.gif,3
-34674652658,Whenever I try to explain what I do,http://lifeofasoftwareengineer.tumblr.com/post/34674652658/whenever-i-try-to-explain-what-i-do,933bec27-e6fe-4d55-8df0-27420fac560e.gif,1
-34674470089,Monday mornings,http://lifeofasoftwareengineer.tumblr.com/post/34674470089/monday-mornings,10de86e3-ccc0-4f58-b5e3-9a53f0da2298.gif,2
-34674310383,When the lead developer complains about his hours,http://lifeofasoftwareengineer.tumblr.com/post/34674310383/when-the-lead-developer-complains-about-his-hours,2ca7d9ac-5304-41d1-882b-ab007b81c1cc.gif,4
-33439240137,Fixing the bug you wrote,http://lifeofasoftwareengineer.tumblr.com/post/33439240137/fixing-the-bug-you-wrote,dee9cc5b-fc4f-4606-9cb1-c65b20be4e04.gif,2
-33439159351,Sending a chunky bug to another team,http://lifeofasoftwareengineer.tumblr.com/post/33439159351/sending-a-chunky-bug-to-another-team,69b6829b-fc97-4416-9ec1-505a35042183.gif,2
-32889624370,Whenever anyone tries to change the xcodeproj while I'm working on it,http://lifeofasoftwareengineer.tumblr.com/post/32889624370/whenever-anyone-tries-to-change-the-xcodeproj,efbb594f-5923-4364-b8f0-fa87d5626d64.gif,1
-32874324959,Hitting the build button after a massive refactoring,http://lifeofasoftwareengineer.tumblr.com/post/32874324959/hitting-the-build-button-after-a-massive,f8bd0031-922a-4a64-9945-a167df48bd9d.gif,1
-31466748658,Committing binaries to the repo,http://lifeofasoftwareengineer.tumblr.com/post/31466748658/committing-binaries-to-the-repo,70fe0762-7ca8-449b-9d15-4e4968749023.gif,1
-31466631968,Architecture meetings,http://lifeofasoftwareengineer.tumblr.com/post/31466631968/architecture-meetings,8582c0a4-5298-429e-bb7a-7e8aa297dcee.gif,0
-31466623537,Working with a new codebase,http://lifeofasoftwareengineer.tumblr.com/post/31466623537/working-with-a-new-codebase,aa8a816a-8d91-44e2-930d-05f27f130b36.gif,2
-31466614708,How I hope things go when I suggest a design change,http://lifeofasoftwareengineer.tumblr.com/post/31466614708/how-i-hope-things-go-when-i-suggest-a-design,8080e44a-177c-4dc4-9773-13960950f0c3.gif,0
 31466317945,When asked to review a teammate's code,http://lifeofasoftwareengineer.tumblr.com/post/31466317945/when-asked-to-review-a-teammates-code,e7be6cfa-f79d-4f50-8178-ba95e8343ec1.gif,0
 31000610513,When I push the huge changes to the API and break the build,http://lifeofasoftwareengineer.tumblr.com/post/31000610513/when-i-push-the-huge-changes-to-the-api-and-break,b8e00884-ba71-4cf0-9b91-b362e95d1ac7.gif,0
 30498928354,When I break the build,http://lifeofasoftwareengineer.tumblr.com/post/30498928354/when-i-break-the-build,83e0fb2d-85b1-4dbc-934c-df41902e3562.gif,2
-30433942206,Interactions with most EPMs,http://lifeofasoftwareengineer.tumblr.com/post/30433942206/interactions-with-most-epms,fabb3829-e7cc-4861-9943-917642afbe84.gif,0
-30433863239,Towards the end of a release,http://lifeofasoftwareengineer.tumblr.com/post/30433863239/towards-the-end-of-a-release,6c9632e4-ec31-4a8b-b007-73b608ca9e88.gif,1
-30433831567,When I hear my name called down the hallway,http://lifeofasoftwareengineer.tumblr.com/post/30433831567/when-i-hear-my-name-called-down-the-hallway,d66ce5fc-adcc-4b63-b903-1d3ec6169bf6.gif,1
-30423645880,"When an email says ""free lunch""",http://lifeofasoftwareengineer.tumblr.com/post/30423645880/when-an-email-says-free-lunch,a6b98a99-a1fe-4136-bc07-cf5d4a038bd2.gif,2
-30423565203,Suppressing the need to refactor code while fixing an unrelated bug,http://lifeofasoftwareengineer.tumblr.com/post/30423565203/suppressing-the-need-to-refactor-code-while-fixing,3728c80a-cd13-4383-83d5-1cafaca3392a.gif,1
-30421511352,When I try to learn the new lingo on the job,http://lifeofasoftwareengineer.tumblr.com/post/30421511352/when-i-try-to-learn-the-new-lingo-on-the-job,42b2336f-a910-46a9-91c7-a05c046e0302.gif,0
 30341352022,Finding out a coworker didn't comment anything,http://lifeofasoftwareengineer.tumblr.com/post/30341352022/finding-out-a-coworker-didnt-comment-anything,7ff33220-6405-4e66-bdbb-da7bc2f03184.gif,2
 30340701219,Three hours after a release and nothing has gone wrong yet,http://lifeofasoftwareengineer.tumblr.com/post/30340701219/three-hours-after-a-release-and-nothing-has-gone,07d59e01-0078-453a-814b-63cde1579d86.gif,4
 30340683493,Dragging myself to *another* meeting,http://lifeofasoftwareengineer.tumblr.com/post/30340683493/dragging-myself-to-another-meeting,f5bfd743-1f1f-4c13-ac13-f1c08cfb59e1.gif,2
-30340581255,When you find *that* segfault,http://lifeofasoftwareengineer.tumblr.com/post/30340581255/when-you-find-that-segfault,eefef892-a893-403a-9986-acedf9cd0374.gif,0
-30340500876,Pushing to trunk,http://lifeofasoftwareengineer.tumblr.com/post/30340500876/pushing-to-trunk,0476552c-3d2c-47ac-908e-da61a6f1aad7.gif,0
-30340405057,When I get a code review from the senior engineer,http://lifeofasoftwareengineer.tumblr.com/post/30340405057/when-i-get-a-code-review-from-the-senior-engineer,05fc1463-892b-495d-8766-c613ce80963e.gif,5
-30340311445,Project managers setting a release date,http://lifeofasoftwareengineer.tumblr.com/post/30340311445/project-managers-setting-a-release-date,5c0cc63d-e48a-44e1-8ffa-d03d7bac2512.gif,3
-30339959567,When I come up with the right solution the wrong way,http://lifeofasoftwareengineer.tumblr.com/post/30339959567/when-i-come-up-with-the-right-solution-the-wrong,da4aeb7e-40cb-46a0-9b85-f0268f03e4c7.gif,4
 30339917774,When someone has a question in my speciality,http://lifeofasoftwareengineer.tumblr.com/post/30339917774/when-someone-has-a-question-in-my-speciality,9d7cc54d-56e0-4f99-afc5-405364b92870.gif,5
-30339870273,Whenever I try to contact IT,http://lifeofasoftwareengineer.tumblr.com/post/30339870273/whenever-i-try-to-contact-it,bb38e8c6-aea3-4907-8c7c-4f72ede2188c.gif,3
 30339700622,As I slowly wade into a terrible codebase,http://lifeofasoftwareengineer.tumblr.com/post/30339700622/as-i-slowly-wade-into-a-terrible-codebase,97126ffa-abf5-4224-9560-efb784e76917.gif,4
 30039747425,After a fire alarm at a software company,http://lifeofasoftwareengineer.tumblr.com/post/30039747425/after-a-fire-alarm-at-a-software-company,02150c45-bbef-47d7-81ed-db14ab1cfd62.gif,1
 30039735529,When I'm forced to maintain legacy code,http://lifeofasoftwareengineer.tumblr.com/post/30039735529/when-im-forced-to-maintain-legacy-code,5fd5f6dd-0003-4e42-ae27-744ad6783dd7.gif,3
 30039641763,When I'm told a problem is unsolvable,http://lifeofasoftwareengineer.tumblr.com/post/30039641763/when-im-told-a-problem-is-unsolvable,17c0cc41-70ec-49bd-8aae-d667c6383116.gif,0
 30035364025,When a deadline is looming and you finish just in time,http://lifeofasoftwareengineer.tumblr.com/post/30035364025/when-a-deadline-is-looming-and-you-finish-just-in,b9a9e87b-8284-403d-93e9-13bb04bbfec7.gif,0
-30035189162,You first time breaking the build.,http://lifeofasoftwareengineer.tumblr.com/post/30035189162/you-first-time-breaking-the-build,6069c948-8c46-4978-a57c-96f8b8176473.gif,2
 30035169788,When I fix a bug I added before anyone else finds out,http://lifeofasoftwareengineer.tumblr.com/post/30035169788/when-i-fix-a-bug-i-added-before-anyone-else-finds,0ca274ae-b895-4b03-8bde-d9dbde848bb9.gif,6
 30035160894,How I feel when I finish the requirements doc for a new project,http://lifeofasoftwareengineer.tumblr.com/post/30035160894/how-i-feel-when-i-finish-the-requirements-doc-for,33b9afaa-ad5f-4179-a97d-c920d83c9b39.gif,2
-29921132751,Whenever I get an email from Jenkins,http://lifeofasoftwareengineer.tumblr.com/post/29921132751/whenever-i-get-an-email-from-jenkins,2cf74e6d-efa0-458f-ae63-cf65258373f6.gif,1
-27377173293,What it feels like when I read excessively verbose documentation,http://lifeofasoftwareengineer.tumblr.com/post/27377173293/what-it-feels-like-when-i-read-excessively-verbose,038cd179-0111-4144-aa0d-2bc716758521.jpg,1
-27376656544,Parenting level: Software Engineer,http://lifeofasoftwareengineer.tumblr.com/post/27376656544/parenting-level-software-engineer,edb611b9-e271-4ec5-b177-da1d124fe94a.gif,7
-27376473719,Whenever I join a conference call,http://lifeofasoftwareengineer.tumblr.com/post/27376473719/whenever-i-join-a-conference-call,f8add5cc-390f-4c7e-8c72-53a026e41c72.gif,2
-27376380645,When the SQL query isn't working quite right...,http://lifeofasoftwareengineer.tumblr.com/post/27376380645/when-the-sql-query-isnt-working-quite-right,25b123d2-abcb-48cc-97d6-769b2fec7f21.gif,0
-27376283989,Defending code in a code review,http://lifeofasoftwareengineer.tumblr.com/post/27376283989/defending-code-in-a-code-review,ea5384b5-5c01-42a4-b763-fdd662baf43f.gif,0
-26593307407,Whenever I have to write anything with malloc in it,http://lifeofasoftwareengineer.tumblr.com/post/26593307407/whenever-i-have-to-write-anything-with-malloc-in,15b6472a-a283-4fc4-948c-3df84d411734.gif,0
-26593220735,Java Updates,http://lifeofasoftwareengineer.tumblr.com/post/26593220735/java-updates,d18133cb-740c-4c01-8527-7f5c743b07e9.jpg,7
-26593180549,When you accidentally overwrite that file you've been working on for the past hour,http://lifeofasoftwareengineer.tumblr.com/post/26593180549/when-you-accidentally-overwrite-that-file-youve,c5012cd2-5c75-4bd4-9a8c-39357a9f205f.gif,4
-26503773958,When GDB doesn't give me symbols,http://lifeofasoftwareengineer.tumblr.com/post/26503773958/when-gdb-doesnt-give-me-symbols,2541b16c-ead1-47a7-9d61-bdb612aec7c8.gif,0
 26503366466,When you get the team you wanted,http://lifeofasoftwareengineer.tumblr.com/post/26503366466/when-you-get-the-team-you-wanted,0e2a09f0-0f43-4397-a2a0-bffd8c2ef8de.gif,0
-24424843880,Mock objects,http://lifeofasoftwareengineer.tumblr.com/post/24424843880/mock-objects,a94feecc-c7ba-4bcc-8772-cec240e4f2f7.gif,1
-24417475734,Debugging code you wrote last year,http://lifeofasoftwareengineer.tumblr.com/post/24417475734/debugging-code-you-wrote-last-year,469451c8-3438-49ec-9ebe-28d1a6de00c4.gif,6
-24417275583,After graduating,http://lifeofasoftwareengineer.tumblr.com/post/24417275583/after-graduating,ac900f3f-b385-48d6-a574-b59ac653f5b1.gif,8
 24416376768,When a co-worker fixes a bug for you,http://lifeofasoftwareengineer.tumblr.com/post/24416376768/when-a-co-worker-fixes-a-bug-for-you,d2c0eda1-4a79-408d-9e6a-a031b7420444.gif,3
 24416311663,The first time you badge into a restricted building,http://lifeofasoftwareengineer.tumblr.com/post/24416311663/the-first-time-you-badge-into-a-restricted,56449a2a-346d-40ad-8cca-2d163882472e.gif,4
 24151325249,When a co-worker uses tables in an HTML page,http://lifeofasoftwareengineer.tumblr.com/post/24151325249/when-a-co-worker-uses-tables-in-an-html-page,af7f62c1-d661-4382-8a42-5c290fe896c8.gif,1
 24151263398,Bringing up a bug found in production to your manager,http://lifeofasoftwareengineer.tumblr.com/post/24151263398/bringing-up-a-bug-found-in-production-to-your,c4429e1d-debc-40e1-96b4-9d82442b57fa.gif,4
-23528950660,The creative process,http://lifeofasoftwareengineer.tumblr.com/post/23528950660/the-creative-process,ee5874e8-591b-4d2f-93e9-bdccb52ced99.jpg,1
-23528934438,The checkin right before the build broke,http://lifeofasoftwareengineer.tumblr.com/post/23528934438/the-checkin-right-before-the-build-broke,f40be4bf-989c-4d35-b148-764d2fb1d23c.jpg,1
-23528882637,My hard drive yesterday,http://lifeofasoftwareengineer.tumblr.com/post/23528882637/my-hard-drive-yesterday,7287a0e9-01bd-4c08-9e97-bb3ff3565b0c.jpg,2
-23528784083,A worthy skill,http://lifeofasoftwareengineer.tumblr.com/post/23528784083/a-worthy-skill,d5944362-58a7-448b-be35-be42c19d6f09.jpg,7
-23528732948,The effects of caffeine,http://lifeofasoftwareengineer.tumblr.com/post/23528732948/the-effects-of-caffeine,44753143-a2f8-45e2-8afd-966e47f590aa.jpg,0
-23528653486,First day on the job with a new codebase,http://lifeofasoftwareengineer.tumblr.com/post/23528653486/first-day-on-the-job-with-a-new-codebase,a28585e4-106a-4db8-a744-71ba8e79cf14.jpg,2
-23528579847,Scumbag Ctrl+C,http://lifeofasoftwareengineer.tumblr.com/post/23528579847/scumbag-ctrl-c,9268181c-14a4-4448-9b18-c488c19a261e.png,1
 23471063502,They guy who wrote the code you just spent four hours debugging,http://lifeofasoftwareengineer.tumblr.com/post/23471063502/they-guy-who-wrote-the-code-you-just-spent-four,3b7ea0b7-a07a-43ff-a39a-573745ed37b1.gif,2
-23467807126,When you're trying to clarify a requirement with a sponsor,http://lifeofasoftwareengineer.tumblr.com/post/23467807126/when-youre-trying-to-clarify-a-requirement-with-a,8da3bd14-c622-43bf-9b2c-8d2299646db2.gif,2
 23467751103,During presentation rehearsals,http://lifeofasoftwareengineer.tumblr.com/post/23467751103/during-presentation-rehearsals,b5c1f4b8-41ef-493a-8008-95cb18ce1e45.gif,0
 23456647707,What every dev wishes they could do whenever scope creep happens,http://lifeofasoftwareengineer.tumblr.com/post/23456647707/what-every-dev-wishes-they-could-do-whenever-scope,dd56ad3f-9443-4f97-a144-d2394ff4afd9.gif,2
 23456534899,Turning in the final technical report,http://lifeofasoftwareengineer.tumblr.com/post/23456534899/turning-in-the-final-technical-report,ed25f041-64ef-4f72-a56a-5a4b0e7bdb24.gif,3
 23456410577,"When I hear ""COBOL"" during an interview",http://lifeofasoftwareengineer.tumblr.com/post/23456410577/when-i-hear-cobol-during-an-interview,eea21635-721c-4acd-a4a3-f836c2fd9cb9.gif,0
 23456280742,After the release,http://lifeofasoftwareengineer.tumblr.com/post/23456280742/after-the-release,cbb4be7b-0a2c-4401-8169-737b1d8b0830.gif,0
 23151130732,Ensuring cross-browser compatibility,http://lifeofasoftwareengineer.tumblr.com/post/23151130732/ensuring-cross-browser-compatibility,373b338c-8f89-4ab0-8aef-be31b4be8e1f.gif,2
-23151052647,When you come across a hackey fix,http://lifeofasoftwareengineer.tumblr.com/post/23151052647/when-you-come-across-a-hackey-fix,9b196ee3-7657-41f5-88f2-999cddce5c52.jpg,2
-23151001059,"Always, always what happens when you try to change code before a demo",http://lifeofasoftwareengineer.tumblr.com/post/23151001059/always-always-what-happens-when-you-try-to-change,a7df116d-d7ef-4040-bcc1-0b39d750d263.png,5
 23150909515,I don't always test in IE...,http://lifeofasoftwareengineer.tumblr.com/post/23150909515/i-dont-always-test-in-ie,10f92c06-e4a6-439a-bd60-6fd584c3ba11.png,3
 23148434387,Whenever I try beta software,http://lifeofasoftwareengineer.tumblr.com/post/23148434387/whenever-i-try-beta-software,633cb140-6d88-4c55-8ba6-5cb9ff1a77ca.gif,2
 23148311776,Refactoring,http://lifeofasoftwareengineer.tumblr.com/post/23148311776/refactoring,03a0e98e-0f1a-46d8-99e9-67d01094bafa.gif,2
@@ -1494,7 +1420,6 @@
 22935136433,When your app crashes so hard it kills your computer,http://lifeofasoftwareengineer.tumblr.com/post/22935136433/when-your-app-crashes-so-hard-it-kills-your,657e450f-b6e8-449c-a799-1039bb77101d.gif,1
 22935038887,Your teammates when they notice you checked binaries into SCM,http://lifeofasoftwareengineer.tumblr.com/post/22935038887/your-teammates-when-they-notice-you-checked,55b04fe2-8548-4f73-8fef-5354ca7ae69b.gif,0
 22934983167,When your co-worker pushes a massive changeset,http://lifeofasoftwareengineer.tumblr.com/post/22934983167/when-your-co-worker-pushes-a-massive-changeset,342e187b-de36-406c-b60e-6063a90eb234.gif,0
-22934876102,I don't always fart at my desk,http://lifeofasoftwareengineer.tumblr.com/post/22934876102/i-dont-always-fart-at-my-desk,bd6f5fbc-dbbb-4e39-892e-ffc89fd3db2e.jpg,2
 22934840581,Bob Ross on bugs,http://lifeofasoftwareengineer.tumblr.com/post/22934840581/bob-ross-on-bugs,a9295a62-d0bb-4f16-acc5-8a939e725c46.gif,2
 22872996671,Working with legacy code,http://lifeofasoftwareengineer.tumblr.com/post/22872996671/working-with-legacy-code,756d71d2-fa6e-4cd2-8762-f4ce695eb6dd.gif,0
 22856975851,Seeing LINQ for the first time,http://lifeofasoftwareengineer.tumblr.com/post/22856975851/seeing-linq-for-the-first-time,85617d7c-3873-4872-9bbd-a4d9c5170d2c.gif,0
@@ -1520,7 +1445,6 @@
 22728957235,Stumbling across a race condition,http://lifeofasoftwareengineer.tumblr.com/post/22728957235/stumbling-across-a-race-condition,3331ea85-70c7-4ef2-b65b-5695f246562a.gif,1
 22728614488,When the sponsor tries to make last-minute changes,http://lifeofasoftwareengineer.tumblr.com/post/22728614488/when-the-sponsor-tries-to-make-last-minute-changes,b0ce771c-861f-44ce-bbe3-598aa87a0730.gif,0
 22715834871,When a teammate talks about unimplemented reach features to a sponsor,http://lifeofasoftwareengineer.tumblr.com/post/22715834871/when-a-teammate-talks-about-unimplemented-reach,106842f4-1677-474e-8534-1d79a8245092.gif,0
-22714667634,When you find out a bug is in another team's court,http://lifeofasoftwareengineer.tumblr.com/post/22714667634/when-you-find-out-a-bug-is-in-another-teams-court,e2ece59d-6322-4d8a-b120-f15f47a906c5.gif,1
 22714641398,Looking at unit tests you wrote while drunk,http://lifeofasoftwareengineer.tumblr.com/post/22714641398/looking-at-unit-tests-you-wrote-while-drunk,df4d3803-a02d-41f8-8827-31bf9559b5da.gif,5
 22706825089,When you fuzz test your app for the first time,http://lifeofasoftwareengineer.tumblr.com/post/22706825089/when-you-fuzz-test-your-app-for-the-first-time,afb1655d-a866-440e-9aa4-110bf7cc361b.gif,0
 22706541761,Finding out you broke the build,http://lifeofasoftwareengineer.tumblr.com/post/22706541761/finding-out-you-broke-the-build,0b334555-8fa7-47dc-8155-646027e52799.gif,0
@@ -1620,7 +1544,6 @@
 153917700042,"""We'd like to have you meet with the vendor's presales team...""",https://securityreactions.tumblr.com/post/153917700042/wed-like-to-have-you-meet-with-the-vendors,854b8e93-edc2-4a4d-a878-fc3ccfd6647e.gif,11
 153911665430,When I see all the amazing Infosec Reactions submitted after mine gets posted,https://securityreactions.tumblr.com/post/153911665430/when-i-see-all-the-amazing-infosec-reactions,f651610d-1bae-45ba-b074-d1b44aaa7a97.gif,5
 153872871869,Hurry up! Blue team is coming :),https://securityreactions.tumblr.com/post/153872871869/hurry-up-blue-team-is-coming,ef5a899e-9943-4633-8d8d-4ab488d0a08d.gif,24
-153834211560,Fancy Bear nowadays,https://securityreactions.tumblr.com/post/153834211560/fancy-bear-nowadays,0a1e8b6a-d681-4afd-a75d-52c8c7ee5302.gif,15
 153827676966,"""They can't have exfiltrated that way! We accounted for every contingency!""",https://securityreactions.tumblr.com/post/153827676966/they-cant-have-exfiltrated-that-way-we,063b56f0-ef32-48ab-a0fc-cc6346a5c9a1.gif,5
 153825705489,Why cookies are dangerous for you,https://securityreactions.tumblr.com/post/153825705489/why-cookies-are-dangerous-for-you,f4208acc-aa12-47ef-ba0c-6f746bcc6282.gif,43
 153784413358,explaining what you do at thanksgiving to your parents,https://securityreactions.tumblr.com/post/153784413358/swiftonsecurity-waiting-for-2017-security,312bc2d2-fc06-4ecd-a8c8-2c76aa2bbc3f.gif,10
@@ -1679,7 +1602,6 @@
 149759270925,"""i spoke to one of their networking guys and he said that root compromise was not possible""",https://securityreactions.tumblr.com/post/149759270925/i-spoke-to-one-of-their-networking-guys-and-he,d4f27d35-0f55-494c-b9bb-05159832896c.gif,16
 149472117175,When you see the customer has implemented CSP but...,https://securityreactions.tumblr.com/post/149472117175/when-you-see-the-customer-has-implemented-csp,4e7583ba-70aa-4735-99d1-58e4bfb14c5a.gif,7
 149142879329,When you begin monitoring traffic from marketing guy's laptop and find several packets with PornHub IP addresses,https://securityreactions.tumblr.com/post/149142879329/when-you-begin-monitoring-traffic-from-marketing,60952937-8ada-4e64-8765-eef51d18a991.gif,79
-149133833160,"""We're using MD5, why are you upset?  It hasn't been broken.""",https://securityreactions.tumblr.com/post/149133833160/were-using-md5-why-are-you-upset-it-hasnt,43e9781a-44b8-430f-9e6a-0ffbd85dce46.gif,26
 149087668723,"My reaction when $dev asks me to review their code after telling me ""Security isn't on my list of priorities.""",https://securityreactions.tumblr.com/post/149087668723/my-reaction-when-dev-asks-me-to-review-their-code,c304ec45-0952-4a9e-8a51-c8d0dba9f907.gif,18
 149085460496,When I finally find what makes the app crash,https://securityreactions.tumblr.com/post/149085460496/when-i-finally-find-what-makes-the-app-crash,0817389f-389d-463e-995a-61026c074f16.gif,38
 148842981804,"""Our proprietary crypto...""",https://securityreactions.tumblr.com/post/148842981804/our-proprietary-crypto,79660c23-b606-41a2-b194-c2c6b0aa2986.gif,77
@@ -1797,7 +1719,6 @@
 140866790705,"Then the payload is too big, but you manage to not make the process crash. And the exploit triggers.",https://securityreactions.tumblr.com/post/140866790705/then-the-payload-is-too-big-but-you-manage-to-not,08bfd60b-ade9-4ce9-aeec-4661342229a7.gif,68
 140861692172,when the VPN youre supposed to manage only has 121 bits of entropy.,https://securityreactions.tumblr.com/post/140861692172/when-the-vpn-youre-supposed-to-manage-only-has-121,e67b1039-ade2-4fab-8ace-cc54fe7b467a.gif,11
 140575882547,When a client asks for an IE compatibility,https://securityreactions.tumblr.com/post/140575882547/when-a-client-asks-for-an-ie-compatibility,2c21bc45-e59b-4eb7-82e4-da9e8135d364.gif,67
-140455487174,Mistakenly portscanning my own machine,https://securityreactions.tumblr.com/post/140455487174/mistakenly-portscanning-my-own-machine,3f29cd08-a2d0-4fe8-abd4-6a6b40a413ba.gif,58
 140337793485,When they give fancy names to vulnerabilities (CVE-2016-0800),https://securityreactions.tumblr.com/post/140337793485/when-they-give-fancy-names-to-vulnerabilities,ab29484d-5e68-4439-b2e3-4608033873ec.gif,30
 140284805285,Hard Disk forensics and file recovery,https://securityreactions.tumblr.com/post/140284805285/hard-disk-forensics-and-file-recovery,f5283860-fccb-4482-8dca-06040a2e4180.gif,58
 140282131415,First time with metasploit,https://securityreactions.tumblr.com/post/140282131415/first-time-with-metasploit,cee1fb76-e90d-46c5-8713-6900e3cfdc89.gif,37
@@ -1880,14 +1801,12 @@
 135195579873,Attackers can use a browser to exploit this issue.,https://securityreactions.tumblr.com/post/135195579873/attackers-can-use-a-browser-to-exploit-this-issue,b7ece7ee-9bb8-4c21-91fb-ef13a2db6bf4.gif,11
 135192642712,running iodine in an airport full of paid hotspots,https://securityreactions.tumblr.com/post/135192642712/running-iodine-in-an-airport-full-of-paid-hotspots,920f6689-95c7-4435-9cff-85c4c6e00f1e.gif,33
 135125776940,"Management is so busy developing security metrics and policy, they won't let their admins touch any of the machines...",https://securityreactions.tumblr.com/post/135125776940/management-is-so-busy-developing-security-metrics,2447b313-1cdf-4d04-bdaf-b5e9c9560881.gif,37
-135122249192,When malware escapes from the VM and drops the payload on my host.,https://securityreactions.tumblr.com/post/135122249192/when-malware-escapes-from-the-vm-and-drops-the,69723084-5a4b-4870-a8ac-35dd5140c81d.gif,13
 135060796379,When the next shift comes in mid incident,https://securityreactions.tumblr.com/post/135060796379/when-the-next-shift-comes-in-mid-incident,ce740917-33f5-47fc-9757-0647f8714f3d.gif,25
 135057561000,Kiosk breakout assessment,https://securityreactions.tumblr.com/post/135057561000/kiosk-breakout-assessment,c3763075-a426-4769-9ef2-8984ff61e0c3.gif,18
 135054359295,Security through obscurity,https://securityreactions.tumblr.com/post/135054359295/security-through-obscurity,3151820d-79e6-4243-af5e-8fbfcf0dde53.gif,16
 134993313176,"<during the physical side of the pen test> ""I'll just pick the lock and... oops.""",https://securityreactions.tumblr.com/post/134993313176/during-the-physical-side-of-the-pen-test-ill,11a26225-b6be-45f0-bd7e-72a28013724f.gif,20
 134932872604,"$admin rebuilds a machine but doesn't lock it down because ""Hardened machines are crippled.  It's hard for us to get work done.""",https://securityreactions.tumblr.com/post/134932872604/admin-rebuilds-a-machine-but-doesnt-lock-it-down,453e0abe-0eb6-443c-82b9-6a9fd92ba0d4.gif,34
 134868659924,when recruiters show up to the product booth you have to work at defcon,https://securityreactions.tumblr.com/post/134868659924/when-recruiters-show-up-to-the-product-booth-you,a8e7b333-5883-4546-b244-29c1f627973e.jpg,14
-134865665442,"When confronted for ""hacking"" by an admin who hasn't been told a pentest is taking place",https://securityreactions.tumblr.com/post/134865665442/when-confronted-for-hacking-by-an-admin-who,b684934a-87ed-4883-bc76-bbe84df30922.gif,5
 134862791071,InfoSec team manager after one of his team screws with his unlocked laptop,https://securityreactions.tumblr.com/post/134862791071/infosec-team-manager-after-one-of-his-team-screws,2c830a29-43fb-403e-b153-06f012ee3389.gif,12
 134804486723,"""My hobby is open source""",https://securityreactions.tumblr.com/post/134804486723/my-hobby-is-open-source,d012ec1e-7dbb-447b-b3d6-3a7cd9de98c3.gif,25
 134801462300,Wait... is that an open firewall port.... Lemme just....,https://securityreactions.tumblr.com/post/134801462300/wait-is-that-an-open-firewall-port-lemme,e42e8479-04a6-4b79-bcee-925715dcbe51.gif,113
@@ -2250,7 +2169,6 @@
 118871209959,Junior SOC analyst gets to go to Defcon,https://securityreactions.tumblr.com/post/118871209959/junior-soc-analyst-gets-to-go-to-defcon,0371d171-559f-452b-b5a0-5d9a6625341d.jpg,13
 118788006378,When major company claims they are secure and you already have a shell on the box.,https://securityreactions.tumblr.com/post/118788006378/when-major-company-claims-they-are-secure-and-you,45286f9e-fc03-4943-a156-21545497b54b.gif,17
 118743059892,Being told to disable some monitoring while $mgmt discusses impact on users....,https://securityreactions.tumblr.com/post/118743059892/being-told-to-disable-some-monitoring-while-mgmt,f7301fba-bd55-41e6-bc65-77a72572fbf4.gif,17
-118708561477,"Hack into university servers, drop DB just before the exam",https://securityreactions.tumblr.com/post/118708561477/hack-into-university-servers-drop-db-just-before,63a29619-f660-43ea-aa2f-9cbdc6c2a99a.gif,20
 118708505327,Students are forced to post Scanned copy of their passport in private facebook group in the comments if they want to work overboard from college,https://securityreactions.tumblr.com/post/118708505327/students-are-forced-to-post-scanned-copy-of-their,c333d0db-27e3-4b59-96c6-5c83222cde89.gif,13
 117774438142,"wordpress, persistent xss?",https://securityreactions.tumblr.com/post/117774438142/wordpress-persistent-xss,7a14c891-f680-41c5-9a08-ccb0f61d7f10.gif,15
 117774109742,That moment when the $VENDOR tells the client how to bypass their $SecurePin on the app,https://securityreactions.tumblr.com/post/117774109742/that-moment-when-the-vendor-tells-the-client-how,7e4f7b08-fe80-4582-8a0f-9dc0b28a3429.gif,7
@@ -2270,10 +2188,8 @@
 115305637408,"Looking through dropped traffic logs and seeing an outbound connection to ""images.playboy.com""",https://securityreactions.tumblr.com/post/115305637408/looking-through-dropped-traffic-logs-and-seeing-an,b1ceb077-4bb4-4abc-9714-f1c10b374f7c.gif,27
 115222858079,What Threat Intelligence is really,https://securityreactions.tumblr.com/post/115222858079/what-threat-intelligence-is-really,38c65625-fc7c-463b-a2fb-ee6b845c5bc8.gif,14
 115217672970,After a nocturne Penetration Test,https://securityreactions.tumblr.com/post/115217672970/after-a-nocturne-penetration-test,69a6d957-0a35-4daf-879b-01cffba9cd9d.gif,7
-115128763350,When Burp Suite crashes,https://securityreactions.tumblr.com/post/115128763350/when-burp-suite-crashes,ff1840b9-5d3a-48db-9fab-146f51d0aab1.gif,6
 115044254622,"threatfeed visualization of @Github under ""massive ddos attack""",https://securityreactions.tumblr.com/post/115044254622/threatfeed-visualization-of-github-under-massive,b7e1c34b-7d57-4027-bb69-e4de8eb75778.gif,28
 114847377297,Landing a shell on a BSD box and being entirely unable to pivot,https://securityreactions.tumblr.com/post/114847377297/landing-a-shell-on-a-bsd-box-and-being-entirely,dee0623e-4419-49cf-8701-88771016cfff.gif,28
-114847328252,"When $vendor who has been hacked by NSA last week, tells you their product is FIPS-certified",https://securityreactions.tumblr.com/post/114847328252/when-vendor-who-has-been-hacked-by-nsa-last-week,94a67bff-e4e5-40cb-9541-02edd42f98ae.gif,10
 114847284482,"Straying into the production environment, whilst under supervision",https://securityreactions.tumblr.com/post/114847284482/straying-into-the-production-environment-whilst,daddcf8f-f1d6-48e9-a9d9-9603a96d43e3.gif,29
 114762484407,I read an article on WashPost about this CVE,https://securityreactions.tumblr.com/post/114762484407/i-read-an-article-on-washpost-about-this-cve,481abbb4-6944-4466-a9f6-5873667c5e06.gif,2
 114762469987,Checking sec reations during dinner with the fam,https://securityreactions.tumblr.com/post/114762469987/checking-sec-reations-during-dinner-with-the-fam,eb12608d-77f2-4bf7-b470-2fecfa3c9985.gif,10
@@ -2308,7 +2224,6 @@
 110353295642,"""That"" student at CCDC competition",https://securityreactions.tumblr.com/post/110353295642/that-student-at-ccdc-competition,ac23afd4-3a2c-41a6-9b51-3434893f6aca.gif,8
 110266607480,New pentester claims to have confirmed I'm vulnerable to an older Windows bug (on my Linux box).,https://securityreactions.tumblr.com/post/110266607480/new-pentester-claims-to-have-confirmed-im,bfca1c39-8a3a-42b7-9c4f-5301e2055934.gif,45
 110261320029,"12 hours later, hosting still don't have CVE-2015-0235 in local mirrors",https://securityreactions.tumblr.com/post/110261320029/12-hours-later-hosting-still-dont-have,3c9bd079-05bc-404e-ab9c-5b8bcbb20112.gif,4
-110175995987,Another False Positive,https://securityreactions.tumblr.com/post/110175995987/another-false-positive,8b2d8ecf-0ed1-4070-b00b-e3de331931d4.gif,0
 110170666819,Vulnerability Testing,https://securityreactions.tumblr.com/post/110170666819/vulnerability-testing,a5e1b2db-e473-4261-9ea5-49d1153b91dc.gif,4
 110084769843,c-levels in a status update meeting,https://securityreactions.tumblr.com/post/110084769843/c-levels-in-a-status-update-meeting,9e21afa0-7fd2-4141-a35e-5475a0a948ec.gif,17
 110079492594,Hearing your coworker say his password is too long to crack,https://securityreactions.tumblr.com/post/110079492594/hearing-your-coworker-say-his-password-is-too-long,d1584c7c-2f60-4fa8-b308-8d67df75d130.gif,38
@@ -2316,7 +2231,6 @@
 109992566714,GHOST,https://securityreactions.tumblr.com/post/109992566714/ghost,a88ceedb-cbc6-41fd-a306-cb19cd707db5.gif,2
 109987138334,Accidental chmod -R on /,https://securityreactions.tumblr.com/post/109987138334/accidental-chmod-r-on,5eb0d440-c74a-4dbd-aaff-1683878bd1a8.gif,20
 109895505507,MS Security Essentials,https://securityreactions.tumblr.com/post/109895505507/ms-security-essentials,490d6360-2c23-46be-925e-dc93726bc7e7.gif,23
-109889218473,When you get the email from (ISC)2 saying you don't have enough CPEs,https://securityreactions.tumblr.com/post/109889218473/when-you-get-the-email-from-isc2-saying-you,1cb1ae21-caee-4fe3-9f58-9e8606438817.gif,4
 109596519905,Pentest scope sent as .GIF,https://securityreactions.tumblr.com/post/109596519905/pentest-scope-sent-as-gif,e9efd3f8-8fd6-4035-83b7-9c1b41e5ccc5.gif,5
 109590906468,"After the presentation: ""I did that like 10 years ago""",https://securityreactions.tumblr.com/post/109590906468/after-the-presentation-i-did-that-like-10-years,8c454d12-b155-4832-96b4-53910e1b930e.gif,14
 108931242478,Exec falling for phish,https://securityreactions.tumblr.com/post/108931242478/exec-falling-for-phish,e7b25dbd-a0f6-4ed3-81a9-1c4e24bfa87e.gif,24
@@ -2558,7 +2472,6 @@
 97145355991,After being fired from a shitty blue team gig,https://securityreactions.tumblr.com/post/97145355991/after-being-fired-from-a-shitty-blue-team-gig,540efc84-5226-4bdc-9df1-7216ba2b5a0c.gif,8
 97068205834,When you accidentally sweep the whole subnet & set off the honeypot alarms,https://securityreactions.tumblr.com/post/97068205834/when-you-accidentally-sweep-the-whole-subnet-set,fae94c68-d2c3-4a23-bdd1-7ae63ea264cf.gif,9
 97063634006,"Interviewer: ""So, what made you want to switch from sofware engineering to infosec?""",https://securityreactions.tumblr.com/post/97063634006/interviewer-so-what-made-you-want-to-switch,d57de569-d545-4bde-b1b5-afd198cd1d17.gif,22
-96983382222,When support asks to leave the remote access open all weekend,https://securityreactions.tumblr.com/post/96983382222/when-support-asks-to-leave-the-remote-access-open,343bc7d3-f10c-49ba-844e-f7a8aad00404.gif,15
 96978673938,"You audit an appliance and you find this : ""<?php function get_chuck_norris_quote() """,https://securityreactions.tumblr.com/post/96978673938/you-audit-an-appliance-and-you-find-this-php,d3b7f449-19e3-4f7a-aa18-c86cd813c963.gif,13
 96893782396,Exiting the bank after my debit card was cancelled because of a script kiddie,https://securityreactions.tumblr.com/post/96893782396/exiting-the-bank-after-my-debit-card-was-cancelled,f4b35840-fe1d-42da-8ab2-a74799516223.gif,5
 96887411473,What happens every time I try to make sense of EC-Council Official Courseware,https://securityreactions.tumblr.com/post/96887411473/what-happens-every-time-i-try-to-make-sense-of,2f1de8f5-963d-4288-b294-e17c9856504d.gif,3
@@ -2587,7 +2500,6 @@
 95922947737,Sidling up to the “Security Rockstars” speakers at DEF CON,https://securityreactions.tumblr.com/post/95922947737/sidling-up-to-the-security-rockstars-speakers-at,f31ca75f-24c7-4a27-a3f0-642d989c8569.gif,10
 95920481219,First machine scanned during a pentest is vulnerable to MS08-067 #DomainAdminBeforeLunch,https://securityreactions.tumblr.com/post/95920481219/first-machine-scanned-during-a-pentest-is,e31045d2-b53e-417d-ac7f-5f4833f769b1.gif,23
 95917569517,Skiddie using his brand-new Pineapple during Defcon 22,https://securityreactions.tumblr.com/post/95917569517/skiddie-using-his-brand-new-pineapple-during,5504b125-484b-4c98-832d-daee39ff54d4.gif,9
-95915895031,Using an ATM at Rio Hotel during DEF CON,https://securityreactions.tumblr.com/post/95915895031/using-an-atm-at-rio-hotel-during-def-con,3d848edc-1ae1-43a6-b1ec-ea1eb561fdca.gif,12
 95912594204,When the Alexis Park floormat is on the scavenger hunt list,https://securityreactions.tumblr.com/post/95912594204/when-the-alexis-park-floormat-is-on-the-scavenger,94745a35-586a-42c4-94f4-367599e6df70.gif,7
 95852245467,After Reviewing Numerous Bar Receipts From Defcon,https://securityreactions.tumblr.com/post/95852245467/after-reviewing-numerous-bar-receipts-from-defcon,adce9dda-621a-4023-a260-1b209115c6ec.gif,8
 95852133162,After I practiced my demo 100 times with no issues at all,https://securityreactions.tumblr.com/post/95852133162/after-i-practiced-my-demo-100-times-with-no-issues,33888b06-a091-437c-95de-f0f36940fa63.gif,19
@@ -2625,7 +2537,6 @@
 94732535396,"During a pentest debrief, client only worries about PCI compliance",https://securityreactions.tumblr.com/post/94732535396/during-a-pentest-debrief-client-only-worries,e832dfb5-2f5a-40e4-9e3d-42fb0b6a786b.gif,8
 94644397277,Devs wondering how we bypassed the client-side JS input validation,https://securityreactions.tumblr.com/post/94644397277/devs-wondering-how-we-bypassed-the-client-side-js,1b605783-975d-4663-9332-3da04c63d810.gif,21
 94638770852,What I imagine it looks like when Full Packet Capture is turned on,https://securityreactions.tumblr.com/post/94638770852/what-i-imagine-it-looks-like-when-full-packet,023a46c6-d244-4ba6-8615-1ab5f2678637.gif,19
-94548313622,When the EIP hits in the nopsled of my PAYLOAD,https://securityreactions.tumblr.com/post/94548313622/when-the-eip-hits-in-the-nopsled-of-my-payload,d585cf4c-398c-4306-a4cf-4d6e8bf2e13f.gif,4
 94542554613,"""As a personal project, this document has been released publicly without contacting Valve.""",https://securityreactions.tumblr.com/post/94542554613/as-a-personal-project-this-document-has-been,085a7e7e-c8b8-491d-a34c-2f33a10db7fa.gif,10
 94443154659,Android/iOS pentesting,https://securityreactions.tumblr.com/post/94443154659/androidios-pentesting,7c11f629-c838-4f52-9ed6-f7c6aea8a702.gif,9
 94352910133,Morning of the second day of a conference,https://securityreactions.tumblr.com/post/94352910133/morning-of-the-second-day-of-a-conference,1eeb83b8-a1da-43c2-a40a-6498253c8b6b.gif,20
@@ -3271,7 +3182,6 @@
 56426515000,Defacing a honeypot,https://securityreactions.tumblr.com/post/56426515000/defacing-a-honeypot,ec595829-327f-40be-b162-30d172465eac.gif,16
 56334197109,What to do when you copypasta vulnerability details to the wrong customer's assessment?,https://securityreactions.tumblr.com/post/56334197109/what-to-do-when-you-copypasta-vulnerability,4db48d5c-4191-49d2-9a23-41251336628c.gif,4
 56241044196,"Just left BlackHat, time for Defcon",https://securityreactions.tumblr.com/post/56241044196/just-left-blackhat-time-for-defcon,24b4168b-2611-4f2a-8b74-58124d6c6b2b.gif,10
-56155416494,Trying to scan the network with nmap when IDS is enabled.,https://securityreactions.tumblr.com/post/56155416494/trying-to-scan-the-network-with-nmap-when-ids-is,f9887698-a540-4b6f-bdaa-8ec54da06752.gif,16
 56146221642,Whenever there's guidelines.,https://securityreactions.tumblr.com/post/56146221642/whenever-theres-guidelines,e3034ea2-54ad-4a4d-abd3-9a7784888a89.gif,31
 56055068332,I can help!,https://securityreactions.tumblr.com/post/56055068332/i-can-help,7f6c8b9f-c35e-4890-a580-bd3fa79ead55.gif,10
 55961089537,"Politely denying when someone asks if you could ""please hack this e-mail account"".",https://securityreactions.tumblr.com/post/55961089537/politely-denying-when-someone-asks-if-you-could,44ce69e3-9d05-4a5f-98e9-a52925306d4e.gif,20
@@ -3492,7 +3402,6 @@
 46246017246,When a customer says hacking back is OK.,https://securityreactions.tumblr.com/post/46246017246/when-a-customer-says-hacking-back-is-ok,2e650f84-624d-4843-b710-3a2d6e8e819b.gif,6
 45987062739,What I think the dev is doing when I submit an XSS vuln and they start filtering on prompt() and nothing else,https://securityreactions.tumblr.com/post/45987062739/what-i-think-the-dev-is-doing-when-i-submit-an-xss,9acf929f-23d6-4b55-a0ca-2885d6d0bf28.gif,1
 45986376708,The First NOP Sled,https://securityreactions.tumblr.com/post/45986376708/the-first-nop-sled,e1554ee2-3187-4cc7-a00c-e213b75b08dc.gif,3
-45912338418,"""The domain controller is not in scope""",https://securityreactions.tumblr.com/post/45912338418/the-domain-controller-is-not-in-scope,1dd08113-bfad-49ee-80f5-f4a5b078d536.gif,3
 45912288123,My co-workers don't know how I bypass the corporate internet filtering measures,https://securityreactions.tumblr.com/post/45912288123/my-co-workers-dont-know-how-i-bypass-the,59347d5c-361a-46f9-b867-a80c7412f556.gif,19
 45834632190,"When my CISSP-holding CIO installs Adobe Reader on a production server to ""read the documentation""",https://securityreactions.tumblr.com/post/45834632190/when-my-cissp-holding-cio-installs-adobe-reader-on,60cd9c83-3aef-47b6-98da-57f325f9052e.gif,12
 45834543413,Playing a ctf,https://securityreactions.tumblr.com/post/45834543413/playing-a-ctf,8ac1c0f4-56d6-468f-ac3b-1dac1b20fd32.gif,9
@@ -3568,7 +3477,6 @@
 42501819484,what happened after I started looking around in a customer's server...,https://securityreactions.tumblr.com/post/42501819484/what-happened-after-i-started-looking-around-in-a,27476a27-22fd-4def-9ca9-f4967f5bdce8.gif,7
 42426937575,When audit arrives..,https://securityreactions.tumblr.com/post/42426937575/when-audit-arrives,777ba1aa-232e-4075-a70b-abaf10e67b51.gif,17
 42426283109,"""We need to find and fix all vulnerabilities before go-live... which is next week.""",https://securityreactions.tumblr.com/post/42426283109/we-need-to-find-and-fix-all-vulnerabilities,dcd9eb1c-5879-4949-8004-1bc5437c8dd3.gif,6
-42351853780,Launching successful exploit against wrong target system,https://securityreactions.tumblr.com/post/42351853780/launching-successful-exploit-against-wrong-target,3b15d64a-5c6b-483f-a39b-72fbbcf2120d.gif,15
 42351209652,What happens when you've been in infosec too long,https://securityreactions.tumblr.com/post/42351209652/what-happens-when-youve-been-in-infosec-too-long,5d892796-558c-4838-8126-f0f5591be192.gif,12
 42273022147,When Red teaming a commercial airline's website and we find a revenue impacting flaw.,https://securityreactions.tumblr.com/post/42273022147/when-red-teaming-a-commercial-airlines-website,fa5f611c-cc4a-45f4-a4e9-d717dd50c55b.gif,5
 42272382981,"""Cyber""",https://securityreactions.tumblr.com/post/42272382981/cyber,fd510c42-836e-41f1-9b32-3fd4e716d670.gif,5
@@ -3645,7 +3553,6 @@
 39213808832,"The skill and complexity of Stuxnet and Flame, and how the news media explained Stuxnet and Flame",https://securityreactions.tumblr.com/post/39213808832/the-skill-and-complexity-of-stuxnet-and-flame-and,0b123d7c-5b95-4255-92f5-ef45524360cc.gif,11
 39213108888,When someone files a bounty bug on a project I reviewed...,https://securityreactions.tumblr.com/post/39213108888/when-someone-files-a-bounty-bug-on-a-project-i,facf4043-c5f5-467b-b70d-1d27e4620470.gif,1
 39124934231,\\corporate-share\IT\domain-admin-passwords.docx,https://securityreactions.tumblr.com/post/39124934231/corporate-shareitdomain-admin-passwordsdocx,3721f078-78d3-469d-8375-7d5ecdf61476.gif,10
-39124244146,When the pentest crashes a production server,https://securityreactions.tumblr.com/post/39124244146/when-the-pentest-crashes-a-production-server,f9af096a-3bfc-419b-b0b3-ee8cecdeb425.gif,11
 39052401740,When people are looking at my keyboard while typing my password,https://securityreactions.tumblr.com/post/39052401740/when-people-are-looking-at-my-keyboard-while,0dc0caca-10b0-4931-b566-9d8450cd2e66.gif,41312
 39037014624,"""Our product is hackerproof""",https://securityreactions.tumblr.com/post/39037014624/our-product-is-hackerproof,8d2d00a9-dcc5-4db0-b878-70c20097b1f5.gif,16
 39036285926,"""Make any developers cry today?""",https://securityreactions.tumblr.com/post/39036285926/make-any-developers-cry-today,234a0f29-2d01-453c-a5e7-f3955fef2d9e.gif,11
@@ -3685,7 +3592,6 @@
 37645173797,UAT,https://securityreactions.tumblr.com/post/37645173797/uat,f181824b-fff2-415a-8628-7ce15cb3f124.gif,3
 37645052829,What vendors would have you beleive,https://securityreactions.tumblr.com/post/37645052829/what-vendors-would-have-you-beleive,f7537437-40b3-436c-a6bc-b6be02a116a9.gif,4
 37644978065,"Client is adamant you won't find any weakness, but you find RCE on everything",https://securityreactions.tumblr.com/post/37644978065/client-is-adamant-you-wont-find-any-weakness-but,a30cb85b-425c-4cd3-8582-bd08cd142e06.gif,2
-37552429928,Talked customer into thinking vulnerable domain controller is in-scope.,https://securityreactions.tumblr.com/post/37552429928/talked-customer-into-thinking-vulnerable-domain,0750578f-5599-40db-b0bf-0aec8a78b93d.gif,5
 37551850892,"My perception of how normal people see infosec, and how they actually do see infosec",https://securityreactions.tumblr.com/post/37551850892/my-perception-of-how-normal-people-see-infosec,79b42f6e-9609-4200-abbb-81bd211155b6.gif,2
 37551302422,How I feel doing a man in the middle attack,https://securityreactions.tumblr.com/post/37551302422/how-i-feel-doing-a-man-in-the-middle-attack,b218ca56-f83a-447b-a0c9-c856dc66a1a1.gif,3
 37472477424,a seasoned infosec veteran and a newcomer to the industry,https://securityreactions.tumblr.com/post/37472477424/a-seasoned-infosec-veteran-and-a-newcomer-to-the,c6ffff5e-5399-411c-a9a0-017b7561b1f5.gif,2
@@ -3717,7 +3623,6 @@
 36807319774,Shellcode doesn't fit into the space available on stack,https://securityreactions.tumblr.com/post/36807319774/shellcode-doesnt-fit-into-the-space-available-on,4465fe6c-fe88-4baa-9ece-4cbad49b7a9d.gif,3
 36806874808,Trying to exploit a sandboxed environment,https://securityreactions.tumblr.com/post/36806874808/trying-to-exploit-a-sandboxed-environment,f1505561-cca3-4d3e-b00e-00c7836e87f4.gif,4
 36736610675,Someone tells me they just passed the Security+ certification,https://securityreactions.tumblr.com/post/36736610675/someone-tells-me-they-just-passed-the-security,aef12ad8-c21c-4949-a0a3-3c6d5cbb69c8.gif,0
-36736148501,rkhunter 1.2.5 running every night as the cron job,https://securityreactions.tumblr.com/post/36736148501/rkhunter-125-running-every-night-as-the-cron-job,460a5bc1-c883-4d91-b6f5-69c8cd55b368.gif,1
 36735698420,Granting admin access to devs,https://securityreactions.tumblr.com/post/36735698420/granting-admin-access-to-devs,75d85eb6-0a5b-4833-8887-f3287d2cfbfd.gif,18
 36663892236,When over hyped researchers get media attention for sprintf,https://securityreactions.tumblr.com/post/36663892236/when-over-hyped-researchers-get-media-attention,bc3380cc-6949-490f-b48a-7f6401f0ebb6.gif,3
 36663442887,"""Hacking"" AT&T data",https://securityreactions.tumblr.com/post/36663442887/hacking-att-data,c4073ff0-6779-4aa1-b164-b30d352de0e0.gif,2
@@ -3769,7 +3674,6 @@
 35560454314,Finding a vulnerability before testing has officially begun,https://securityreactions.tumblr.com/post/35560454314/finding-a-vulnerability-before-testing-has,e06b1d70-b9fe-43bb-ac5d-b86544bf3bfa.gif,3
 35481622983,When I learned and try my first hacking attempt,https://securityreactions.tumblr.com/post/35481622983/when-i-learned-and-try-my-first-hacking-attempt,2a0688f6-3e6d-4482-88b0-092cf48d63e2.gif,0
 35481035924,Blackhat and Defcon,https://securityreactions.tumblr.com/post/35481035924/blackhat-and-defcon,df37d9cf-fdec-4eb9-aa8f-5d95d5333332.gif,3
-35480463829,User Security Awareness Training,https://securityreactions.tumblr.com/post/35480463829/user-security-awareness-training,bd83a477-fff7-437e-8d9b-77e64f5c55a4.gif,3
 35404110942,When I'm asked to do a configuration audit,https://securityreactions.tumblr.com/post/35404110942/when-im-asked-to-do-a-configuration-audit,f7eacc1d-88a8-47a3-822e-3984f3893d45.gif,0
 35403564545,"""We're protected by a web application firewall""",https://securityreactions.tumblr.com/post/35403564545/were-protected-by-a-web-application-firewall,452cbdd0-34f7-4a39-b5c8-ffd509e1636b.gif,1
 35336318302,"""Come look at this awesome new XSS I found!""",https://securityreactions.tumblr.com/post/35336318302/come-look-at-this-awesome-new-xss-i-found,a35090cb-7fd0-4cd7-85c4-1c2ead74bebb.gif,4
@@ -3803,7 +3707,6 @@
 34697559277,Whenever an ARP attack works,https://securityreactions.tumblr.com/post/34697559277/whenever-an-arp-attack-works,cea165fd-6de1-4ba5-935e-0d427c92e1c9.gif,3
 34633361991,Script kiddie trying to execute an exploit,https://securityreactions.tumblr.com/post/34633361991/script-kiddie-trying-to-execute-an-exploit,e4174e7e-4793-446f-b188-17b06eb71bd9.gif,6
 34632597445,After the first vulnerability assessment at the new job...,https://securityreactions.tumblr.com/post/34632597445/after-the-first-vulnerability-assessment-at-the,233ae4a7-3851-4473-ae22-0514de128c00.gif,0
-34561240503,The CyberWar According to Journalists,https://securityreactions.tumblr.com/post/34561240503/the-cyberwar-according-to-journalists,c3923548-c2e3-4933-bd39-2127d49780ad.gif,1
 34560780628,ROPing my way to some shellcode,https://securityreactions.tumblr.com/post/34560780628/roping-my-way-to-some-shellcode,b229629d-83ab-406e-99cf-9ee9641a8d09.gif,1
 34560336444,Finding a critical vuln after pen-tests by two other consulting companies,https://securityreactions.tumblr.com/post/34560336444/finding-a-critical-vuln-after-pen-tests-by-two,25f31df1-f48d-4c49-9c3c-4bcbecb91fe4.gif%!(NOVERB),0
 34481657028,Checking my IDS packets for Ping-of-Death,https://securityreactions.tumblr.com/post/34481657028/checking-my-ids-packets-for-ping-of-death,3d72af35-af7a-46ec-9a38-9bcc3caa2906.gif,5
@@ -3821,7 +3724,6 @@
 34292751943,When I finally get my talk accepted at a conference,https://securityreactions.tumblr.com/post/34292751943/when-i-finally-get-my-talk-accepted-at-a,17110b91-bb40-469d-a286-ae65a63ed2f0.gif,0
 34227838092,When my 0d demonstration fails,https://securityreactions.tumblr.com/post/34227838092/when-my-0d-demonstration-fails,a459dc0b-1f25-401d-8936-9e43d0a92eaf.gif,5
 34227417340,When I read SANS NewsBites and their other updates,https://securityreactions.tumblr.com/post/34227417340/when-i-read-sans-newsbites-and-their-other-updates,1487f6e0-5a99-41c7-a0c0-b0ec1093faad.gif,0
-34227004902,When I find a XSS during a pentest,https://securityreactions.tumblr.com/post/34227004902/when-i-find-a-xss-during-a-pentest,aaf3dd65-18a7-4883-97a5-a15ae51246b4.gif,0
 34176713326,When a web application scanner actually finds a vulnerabilty,https://securityreactions.tumblr.com/post/34176713326/when-a-web-application-scanner-actually-finds-a,6afe071e-a2d8-46e9-a6ab-135674072875.gif,2
 34176709970,When i see 127.0.0.1 on a PoC,https://securityreactions.tumblr.com/post/34176709970/when-i-see-127001-on-a-poc,fe90bc89-3876-4d25-abeb-5abf65b11c7f.gif,0
 34161657605,When you notice IT has both disabled updates and never pushes any.,https://securityreactions.tumblr.com/post/34161657605/when-you-notice-it-has-both-disabled-updates-and,6d50762d-0928-4785-b354-16001611c9a3.gif,0
@@ -3899,7 +3801,6 @@
 32801284007,When I get excited about research too early,https://securityreactions.tumblr.com/post/32801284007/when-i-get-excited-about-research-too-early,8a14b08e-84e7-4e94-9bfd-e2263b494542.gif,2
 32800613623,"""But I need DropBox at work""",https://securityreactions.tumblr.com/post/32800613623/but-i-need-dropbox-at-work,bdb411bc-6786-45b4-8969-3357bc170641.gif,3
 32734208955,When management tells me security is too complicated,https://securityreactions.tumblr.com/post/32734208955/when-management-tells-me-security-is-too,d7ec4d8f-0d84-4a66-8928-019c800737d8.gif,0
-32733487376,When I apply an emergency patch before we get owned,https://securityreactions.tumblr.com/post/32733487376/when-i-apply-an-emergency-patch-before-we-get,027ab393-980e-4350-ae19-a138986a79ec.gif,2
 32732815472,Exploit mitigations,https://securityreactions.tumblr.com/post/32732815472/exploit-mitigations,eaa369ca-3c67-450d-b84b-c3bc5d52b798.gif,8
 32732189942,When I lock the Domain Admin out of his own account,https://securityreactions.tumblr.com/post/32732189942/when-i-lock-the-domain-admin-out-of-his-own,f84f8379-fe33-479f-b5c1-fd83de3dd7fb.gif,4
 32666714874,When I demonstrate how an exploit actually works,https://securityreactions.tumblr.com/post/32666714874/when-i-demonstrate-how-an-exploit-actually-works,a962a413-c77d-4ad5-92bc-2c586a4268b9.gif,3
@@ -3913,7 +3814,6 @@
 32518887366,When I've just figured out I logged to a service without SSL,https://securityreactions.tumblr.com/post/32518887366/when-ive-just-figured-out-i-logged-to-a-service,7a44d7b5-af5e-4d53-bfc5-89cc4d3058c3.gif,7
 32517951232,Security vendors at Infosec conferences,https://securityreactions.tumblr.com/post/32517951232/security-vendors-at-infosec-conferences,0edcc723-5d9e-4569-82e0-a1daa69c95da.gif,5
 32517106675,Every time I hand in a Penetration Testing report.,https://securityreactions.tumblr.com/post/32517106675/every-time-i-hand-in-a-penetration-testing-report,9c05c252-ba71-44fa-a0a5-79387a0a00ea.gif,3
-32516350714,When someone releases publicly an exploit I would have kept private forever,https://securityreactions.tumblr.com/post/32516350714/when-someone-releases-publicly-an-exploit-i-would,71c2746f-88c3-490c-905f-8d3107fd0b0a.gif,1
 32455588196,Whenever I inspect the JRE when a new version is released,https://securityreactions.tumblr.com/post/32455588196/whenever-i-inspect-the-jre-when-a-new-version-is,db860cd9-a335-4a62-880b-9cbe1e2957fb.gif,5
 32454876443,Conference calls to decide who gets to fix a bug,https://securityreactions.tumblr.com/post/32454876443/conference-calls-to-decide-who-gets-to-fix-a-bug,8510c629-3b90-4c34-939b-8312c3e19373.gif,2
 32454219689,When somebody tries to root my boxes,https://securityreactions.tumblr.com/post/32454219689/when-somebody-tries-to-root-my-boxes,13e114f8-92c4-464d-a931-55234a23e0ed.gif,2
@@ -3942,7 +3842,6 @@
 32044863914,"When I hear in public places ""What's wrong with my internet ?!?""",https://securityreactions.tumblr.com/post/32044863914/when-i-hear-in-public-places-whats-wrong-with-my,bd8b2336-734b-4d7d-99ae-c2c8c72579cf.gif,6
 32044112511,When I finish an auditing gig only to be told they gave me the wrong version of the source,https://securityreactions.tumblr.com/post/32044112511/when-i-finish-an-auditing-gig-only-to-be-told-they,803512e4-14f1-4ee2-bbc1-5e0fe7147daa.gif,1
 31981972026,How I feel about clientside exploits,https://securityreactions.tumblr.com/post/31981972026/how-i-feel-about-clientside-exploits,a5cb870b-6936-4d49-8ef3-30db269626fc.gif,1
-31981321128,What happens when you use nmap on an Industrial Control System,https://securityreactions.tumblr.com/post/31981321128/what-happens-when-you-use-nmap-on-an-industrial,d801f0f1-0485-49b9-89da-3e0e81626d60.gif,8
 31920638587,PHP Code Audit,https://securityreactions.tumblr.com/post/31920638587/php-code-audit,72d9ea0e-92b6-4aac-bb5e-f5cec9331aca.gif,5
 31919963068,When the team I audited asks if they are ready to launch,https://securityreactions.tumblr.com/post/31919963068/when-the-team-i-audited-asks-if-they-are-ready-to,31af9b6e-170a-441e-a1be-67e587ad192b.gif,0
 31919340198,What I feel like after offering to help remediate a discovered vuln,https://securityreactions.tumblr.com/post/31919340198/what-i-feel-like-after-offering-to-help-remediate,7f9ba95d-5638-42d0-8e63-140502e25962.jpg,0
@@ -3984,7 +3883,6 @@
 31334012798,Rapid7 removing the Autopwn feature,https://securityreactions.tumblr.com/post/31334012798/rapid7-removing-the-autopwn-feature,a1451b9f-0d99-4eb1-8910-e8754040e971.gif,2
 31333184541,Project manager thought 24/7 testing window meant pentesting literally 24 hours per day,https://securityreactions.tumblr.com/post/31333184541/project-manager-thought-247-testing-window-meant,12caca6e-21ed-41fb-96d0-ccf316b98015.gif,1
 31332358151,When I still find MS08-067 during an assessment,https://securityreactions.tumblr.com/post/31332358151/when-i-still-find-ms08-067-during-an-assessment,7f7aac39-879f-413c-b7f3-baaebd4c1f95.gif,0
-31331580385,Reading about a new attack from Thai Duong and Juliano Rizzo,https://securityreactions.tumblr.com/post/31331580385/reading-about-a-new-attack-from-thai-duong-and,ce546753-1976-4d85-bca2-af46948acd42.gif,0
 31311377238,How the uninitiated seem to view exploit mitigations,https://securityreactions.tumblr.com/post/31311377238/how-the-uninitiated-seem-to-view-exploit,eaf93f87-2bde-4b90-a994-d0eb149d4511.gif,1
 31269868404,For those of you that don't realize how serious this sh*t really is....,https://securityreactions.tumblr.com/post/31269868404/for-those-of-you-that-dont-realize-how-serious,65ce5973-df71-4c23-888e-d49242373b93.gif,5
 31267366215,When antivirus vendors ramble on about 100% detection rates,https://securityreactions.tumblr.com/post/31267366215/when-antivirus-vendors-ramble-on-about-100,ca8592ac-e29d-4eae-9985-1975e331c00d.gif,1
@@ -4052,7 +3950,6 @@
 29979994720,When I see the commercial explaining what we can do,https://securityreactions.tumblr.com/post/29979994720/when-i-see-the-commercial-explaining-what-we-can,b800b3fe-3cd1-49cd-a4c4-b9afe6c8eb90.gif,0
 29979969153,When social media blows up re: an unverified security breach,https://securityreactions.tumblr.com/post/29979969153/when-social-media-blows-up-re-an-unverified,2de3829d-9225-4033-acf0-9a49ea8d347c.gif,0
 29961763287,When I launch my exploit,https://securityreactions.tumblr.com/post/29961763287/when-i-launch-my-exploit,4b6a299c-d204-4cdf-84fa-72f340f1e1f7.gif,1
-29960560750,When they say their firewall cannot be breached,https://securityreactions.tumblr.com/post/29960560750/when-they-say-their-firewall-cannot-be-breached,4f853e0c-9df6-4b69-acbe-8475b1bf68aa.gif,2
 29959439711,Holding back a go live date because there are still critical vulns left,https://securityreactions.tumblr.com/post/29959439711/holding-back-a-go-live-date-because-there-are,5fa085b7-c04e-4c4d-bf8c-6c40edf788bd.gif,1
 29894063644,Opening a codebase for auditing and immediately seeing a ton of bugs,https://securityreactions.tumblr.com/post/29894063644/opening-a-codebase-for-auditing-and-immediately,a810f309-c5cf-4e1b-9830-f3085700d682.gif,6
 29893070985,"""That attack will never work in practice""",https://securityreactions.tumblr.com/post/29893070985/that-attack-will-never-work-in-practice,ce4325b0-d039-4f3c-bd84-9200039db7a6.gif,4
