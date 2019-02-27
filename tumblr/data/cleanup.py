@@ -1,19 +1,22 @@
 import json
+import os
 
-with open("duplicates.csv", "r") as handle:
-    lines = handle.readlines()
+with open('duplicates.json', 'r') as handle:
+    duplicates = json.loads(handle.read())
 
-groups = []
-group = []
-for line in lines:
-    line = line.strip()
-    if line == '':
-        groups.append(group)
-        group = []
+with open('posts.csv', 'r') as handle:
+    posts = handle.readlines()
+
+for duplicate in duplicates:
+    if duplicate[0] != '03a0e98e-0f1a-46d8-99e9-67d01094bafa.gif':
         continue
-    image = line.split(" ")[-1]
-    image = image[2:]
-    group.append(image)
-groups.append(group)
+    for d in duplicate:
+        print(d)
+        posts = [l for l in posts if d not in l]
+        try:
+            os.remove('static/' + d)
+        except FileNotFoundError:
+            pass
 
-print(json.dumps(groups, indent=2))
+with open('posts.csv', 'w') as handle:
+    handle.write(''.join(posts))
