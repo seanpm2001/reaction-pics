@@ -25,7 +25,7 @@ const (
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var staticPath = fmt.Sprintf("%s/static/", serverDir)
 var uRLFilePaths = map[string]func() (string, error){}
-var board = tumblr.NewBoard([]tumblr.Post{})
+var board *tumblr.Board
 
 // logURL is a closure that logs (to stdout) the url and query of requests
 func logURL(
@@ -180,8 +180,8 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // Run starts up the HTTP server
-func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
-	go loadPosts(postChan)
+func Run(newrelicApp newrelic.Application) {
+	board = tumblr.InitializeBoard()
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
 	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
@@ -193,13 +193,6 @@ func Run(postChan <-chan tumblr.Post, newrelicApp newrelic.Application) {
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/stats.json", logURL(statsHandler)))
 	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/sitemap.xml", logURL(sitemapHandler)))
 	http.ListenAndServe(address, nil)
-}
-
-func loadPosts(postChan <-chan tumblr.Post) {
-	for p := range postChan {
-		board.AddPost(p)
-		board.SortPostsByLikes()
-	}
 }
 
 func appCacheString() string {

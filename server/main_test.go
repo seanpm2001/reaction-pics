@@ -68,6 +68,8 @@ func TestRedirectS3URL(t *testing.T) {
 }
 
 func TestSearchHandler(t *testing.T) {
+	b := tumblr.NewBoard([]tumblr.Post{})
+	board = &b
 	request, err := http.NewRequest("GET", "/search", nil)
 	assert.NoError(t, err)
 
@@ -188,21 +190,6 @@ func TestStatsHandler(t *testing.T) {
 	statsHandler(response, request)
 	assert.Equal(t, response.Code, 200)
 	assert.Equal(t, response.Body.String(), "{\"keywords\":[],\"postCount\":\"0\"}")
-}
-
-func TestAddPost(t *testing.T) {
-	oldLength := len(board.Posts)
-	post1 := tumblr.Post{ID: 1, Title: "1"}
-	post2 := tumblr.Post{ID: 2, Title: "2"}
-	post3 := tumblr.Post{ID: 3, Title: "3"}
-	postChan := make(chan tumblr.Post, 1)
-	defer func() { close(postChan) }()
-	go loadPosts(postChan)
-	postChan <- post1
-	postChan <- post2
-	postChan <- post3
-	assert.NotEqual(t, len(board.Posts), oldLength)
-	assert.True(t, board.Posts[0].ID < board.Posts[1].ID)
 }
 
 func TestCacheString(t *testing.T) {
