@@ -26,20 +26,20 @@
   version = "v1.1.0"
 
 [[projects]]
-  digest = "1:e1aa8e520787bfd8623c7df394352be3183ef207039cfb513ba40dc00c82fa6d"
+  digest = "1:e46ef3b65e25f610b7151015e2b782af1aad6f8bb8ac2edb5bb90c1b94e92524"
   name = "github.com/gosimple/slug"
   packages = ["."]
   pruneopts = "UT"
-  revision = "42ac18c34c2c6f4843fa48167317dcaa9416d1e2"
-  version = "v1.4.2"
+  revision = "e78d39397ba41d2c33d9615044ef93eca8a309d8"
+  version = "v1.5.0"
 
 [[projects]]
   digest = "1:2ce7bc6ca53267f9f68d84a00fa265e908f2de68c53a3c5ff4c11395ae186eeb"
   name = "github.com/ikeikeikeike/go-sitemap-generator"
   packages = ["stm"]
   pruneopts = "UT"
-  revision = "caae15179f10529eae19a9b565418fd6b204beb2"
-  version = "v2.0.1"
+  revision = "6c48d31ace563179f911128a4e8ed9ffa9d7b401"
+  version = "v2.0.2"
 
 [[projects]]
   branch = "master"
@@ -50,7 +50,7 @@
   revision = "5c0e6c6ab1a0a9ef0a8822cba3a05d62f7dad941"
 
 [[projects]]
-  digest = "1:a440a51547995862e3fe9f8e196e00997d06d85278bab80e0d6b5ae4e3b5afe1"
+  digest = "1:da8369d6bda404f0da217360dd58aca0648b859445abeb41a152b75e2149e532"
   name = "github.com/newrelic/go-agent"
   packages = [
     ".",
@@ -58,12 +58,13 @@
     "internal/cat",
     "internal/jsonx",
     "internal/logger",
+    "internal/racedetector",
     "internal/sysinfo",
     "internal/utilization",
   ]
   pruneopts = "UT"
-  revision = "c883b8ea425d136353b44cc435c3bf8d6c5d3d47"
-  version = "v2.5.0"
+  revision = "5adc3b70de72198b5e21a6a811891309a0dcfba4"
+  version = "v2.7.0"
 
 [[projects]]
   digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
@@ -105,17 +106,6 @@
   revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
   version = "v1.3.0"
 
-[[projects]]
-  branch = "master"
-  digest = "1:de4815ce3ca5b624af2733716ecd471de1ef50cda8afec39491aab517f73139c"
-  name = "golang.org/x/net"
-  packages = [
-    "html",
-    "html/atom",
-  ]
-  pruneopts = "UT"
-  revision = "3a22650c66bd7f4fb6d1e8072ffd7b75c8a27898"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -127,7 +117,6 @@
     "github.com/pkg/errors",
     "github.com/rollbar/rollbar-go",
     "github.com/stretchr/testify/assert",
-    "golang.org/x/net/html",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
