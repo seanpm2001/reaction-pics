@@ -2,13 +2,13 @@
 
 set -e
 
-cd -P `pwd`
+cd -P "$(pwd)"
 echo "" > coverage.txt
 for godir in $(go list ./... | grep -v vendor); do
-    go test -coverprofile=coverage.out $godir -covermode=atomic
+    go test -coverprofile=coverage.out "$godir" -covermode=atomic
     if [ -f coverage.out ]
     then
-        cat coverage.out | grep -v "mode: set" >> coverage.txt
+        grep -v "mode: set" coverage.out >> coverage.txt
     fi
 done
 rm coverage.out
@@ -23,7 +23,7 @@ fi
 
 gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
-fmt_errors=$(gofmt -e -l -d $gofiles)
+fmt_errors=$(gofmt -e -l -d "$gofiles")
 if [ -n "$fmt_errors" ]; then
     echo "Fmt failures on:"
     echo "$fmt_errors"
@@ -33,7 +33,7 @@ fi
 go get -u github.com/golang/lint/golint
 golint_errors=""
 for gofile in $gofiles; do
-    golint_errors+=$(golint $gofile)
+    golint_errors+=$(golint "$gofile")
 done
 if [ -n "$golint_errors" ]; then
     echo "Lint failures on:"
