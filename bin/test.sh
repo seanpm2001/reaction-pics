@@ -33,7 +33,7 @@ if [ -n "$gofmt_errors" ]; then
     exit 1
 fi
 
-go get -u github.com/golang/lint/golint
+go get -u golang.org/x/lint/golint
 golint_errors=""
 for gofile in $gofiles; do
     golint_errors+=$(golint "$gofile")
