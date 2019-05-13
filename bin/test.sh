@@ -1,10 +1,14 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
+IFS=$'\n\t'
 
-cd -P "$(pwd)"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd -P "$DIR/.." || exit 1
+pwd
+
 echo "" > coverage.txt
-for godir in $(go list ./... | grep -v vendor); do
+for godir in $(go list ./...); do
     go test -coverprofile=coverage.out "$godir" -covermode=atomic
     if [ -f coverage.out ]
     then
@@ -13,7 +17,6 @@ for godir in $(go list ./... | grep -v vendor); do
 done
 rm coverage.out
 
-
 govet_errors=$(go vet ./...)
 if [ -n "$govet_errors" ]; then
     echo "Vet failures on:"
@@ -21,16 +24,19 @@ if [ -n "$govet_errors" ]; then
     exit 1
 fi
 
-gofiles=$(find . -name "*.go" | grep -v ./vendor)
+gofiles=$(git ls-files | grep -F .go)
 
-fmt_errors=$(gofmt -e -l -d "$gofiles")
-if [ -n "$fmt_errors" ]; then
+gofmt_errors=""
+for gofile in $gofiles; do
+    gofmt_errors+=$(gofmt -e -l -d "$gofile")
+done
+if [ -n "$gofmt_errors" ]; then
     echo "Fmt failures on:"
-    echo "$fmt_errors"
+    echo "$gofmt_errors"
     exit 1
 fi
 
-go get -u github.com/golang/lint/golint
+go get -u golang.org/x/lint/golint
 golint_errors=""
 for gofile in $gofiles; do
     golint_errors+=$(golint "$gofile")
