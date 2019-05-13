@@ -21,7 +21,7 @@ if [ -n "$govet_errors" ]; then
     exit 1
 fi
 
-gofiles=$(find . -name "*.go" | grep -v ./vendor)
+gofiles=$(git ls-files | grep -F .go)
 
 gofmt_errors=""
 for gofile in $gofiles; do
