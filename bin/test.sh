@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
+IFS=$'\n\t'
 
 cd -P "$(pwd)"
 echo "" > coverage.txt
