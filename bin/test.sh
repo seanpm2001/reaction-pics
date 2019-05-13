@@ -14,7 +14,6 @@ for godir in $(go list ./... | grep -v vendor); do
 done
 rm coverage.out
 
-
 govet_errors=$(go vet ./...)
 if [ -n "$govet_errors" ]; then
     echo "Vet failures on:"
@@ -24,10 +23,13 @@ fi
 
 gofiles=$(find . -name "*.go" | grep -v ./vendor)
 
-fmt_errors=$(gofmt -e -l -d "$gofiles")
-if [ -n "$fmt_errors" ]; then
+gofmt_errors=""
+for gofile in $gofiles; do
+    gofmt_errors+=$(gofmt -e -l -d "$gofile")
+done
+if [ -n "$gofmt_errors" ]; then
     echo "Fmt failures on:"
-    echo "$fmt_errors"
+    echo "$gofmt_errors"
     exit 1
 fi
 
