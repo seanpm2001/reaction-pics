@@ -3,7 +3,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-cd -P "$(pwd)"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd -P "$DIR/.." || exit 1
+pwd
+
 echo "" > coverage.txt
 for godir in $(go list ./...); do
     go test -coverprofile=coverage.out "$godir" -covermode=atomic
