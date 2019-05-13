@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 cd -P "$(pwd)"
 echo "" > coverage.txt
-for godir in $(go list ./... | grep -v vendor); do
+for godir in $(go list ./...); do
     go test -coverprofile=coverage.out "$godir" -covermode=atomic
     if [ -f coverage.out ]
     then
