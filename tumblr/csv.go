@@ -2,6 +2,7 @@ package tumblr
 
 import (
 	"encoding/csv"
+	"io"
 	"os"
 )
 
@@ -11,13 +12,18 @@ const (
 )
 
 // ReadPostsFromCSV reads a CSV file into a list of posts
-func ReadPostsFromCSV(csvPath string) (posts []Post) {
+func ReadPostsFromCSV(csvPath string) []Post {
 	file, err := os.Open(csvPath)
 	defer file.Close()
 	if err != nil {
-		return
+		return []Post{}
 	}
-	reader := csv.NewReader(file)
+	return readCSV(file)
+}
+
+func readCSV(data io.Reader) []Post {
+	reader := csv.NewReader(data)
+	var posts []Post
 	for {
 		row, err := reader.Read()
 		if err != nil {
