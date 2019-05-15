@@ -95,7 +95,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	queriedBoard.LimitBoard(offset, maxResults)
 	data["data"] = queriedBoard.PostsToJSON()
 	dataBytes, _ := json.Marshal(data)
-	fmt.Fprintf(w, string(dataBytes))
+	fmt.Fprint(w, string(dataBytes))
 }
 
 // postDataHandler is an http handler to return post data by ID
@@ -124,7 +124,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 		"data":         []tumblr.PostJSON{post.ToJSONStruct()},
 	}
 	marshalledPost, _ := json.Marshal(data)
-	fmt.Fprintf(w, string(marshalledPost))
+	fmt.Fprint(w, string(marshalledPost))
 }
 
 func postHandler(w http.ResponseWriter, r *http.Request) {
@@ -161,7 +161,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 		"keywords":  board.Keywords(),
 	}
 	stats, _ := json.Marshal(data)
-	fmt.Fprintf(w, string(stats))
+	fmt.Fprint(w, string(stats))
 }
 
 func sitemapHandler(w http.ResponseWriter, r *http.Request) {
