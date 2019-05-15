@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -144,6 +145,21 @@ func TestPostDataHandler(t *testing.T) {
 	postDataHandler(response, request)
 	assert.Equal(t, response.Code, 200)
 	assert.NotEqual(t, len(response.Body.String()), 0)
+}
+
+func TestPostDataPercentHandler(t *testing.T) {
+	post := tumblr.Post{ID: 1234, Title: `asdf% qwer`}
+	board.AddPost(post)
+	defer func() { board.Reset() }()
+	request, err := http.NewRequest("GET", "/postdata/1234", nil)
+	assert.NoError(t, err)
+
+	response := httptest.NewRecorder()
+	postDataHandler(response, request)
+	var data map[string][]map[string]interface{}
+	json.Unmarshal(response.Body.Bytes(), &data)
+	title := data["data"][0]["title"].(string)
+	assert.Equal(t, `asdf% qwer`, title)
 }
 
 func TestPostDataHandlerMalformed(t *testing.T) {
