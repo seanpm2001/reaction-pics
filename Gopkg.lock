@@ -26,12 +26,12 @@
   version = "v1.1.0"
 
 [[projects]]
-  digest = "1:e46ef3b65e25f610b7151015e2b782af1aad6f8bb8ac2edb5bb90c1b94e92524"
+  digest = "1:f1aee5f2f8d6514f3b9224cbbd87990e57e544ac162081c3ac7d08edfae33528"
   name = "github.com/gosimple/slug"
   packages = ["."]
   pruneopts = "UT"
-  revision = "e78d39397ba41d2c33d9615044ef93eca8a309d8"
-  version = "v1.5.0"
+  revision = "ec8fb677f0647081580e5f3290dca1bd75af54fb"
+  version = "v1.6.0"
 
 [[projects]]
   digest = "1:2ce7bc6ca53267f9f68d84a00fa265e908f2de68c53a3c5ff4c11395ae186eeb"
@@ -50,7 +50,7 @@
   revision = "5c0e6c6ab1a0a9ef0a8822cba3a05d62f7dad941"
 
 [[projects]]
-  digest = "1:6763be699cf06757af4d05c0e7914adcd0a2221f4c775aa58d8ce6a671b07de3"
+  digest = "1:b423efe66a214e0c264b869ee91a40cade898f65233283f7e33a6545baff50aa"
   name = "github.com/newrelic/go-agent"
   packages = [
     ".",
@@ -62,8 +62,8 @@
     "internal/utilization",
   ]
   pruneopts = "UT"
-  revision = "abae298d0396aa913c9d322276867e99ba6dca29"
-  version = "v2.8.1"
+  revision = "a2026b991998b6198ca6b94d276c79154e1d4916"
+  version = "v2.9.0"
 
 [[projects]]
   digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
