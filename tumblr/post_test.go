@@ -121,6 +121,24 @@ func TestSortPostsByLikes(t *testing.T) {
 	assert.Equal(t, board.Posts[2].Likes, int64(121))
 }
 
+func TestRandomizePosts(t *testing.T) {
+	board := NewBoard([]Post{})
+	board.AddPost(Post{1, "title1", "url1", "http://static.reaction.pics/img/abcd.gif", 121})
+	board.AddPost(Post{2, "title2", "url2", "http://static.reaction.pics/img/abcd.gif", 122})
+	board.AddPost(Post{3, "title3", "url3", "http://static.reaction.pics/img/abcd.gif", 123})
+	randomized := false
+	for i := 0; i < 10; i++ {
+		// Technically a flaky test, but is expected to only fail in one out of 3^10 chances
+		board.RandomizePosts()
+		if board.Posts[0].ID != 3 {
+			randomized = true
+		}
+	}
+	if !randomized {
+		assert.Fail(t, "Did not find randomized post")
+	}
+}
+
 func TestReset(t *testing.T) {
 	board := NewBoard([]Post{})
 	board.AddPost(Post{3, "title3", "url3", "http://static.reaction.pics/img/abcd.gif", 123})

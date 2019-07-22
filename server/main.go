@@ -83,6 +83,9 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
 	queriedBoard := board.FilterBoard(query)
+	if query == "" {
+		queriedBoard.RandomizePosts()
+	}
 	offsetString := r.URL.Query().Get("offset")
 	offset, err := strconv.Atoi(offsetString)
 	if err != nil {
