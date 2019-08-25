@@ -4,7 +4,6 @@ import (
 	"os"
 
 	"github.com/albertyw/reaction-pics/server"
-	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/joho/godotenv"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/rollbar/rollbar-go"
@@ -35,7 +34,5 @@ func setupRollbar() {
 func main() {
 	setupEnv()
 	newrelicApp := getNewRelicApp()
-	posts := make(chan tumblr.Post)
-	go tumblr.GetPosts(posts)
-	server.Run(posts, newrelicApp)
+	server.Run(newrelicApp)
 }

@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -54,6 +55,15 @@ func TestInternalURLLong(t *testing.T) {
 	post := Post{1, strings.Repeat("a", 50), "url1", "http://static.reaction.pics/img/abcd.gif", 123}
 	url := post.InternalURL()
 	assert.Equal(t, url, "/post/1/"+strings.Repeat("a", 30))
+}
+
+func TestInitializeBoard(t *testing.T) {
+	b := InitializeBoard()
+	// When the lock is released, it should have data in it
+	time.Sleep(time.Millisecond * 10)
+	b.mut.RLock()
+	b.mut.RUnlock()
+	assert.True(t, len(b.Posts) > 0)
 }
 
 func TestAddPost(t *testing.T) {
