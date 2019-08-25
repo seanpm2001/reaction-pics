@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:buster
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
 
