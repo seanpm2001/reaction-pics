@@ -33,6 +33,7 @@ func setupRollbar() {
 
 func main() {
 	setupEnv()
+	setupRollbar()
 	newrelicApp := getNewRelicApp()
 	server.Run(newrelicApp)
 }
