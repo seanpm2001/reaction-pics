@@ -4,14 +4,22 @@ function showPost(postID) {
   $.getJSON(
     "/postdata/" + postID,
     function processPostResult(data) {
-      clearResults();
+      setResults("");
       addResults(data);
     }
   );
 }
 
-function updateResults(offset) {
+function getQuery() {
   var query = $("#query").val();
+  return query;
+}
+
+function setResults(html) {
+  $("#results").html(html);
+}
+
+function updateResults(query, offset) {
   if (pendingRequest) {
     pendingRequest.abort();
   }
@@ -22,17 +30,14 @@ function updateResults(offset) {
       offset: offset,
     },
     function processQueryResult(data) {
-      clearResults();
+      setResults("");
       saveQuery(query, data);
       updateURL(query);
       addResults(data);
       window.scrollTo(0, 0);
     }
   );
-}
-
-function clearResults() {
-  $("#results").html("");
+  return pendingRequest;
 }
 
 function saveQuery(query, data) {
@@ -77,7 +82,7 @@ function addResults(data) {
 function paginateNext() {
   var offset = parseInt($("#offset").val(), 10);
   offset += parseInt($("#paginateCount").val(), 10);
-  updateResults(offset);
+  updateResults(getQuery(), offset);
 }
 
 function addResult(postData) {
@@ -122,12 +127,12 @@ $(function() {
   if (query !== undefined && query !== '') {
     $("#query").val(query);
   }
-  $("#query").on('input', function(){updateResults()});
+  $("#query").on('input', function(){updateResults(getQuery())});
   var urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     showPost(urlPath[2]);
   } else {
-    updateResults();
+    updateResults(getQuery());
   }
   stats();
 });
