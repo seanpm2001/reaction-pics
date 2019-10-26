@@ -39,6 +39,7 @@ function updateResults(query, offset) {
   );
   return pendingRequest;
 }
+updateResults = varsnap(updateResults);
 
 function saveQuery(query, data) {
   var dataHTML = '';
@@ -49,6 +50,7 @@ function saveQuery(query, data) {
   $("#data").html(dataHTML);
   return dataHTML;
 }
+saveQuery = varsnap(saveQuery);
 
 function updateURL(query) {
   var url = "/";
@@ -63,6 +65,7 @@ function updateURL(query) {
   }
   return url;
 }
+updateURL = varsnap(updateURL);
 
 function addResults(data) {
   var resultHTML = '';
@@ -83,6 +86,7 @@ function addResults(data) {
   });
   return resultHTML;
 }
+addResults = varsnap(addResults);
 
 function paginateNext() {
   var offset = parseInt($("#offset").val(), 10);
@@ -106,6 +110,7 @@ function addResult(postData) {
   postHTML += '</div>';
   return postHTML;
 }
+addResult = varsnap(addResult);
 
 function stats() {
   return $.getJSON(
@@ -116,6 +121,7 @@ function stats() {
     }
   );
 }
+stats = varsnap(stats);
 
 function getParameterByName(url, name) {
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -125,6 +131,7 @@ function getParameterByName(url, name) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+getParameterByName = varsnap(getParameterByName);
 
 $(function() {
   var query = getParameterByName(window.location.href, 'query');
