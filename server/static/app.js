@@ -41,11 +41,13 @@ function updateResults(query, offset) {
 }
 
 function saveQuery(query, data) {
-  $("#data").html("");
-  $("#data").append('<input type="hidden" id="query" value="' + query + '">');
-  $("#data").append('<input type="hidden" id="paginateCount" value="' + data.data.length + '">');
-  $("#data").append('<input type="hidden" id="offset" value="' + data.offset + '">');
-  $("#data").append('<input type="hidden" id="totalResults" value="' + data.totalResults + '">');
+  var dataHTML = '';
+  dataHTML += '<input type="hidden" id="query" value="' + query + '">';
+  dataHTML += '<input type="hidden" id="paginateCount" value="' + data.data.length + '">';
+  dataHTML += '<input type="hidden" id="offset" value="' + data.offset + '">';
+  dataHTML += '<input type="hidden" id="totalResults" value="' + data.totalResults + '">';
+  $("#data").html(dataHTML);
+  return dataHTML;
 }
 
 function updateURL(query) {
@@ -59,24 +61,27 @@ function updateURL(query) {
   } else {
     history.replaceState({}, "Reaction Pics", url);
   }
+  return url;
 }
 
 function addResults(data) {
+  var resultHTML = '';
   for (var x=0; x<data.data.length; x++) {
     var post = data.data[x];
-    addResult(post);
+    resultHTML += addResult(post);
   }
   if (data.data.length + data.offset < data.totalResults) {
-    var paginateHTML = '<a href="javascript:paginateNext()">';
-    paginateHTML += 'Next Page <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
-    paginateHTML += '</a>';
-    $("#results").append(paginateHTML);
+    resultHTML += '<a href="javascript:paginateNext()">';
+    resultHTML += 'Next Page <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
+    resultHTML += '</a>';
   }
+  setResults(resultHTML);
   $('img.result-img').lazyload({
     effect: "fadeIn",
     threshold: 1000,
     skip_invisible: true
   });
+  return resultHTML;
 }
 
 function paginateNext() {
@@ -99,11 +104,11 @@ function addResult(postData) {
       postHTML += '<p><a href="' + postData.url + '">Original</a></p>';
   }
   postHTML += '</div>';
-  $("#results").append(postHTML);
+  return postHTML;
 }
 
 function stats() {
-  $.getJSON(
+  return $.getJSON(
     "/stats.json",
     function processStats(data) {
       var line = "Currently indexing " + data.postCount + " posts";
@@ -112,8 +117,7 @@ function stats() {
   );
 }
 
-function getParameterByName(name) {
-    var url = window.location.href;
+function getParameterByName(url, name) {
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
@@ -123,7 +127,7 @@ function getParameterByName(name) {
 }
 
 $(function() {
-  var query = getParameterByName('query');
+  var query = getParameterByName(window.location.href, 'query');
   if (query !== undefined && query !== '') {
     $("#query").val(query);
   }
