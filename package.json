@@ -1,0 +1,23 @@
+{
+  "name": "reaction-pics",
+  "version": "1.0.0",
+  "description": "Reaction Pics",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertyw/reaction-pics.git"
+  },
+  "author": "git@albertyw.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/albertyw/reaction-pics/issues"
+  },
+  "homepage": "https://github.com/albertyw/reaction-pics#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "mochify": "^6.6.0"
+  }
+}

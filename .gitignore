@@ -31,4 +31,6 @@ coverage.txt
 Godeps
 vendor
 
+node_modules
+
 tumblr/data/static
