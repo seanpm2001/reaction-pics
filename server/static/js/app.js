@@ -53,7 +53,8 @@ function updateResults(query, offset) {
   );
   return pendingRequest;
 }
-updateResults = varsnap(updateResults);
+// Cannot serialize and compare jquery request
+// updateResults = varsnap(updateResults);
 
 function saveQuery(query, data) {
   var dataHTML = '';
@@ -79,7 +80,8 @@ function updateURL(query) {
   }
   return url;
 }
-updateURL = varsnap(updateURL);
+// Security issue when running in headless browser
+// updateURL = varsnap(updateURL);
 
 function addResults(data) {
   var resultHTML = '';
@@ -135,7 +137,8 @@ function stats() {
     }
   );
 }
-stats = varsnap(stats);
+// Cannot serialize and compare jquery request
+// stats = varsnap(stats);
 
 function getParameterByName(url, name) {
     name = name.replace(/[\[\]]/g, "\\$&");
