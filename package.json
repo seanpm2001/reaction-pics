@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Reaction Pics",
   "scripts": {
+    "minify": "node bin/browserify.js",
     "test": "nyc --require dotenv/config --instrument false mochify -R dot --transform envify server/test/*.js"
   },
   "repository": {
@@ -29,6 +30,7 @@
     "@babel/preset-env": "^7.6.3",
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
+    "dotenv": "^8.2.0",
     "jquery-lazyload": "^1.9.7",
     "uglifyify": "^5.0.2"
   }
