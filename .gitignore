@@ -32,5 +32,6 @@ Godeps
 vendor
 
 node_modules
+.nyc_output
 
 tumblr/data/static

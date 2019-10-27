@@ -1,3 +1,6 @@
+var $ = require('jquery');
+var varsnap = require('varsnap');
+
 var pendingRequest = undefined;
 
 function showPost(postID) {
