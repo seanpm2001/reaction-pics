@@ -22,3 +22,18 @@ curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 export PATH="$PATH:$GOPATH/bin"
 dep ensure
 make bins
+
+
+# Install node dependencies
+apt-get install -y build-essential curl locales software-properties-common
+apt-get install -y gcc g++ make
+
+# Install node
+curl -sL https://deb.nodesource.com/setup_11.x | bash -
+apt-get update
+apt-get install -y git nodejs
+
+# Compile code
+npm install
+npm run minify
+npm prune --production

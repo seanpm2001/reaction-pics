@@ -1,0 +1,37 @@
+{
+  "name": "reaction-pics",
+  "version": "1.0.0",
+  "description": "Reaction Pics",
+  "scripts": {
+    "minify": "node bin/browserify.js",
+    "test": "nyc --require dotenv/config --instrument false mochify -R dot --transform envify server/test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertyw/reaction-pics.git"
+  },
+  "author": "git@albertyw.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/albertyw/reaction-pics/issues"
+  },
+  "homepage": "https://github.com/albertyw/reaction-pics#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "envify": "^4.1.0",
+    "jquery": "^3.4.1",
+    "mocha": "^6.2.2",
+    "mochify": "^6.6.0",
+    "nyc": "^14.1.1",
+    "varsnap": "^1.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "dotenv": "^8.2.0",
+    "jquery-lazyload": "^1.9.7",
+    "uglifyify": "^5.0.2"
+  }
+}

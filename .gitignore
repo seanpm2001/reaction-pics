@@ -31,4 +31,8 @@ coverage.txt
 Godeps
 vendor
 
+node_modules
+.nyc_output
+server/static/app.js
+
 tumblr/data/static

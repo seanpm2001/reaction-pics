@@ -1,17 +1,39 @@
+var process = require('process');
+
+var $ = require('jquery');
+window.jQuery = $; // Hack to get jquery-lazyload to bind to jQuery
+require('jquery-lazyload');
+var varsnap = require('varsnap');
+
+varsnap.config = {
+  varsnap: process.env.VARSNAP,
+  env: process.env.ENVIRONMENT,
+  producerToken: process.env.VARSNAP_PRODUCER_TOKEN,
+  consumerToken: process.env.VARSNAP_CONSUMER_TOKEN,
+};
+
 var pendingRequest = undefined;
 
 function showPost(postID) {
   $.getJSON(
     "/postdata/" + postID,
     function processPostResult(data) {
-      clearResults();
+      setResults("");
       addResults(data);
     }
   );
 }
 
-function updateResults(offset) {
+function getQuery() {
   var query = $("#query").val();
+  return query;
+}
+
+function setResults(html) {
+  $("#results").html(html);
+}
+
+function updateResults(query, offset) {
   if (pendingRequest) {
     pendingRequest.abort();
   }
@@ -22,26 +44,28 @@ function updateResults(offset) {
       offset: offset,
     },
     function processQueryResult(data) {
-      clearResults();
+      setResults("");
       saveQuery(query, data);
       updateURL(query);
       addResults(data);
       window.scrollTo(0, 0);
     }
   );
+  return pendingRequest;
 }
-
-function clearResults() {
-  $("#results").html("");
-}
+// Cannot serialize and compare jquery request
+// updateResults = varsnap(updateResults);
 
 function saveQuery(query, data) {
-  $("#data").html("");
-  $("#data").append('<input type="hidden" id="query" value="' + query + '">');
-  $("#data").append('<input type="hidden" id="paginateCount" value="' + data.data.length + '">');
-  $("#data").append('<input type="hidden" id="offset" value="' + data.offset + '">');
-  $("#data").append('<input type="hidden" id="totalResults" value="' + data.totalResults + '">');
+  var dataHTML = '';
+  dataHTML += '<input type="hidden" id="query" value="' + query + '">';
+  dataHTML += '<input type="hidden" id="paginateCount" value="' + data.data.length + '">';
+  dataHTML += '<input type="hidden" id="offset" value="' + data.offset + '">';
+  dataHTML += '<input type="hidden" id="totalResults" value="' + data.totalResults + '">';
+  $("#data").html(dataHTML);
+  return dataHTML;
 }
+saveQuery = varsnap(saveQuery);
 
 function updateURL(query) {
   var url = "/";
@@ -54,30 +78,36 @@ function updateURL(query) {
   } else {
     history.replaceState({}, "Reaction Pics", url);
   }
+  return url;
 }
+// Security issue when running in headless browser
+// updateURL = varsnap(updateURL);
 
 function addResults(data) {
+  var resultHTML = '';
   for (var x=0; x<data.data.length; x++) {
     var post = data.data[x];
-    addResult(post);
+    resultHTML += addResult(post);
   }
   if (data.data.length + data.offset < data.totalResults) {
-    var paginateHTML = '<a href="javascript:paginateNext()">';
-    paginateHTML += 'Next Page <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
-    paginateHTML += '</a>';
-    $("#results").append(paginateHTML);
+    resultHTML += '<a href="javascript:paginateNext()">';
+    resultHTML += 'Next Page <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
+    resultHTML += '</a>';
   }
+  setResults(resultHTML);
   $('img.result-img').lazyload({
     effect: "fadeIn",
     threshold: 1000,
     skip_invisible: true
   });
+  return resultHTML;
 }
+addResults = varsnap(addResults);
 
 function paginateNext() {
   var offset = parseInt($("#offset").val(), 10);
   offset += parseInt($("#paginateCount").val(), 10);
-  updateResults(offset);
+  updateResults(getQuery(), offset);
 }
 
 function addResult(postData) {
@@ -94,11 +124,12 @@ function addResult(postData) {
       postHTML += '<p><a href="' + postData.url + '">Original</a></p>';
   }
   postHTML += '</div>';
-  $("#results").append(postHTML);
+  return postHTML;
 }
+addResult = varsnap(addResult);
 
 function stats() {
-  $.getJSON(
+  return $.getJSON(
     "/stats.json",
     function processStats(data) {
       var line = "Currently indexing " + data.postCount + " posts";
@@ -106,9 +137,10 @@ function stats() {
     }
   );
 }
+// Cannot serialize and compare jquery request
+// stats = varsnap(stats);
 
-function getParameterByName(name) {
-    var url = window.location.href;
+function getParameterByName(url, name) {
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
@@ -116,18 +148,19 @@ function getParameterByName(name) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+getParameterByName = varsnap(getParameterByName);
 
 $(function() {
-  var query = getParameterByName('query');
+  var query = getParameterByName(window.location.href, 'query');
   if (query !== undefined && query !== '') {
     $("#query").val(query);
   }
-  $("#query").on('input', function(){updateResults()});
+  $("#query").on('input', function(){updateResults(getQuery())});
   var urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     showPost(urlPath[2]);
   } else {
-    updateResults();
+    updateResults(getQuery());
   }
   stats();
 });
