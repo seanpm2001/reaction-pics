@@ -1,5 +1,16 @@
+var process = require('process');
+
 var $ = require('jquery');
+window.jQuery = $; // Hack to get jquery-lazyload to bind to jQuery
+require('jquery-lazyload');
 var varsnap = require('varsnap');
+
+varsnap.config = {
+  varsnap: process.env.VARSNAP,
+  env: process.env.ENVIRONMENT,
+  producerToken: process.env.VARSNAP_PRODUCER_TOKEN,
+  consumerToken: process.env.VARSNAP_CONSUMER_TOKEN,
+};
 
 var pendingRequest = undefined;
 
