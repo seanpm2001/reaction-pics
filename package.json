@@ -23,7 +23,7 @@
     "mocha": "^6.2.2",
     "mochify": "^6.6.0",
     "nyc": "^14.1.1",
-    "varsnap": "^1.0.0"
+    "varsnap": "^1.0.1"
   },
   "dependencies": {
     "@babel/core": "^7.6.4",
