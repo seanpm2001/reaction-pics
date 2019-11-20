@@ -26,12 +26,12 @@
   version = "v1.1.0"
 
 [[projects]]
-  digest = "1:f1aee5f2f8d6514f3b9224cbbd87990e57e544ac162081c3ac7d08edfae33528"
+  digest = "1:10582aa7bf5304e24a7b06a32421c5d7220e8862f0877509a8556b6e264eb99d"
   name = "github.com/gosimple/slug"
   packages = ["."]
   pruneopts = "UT"
-  revision = "ec8fb677f0647081580e5f3290dca1bd75af54fb"
-  version = "v1.6.0"
+  revision = "6c8aaf60a6bfd60c80cbe3f4ec5a2e24bcad884e"
+  version = "v1.9.0"
 
 [[projects]]
   digest = "1:2ce7bc6ca53267f9f68d84a00fa265e908f2de68c53a3c5ff4c11395ae186eeb"
@@ -43,14 +43,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3c4a622f11164d31a986a58fb5dbb31cab4c8b745d3feab0ff8f8daf7661b5b6"
+  digest = "1:9a9f4eeef26d8f93e5728353b689239f21524c9384b851b0dd7e8ff740f96dfe"
   name = "github.com/joho/godotenv"
   packages = ["."]
   pruneopts = "UT"
-  revision = "5c0e6c6ab1a0a9ef0a8822cba3a05d62f7dad941"
+  revision = "b09de681dcaff3eaeafcc62ee1f9f622a0c32b8b"
 
 [[projects]]
-  digest = "1:b423efe66a214e0c264b869ee91a40cade898f65233283f7e33a6545baff50aa"
+  digest = "1:ea6d165b8b6595ba97507901848496c79826eaa55db25a700ea6540504251efd"
   name = "github.com/newrelic/go-agent"
   packages = [
     ".",
@@ -62,8 +62,8 @@
     "internal/utilization",
   ]
   pruneopts = "UT"
-  revision = "a2026b991998b6198ca6b94d276c79154e1d4916"
-  version = "v2.9.0"
+  revision = "71b189101d95daff8af73d3ca0af5f7f5948d917"
+  version = "v2.15.0"
 
 [[projects]]
   digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
@@ -90,20 +90,28 @@
   revision = "cb7f23ec59bec0d61b19c56cd88cee3d0cc1870c"
 
 [[projects]]
-  digest = "1:4edd080ca747ec55917e7e14012bb158e7223d79c7ae5ad9a5024fa408739dd8"
+  digest = "1:45664418c24f2b108c39071adf241dc2dac4d6790026a44cd4192d7c925cf271"
   name = "github.com/rollbar/rollbar-go"
   packages = ["."]
   pruneopts = "UT"
-  revision = "0838415a95e06523ce50f5d06aee37713fc99e6a"
-  version = "v1.1.0"
+  revision = "09607ac17f660e27a1e3d38b6e1ec728cefa1f72"
+  version = "v1.2.0"
 
 [[projects]]
-  digest = "1:972c2427413d41a1e06ca4897e8528e5a1622894050e2f527b38ddf0f343f759"
+  digest = "1:8548c309c65a85933a625be5e7d52b6ac927ca30c56869fae58123b8a77a75e1"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
   pruneopts = "UT"
-  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
-  version = "v1.3.0"
+  revision = "221dbe5ed46703ee255b1da0dec05086f5035f62"
+  version = "v1.4.0"
+
+[[projects]]
+  digest = "1:b75b3deb2bce8bc079e16bb2aecfe01eb80098f5650f9e93e5643ca8b7b73737"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "1f64d6156d11335c3f22d9330b0ad14fc1e789ce"
+  version = "v2.2.7"
 
 [solve-meta]
   analyzer-name = "dep"
