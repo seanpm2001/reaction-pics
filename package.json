@@ -23,11 +23,11 @@
     "mocha": "^6.2.2",
     "mochify": "^6.6.0",
     "nyc": "^14.1.1",
-    "varsnap": "^1.0.1"
+    "varsnap": "^1.0.3"
   },
   "dependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
     "dotenv": "^8.2.0",
