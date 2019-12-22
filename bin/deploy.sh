@@ -9,6 +9,7 @@ git fetch -tp
 git pull
 
 # Build and start container
+docker pull "$(grep FROM Dockerfile | awk '{print $2}')"
 docker build -t reaction-pics:production .
 docker network inspect "reaction-pics" &>/dev/null ||
     docker network create --driver bridge "reaction-pics"
