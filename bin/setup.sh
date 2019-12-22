@@ -4,7 +4,7 @@
 sudo hostnamectl set-hostname reaction.pics
 
 # Clone repository
-cd ~
+cd ~ || exit 1
 git clone git@github.com:albertyw/reaction-pics
 
 # Install nginx
@@ -29,4 +29,4 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce
-sudo usermod -aG docker ${USER}
+sudo usermod -aG docker "${USER}"
