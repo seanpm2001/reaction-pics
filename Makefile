@@ -9,6 +9,7 @@ bins:
 test: bins
 	./bin/test.sh
 	npm test
+	git ls-files | grep -e \.sh$ | xargs shellcheck
 
 serve: bins
 	npm run minify
