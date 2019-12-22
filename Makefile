@@ -5,6 +5,7 @@ all: test
 bins:
 	go build
 	npm install
+	npm run minify
 
 test: bins
 	./bin/test.sh
