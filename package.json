@@ -26,8 +26,8 @@
     "varsnap": "^1.0.3"
   },
   "dependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
     "dotenv": "^8.2.0",
