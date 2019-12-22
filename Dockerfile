@@ -10,15 +10,11 @@ ENV LC_ALL en_US.UTF-8
 # Install updates and system packages
 RUN add-apt-repository ppa:longsleep/golang-backports
 RUN apt-get update && RUN apt-get install -y --no-install-recommends \
-    build-essential \
-    locales \
-    software-properties-common \
-    curl \
-    golang-go \
-    git
+    build-essential curl locales software-properties-common `: basic packages` \
+    golang-go                                               `: go` \
+    gcc g++ git make                                        `: nodejs dependencies`
 
 # Install node
-RUN apt-get install -y --no-install-recommends gcc g++ make
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get update && apt-get install -y --no-install-recommends nodejs
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
