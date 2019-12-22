@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-cd "$DIR"/..
+cd "$DIR"/.. || exit 1
 
 # Update repository
 git checkout master
