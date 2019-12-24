@@ -2,9 +2,14 @@ export ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all: test
 
-bins:
-	go build
+vendor:
+	dep ensure
+
+node_modules:
 	npm install
+
+bins: vendor node_modules
+	go build
 	npm run minify
 
 bin/hadolint:
