@@ -22,7 +22,7 @@
     "jquery": "^3.4.1",
     "mocha": "^6.2.2",
     "mochify": "^6.6.0",
-    "nyc": "^14.1.1",
+    "nyc": "^15.0.0",
     "varsnap": "^1.1.0"
   },
   "dependencies": {
