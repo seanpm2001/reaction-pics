@@ -24,7 +24,6 @@ const (
 
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var staticPath = fmt.Sprintf("%s/static/", serverDir)
-var uRLFilePaths = map[string]func() (string, error){}
 var board *tumblr.Board
 
 // logURL is a closure that logs (to stdout) the url and query of requests
