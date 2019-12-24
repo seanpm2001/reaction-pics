@@ -44,11 +44,6 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 ) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		path := strings.TrimPrefix(r.URL.Path, "/static/")
-		if strings.HasPrefix(path, "data/") {
-			// Redirect away old images to S3
-			url := s3URL + strings.TrimPrefix(path, "data/")
-			http.Redirect(w, r, url, 307)
-		}
 		r.URL.Path = path
 		targetFunc(w, r)
 	}
