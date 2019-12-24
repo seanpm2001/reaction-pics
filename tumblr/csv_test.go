@@ -13,7 +13,7 @@ func TestReadPostsFromCSV(t *testing.T) {
 	assert.Equal(t, posts[0].ID, int64(1234))
 	assert.Equal(t, posts[0].Title, "title")
 	assert.Equal(t, posts[0].URL, "url")
-	assert.Equal(t, posts[0].Image, "http://static.reaction.pics/img/abcd.gif")
+	assert.Equal(t, posts[0].Image, "https://img.reaction.pics/file/reaction-pics/abcd.gif")
 	assert.Equal(t, posts[0].Likes, int64(123))
 }
 

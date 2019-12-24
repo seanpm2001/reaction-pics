@@ -19,7 +19,7 @@ import (
 
 const (
 	maxResults = 20
-	s3URL      = "http://static.reaction.pics/img/"
+	s3URL      = "https://img.reaction.pics/file/reaction-pics/"
 )
 
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
