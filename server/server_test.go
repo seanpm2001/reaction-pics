@@ -64,7 +64,7 @@ func TestRedirectS3URL(t *testing.T) {
 	assert.Equal(t, response.Code, 307)
 	url, err := response.Result().Location()
 	assert.NoError(t, err)
-	assert.Equal(t, url.String(), "https://img.reaction.pics/img/asdf.gif")
+	assert.Equal(t, url.String(), "https://img.reaction.pics/file/reaction-pics/asdf.gif")
 }
 
 func TestSearchHandler(t *testing.T) {
