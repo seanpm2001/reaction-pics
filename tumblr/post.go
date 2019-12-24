@@ -15,7 +15,7 @@ import (
 // MaxKeywords is the maximum number of keywords that can be returned by a board
 const (
 	MaxKeywords   = 20
-	imageRootPath = "http://static.reaction.pics/img/"
+	imageRootPath = "https://img.reaction.pics/img/"
 )
 
 // Post is a representation of a single tumblr post
