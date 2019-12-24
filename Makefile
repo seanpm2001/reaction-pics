@@ -17,5 +17,4 @@ test: bins bin/hadolint
 	bin/hadolint Dockerfile --ignore=DL3008 --ignore=DL3009 --ignore=DL4006 --ignore=SC2046 --ignore=SC2006
 
 serve: bins
-	npm run minify
 	./reaction-pics
