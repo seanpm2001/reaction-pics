@@ -11,8 +11,8 @@ import (
 	"github.com/albertyw/reaction-pics/tumblr"
 )
 
-func TestReadFile(t *testing.T) {
-	request, err := http.NewRequest("GET", "/app.js", nil)
+func TestIndexFile(t *testing.T) {
+	request, err := http.NewRequest("GET", "/", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
@@ -23,9 +23,18 @@ func TestReadFile(t *testing.T) {
 	assert.Contains(t, response.Body.String(), cacheString)
 }
 
-func TestIndexFile(t *testing.T) {
+func TestOnlyIndexFile(t *testing.T) {
+	request, err := http.NewRequest("GET", "/asdf", nil)
+	assert.NoError(t, err)
+
+	response := httptest.NewRecorder()
+	indexHandler(response, request)
+	assert.Equal(t, response.Code, 404)
+}
+
+func TestReadFile(t *testing.T) {
 	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
-	request, err := http.NewRequest("GET", "/", nil)
+	request, err := http.NewRequest("GET", "/static/favicon/manifest.json", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
@@ -34,23 +43,17 @@ func TestIndexFile(t *testing.T) {
 	assert.True(t, len(response.Body.String()) > 100)
 }
 
-func TestExactURL(t *testing.T) {
+func TestNoExactURL(t *testing.T) {
 	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
-	request, err := http.NewRequest("GET", "/asdf", nil)
+	request, err := http.NewRequest("GET", "/static/asdf.js", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
 	handler(response, request)
 	assert.Equal(t, response.Code, 404)
-}
 
-func TestNoExactURL(t *testing.T) {
-	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
-	request, err := http.NewRequest("GET", "/asdf", nil)
-	assert.NoError(t, err)
-
-	response := httptest.NewRecorder()
-	handler(response, request)
+	response = httptest.NewRecorder()
+	indexHandler(response, request)
 	assert.Equal(t, response.Code, 404)
 }
 

@@ -50,6 +50,11 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 
 // indexHandler returns the index page template
 func indexHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
+		err := errors.New("file not found")
+		http.Error(w, err.Error(), 404)
+		return
+	}
 	t, err := template.ParseFiles(staticPath + "index.htm")
 	if err != nil {
 		err = errors.New("Cannot read post template")
