@@ -1,4 +1,5 @@
-FROM debian:buster
+# Needed to match supported versions of golang-backports
+FROM ubuntu:18.04
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
 
@@ -7,12 +8,15 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-# Install updates and system packages
+# Install go and other dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    software-properties-common `: needed for add-apt-repository`
 RUN add-apt-repository ppa:longsleep/golang-backports
-RUN apt-get update && RUN apt-get install -y --no-install-recommends \
-    build-essential curl locales software-properties-common `: basic packages` \
-    golang-go                                               `: go` \
-    gcc g++ git make                                        `: nodejs dependencies`
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential curl locales  `: basic packages` \
+    git golang-go                 `: go` \
+    gcc g++ make gnupg            `: nodejs dependencies`
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
 # Install node
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
