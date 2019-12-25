@@ -157,7 +157,7 @@ func (b Board) GetPostByID(postID int64) *Post {
 	return nil
 }
 
-// LimitBoard returns a board with maxResults posts starting at offset
+// LimitBoard modifies the current board with maxResults posts starting at offset
 func (b *Board) LimitBoard(offset, maxResults int) {
 	if offset > len(b.Posts) {
 		offset = len(b.Posts)
@@ -183,7 +183,7 @@ func (a SortByLikes) Len() int           { return len(a) }
 func (a SortByLikes) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a SortByLikes) Less(i, j int) bool { return a[i].Likes < a[j].Likes }
 
-// RandomizePosts will shuffle the Board's posts
+// RandomizePosts will shuffle the current Board's posts
 func (b *Board) RandomizePosts() {
 	b.mut.Lock()
 	defer b.mut.Unlock()

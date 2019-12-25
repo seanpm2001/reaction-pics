@@ -19,7 +19,6 @@ import (
 
 const (
 	maxResults = 20
-	s3URL      = "https://img.reaction.pics/file/reaction-pics/"
 )
 
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
@@ -75,6 +74,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 		"totalResults": len(queriedBoard.Posts),
 	}
 	queriedBoard.LimitBoard(offset, maxResults)
+	queriedBoard.SortPostsByLikes()
 	data["data"] = queriedBoard.PostsToJSON()
 	dataBytes, _ := json.Marshal(data)
 	fmt.Fprint(w, string(dataBytes))
