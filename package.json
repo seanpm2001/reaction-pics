@@ -18,12 +18,9 @@
   "homepage": "https://github.com/albertyw/reaction-pics#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "envify": "^4.1.0",
-    "jquery": "^3.4.1",
     "mocha": "^6.2.2",
     "mochify": "^6.6.0",
-    "nyc": "^15.0.0",
-    "varsnap": "^1.1.0"
+    "nyc": "^15.0.0"
   },
   "dependencies": {
     "@babel/core": "^7.7.7",
@@ -32,8 +29,11 @@
     "bootstrap": "^4.4.1",
     "browserify": "^16.5.0",
     "dotenv": "^8.2.0",
+    "envify": "^4.1.0",
+    "jquery": "^3.4.1",
     "jquery-lazyload": "^1.9.7",
     "tether": "^1.4.7",
-    "uglifyify": "^5.0.2"
+    "uglifyify": "^5.0.2",
+    "varsnap": "^1.1.0"
   }
 }
