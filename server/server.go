@@ -51,8 +51,10 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 // indexHandler is an http handler that returns the index page HTML
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
-		err := errors.New("file not found")
-		http.Error(w, err.Error(), 404)
+		err := fmt.Errorf("file not found: %s", r.URL.Path)
+		fmt.Println(err)
+		rollbar.RequestError(rollbar.WARN, r, err)
+		http.NotFound(w, r)
 		return
 	}
 	t, err := template.ParseFiles(staticPath + "index.htm")
