@@ -48,7 +48,7 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 	}
 }
 
-// indexHandler returns the index page template
+// indexHandler is an http handler that returns the index page HTML
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
 		err := errors.New("file not found")
@@ -76,7 +76,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// searchHandler is an http handler to search data for keywords
+// searchHandler is an http handler to search data for keywords in json format
 // It matches the query against post titles and then ranks posts by number of likes
 func searchHandler(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("query")
@@ -100,7 +100,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, string(dataBytes))
 }
 
-// postDataHandler is an http handler to return post data by ID
+// postDataHandler is an http handler to return post data by ID in json format
 func postDataHandler(w http.ResponseWriter, r *http.Request) {
 	pathStrings := strings.Split(r.URL.Path, "/")
 	postIDString := pathStrings[2]
@@ -129,6 +129,8 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, string(marshalledPost))
 }
 
+// postHandler is an http handler that validates the correctness of a post url
+// and returns the index page html to render it correct
 func postHandler(w http.ResponseWriter, r *http.Request) {
 	pathStrings := strings.Split(r.URL.Path, "/")
 	postIDString := pathStrings[2]
@@ -156,6 +158,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	indexHandler(w, r)
 }
 
+// statsHandler returns internal stats about the reaction.pics DB as json
 func statsHandler(w http.ResponseWriter, r *http.Request) {
 	postCount := strconv.Itoa(len(board.Posts))
 	data := map[string]interface{}{
@@ -166,6 +169,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, string(stats))
 }
 
+// sitemapHandler returns a sitemap of reaction.pics as an xml file
 func sitemapHandler(w http.ResponseWriter, r *http.Request) {
 	sm := stm.NewSitemap(0)
 	sm.SetDefaultHost(os.Getenv("HOST"))
@@ -194,6 +198,7 @@ func Run(newrelicApp newrelic.Application) {
 	http.ListenAndServe(address, nil)
 }
 
+// appCacheString returns a cache string that can be used to bust browser/CDN caches
 func appCacheString() string {
 	appFile := staticPath + "app.js"
 	info, err := os.Stat(appFile)
