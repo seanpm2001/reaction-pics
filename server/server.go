@@ -26,28 +26,6 @@ var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var staticPath = fmt.Sprintf("%s/static/", serverDir)
 var board *tumblr.Board
 
-// logURL is a closure that logs (to stdout) the url and query of requests
-func logURL(
-	targetFunc func(http.ResponseWriter, *http.Request),
-) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		url := r.URL.String()
-		fmt.Println(url)
-		targetFunc(w, r)
-	}
-}
-
-// rewriteFS wraps a static file handler so to rewrite to the static directory
-// and the root path is rewritten to index.htm
-func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
-) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		path := strings.TrimPrefix(r.URL.Path, "/static/")
-		r.URL.Path = path
-		targetFunc(w, r)
-	}
-}
-
 // indexHandler is an http handler that returns the index page HTML
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
@@ -190,25 +168,13 @@ func Run(newrelicApp newrelic.Application) {
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
 	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/", logURL(indexHandler)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/static/", logURL(staticFS)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/search", logURL(searchHandler)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/postdata/", logURL(postDataHandler)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/post/", logURL(postHandler)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/stats.json", logURL(statsHandler)))
-	http.HandleFunc(newrelic.WrapHandleFunc(newrelicApp, "/sitemap.xml", logURL(sitemapHandler)))
+	generator := newHandlerGenerator(newrelicApp)
+	http.HandleFunc(generator.newHandlerFunc("/", indexHandler))
+	http.HandleFunc(generator.newHandlerFunc("/static/", staticFS))
+	http.HandleFunc(generator.newHandlerFunc("/search", searchHandler))
+	http.HandleFunc(generator.newHandlerFunc("/postdata/", postDataHandler))
+	http.HandleFunc(generator.newHandlerFunc("/post/", postHandler))
+	http.HandleFunc(generator.newHandlerFunc("/stats.json", statsHandler))
+	http.HandleFunc(generator.newHandlerFunc("/sitemap.xml", sitemapHandler))
 	http.ListenAndServe(address, nil)
-}
-
-// appCacheString returns a cache string that can be used to bust browser/CDN caches
-func appCacheString() string {
-	appFile := staticPath + "app.js"
-	info, err := os.Stat(appFile)
-	if err != nil {
-		fmt.Println(err)
-		rollbar.Error(rollbar.ERR, err)
-		return ""
-	}
-	cacheString := strconv.FormatInt(info.ModTime().Unix(), 10)
-	return cacheString
 }
