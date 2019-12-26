@@ -59,7 +59,7 @@ func newHandlerGenerator(newrelicApp newrelic.Application) handlerGenerator {
 }
 
 // newHandlerFunc returns a http handler function
-func (g handlerGenerator) newHandlerFunc(pattern string, handlerFunc func(http.ResponseWriter, *http.Request),
-) (string, func(http.ResponseWriter, *http.Request)) {
-	return newrelic.WrapHandleFunc(g.newrelicApp, pattern, logURL(handlerFunc))
+func (g handlerGenerator) newHandler(pattern string, handlerFunc func(http.ResponseWriter, *http.Request),
+) (string, http.Handler) {
+	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(handlerFunc)))
 }
