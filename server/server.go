@@ -26,10 +26,10 @@ var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var staticPath = fmt.Sprintf("%s/static/", serverDir)
 
 // indexHandler is an http handler that returns the index page HTML
-func indexHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
 		err := fmt.Errorf("file not found: %s", r.URL.Path)
-		fmt.Println(err)
+		d.logger.Warn(err)
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -37,7 +37,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	t, err := template.ParseFiles(staticPath + "index.htm")
 	if err != nil {
 		err = errors.New("Cannot read post template")
-		fmt.Println(err)
+		d.logger.Error(err)
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -48,7 +48,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	err = t.Execute(w, templateData)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot execute template")
-		fmt.Println(err)
+		d.logger.Error(err)
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -87,7 +87,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot parse post id")
-		fmt.Println(err)
+		d.logger.Warn(err)
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -95,7 +95,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	post := d.board.GetPostByID(postID)
 	if post == nil {
 		err = errors.New("Cannot find post")
-		fmt.Println(err)
+		d.logger.Warn(err)
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -117,7 +117,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot parse post id")
-		fmt.Println(err)
+		d.logger.Warn(err)
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -130,7 +130,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	if !foundPost {
 		err = errors.New("Cannot find post")
-		fmt.Println(err)
+		d.logger.Warn(err)
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
