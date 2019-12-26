@@ -49,6 +49,8 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 	}
 }
 
+type handlerWithDeps func(http.ResponseWriter, *http.Request, handlerDeps)
+
 // handlerDeps is a struct of handler dependencies
 type handlerDeps struct {
 	logger *zap.SugaredLogger
@@ -76,7 +78,10 @@ func newHandlerGenerator(board *tumblr.Board, newrelicApp newrelic.Application, 
 }
 
 // newHandlerFunc returns a http handler function
-func (g handlerGenerator) newHandler(pattern string, handlerFunc func(http.ResponseWriter, *http.Request),
+func (g handlerGenerator) newHandler(pattern string, handlerFunc handlerWithDeps,
 ) (string, http.Handler) {
-	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(handlerFunc, g.logger)))
+	f := func(w http.ResponseWriter, r *http.Request) {
+		handlerFunc(w, r, g.deps)
+	}
+	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(f, g.logger)))
 }

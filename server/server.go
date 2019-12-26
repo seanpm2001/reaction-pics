@@ -27,7 +27,7 @@ var staticPath = fmt.Sprintf("%s/static/", serverDir)
 var board *tumblr.Board
 
 // indexHandler is an http handler that returns the index page HTML
-func indexHandler(w http.ResponseWriter, r *http.Request) {
+func indexHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
 		err := fmt.Errorf("file not found: %s", r.URL.Path)
 		fmt.Println(err)
@@ -58,7 +58,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 // searchHandler is an http handler to search data for keywords in json format
 // It matches the query against post titles and then ranks posts by number of likes
-func searchHandler(w http.ResponseWriter, r *http.Request) {
+func searchHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
 	queriedBoard := board.FilterBoard(query)
@@ -82,7 +82,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // postDataHandler is an http handler to return post data by ID in json format
-func postDataHandler(w http.ResponseWriter, r *http.Request) {
+func postDataHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	pathStrings := strings.Split(r.URL.Path, "/")
 	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
@@ -112,7 +112,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request) {
 
 // postHandler is an http handler that validates the correctness of a post url
 // and returns the index page html to render it correct
-func postHandler(w http.ResponseWriter, r *http.Request) {
+func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	pathStrings := strings.Split(r.URL.Path, "/")
 	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
@@ -136,11 +136,11 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	indexHandler(w, r)
+	indexHandler(w, r, d)
 }
 
 // statsHandler returns internal stats about the reaction.pics DB as json
-func statsHandler(w http.ResponseWriter, r *http.Request) {
+func statsHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	postCount := strconv.Itoa(len(board.Posts))
 	data := map[string]interface{}{
 		"postCount": postCount,
@@ -151,7 +151,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // sitemapHandler returns a sitemap of reaction.pics as an xml file
-func sitemapHandler(w http.ResponseWriter, r *http.Request) {
+func sitemapHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	sm := stm.NewSitemap(0)
 	sm.SetDefaultHost(os.Getenv("HOST"))
 
@@ -164,7 +164,7 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // staticHandler returns static files
-func staticHandler(w http.ResponseWriter, r *http.Request) {
+func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	staticFS(w, r)
 }
