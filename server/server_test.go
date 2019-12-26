@@ -8,178 +8,184 @@ import (
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
 	"go.uber.org/zap"
 )
 
-var b = tumblr.NewBoard([]tumblr.Post{})
-var d = handlerDeps{
-	logger:         zap.NewNop().Sugar(),
-	board:          &b,
-	appCacheString: appCacheString(zap.NewNop().Sugar()),
+type HandlerTestSuite struct {
+	suite.Suite
+	deps handlerDeps
 }
 
-func TestIndexFile(t *testing.T) {
+func (s *HandlerTestSuite) SetupTest() {
+	logger := zap.NewNop().Sugar()
+	board := tumblr.NewBoard([]tumblr.Post{})
+	s.deps = handlerDeps{
+		logger:         logger,
+		board:          &board,
+		appCacheString: appCacheString(logger),
+	}
+}
+
+func (s *HandlerTestSuite) TestIndexFile(t *testing.T) {
 	request, err := http.NewRequest("GET", "/", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	indexHandler(response, request, d)
+	indexHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 
-	assert.Contains(t, response.Body.String(), d.appCacheString)
+	assert.Contains(t, response.Body.String(), s.deps.appCacheString)
 }
 
-func TestOnlyIndexFile(t *testing.T) {
+func (s *HandlerTestSuite) TestOnlyIndexFile(t *testing.T) {
 	request, err := http.NewRequest("GET", "/asdf", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	indexHandler(response, request, d)
+	indexHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 404)
 }
 
-func TestReadFile(t *testing.T) {
+func (s *HandlerTestSuite) TestReadFile(t *testing.T) {
 	request, err := http.NewRequest("GET", "/static/favicon/manifest.json", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	staticHandler(response, request, d)
+	staticHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 	assert.True(t, len(response.Body.String()) > 100)
 }
 
-func TestNoExactURL(t *testing.T) {
+func (s *HandlerTestSuite) TestNoExactURL(t *testing.T) {
 	request, err := http.NewRequest("GET", "/static/asdf.js", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	staticHandler(response, request, d)
+	staticHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 404)
 
 	response = httptest.NewRecorder()
-	indexHandler(response, request, d)
+	indexHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 404)
 }
 
-func TestSearchHandler(t *testing.T) {
+func (s *HandlerTestSuite) TestSearchHandler(t *testing.T) {
 	request, err := http.NewRequest("GET", "/search", nil)
 	assert.NoError(t, err)
 
 	q := request.URL.Query()
 	q.Add("query", "searchTerm")
 	response := httptest.NewRecorder()
-	searchHandler(response, request, d)
+	searchHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 	assert.Equal(t, response.Body.String(), "{\"data\":[],\"offset\":0,\"totalResults\":0}")
 }
 
-func TestSearchHandlerOffset(t *testing.T) {
+func (s *HandlerTestSuite) TestSearchHandlerOffset(t *testing.T) {
 	request, err := http.NewRequest("GET", "/search?offset=1", nil)
 	assert.NoError(t, err)
 
 	q := request.URL.Query()
 	q.Add("query", "searchTerm")
 	response := httptest.NewRecorder()
-	searchHandler(response, request, d)
+	searchHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 	assert.Equal(t, response.Body.String(), "{\"data\":[],\"offset\":1,\"totalResults\":0}")
 }
 
-func TestSearchHandlerMalformedOffset(t *testing.T) {
+func (s *HandlerTestSuite) TestSearchHandlerMalformedOffset(t *testing.T) {
 	request, err := http.NewRequest("GET", "/search?offset=asdf", nil)
 	assert.NoError(t, err)
 
 	q := request.URL.Query()
 	q.Add("query", "searchTerm")
 	response := httptest.NewRecorder()
-	searchHandler(response, request, d)
+	searchHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 	assert.Equal(t, response.Body.String(), "{\"data\":[],\"offset\":0,\"totalResults\":0}")
 }
 
-func TestPostHandlerMalformed(t *testing.T) {
+func (s *HandlerTestSuite) TestPostHandlerMalformed(t *testing.T) {
 	request, err := http.NewRequest("GET", "/post/asdf", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	postHandler(response, request, d)
+	postHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 404)
 }
 
-func TestPostHandlerNotFound(t *testing.T) {
+func (s *HandlerTestSuite) TestPostHandlerNotFound(t *testing.T) {
 	request, err := http.NewRequest("GET", "/post/1234", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	postHandler(response, request, d)
+	postHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 404)
 }
 
-func TestPostHandler(t *testing.T) {
+func (s *HandlerTestSuite) TestPostHandler(t *testing.T) {
 	post := tumblr.Post{ID: 1234}
-	d.board.AddPost(post)
-	defer func() { d.board.Reset() }()
+	s.deps.board.AddPost(post)
 	request, err := http.NewRequest("GET", "/post/1234", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	postHandler(response, request, d)
+	postHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 	assert.NotEqual(t, len(response.Body.String()), 0)
 }
 
-func TestPostDataHandler(t *testing.T) {
+func (s *HandlerTestSuite) TestPostDataHandler(t *testing.T) {
 	post := tumblr.Post{ID: 1234}
-	d.board.AddPost(post)
-	defer func() { d.board.Reset() }()
+	s.deps.board.AddPost(post)
 	request, err := http.NewRequest("GET", "/postdata/1234", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	postDataHandler(response, request, d)
+	postDataHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 	assert.NotEqual(t, len(response.Body.String()), 0)
 }
 
-func TestPostDataPercentHandler(t *testing.T) {
+func (s *HandlerTestSuite) TestPostDataPercentHandler(t *testing.T) {
 	post := tumblr.Post{ID: 1234, Title: `asdf% qwer`}
-	d.board.AddPost(post)
-	defer func() { d.board.Reset() }()
+	s.deps.board.AddPost(post)
 	request, err := http.NewRequest("GET", "/postdata/1234", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	postDataHandler(response, request, d)
+	postDataHandler(response, request, s.deps)
 	var data map[string][]map[string]interface{}
 	json.Unmarshal(response.Body.Bytes(), &data)
 	title := data["data"][0]["title"].(string)
 	assert.Equal(t, `asdf% qwer`, title)
 }
 
-func TestPostDataHandlerMalformed(t *testing.T) {
+func (s *HandlerTestSuite) TestPostDataHandlerMalformed(t *testing.T) {
 	request, err := http.NewRequest("GET", "/postdata/asdf", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	postDataHandler(response, request, d)
+	postDataHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 404)
 }
 
-func TestPostDataHandlerUnknown(t *testing.T) {
+func (s *HandlerTestSuite) TestPostDataHandlerUnknown(t *testing.T) {
 	request, err := http.NewRequest("GET", "/postdata/1234", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	postDataHandler(response, request, d)
+	postDataHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 404)
 }
 
-func TestStatsHandler(t *testing.T) {
+func (s *HandlerTestSuite) TestStatsHandler(t *testing.T) {
 	request, err := http.NewRequest("GET", "/stats.json", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	statsHandler(response, request, d)
+	statsHandler(response, request, s.deps)
 	assert.Equal(t, response.Code, 200)
 	assert.Equal(t, response.Body.String(), "{\"keywords\":[],\"postCount\":\"0\"}")
 }

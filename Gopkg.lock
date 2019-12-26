@@ -58,16 +58,9 @@
   revision = "b09de681dcaff3eaeafcc62ee1f9f622a0c32b8b"
 
 [[projects]]
-  digest = "1:ede908708e81a8d55fd75faaa4b56e4a102c478764b781f5885c980d06005e5d"
+  digest = "1:b124296f831bf322c067ca55b7a2ba634f635a51d56b78f4dad48cec5d8ab783"
   name = "github.com/newrelic/go-agent"
   packages = [
-    ".",
-    "internal",
-    "internal/cat",
-    "internal/jsonx",
-    "internal/logger",
-    "internal/sysinfo",
-    "internal/utilization",
     "v3/internal",
     "v3/internal/cat",
     "v3/internal/jsonx",
@@ -113,9 +106,13 @@
   version = "v1.2.0"
 
 [[projects]]
-  digest = "1:8548c309c65a85933a625be5e7d52b6ac927ca30c56869fae58123b8a77a75e1"
+  digest = "1:0496f0e99014b7fd0a560c539f51d0882731137b85494142f47e550e4657176a"
   name = "github.com/stretchr/testify"
-  packages = ["assert"]
+  packages = [
+    "assert",
+    "require",
+    "suite",
+  ]
   pruneopts = "UT"
   revision = "221dbe5ed46703ee255b1da0dec05086f5035f62"
   version = "v1.4.0"
@@ -242,11 +239,11 @@
     "github.com/gosimple/slug",
     "github.com/ikeikeikeike/go-sitemap-generator/stm",
     "github.com/joho/godotenv",
-    "github.com/newrelic/go-agent",
     "github.com/newrelic/go-agent/v3/newrelic",
     "github.com/pkg/errors",
     "github.com/rollbar/rollbar-go",
     "github.com/stretchr/testify/assert",
+    "github.com/stretchr/testify/suite",
     "go.uber.org/zap",
   ]
   solver-name = "gps-cdcl"
