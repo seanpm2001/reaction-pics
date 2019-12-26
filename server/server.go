@@ -162,19 +162,24 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(sm.XMLContent())
 }
 
+// staticHandler returns static files
+func staticHandler(w http.ResponseWriter, r *http.Request) {
+	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
+	staticFS(w, r)
+}
+
 // Run starts up the HTTP server
 func Run(newrelicApp newrelic.Application) {
 	board = tumblr.InitializeBoard()
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)
-	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	generator := newHandlerGenerator(newrelicApp)
 	http.Handle(generator.newHandler("/", indexHandler))
-	http.Handle(generator.newHandler("/static/", staticFS))
 	http.Handle(generator.newHandler("/search", searchHandler))
 	http.Handle(generator.newHandler("/postdata/", postDataHandler))
 	http.Handle(generator.newHandler("/post/", postHandler))
 	http.Handle(generator.newHandler("/stats.json", statsHandler))
 	http.Handle(generator.newHandler("/sitemap.xml", sitemapHandler))
+	http.Handle(generator.newHandler("/static/", staticHandler))
 	http.ListenAndServe(address, nil)
 }

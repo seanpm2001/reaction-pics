@@ -33,23 +33,21 @@ func TestOnlyIndexFile(t *testing.T) {
 }
 
 func TestReadFile(t *testing.T) {
-	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	request, err := http.NewRequest("GET", "/static/favicon/manifest.json", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	handler(response, request)
+	staticHandler(response, request)
 	assert.Equal(t, response.Code, 200)
 	assert.True(t, len(response.Body.String()) > 100)
 }
 
 func TestNoExactURL(t *testing.T) {
-	handler := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
 	request, err := http.NewRequest("GET", "/static/asdf.js", nil)
 	assert.NoError(t, err)
 
 	response := httptest.NewRecorder()
-	handler(response, request)
+	staticHandler(response, request)
 	assert.Equal(t, response.Code, 404)
 
 	response = httptest.NewRecorder()
