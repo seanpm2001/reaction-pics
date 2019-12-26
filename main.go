@@ -17,12 +17,12 @@ func setupEnv() {
 	}
 }
 
-func getNewRelicApp() newrelic.Application {
+func getNewRelicApp(logger *zap.SugaredLogger) newrelic.Application {
 	newrelicKey := os.Getenv("NEWRELIC_KEY")
 	config := newrelic.NewConfig("Reaction.pics", newrelicKey)
 	app, err := newrelic.NewApplication(config)
 	if err != nil {
-		panic(err)
+		logger.Fatal(err)
 	}
 	return app
 }
@@ -33,11 +33,16 @@ func setupRollbar() {
 }
 
 func getLogger() *zap.SugaredLogger {
-	logger, err := zap.NewProduction()
+	var logger *zap.Logger
+	var err error
+	if os.Getenv("ENVIRONMENT") == "development" {
+		logger, err = zap.NewDevelopment()
+	} else {
+		logger, err = zap.NewProduction()
+	}
 	if err != nil {
 		panic(err)
 	}
-	defer logger.Sync()
 	sugaredLogger := logger.Sugar()
 	return sugaredLogger
 }
@@ -46,6 +51,7 @@ func main() {
 	setupEnv()
 	setupRollbar()
 	logger := getLogger()
-	newrelicApp := getNewRelicApp()
+	defer logger.Sync()
+	newrelicApp := getNewRelicApp(logger)
 	server.Run(newrelicApp, logger)
 }
