@@ -2,15 +2,21 @@ export ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all: test
 
+clean:
+	rm reaction-pics
+	rm server/static/app.js
+
 vendor:
 	dep ensure
 
 node_modules:
 	npm install
 
-bins: vendor node_modules
-	go build
+server/static/app.js: node_modules
 	npm run minify
+
+bins: vendor server/static/app.js
+	go build
 
 bin/hadolint:
 	curl -sL https://github.com/hadolint/hadolint/releases/download/v1.17.3/hadolint-Linux-x86_64 > bin/hadolint && chmod +x bin/hadolint
