@@ -179,14 +179,3 @@ func TestStatsHandler(t *testing.T) {
 	assert.Equal(t, response.Code, 200)
 	assert.Equal(t, response.Body.String(), "{\"keywords\":[],\"postCount\":\"0\"}")
 }
-
-func TestCacheString(t *testing.T) {
-	tempStaticPath := staticPath
-	defer func() { staticPath = tempStaticPath }()
-	cacheString := appCacheString()
-	assert.NotEqual(t, cacheString, "")
-
-	staticPath = ""
-	cacheString = appCacheString()
-	assert.Equal(t, cacheString, "")
-}
