@@ -174,7 +174,7 @@ func Run(newrelicApp newrelic.Application, logger *zap.SugaredLogger) {
 	board = tumblr.InitializeBoard()
 	address := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	logger.Infof("server listening on %s", address)
-	generator := newHandlerGenerator(newrelicApp, logger)
+	generator := newHandlerGenerator(board, newrelicApp, logger)
 	http.Handle(generator.newHandler("/", indexHandler))
 	http.Handle(generator.newHandler("/search", searchHandler))
 	http.Handle(generator.newHandler("/postdata/", postDataHandler))
