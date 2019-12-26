@@ -12,7 +12,7 @@ import (
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/ikeikeikeike/go-sitemap-generator/stm"
-	newrelic "github.com/newrelic/go-agent"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
@@ -169,7 +169,7 @@ func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 // Run starts up the HTTP server
-func Run(newrelicApp newrelic.Application, logger *zap.SugaredLogger) {
+func Run(newrelicApp *newrelic.Application, logger *zap.SugaredLogger) {
 	board := tumblr.InitializeBoard()
 	address := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	logger.Infof("server listening on %s", address)

@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/albertyw/reaction-pics/tumblr"
-	newrelic "github.com/newrelic/go-agent"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
 )
@@ -59,13 +59,13 @@ type handlerDeps struct {
 
 // handlerGenerator returns a struct that can generate wrapped http handler functions
 type handlerGenerator struct {
-	newrelicApp newrelic.Application
+	newrelicApp *newrelic.Application
 	logger      *zap.SugaredLogger
 	deps        handlerDeps
 }
 
 // newHandlerGenerator returns a new handlerGenerator
-func newHandlerGenerator(board *tumblr.Board, newrelicApp newrelic.Application, logger *zap.SugaredLogger) handlerGenerator {
+func newHandlerGenerator(board *tumblr.Board, newrelicApp *newrelic.Application, logger *zap.SugaredLogger) handlerGenerator {
 	deps := handlerDeps{
 		logger:         logger,
 		board:          board,

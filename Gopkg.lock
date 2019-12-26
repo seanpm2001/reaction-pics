@@ -58,7 +58,7 @@
   revision = "b09de681dcaff3eaeafcc62ee1f9f622a0c32b8b"
 
 [[projects]]
-  digest = "1:56f3a5a08014047eeb9233c52e9eecdf5503133e7605056866dbe51d71edd011"
+  digest = "1:ede908708e81a8d55fd75faaa4b56e4a102c478764b781f5885c980d06005e5d"
   name = "github.com/newrelic/go-agent"
   packages = [
     ".",
@@ -68,10 +68,17 @@
     "internal/logger",
     "internal/sysinfo",
     "internal/utilization",
+    "v3/internal",
+    "v3/internal/cat",
+    "v3/internal/jsonx",
+    "v3/internal/logger",
+    "v3/internal/sysinfo",
+    "v3/internal/utilization",
+    "v3/newrelic",
   ]
   pruneopts = "UT"
-  revision = "d01b4de3d68ee9fd20da42ed57fa2e888eb3140b"
-  version = "v2.16.3"
+  revision = "3f901151beadf80f772132193d5bb2fcbd3df469"
+  version = "v3.0.0"
 
 [[projects]]
   digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
@@ -236,6 +243,7 @@
     "github.com/ikeikeikeike/go-sitemap-generator/stm",
     "github.com/joho/godotenv",
     "github.com/newrelic/go-agent",
+    "github.com/newrelic/go-agent/v3/newrelic",
     "github.com/pkg/errors",
     "github.com/rollbar/rollbar-go",
     "github.com/stretchr/testify/assert",

@@ -5,10 +5,21 @@ import (
 
 	"github.com/albertyw/reaction-pics/server"
 	"github.com/joho/godotenv"
-	newrelic "github.com/newrelic/go-agent"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
 )
+
+// logWriter allows the logger the implement the io.Writer interface
+type logWriter struct {
+	l *zap.SugaredLogger
+}
+
+// Write receives bytes and writes to a logger
+func (w logWriter) Write(p []byte) (int, error) {
+	w.l.Info(string(p))
+	return len(p), nil
+}
 
 func setupEnv() {
 	err := godotenv.Load()
@@ -17,10 +28,14 @@ func setupEnv() {
 	}
 }
 
-func getNewRelicApp(logger *zap.SugaredLogger) newrelic.Application {
+func getNewRelicApp(logger *zap.SugaredLogger) *newrelic.Application {
 	newrelicKey := os.Getenv("NEWRELIC_KEY")
-	config := newrelic.NewConfig("Reaction.pics", newrelicKey)
-	app, err := newrelic.NewApplication(config)
+	writer := logWriter{l: logger}
+	app, err := newrelic.NewApplication(
+		newrelic.ConfigAppName("Reaction.pics"),
+		newrelic.ConfigLicense(newrelicKey),
+		newrelic.ConfigDebugLogger(writer),
+	)
 	if err != nil {
 		logger.Fatal(err)
 	}
