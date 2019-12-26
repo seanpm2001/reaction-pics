@@ -15,6 +15,7 @@ import (
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
+	"go.uber.org/zap"
 )
 
 const (
@@ -169,7 +170,7 @@ func staticHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // Run starts up the HTTP server
-func Run(newrelicApp newrelic.Application) {
+func Run(newrelicApp newrelic.Application, _ *zap.SugaredLogger) {
 	board = tumblr.InitializeBoard()
 	address := ":" + os.Getenv("PORT")
 	fmt.Println("server listening on", address)

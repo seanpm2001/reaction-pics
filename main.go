@@ -7,6 +7,7 @@ import (
 	"github.com/joho/godotenv"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/rollbar/rollbar-go"
+	"go.uber.org/zap"
 )
 
 func setupEnv() {
@@ -31,9 +32,20 @@ func setupRollbar() {
 	rollbar.SetEnvironment(os.Getenv("ENVIRONMENT"))
 }
 
+func getLogger() *zap.SugaredLogger {
+	logger, err := zap.NewProduction()
+	if err != nil {
+		panic(err)
+	}
+	defer logger.Sync()
+	sugaredLogger := logger.Sugar()
+	return sugaredLogger
+}
+
 func main() {
 	setupEnv()
 	setupRollbar()
+	logger := getLogger()
 	newrelicApp := getNewRelicApp()
-	server.Run(newrelicApp)
+	server.Run(newrelicApp, logger)
 }
