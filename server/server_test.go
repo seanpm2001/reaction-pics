@@ -193,3 +193,13 @@ func (s *HandlerTestSuite) TestStatsHandler() {
 	assert.Equal(s.T(), response.Code, 200)
 	assert.Equal(s.T(), response.Body.String(), "{\"keywords\":[],\"postCount\":\"0\"}")
 }
+
+func (s *HandlerTestSuite) TestSitemapHandler() {
+	request, err := http.NewRequest("GET", "/sitemap.xml", nil)
+	assert.NoError(s.T(), err)
+
+	response := httptest.NewRecorder()
+	sitemapHandler(response, request, s.deps)
+	assert.Equal(s.T(), response.Code, 200)
+	assert.True(s.T(), len(response.Body.String()) > 100)
+}
