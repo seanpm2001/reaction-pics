@@ -149,15 +149,6 @@ func TestRandomizePosts(t *testing.T) {
 	}
 }
 
-func TestReset(t *testing.T) {
-	board := NewBoard([]Post{})
-	board.AddPost(Post{3, "title3", "url3", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 123})
-	assert.Equal(t, len(board.Posts), 1)
-
-	board.Reset()
-	assert.Equal(t, len(board.Posts), 0)
-}
-
 func TestURLs(t *testing.T) {
 	board := NewBoard([]Post{})
 	board.AddPost(Post{3, "title3", "url3", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 123})

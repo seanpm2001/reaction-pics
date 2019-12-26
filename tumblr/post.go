@@ -192,13 +192,6 @@ func (b *Board) RandomizePosts() {
 	})
 }
 
-// Reset will clear all posts from the board
-func (b *Board) Reset() {
-	b.mut.Lock()
-	defer b.mut.Unlock()
-	b.Posts = []Post{}
-}
-
 // URLs returns an array of URLs of all the posts
 func (b Board) URLs() []string {
 	b.mut.RLock()
