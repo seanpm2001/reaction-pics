@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 	"strconv"
@@ -14,11 +13,11 @@ import (
 )
 
 // appCacheString returns a cache string that can be used to bust browser/CDN caches
-func appCacheString() string {
+func appCacheString(logger *zap.SugaredLogger) string {
 	appFile := staticPath + "app.js"
 	info, err := os.Stat(appFile)
 	if err != nil {
-		fmt.Println(err)
+		logger.Error(err)
 		rollbar.Error(rollbar.ERR, err)
 		return ""
 	}
@@ -53,8 +52,9 @@ type handlerWithDeps func(http.ResponseWriter, *http.Request, handlerDeps)
 
 // handlerDeps is a struct of handler dependencies
 type handlerDeps struct {
-	logger *zap.SugaredLogger
-	board  *tumblr.Board
+	logger         *zap.SugaredLogger
+	board          *tumblr.Board
+	appCacheString string
 }
 
 // handlerGenerator returns a struct that can generate wrapped http handler functions
@@ -67,8 +67,9 @@ type handlerGenerator struct {
 // newHandlerGenerator returns a new handlerGenerator
 func newHandlerGenerator(board *tumblr.Board, newrelicApp newrelic.Application, logger *zap.SugaredLogger) handlerGenerator {
 	deps := handlerDeps{
-		logger: logger,
-		board:  board,
+		logger:         logger,
+		board:          board,
+		appCacheString: appCacheString(logger),
 	}
 	return handlerGenerator{
 		newrelicApp: newrelicApp,

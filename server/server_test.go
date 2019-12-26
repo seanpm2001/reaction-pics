@@ -13,8 +13,9 @@ import (
 
 var b = tumblr.NewBoard([]tumblr.Post{})
 var d = handlerDeps{
-	logger: zap.NewNop().Sugar(),
-	board:  &b,
+	logger:         zap.NewNop().Sugar(),
+	board:          &b,
+	appCacheString: appCacheString(zap.NewNop().Sugar()),
 }
 
 func TestIndexFile(t *testing.T) {
@@ -25,8 +26,7 @@ func TestIndexFile(t *testing.T) {
 	indexHandler(response, request, d)
 	assert.Equal(t, response.Code, 200)
 
-	cacheString := appCacheString()
-	assert.Contains(t, response.Body.String(), cacheString)
+	assert.Contains(t, response.Body.String(), d.appCacheString)
 }
 
 func TestOnlyIndexFile(t *testing.T) {

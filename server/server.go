@@ -44,7 +44,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	templateData := struct {
 		CacheString string
-	}{appCacheString()}
+	}{d.appCacheString}
 	err = t.Execute(w, templateData)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot execute template")
