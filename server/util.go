@@ -1,22 +1,23 @@
 package server
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
 
+	"github.com/albertyw/reaction-pics/tumblr"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/rollbar/rollbar-go"
+	"go.uber.org/zap"
 )
 
 // appCacheString returns a cache string that can be used to bust browser/CDN caches
-func appCacheString() string {
+func appCacheString(logger *zap.SugaredLogger) string {
 	appFile := staticPath + "app.js"
 	info, err := os.Stat(appFile)
 	if err != nil {
-		fmt.Println(err)
+		logger.Error(err)
 		rollbar.Error(rollbar.ERR, err)
 		return ""
 	}
@@ -27,10 +28,11 @@ func appCacheString() string {
 // logURL is a closure that logs (to stdout) the url and query of requests
 func logURL(
 	targetFunc func(http.ResponseWriter, *http.Request),
+	logger *zap.SugaredLogger,
 ) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		url := r.URL.String()
-		fmt.Println(url)
+		logger.Info(url)
 		targetFunc(w, r)
 	}
 }
@@ -46,20 +48,41 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 	}
 }
 
+type handlerWithDeps func(http.ResponseWriter, *http.Request, handlerDeps)
+
+// handlerDeps is a struct of handler dependencies
+type handlerDeps struct {
+	logger         *zap.SugaredLogger
+	board          *tumblr.Board
+	appCacheString string
+}
+
 // handlerGenerator returns a struct that can generate wrapped http handler functions
 type handlerGenerator struct {
 	newrelicApp newrelic.Application
+	logger      *zap.SugaredLogger
+	deps        handlerDeps
 }
 
 // newHandlerGenerator returns a new handlerGenerator
-func newHandlerGenerator(newrelicApp newrelic.Application) handlerGenerator {
+func newHandlerGenerator(board *tumblr.Board, newrelicApp newrelic.Application, logger *zap.SugaredLogger) handlerGenerator {
+	deps := handlerDeps{
+		logger:         logger,
+		board:          board,
+		appCacheString: appCacheString(logger),
+	}
 	return handlerGenerator{
 		newrelicApp: newrelicApp,
+		logger:      logger,
+		deps:        deps,
 	}
 }
 
 // newHandlerFunc returns a http handler function
-func (g handlerGenerator) newHandler(pattern string, handlerFunc func(http.ResponseWriter, *http.Request),
+func (g handlerGenerator) newHandler(pattern string, handlerFunc handlerWithDeps,
 ) (string, http.Handler) {
-	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(handlerFunc)))
+	f := func(w http.ResponseWriter, r *http.Request) {
+		handlerFunc(w, r, g.deps)
+	}
+	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(f, g.logger)))
 }

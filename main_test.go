@@ -6,6 +6,7 @@ import (
 
 	"github.com/rollbar/rollbar-go"
 	"github.com/stretchr/testify/assert"
+	"go.uber.org/zap"
 )
 
 func TestSetupEnv(t *testing.T) {
@@ -16,7 +17,7 @@ func TestSetupEnv(t *testing.T) {
 
 func TestGetNewRelicApp(t *testing.T) {
 	setupEnv()
-	app := getNewRelicApp()
+	app := getNewRelicApp(zap.NewNop().Sugar())
 	assert.NotNil(t, app)
 }
 
