@@ -62,8 +62,6 @@ func TestNoExactURL(t *testing.T) {
 }
 
 func TestSearchHandler(t *testing.T) {
-	b := tumblr.NewBoard([]tumblr.Post{})
-	board = &b
 	request, err := http.NewRequest("GET", "/search", nil)
 	assert.NoError(t, err)
 
@@ -119,8 +117,8 @@ func TestPostHandlerNotFound(t *testing.T) {
 
 func TestPostHandler(t *testing.T) {
 	post := tumblr.Post{ID: 1234}
-	board.AddPost(post)
-	defer func() { board.Reset() }()
+	d.board.AddPost(post)
+	defer func() { d.board.Reset() }()
 	request, err := http.NewRequest("GET", "/post/1234", nil)
 	assert.NoError(t, err)
 
@@ -132,8 +130,8 @@ func TestPostHandler(t *testing.T) {
 
 func TestPostDataHandler(t *testing.T) {
 	post := tumblr.Post{ID: 1234}
-	board.AddPost(post)
-	defer func() { board.Reset() }()
+	d.board.AddPost(post)
+	defer func() { d.board.Reset() }()
 	request, err := http.NewRequest("GET", "/postdata/1234", nil)
 	assert.NoError(t, err)
 
@@ -145,8 +143,8 @@ func TestPostDataHandler(t *testing.T) {
 
 func TestPostDataPercentHandler(t *testing.T) {
 	post := tumblr.Post{ID: 1234, Title: `asdf% qwer`}
-	board.AddPost(post)
-	defer func() { board.Reset() }()
+	d.board.AddPost(post)
+	defer func() { d.board.Reset() }()
 	request, err := http.NewRequest("GET", "/postdata/1234", nil)
 	assert.NoError(t, err)
 

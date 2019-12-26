@@ -24,7 +24,6 @@ const (
 
 var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
 var staticPath = fmt.Sprintf("%s/static/", serverDir)
-var board *tumblr.Board
 
 // indexHandler is an http handler that returns the index page HTML
 func indexHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
@@ -58,10 +57,10 @@ func indexHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 
 // searchHandler is an http handler to search data for keywords in json format
 // It matches the query against post titles and then ranks posts by number of likes
-func searchHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+func searchHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
-	queriedBoard := board.FilterBoard(query)
+	queriedBoard := d.board.FilterBoard(query)
 	if query == "" {
 		queriedBoard.RandomizePosts()
 	}
@@ -82,7 +81,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 // postDataHandler is an http handler to return post data by ID in json format
-func postDataHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	pathStrings := strings.Split(r.URL.Path, "/")
 	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
@@ -93,7 +92,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 		http.NotFound(w, r)
 		return
 	}
-	post := board.GetPostByID(postID)
+	post := d.board.GetPostByID(postID)
 	if post == nil {
 		err = errors.New("Cannot find post")
 		fmt.Println(err)
@@ -124,7 +123,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		return
 	}
 	foundPost := false
-	for _, p := range board.Posts {
+	for _, p := range d.board.Posts {
 		if p.ID == postID {
 			foundPost = true
 		}
@@ -140,24 +139,24 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 }
 
 // statsHandler returns internal stats about the reaction.pics DB as json
-func statsHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	postCount := strconv.Itoa(len(board.Posts))
+func statsHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
+	postCount := strconv.Itoa(len(d.board.Posts))
 	data := map[string]interface{}{
 		"postCount": postCount,
-		"keywords":  board.Keywords(),
+		"keywords":  d.board.Keywords(),
 	}
 	stats, _ := json.Marshal(data)
 	fmt.Fprint(w, string(stats))
 }
 
 // sitemapHandler returns a sitemap of reaction.pics as an xml file
-func sitemapHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+func sitemapHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	sm := stm.NewSitemap(0)
 	sm.SetDefaultHost(os.Getenv("HOST"))
 
 	sm.Create()
 	sm.Add(stm.URL{{"loc", "/"}})
-	for _, url := range board.URLs() {
+	for _, url := range d.board.URLs() {
 		sm.Add(stm.URL{{"loc", url}})
 	}
 	w.Write(sm.XMLContent())
@@ -171,7 +170,7 @@ func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 
 // Run starts up the HTTP server
 func Run(newrelicApp newrelic.Application, logger *zap.SugaredLogger) {
-	board = tumblr.InitializeBoard()
+	board := tumblr.InitializeBoard()
 	address := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	logger.Infof("server listening on %s", address)
 	generator := newHandlerGenerator(board, newrelicApp, logger)
