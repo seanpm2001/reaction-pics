@@ -170,11 +170,11 @@ func staticHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // Run starts up the HTTP server
-func Run(newrelicApp newrelic.Application, _ *zap.SugaredLogger) {
+func Run(newrelicApp newrelic.Application, logger *zap.SugaredLogger) {
 	board = tumblr.InitializeBoard()
-	address := ":" + os.Getenv("PORT")
-	fmt.Println("server listening on", address)
-	generator := newHandlerGenerator(newrelicApp)
+	address := fmt.Sprintf(":%s", os.Getenv("PORT"))
+	logger.Infof("server listening on %s", address)
+	generator := newHandlerGenerator(newrelicApp, logger)
 	http.Handle(generator.newHandler("/", indexHandler))
 	http.Handle(generator.newHandler("/search", searchHandler))
 	http.Handle(generator.newHandler("/postdata/", postDataHandler))

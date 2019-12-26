@@ -9,6 +9,7 @@ import (
 
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/rollbar/rollbar-go"
+	"go.uber.org/zap"
 )
 
 // appCacheString returns a cache string that can be used to bust browser/CDN caches
@@ -27,10 +28,11 @@ func appCacheString() string {
 // logURL is a closure that logs (to stdout) the url and query of requests
 func logURL(
 	targetFunc func(http.ResponseWriter, *http.Request),
+	logger *zap.SugaredLogger,
 ) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		url := r.URL.String()
-		fmt.Println(url)
+		logger.Info(url)
 		targetFunc(w, r)
 	}
 }
@@ -49,17 +51,19 @@ func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
 // handlerGenerator returns a struct that can generate wrapped http handler functions
 type handlerGenerator struct {
 	newrelicApp newrelic.Application
+	logger      *zap.SugaredLogger
 }
 
 // newHandlerGenerator returns a new handlerGenerator
-func newHandlerGenerator(newrelicApp newrelic.Application) handlerGenerator {
+func newHandlerGenerator(newrelicApp newrelic.Application, logger *zap.SugaredLogger) handlerGenerator {
 	return handlerGenerator{
 		newrelicApp: newrelicApp,
+		logger:      logger,
 	}
 }
 
 // newHandlerFunc returns a http handler function
 func (g handlerGenerator) newHandler(pattern string, handlerFunc func(http.ResponseWriter, *http.Request),
 ) (string, http.Handler) {
-	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(handlerFunc)))
+	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(handlerFunc, g.logger)))
 }
