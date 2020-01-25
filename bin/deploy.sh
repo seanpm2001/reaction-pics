@@ -16,9 +16,9 @@ docker pull "$(grep FROM Dockerfile | awk '{print $2}')"
 docker build -t reaction-pics:production .
 docker network inspect "reaction-pics" &>/dev/null ||
     docker network create --driver bridge "reaction-pics"
-docker stop reaction-pics || echo
+docker stop reaction-pics || true
 docker container prune --force --filter "until=336h"
-docker container rm reaction-pics
+docker container rm reaction-pics || true
 docker run \
     --detach \
     --restart=always \
