@@ -168,6 +168,11 @@ func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	staticFS(w, r)
 }
 
+func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+	faviconPath := filepath.Join(staticPath, "favicon", "favicon.ico")
+	http.ServeFile(w, r, faviconPath)
+}
+
 // Run starts up the HTTP server
 func Run(newrelicApp *newrelic.Application, logger *zap.SugaredLogger) {
 	board := tumblr.InitializeBoard()
@@ -175,6 +180,7 @@ func Run(newrelicApp *newrelic.Application, logger *zap.SugaredLogger) {
 	logger.Infof("server listening on %s", address)
 	generator := newHandlerGenerator(board, newrelicApp, logger)
 	http.Handle(generator.newHandler("/", indexHandler))
+	http.Handle(generator.newHandler("/favicon.ico", faviconHandler))
 	http.Handle(generator.newHandler("/search", searchHandler))
 	http.Handle(generator.newHandler("/postdata/", postDataHandler))
 	http.Handle(generator.newHandler("/post/", postHandler))
