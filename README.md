@@ -11,7 +11,7 @@ Index of DevOps Reactions
 
 ## Installation
 
-1.  Install Go 1.11.
+1.  Install Go 1.14.
 2.  Install [Dep](https://github.com/golang/dep)
 3.  `make serve`
 
