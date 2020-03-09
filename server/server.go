@@ -173,6 +173,10 @@ func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	http.ServeFile(w, r, faviconPath)
 }
 
+func robotsTxtHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+	fmt.Fprint(w, "")
+}
+
 // Run starts up the HTTP server
 func Run(newrelicApp *newrelic.Application, logger *zap.SugaredLogger) {
 	board := tumblr.InitializeBoard()
@@ -181,6 +185,7 @@ func Run(newrelicApp *newrelic.Application, logger *zap.SugaredLogger) {
 	generator := newHandlerGenerator(board, newrelicApp, logger)
 	http.Handle(generator.newHandler("/", indexHandler))
 	http.Handle(generator.newHandler("/favicon.ico", faviconHandler))
+	http.Handle(generator.newHandler("/robots.txt", robotsTxtHandler))
 	http.Handle(generator.newHandler("/search", searchHandler))
 	http.Handle(generator.newHandler("/postdata/", postDataHandler))
 	http.Handle(generator.newHandler("/post/", postHandler))
