@@ -23,8 +23,8 @@
     "nyc": "^15.0.0"
   },
   "dependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "babelify": "^10.0.0",
     "bootstrap": "^4.4.1",
     "browserify": "^16.5.0",
@@ -34,6 +34,6 @@
     "jquery-lazyload": "^1.9.7",
     "tether": "^1.4.7",
     "uglifyify": "^5.0.2",
-    "varsnap": "^1.1.0"
+    "varsnap": "^1.1.3"
   }
 }
