@@ -6,16 +6,13 @@ clean:
 	rm reaction-pics
 	rm server/static/app.js
 
-vendor:
-	dep ensure
-
 node_modules:
 	npm install
 
 server/static/app.js: node_modules
 	npm run minify
 
-bins: vendor server/static/app.js
+bins: server/static/app.js
 	go build
 
 bin/hadolint:
