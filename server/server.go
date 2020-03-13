@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	"github.com/albertyw/reaction-pics/tumblr"
-	"github.com/ikeikeikeike/go-sitemap-generator/stm"
+	"github.com/ikeikeikeike/go-sitemap-generator/v2/stm"
 	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
