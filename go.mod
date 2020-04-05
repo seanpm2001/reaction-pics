@@ -8,7 +8,7 @@ require (
 	github.com/ikeikeikeike/go-sitemap-generator v1.0.2
 	github.com/ikeikeikeike/go-sitemap-generator/v2 v2.0.2
 	github.com/joho/godotenv v1.3.1-0.20200301204615-d6ee6871f21d
-	github.com/newrelic/go-agent/v3 v3.3.0
+	github.com/newrelic/go-agent/v3 v3.4.0
 	github.com/pkg/errors v0.9.1
 	github.com/rollbar/rollbar-go v1.2.0
 	github.com/stretchr/testify v1.5.1
