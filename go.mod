@@ -13,8 +13,8 @@ require (
 	github.com/rollbar/rollbar-go v1.2.0
 	github.com/stretchr/testify v1.5.1
 	go.uber.org/multierr v1.5.0 // indirect
-	go.uber.org/zap v1.14.0
+	go.uber.org/zap v1.14.1
 	golang.org/x/lint v0.0.0-20200302205851-738671d3881b // indirect
-	golang.org/x/tools v0.0.0-20200312194400-c312e98713c2 // indirect
+	golang.org/x/tools v0.0.0-20200403190813-44a64ad78b9b // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
