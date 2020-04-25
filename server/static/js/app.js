@@ -90,11 +90,12 @@ function addResults(data) {
     resultHTML += addResult(post);
   }
   if (data.data.length + data.offset < data.totalResults) {
-    resultHTML += '<a href="javascript:paginateNext()">';
+    resultHTML += '<a href="#" id="paginateNext">';
     resultHTML += 'Next Page <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
     resultHTML += '</a>';
   }
   setResults(resultHTML);
+  $("#paginateNext").click(paginateNext);
   $('img.result-img').lazyload({
     effect: "fadeIn",
     threshold: 1000,
