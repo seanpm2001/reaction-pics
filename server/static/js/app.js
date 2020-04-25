@@ -90,7 +90,7 @@ function addResults(data) {
     resultHTML += addResult(post);
   }
   if (data.data.length + data.offset < data.totalResults) {
-    resultHTML += '<a href="#" id="paginateNext">';
+    resultHTML += '<a class="btn btn-primary" href="#" id="paginateNext">';
     resultHTML += 'Next Page <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>';
     resultHTML += '</a>';
   }
