@@ -1,5 +1,5 @@
 # Needed to match supported versions of golang-backports
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
 
@@ -7,6 +7,7 @@ EXPOSE 5003
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+ENV DEBIAN_FRONTEND noninteractive
 
 # Install go and other dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
