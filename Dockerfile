@@ -1,5 +1,6 @@
 # Needed to match supported versions of golang-backports
-FROM ubuntu:20.04
+# TODO - upgrade this to 20.04 once https://launchpad.net/~longsleep/+archive/ubuntu/golang-backports supports it
+FROM ubuntu:18.04
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
 
