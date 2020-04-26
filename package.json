@@ -18,8 +18,8 @@
   "homepage": "https://github.com/albertyw/reaction-pics#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.1.1",
-    "mochify": "^6.6.0",
+    "mocha": "^7.1.2",
+    "mochify": "github:mantoni/mochify.js#143bfe86aca13d0c2dbcd50a52290dacb24e6524",
     "nyc": "^15.0.1"
   },
   "dependencies": {
