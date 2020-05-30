@@ -22,7 +22,7 @@ test: bins bin/hadolint
 	./bin/test.sh
 	npm test
 	git ls-files | grep -e \.sh$ | xargs shellcheck
-	bin/hadolint Dockerfile --ignore=DL3008 --ignore=DL3009 --ignore=DL4006 --ignore=SC2046 --ignore=SC2006
+	bin/hadolint Dockerfile --ignore=DL3008 --ignore=DL4006 --ignore=SC2046 --ignore=SC2006
 
 serve: bins
 	./reaction-pics
