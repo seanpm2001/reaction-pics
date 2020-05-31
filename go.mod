@@ -8,11 +8,11 @@ require (
 	github.com/ikeikeikeike/go-sitemap-generator/v2 v2.0.2
 	github.com/joho/godotenv v1.3.1-0.20200301204615-d6ee6871f21d
 	github.com/kr/text v0.2.0 // indirect
-	github.com/newrelic/go-agent/v3 v3.4.0
+	github.com/newrelic/go-agent/v3 v3.5.0
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/rollbar/rollbar-go v1.2.0
-	github.com/stretchr/testify v1.5.1
+	github.com/stretchr/testify v1.6.0
 	go.uber.org/zap v1.15.0
 	golang.org/x/lint v0.0.0-20200302205851-738671d3881b // indirect
 	golang.org/x/tools v0.0.0-20200530233709-52effbd89c51 // indirect
