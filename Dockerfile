@@ -16,8 +16,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc g++ make gnupg                           `: nodejs dependencies` \
     && rm -rf /var/lib/apt/lists/*
 RUN wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz && \
-    tar xvf godeb-amd64.tar.gz &&\
-    ./godeb install "$(./godeb list | tail -n 1)"
+    tar xvf godeb-amd64.tar.gz && \
+    ./godeb install "$(./godeb list | tail -n 1)" && \
+    rm godeb* go_*deb
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
 # Install node
