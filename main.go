@@ -8,6 +8,7 @@ import (
 	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
 // logWriter allows the logger the implement the io.Writer interface
@@ -48,13 +49,14 @@ func setupRollbar() {
 }
 
 func getLogger() *zap.SugaredLogger {
-	var logger *zap.Logger
-	var err error
+	var config zap.Config
 	if os.Getenv("ENVIRONMENT") == "development" {
-		logger, err = zap.NewDevelopment()
+		config = zap.NewDevelopmentConfig()
+		config.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
 	} else {
-		logger, err = zap.NewProduction()
+		config = zap.NewProductionConfig()
 	}
+	logger, err := config.Build()
 	if err != nil {
 		panic(err)
 	}
