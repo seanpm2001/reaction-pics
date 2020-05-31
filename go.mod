@@ -7,7 +7,6 @@ require (
 	github.com/gosimple/slug v1.9.0
 	github.com/ikeikeikeike/go-sitemap-generator/v2 v2.0.2
 	github.com/joho/godotenv v1.3.1-0.20200301204615-d6ee6871f21d
-	github.com/kr/pretty v0.2.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/newrelic/go-agent/v3 v3.4.0
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
