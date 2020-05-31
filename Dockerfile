@@ -21,10 +21,9 @@ RUN wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz && \
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
 # Install node
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gpg-agent software-properties-common         `: Needed for add-apt-repository` \
-    && wget https://deb.nodesource.com/setup_12.x && bash setup_12.x \
-    && rm -rf /var/lib/apt/lists/*
+RUN wget https://deb.nodesource.com/setup_12.x && bash setup_12.x && \
+    apt-get install -y --no-install-recommends nodejs && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set up directory structures
 ENV GOPATH /root/gocode
