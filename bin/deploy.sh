@@ -40,7 +40,7 @@ docker run \
     --network="$NETWORK" \
     --name="$CONTAINER" "$CONTAINER:$BRANCH"
 
-if [ "$ENV" = "production" ] && [ "$BRANCH" = "master" ]; then
+if [ "$ENVIRONMENT" = "production" ] && [ "$BRANCH" = "master" ]; then
     # Cleanup docker
     docker system prune --force --filter "until=168h"
     docker volume prune --force
