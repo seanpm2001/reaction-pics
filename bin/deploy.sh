@@ -8,6 +8,9 @@ IFS=$'\n\t'
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "$DIR"/.. || exit 1
 
+CONTAINER="reaction-pics"
+PORT="5003"
+NETWORK="$CONTAINER"_net
 DEPLOY_BRANCH="${1:-}"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 set +x  # Do not print contents of .env
@@ -21,20 +24,21 @@ if [ -n "$DEPLOY_BRANCH" ]; then
     git pull
 fi
 
-# Build and start container
+# Build and network
 docker pull "$(grep FROM Dockerfile | awk '{print $2}')"
-docker build -t reaction-pics:production .
-docker network inspect "reaction-pics" &>/dev/null ||
-    docker network create --driver bridge "reaction-pics"
-docker stop reaction-pics || true
-docker container prune --force --filter "until=336h"
-docker container rm reaction-pics || true
+docker build -t "$CONTAINER:$BRANCH" .
+docker network inspect "$NETWORK" &>/dev/null ||
+    docker network create --driver bridge "$NETWORK"
+
+# Start container
+docker stop "$CONTAINER" || true
+docker container rm "$CONTAINER" || true
 docker run \
     --detach \
     --restart=always \
-    --publish="127.0.0.1:5003:5003" \
-    --network="reaction-pics" \
-    --name=reaction-pics reaction-pics:production
+    --publish="127.0.0.1:$PORT:$PORT" \
+    --network="$NETWORK" \
+    --name="$CONTAINER" "$CONTAINER:$BRANCH"
 
 if [ "$ENV" = "production" ] && [ "$BRANCH" = "master" ]; then
     # Cleanup docker
