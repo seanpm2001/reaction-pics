@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/albertyw/reaction-pics/server"
 	"github.com/joho/godotenv"
@@ -56,6 +57,8 @@ func getLogger() *zap.SugaredLogger {
 	} else {
 		config = zap.NewProductionConfig()
 	}
+	logFile := filepath.Join(os.Getenv("ROOT_DIR"), "logs", "app", "app.log")
+	config.OutputPaths = []string{"stdout", logFile}
 	logger, err := config.Build()
 	if err != nil {
 		panic(err)
