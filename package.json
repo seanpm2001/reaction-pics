@@ -19,7 +19,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.1.3",
-    "mochify": "github:mantoni/mochify.js#143bfe86aca13d0c2dbcd50a52290dacb24e6524",
+    "mochify": "^6.6.0",
     "nyc": "^15.1.0"
   },
   "dependencies": {
