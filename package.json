@@ -18,23 +18,23 @@
   "homepage": "https://github.com/albertyw/reaction-pics#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.2.0",
-    "mochify": "github:mantoni/mochify.js#143bfe86aca13d0c2dbcd50a52290dacb24e6524",
+    "mocha": "^8.1.3",
+    "mochify": "^6.6.0",
     "nyc": "^15.1.0"
   },
   "dependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
     "babelify": "^10.0.0",
-    "bootstrap": "^4.5.0",
-    "browserify": "^16.5.1",
+    "bootstrap": "^4.5.2",
+    "browserify": "=16.5.1",
     "dotenv": "^8.2.0",
     "envify": "^4.1.0",
     "jquery": "^3.5.1",
     "jquery-lazyload": "^1.9.7",
-    "logfit": "^0.8.1",
+    "logfit": "^0.8.2",
     "tether": "^1.4.7",
     "uglifyify": "^5.0.2",
-    "varsnap": "^1.5.3"
+    "varsnap": "^1.5.4"
   }
 }
