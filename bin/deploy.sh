@@ -1,15 +1,25 @@
 #!/bin/bash
 
-set -euo pipefail
+# This script will build and deploy a new docker image
+
+set -exuo pipefail
 IFS=$'\n\t'
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "$DIR"/.. || exit 1
 
-# Update repository
-git checkout master
-git fetch -tp
-git pull
+DEPLOY_BRANCH="${1:-}"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+set +x  # Do not print contents of .env
+source .env
+set -x
+
+if [ -n "$DEPLOY_BRANCH" ]; then
+    # Update repository
+    git checkout "$DEPLOY_BRANCH"
+    git fetch -tp
+    git pull
+fi
 
 # Build and start container
 docker pull "$(grep FROM Dockerfile | awk '{print $2}')"
@@ -26,8 +36,10 @@ docker run \
     --network="reaction-pics" \
     --name=reaction-pics reaction-pics:production
 
-# Cleanup docker
-docker image prune --force --filter "until=336h"
+if [ "$ENV" = "production" ] && [ "$BRANCH" = "master" ]; then
+    # Cleanup docker
+    docker image prune --force --filter "until=336h"
 
-# Update nginx
-sudo service nginx reload
+    # Update nginx
+    sudo service nginx reload
+fi
