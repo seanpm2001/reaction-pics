@@ -26,3 +26,9 @@ test: bins bin/hadolint
 
 serve: bins
 	./reaction-pics
+
+lsremote:
+	bin/rclone --config=bin/rclone.conf ls backblaze:
+
+backupremote:
+	bin/rclone --config=bin/rclone.conf sync backblaze: ~/storage/backup-github/reaction-pics-images
