@@ -6,7 +6,7 @@
 [![Code Climate](https://codeclimate.com/github/albertyw/reaction-pics/badges/gpa.svg)](https://codeclimate.com/github/albertyw/reaction-pics)
 [![codecov](https://codecov.io/gh/albertyw/reaction-pics/branch/master/graph/badge.svg)](https://codecov.io/gh/albertyw/reaction-pics)
 [![GoDoc](https://godoc.org/github.com/albertyw/reaction-pics?status.svg)](https://godoc.org/github.com/albertyw/reaction-pics)
-[![Varsnap Status](https://www.varsnap.com/user/daf7b93f-52fe-488a-b11c-d60647720a28/varsnap_badge.svg)](https://www.varsnap.com/user/)
+[![Varsnap Status](https://www.varsnap.com/project/21c8d433-e4e0-4610-950c-5146717431a6/varsnap_badge.svg)](https://www.varsnap.com/project/21c8d433-e4e0-4610-950c-5146717431a6/)
 
 Index of DevOps Reactions
 
