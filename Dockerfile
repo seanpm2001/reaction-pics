@@ -22,7 +22,7 @@ RUN wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz && \
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
 # Install node
-RUN wget https://deb.nodesource.com/setup_12.x && bash setup_12.x && \
+RUN wget https://deb.nodesource.com/setup_14.x && bash setup_14.x && \
     apt-get install -y --no-install-recommends nodejs && \
     rm -rf /var/lib/apt/lists/*
 
