@@ -18,15 +18,15 @@
   "homepage": "https://github.com/albertyw/reaction-pics#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.1.3",
+    "mocha": "^8.2.1",
     "mochify": "^6.6.0",
     "nyc": "^15.1.0"
   },
   "dependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
     "babelify": "^10.0.0",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.5.3",
     "browserify": "=16.5.1",
     "dotenv": "^8.2.0",
     "envify": "^4.1.0",
@@ -35,6 +35,6 @@
     "logfit": "^0.8.2",
     "tether": "^1.4.7",
     "uglifyify": "^5.0.2",
-    "varsnap": "^1.5.4"
+    "varsnap": "^1.5.6"
   }
 }
