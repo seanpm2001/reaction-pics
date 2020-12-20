@@ -203,3 +203,17 @@ func (s *HandlerTestSuite) TestSitemapHandler() {
 	assert.Equal(s.T(), response.Code, 200)
 	assert.True(s.T(), len(response.Body.String()) > 100)
 }
+
+func (s *HandlerTestSuite) TestTimeHandler() {
+	request, err := http.NewRequest("POST", "/time/", nil)
+	assert.NoError(s.T(), err)
+
+	response := httptest.NewRecorder()
+	timeHandler(response, request, s.deps)
+	assert.Equal(s.T(), response.Code, 200)
+	var data map[string]int
+	json.Unmarshal(response.Body.Bytes(), &data)
+	unixTime, found := data["unixtime"]
+	assert.True(s.T(), found)
+	assert.True(s.T(), unixTime > 0)
+}
