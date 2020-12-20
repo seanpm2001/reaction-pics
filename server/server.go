@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/ikeikeikeike/go-sitemap-generator/v2/stm"
@@ -168,6 +169,15 @@ func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	staticFS(w, r)
 }
 
+func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+	unixTime := int32(time.Now().Unix())
+	data := map[string]interface{}{
+		"unixtime": unixTime,
+	}
+	timeData, _ := json.Marshal(data)
+	fmt.Fprint(w, string(timeData))
+}
+
 func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	faviconPath := filepath.Join(staticPath, "favicon", "favicon.ico")
 	http.ServeFile(w, r, faviconPath)
@@ -192,5 +202,6 @@ func Run(newrelicApp *newrelic.Application, logger *zap.SugaredLogger) {
 	http.Handle(generator.newHandler("/stats.json", statsHandler))
 	http.Handle(generator.newHandler("/sitemap.xml", sitemapHandler))
 	http.Handle(generator.newHandler("/static/", staticHandler))
+	http.Handle(generator.newHandler("/time/", timeHandler))
 	http.ListenAndServe(address, nil)
 }
