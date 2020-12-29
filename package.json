@@ -38,6 +38,6 @@
     "minify-stream": "^2.1.0",
     "tether": "^1.4.7",
     "unassertify": "^2.1.1",
-    "varsnap": "^1.6.3"
+    "varsnap": "^1.6.4"
   }
 }
