@@ -8,6 +8,7 @@ const inputFile = path.join(__dirname, '..', 'server', 'static', 'js', 'app.js')
 const outputFile = path.join(__dirname, '..', 'server', 'static', 'app.js');
 
 browserify(inputFile, {debug: true})
+  .transform('unassertify', {global: true})
   .transform('envify')
   .plugin('common-shakeify')
   .transform('babelify',  {presets: ['@babel/preset-env']})

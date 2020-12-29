@@ -36,6 +36,7 @@
     "logfit": "^0.8.2",
     "tether": "^1.4.7",
     "uglifyify": "^5.0.2",
+    "unassertify": "^2.1.1",
     "varsnap": "^1.6.3"
   }
 }
