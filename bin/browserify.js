@@ -11,6 +11,7 @@ browserify(inputFile, {debug: true})
   .transform('unassertify', {global: true})
   .transform('envify')
   .plugin('common-shakeify')
+  .plugin('browser-pack-flat/plugin')
   .transform('babelify',  {presets: ['@babel/preset-env']})
   .transform('uglifyify', {
     mangle: false,

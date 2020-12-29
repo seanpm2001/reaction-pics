@@ -27,6 +27,7 @@
     "@babel/preset-env": "^7.12.11",
     "babelify": "^10.0.0",
     "bootstrap": "^4.5.3",
+    "browser-pack-flat": "^3.4.2",
     "browserify": "=16.5.1",
     "common-shakeify": "^0.6.2",
     "dotenv": "^8.2.0",
