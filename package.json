@@ -35,8 +35,8 @@
     "jquery": "^3.5.1",
     "jquery-lazyload": "^1.9.7",
     "logfit": "^0.8.2",
+    "minify-stream": "^2.1.0",
     "tether": "^1.4.7",
-    "uglifyify": "^5.0.2",
     "unassertify": "^2.1.1",
     "varsnap": "^1.6.3"
   }
