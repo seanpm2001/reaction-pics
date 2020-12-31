@@ -1,5 +1,6 @@
 const process = require('process');
 
+const axios = require('axios');
 const $ = require('jquery');
 const LazyLoad = require('vanilla-lazyload');
 const varsnap = require('varsnap');
@@ -12,16 +13,32 @@ varsnap.updateConfig({
 });
 
 const lazyLoadInstance = new LazyLoad({});
-let pendingRequest = undefined;
+let searchCancel = undefined;
+
+function getJSON(url, params, cancellable) {
+  const options = {
+    method: 'GET',
+    url: url,
+    responseType: 'json',
+    params: params,
+  };
+  if (cancellable) {
+    options.cancelToken = new axios.CancelToken((c) => { searchCancel = c; });
+  }
+  const ajaxPromise = axios(options).then(response => {
+    return response.data;
+  }).catch(error => {
+    return {'status': error};
+  });
+  return ajaxPromise;
+}
 
 function showPost(postID) {
-  $.getJSON(
-    "/postdata/" + postID,
-    function processPostResult(data) {
-      setResults("");
-      addResults(data);
-    }
-  );
+  const url = "/postdata/" + postID;
+  getJSON(url, {}, false).then((data) => {
+    setResults("");
+    addResults(data);
+  });
 }
 
 function getQuery() {
@@ -34,24 +51,25 @@ function setResults(html) {
 }
 
 function updateResults(query, offset) {
-  if (pendingRequest) {
-    pendingRequest.abort();
+  if (searchCancel !== undefined) {
+    console.log('asdf');
+    searchCancel();
+    searchCancel = undefined;
   }
-  pendingRequest = $.getJSON(
-    "/search",
-    {
-      query: query,
-      offset: offset,
-    },
-    function processQueryResult(data) {
+  const params = {
+    query: query,
+    offset: offset,
+  };
+  getJSON("/search", params, true).then((data) => {
+      searchCancel = undefined;
       setResults("");
       saveQuery(query, data);
       updateURL(query);
       addResults(data);
       window.scrollTo(0, 0);
-    }
-  );
-  return pendingRequest;
+  }).catch((thrown) => {
+    // no-op
+  });
 }
 // Cannot serialize and compare jquery request
 // updateResults = varsnap(updateResults);
