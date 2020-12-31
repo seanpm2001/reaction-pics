@@ -42,12 +42,12 @@ function showPost(postID) {
 }
 
 function getQuery() {
-  const query = $("#query").val();
+  const query = document.getElementById("query").value;
   return query;
 }
 
 function setResults(html) {
-  $("#results").html(html);
+  document.getElementById("results").innerHTML = html;
 }
 
 function updateResults(query, offset) {
@@ -80,7 +80,7 @@ function saveQuery(query, data) {
   dataHTML += '<input type="hidden" id="paginateCount" value="' + data.data.length + '">';
   dataHTML += '<input type="hidden" id="offset" value="' + data.offset + '">';
   dataHTML += '<input type="hidden" id="totalResults" value="' + data.totalResults + '">';
-  $("#data").html(dataHTML);
+  document.getElementById('data').innerHTML = dataHTML;
   return dataHTML;
 }
 saveQuery = varsnap(saveQuery);
@@ -113,15 +113,15 @@ function addResults(data) {
     resultHTML += '</a>';
   }
   setResults(resultHTML);
-  $("#paginateNext").click(paginateNext);
+  document.getElementById('paginateNext').addEventListener('click', paginateNext);
   lazyLoadInstance.update();
   return resultHTML;
 }
 addResults = varsnap(addResults);
 
 function paginateNext() {
-  let offset = parseInt($("#offset").val(), 10);
-  offset += parseInt($("#paginateCount").val(), 10);
+  let offset = parseInt(document.getElementById('offset').value, 10);
+  offset += parseInt(document.getElementById('paginateCount').value, 10);
   updateResults(getQuery(), offset);
 }
 
