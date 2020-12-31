@@ -1,8 +1,8 @@
-var process = require('process');
+const process = require('process');
 
-var $ = require('jquery');
+const $ = require('jquery');
 const LazyLoad = require('vanilla-lazyload');
-var varsnap = require('varsnap');
+const varsnap = require('varsnap');
 
 varsnap.updateConfig({
   varsnap: process.env.VARSNAP,
@@ -12,7 +12,7 @@ varsnap.updateConfig({
 });
 
 const lazyLoadInstance = new LazyLoad({});
-var pendingRequest = undefined;
+let pendingRequest = undefined;
 
 function showPost(postID) {
   $.getJSON(
@@ -25,7 +25,7 @@ function showPost(postID) {
 }
 
 function getQuery() {
-  var query = $("#query").val();
+  const query = $("#query").val();
   return query;
 }
 
@@ -57,7 +57,7 @@ function updateResults(query, offset) {
 // updateResults = varsnap(updateResults);
 
 function saveQuery(query, data) {
-  var dataHTML = '';
+  let dataHTML = '';
   dataHTML += '<input type="hidden" id="query" value="' + query + '">';
   dataHTML += '<input type="hidden" id="paginateCount" value="' + data.data.length + '">';
   dataHTML += '<input type="hidden" id="offset" value="' + data.offset + '">';
@@ -68,11 +68,11 @@ function saveQuery(query, data) {
 saveQuery = varsnap(saveQuery);
 
 function updateURL(query) {
-  var url = "/";
+  let url = "/";
   if (query !== undefined && query !== "") {
     url += "?query=" + query;
   }
-  var urlPath = window.location.pathname.split('/');
+  const urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     history.pushState({}, "Reaction Pics", url);
   } else {
@@ -84,9 +84,9 @@ function updateURL(query) {
 // updateURL = varsnap(updateURL);
 
 function addResults(data) {
-  var resultHTML = '';
-  for (var x=0; x<data.data.length; x++) {
-    var post = data.data[x];
+  let resultHTML = '';
+  for (let x=0; x<data.data.length; x++) {
+    const post = data.data[x];
     resultHTML += addResult(post);
   }
   if (data.data.length + data.offset < data.totalResults) {
@@ -102,13 +102,13 @@ function addResults(data) {
 addResults = varsnap(addResults);
 
 function paginateNext() {
-  var offset = parseInt($("#offset").val(), 10);
+  let offset = parseInt($("#offset").val(), 10);
   offset += parseInt($("#paginateCount").val(), 10);
   updateResults(getQuery(), offset);
 }
 
 function addResult(postData) {
-  var postHTML = '<div class="result">';
+  let postHTML = '<div class="result">';
   postHTML += '<h2>';
   if (postData.url) postHTML += '<a href="' + postData.internalURL + '">';
   postHTML += postData.title;
@@ -129,7 +129,7 @@ function stats() {
   return $.getJSON(
     "/stats.json",
     function processStats(data) {
-      var line = "Currently indexing " + data.postCount + " posts";
+      const line = "Currently indexing " + data.postCount + " posts";
       $("#indexStat").text(line);
     }
   );
@@ -139,8 +139,8 @@ function stats() {
 
 function getParameterByName(url, name) {
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+    const results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
@@ -148,12 +148,12 @@ function getParameterByName(url, name) {
 getParameterByName = varsnap(getParameterByName);
 
 $(function() {
-  var query = getParameterByName(window.location.href, 'query');
+  const query = getParameterByName(window.location.href, 'query');
   if (query !== undefined && query !== '') {
     $("#query").val(query);
   }
   $("#query").on('input', function(){updateResults(getQuery())});
-  var urlPath = window.location.pathname.split('/');
+  const urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     showPost(urlPath[2]);
   } else {
