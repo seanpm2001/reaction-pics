@@ -1,8 +1,7 @@
 var process = require('process');
 
 var $ = require('jquery');
-window.jQuery = $; // Hack to get jquery-lazyload to bind to jQuery
-require('jquery-lazyload');
+const LazyLoad = require('vanilla-lazyload');
 var varsnap = require('varsnap');
 
 varsnap.updateConfig({
@@ -12,6 +11,7 @@ varsnap.updateConfig({
   consumerToken: process.env.VARSNAP_CONSUMER_TOKEN,
 });
 
+const lazyLoadInstance = new LazyLoad({});
 var pendingRequest = undefined;
 
 function showPost(postID) {
@@ -96,11 +96,7 @@ function addResults(data) {
   }
   setResults(resultHTML);
   $("#paginateNext").click(paginateNext);
-  $('img.result-img').lazyload({
-    effect: "fadeIn",
-    threshold: 1000,
-    skip_invisible: true
-  });
+  lazyLoadInstance.update();
   return resultHTML;
 }
 addResults = varsnap(addResults);
@@ -117,7 +113,7 @@ function addResult(postData) {
   if (postData.url) postHTML += '<a href="' + postData.internalURL + '">';
   postHTML += postData.title;
   if (postData.url) postHTML += '</a></h2>';
-  if (postData.image) postHTML += '<p><img data-original="' + postData.image + '" class="result-img" /></p>';
+  if (postData.image) postHTML += '<p><img data-src="' + postData.image + '" class="result-img lazy" /></p>';
   if (postData.likes) {
       postHTML += '<p><a href="#" id="likes" class="btn btn-success disabled">';
       postHTML += postData.likes + ' <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>';
