@@ -144,13 +144,10 @@ function addResult(postData) {
 addResult = varsnap(addResult);
 
 function stats() {
-  return $.getJSON(
-    "/stats.json",
-    function processStats(data) {
-      const line = "Currently indexing " + data.postCount + " posts";
-      $("#indexStat").text(line);
-    }
-  );
+  return getJSON("/stats.json", {}, false).then((data) => {
+    const line = "Currently indexing " + data.postCount + " posts";
+    $("#indexStat").text(line);
+  });
 }
 // Cannot serialize and compare jquery request
 // stats = varsnap(stats);
