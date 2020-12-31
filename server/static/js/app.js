@@ -2,13 +2,26 @@ const process = require('process');
 
 const axios = require('axios');
 const LogFit = require('logfit');
+const Rollbar = require('rollbar');
 const LazyLoad = require('vanilla-lazyload');
 const varsnap = require('varsnap');
+
+const rollbarConfig = {
+  accessToken: process.env.ROLLBAR_CLIENT_TOKEN,
+  captureUncaught: true,
+  payload: {
+    environment: process.env.ENVIRONMENT,
+  },
+};
+if (process.env.ENVIRONMENT !== 'development') {
+  Rollbar.init(rollbarConfig);
+}
 
 const logfit = new LogFit({
   source: process.env.LOGFIT_CLIENT_TOKEN,
 });
 logfit.report();
+
 varsnap.updateConfig({
   varsnap: process.env.VARSNAP,
   env: process.env.ENVIRONMENT,
