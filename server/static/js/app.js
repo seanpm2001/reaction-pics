@@ -1,7 +1,6 @@
 const process = require('process');
 
 const axios = require('axios');
-const $ = require('jquery');
 const LazyLoad = require('vanilla-lazyload');
 const varsnap = require('varsnap');
 
@@ -113,7 +112,10 @@ function addResults(data) {
     resultHTML += '</a>';
   }
   setResults(resultHTML);
-  document.getElementById('paginateNext').addEventListener('click', paginateNext);
+  const paginateNextElement = document.getElementById('paginateNext');
+  if (paginateNextElement !== null) {
+    paginateNextElement.addEventListener('click', paginateNext);
+  }
   lazyLoadInstance.update();
   return resultHTML;
 }
@@ -146,7 +148,7 @@ addResult = varsnap(addResult);
 function stats() {
   return getJSON("/stats.json", {}, false).then((data) => {
     const line = "Currently indexing " + data.postCount + " posts";
-    $("#indexStat").text(line);
+    document.getElementById('indexStat').textContent = line;
   });
 }
 // Cannot serialize and compare jquery request
@@ -162,12 +164,12 @@ function getParameterByName(url, name) {
 }
 getParameterByName = varsnap(getParameterByName);
 
-$(function() {
+document.addEventListener('DOMContentLoaded', function() {
   const query = getParameterByName(window.location.href, 'query');
   if (query !== undefined && query !== '') {
-    $("#query").val(query);
+    document.getElementById('query').value = query;
   }
-  $("#query").on('input', function(){updateResults(getQuery())});
+  document.getElementById('query').addEventListener('input', () => updateResults(getQuery()));
   const urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     showPost(urlPath[2]);
