@@ -51,7 +51,6 @@ function setResults(html) {
 
 function updateResults(query, offset) {
   if (searchCancel !== undefined) {
-    console.log('asdf');
     searchCancel();
     searchCancel = undefined;
   }
