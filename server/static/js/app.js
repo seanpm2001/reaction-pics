@@ -1,8 +1,8 @@
-var process = require('process');
+const process = require('process');
 
-var $ = require('jquery');
+const axios = require('axios');
 const LazyLoad = require('vanilla-lazyload');
-var varsnap = require('varsnap');
+const varsnap = require('varsnap');
 
 varsnap.updateConfig({
   varsnap: process.env.VARSNAP,
@@ -12,67 +12,84 @@ varsnap.updateConfig({
 });
 
 const lazyLoadInstance = new LazyLoad({});
-var pendingRequest = undefined;
+let searchCancel = undefined;
+
+function getJSON(url, params, cancellable) {
+  const options = {
+    method: 'GET',
+    url: url,
+    responseType: 'json',
+    params: params,
+  };
+  if (cancellable) {
+    options.cancelToken = new axios.CancelToken((c) => { searchCancel = c; });
+  }
+  const ajaxPromise = axios(options).then(response => {
+    return response.data;
+  }).catch(error => {
+    return {'status': error};
+  });
+  return ajaxPromise;
+}
 
 function showPost(postID) {
-  $.getJSON(
-    "/postdata/" + postID,
-    function processPostResult(data) {
-      setResults("");
-      addResults(data);
-    }
-  );
+  const url = "/postdata/" + postID;
+  getJSON(url, {}, false).then((data) => {
+    setResults("");
+    addResults(data);
+  });
 }
 
 function getQuery() {
-  var query = $("#query").val();
+  const query = document.getElementById("query").value;
   return query;
 }
 
 function setResults(html) {
-  $("#results").html(html);
+  document.getElementById("results").innerHTML = html;
 }
 
 function updateResults(query, offset) {
-  if (pendingRequest) {
-    pendingRequest.abort();
+  if (searchCancel !== undefined) {
+    console.log('asdf');
+    searchCancel();
+    searchCancel = undefined;
   }
-  pendingRequest = $.getJSON(
-    "/search",
-    {
-      query: query,
-      offset: offset,
-    },
-    function processQueryResult(data) {
+  const params = {
+    query: query,
+    offset: offset,
+  };
+  getJSON("/search", params, true).then((data) => {
+      searchCancel = undefined;
       setResults("");
       saveQuery(query, data);
       updateURL(query);
       addResults(data);
       window.scrollTo(0, 0);
-    }
-  );
-  return pendingRequest;
+  }).catch((thrown) => {
+    // no-op
+  });
 }
 // Cannot serialize and compare jquery request
 // updateResults = varsnap(updateResults);
 
 function saveQuery(query, data) {
-  var dataHTML = '';
+  let dataHTML = '';
   dataHTML += '<input type="hidden" id="query" value="' + query + '">';
   dataHTML += '<input type="hidden" id="paginateCount" value="' + data.data.length + '">';
   dataHTML += '<input type="hidden" id="offset" value="' + data.offset + '">';
   dataHTML += '<input type="hidden" id="totalResults" value="' + data.totalResults + '">';
-  $("#data").html(dataHTML);
+  document.getElementById('data').innerHTML = dataHTML;
   return dataHTML;
 }
 saveQuery = varsnap(saveQuery);
 
 function updateURL(query) {
-  var url = "/";
+  let url = "/";
   if (query !== undefined && query !== "") {
     url += "?query=" + query;
   }
-  var urlPath = window.location.pathname.split('/');
+  const urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     history.pushState({}, "Reaction Pics", url);
   } else {
@@ -84,9 +101,9 @@ function updateURL(query) {
 // updateURL = varsnap(updateURL);
 
 function addResults(data) {
-  var resultHTML = '';
-  for (var x=0; x<data.data.length; x++) {
-    var post = data.data[x];
+  let resultHTML = '';
+  for (let x=0; x<data.data.length; x++) {
+    const post = data.data[x];
     resultHTML += addResult(post);
   }
   if (data.data.length + data.offset < data.totalResults) {
@@ -95,20 +112,23 @@ function addResults(data) {
     resultHTML += '</a>';
   }
   setResults(resultHTML);
-  $("#paginateNext").click(paginateNext);
+  const paginateNextElement = document.getElementById('paginateNext');
+  if (paginateNextElement !== null) {
+    paginateNextElement.addEventListener('click', paginateNext);
+  }
   lazyLoadInstance.update();
   return resultHTML;
 }
 addResults = varsnap(addResults);
 
 function paginateNext() {
-  var offset = parseInt($("#offset").val(), 10);
-  offset += parseInt($("#paginateCount").val(), 10);
+  let offset = parseInt(document.getElementById('offset').value, 10);
+  offset += parseInt(document.getElementById('paginateCount').value, 10);
   updateResults(getQuery(), offset);
 }
 
 function addResult(postData) {
-  var postHTML = '<div class="result">';
+  let postHTML = '<div class="result">';
   postHTML += '<h2>';
   if (postData.url) postHTML += '<a href="' + postData.internalURL + '">';
   postHTML += postData.title;
@@ -126,34 +146,31 @@ function addResult(postData) {
 addResult = varsnap(addResult);
 
 function stats() {
-  return $.getJSON(
-    "/stats.json",
-    function processStats(data) {
-      var line = "Currently indexing " + data.postCount + " posts";
-      $("#indexStat").text(line);
-    }
-  );
+  return getJSON("/stats.json", {}, false).then((data) => {
+    const line = "Currently indexing " + data.postCount + " posts";
+    document.getElementById('indexStat').textContent = line;
+  });
 }
 // Cannot serialize and compare jquery request
 // stats = varsnap(stats);
 
 function getParameterByName(url, name) {
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+    const results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 getParameterByName = varsnap(getParameterByName);
 
-$(function() {
-  var query = getParameterByName(window.location.href, 'query');
+document.addEventListener('DOMContentLoaded', function() {
+  const query = getParameterByName(window.location.href, 'query');
   if (query !== undefined && query !== '') {
-    $("#query").val(query);
+    document.getElementById('query').value = query;
   }
-  $("#query").on('input', function(){updateResults(getQuery())});
-  var urlPath = window.location.pathname.split('/');
+  document.getElementById('query').addEventListener('input', () => updateResults(getQuery()));
+  const urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
     showPost(urlPath[2]);
   } else {
