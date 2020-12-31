@@ -1,9 +1,14 @@
 const process = require('process');
 
 const axios = require('axios');
+const LogFit = require('logfit');
 const LazyLoad = require('vanilla-lazyload');
 const varsnap = require('varsnap');
 
+const logfit = new LogFit({
+  source: process.env.LOGFIT_CLIENT_TOKEN,
+});
+logfit.report();
 varsnap.updateConfig({
   varsnap: process.env.VARSNAP,
   env: process.env.ENVIRONMENT,
