@@ -33,7 +33,6 @@
     "common-shakeify": "^0.6.2",
     "dotenv": "^8.2.0",
     "envify": "^4.1.0",
-    "jquery": "^3.5.1",
     "logfit": "^0.8.2",
     "minify-stream": "^2.1.0",
     "rollbar": "^2.19.4",
