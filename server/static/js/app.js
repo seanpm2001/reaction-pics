@@ -1,5 +1,3 @@
-const process = require('process');
-
 const axios = require('axios');
 const LogFit = require('logfit');
 const Rollbar = require('rollbar');
