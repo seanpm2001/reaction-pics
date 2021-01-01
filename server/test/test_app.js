@@ -1,5 +1,4 @@
 const expect = require('chai').expect;
-const process = require('process');
 const varsnap = require('varsnap');
 
 varsnap.updateConfig({

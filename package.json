@@ -19,7 +19,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
-    "mochify": "^6.6.0",
+    "mochify": "^7.0.0",
     "nyc": "^15.1.0"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
     "jquery": "^3.5.1",
     "logfit": "^0.8.2",
     "minify-stream": "^2.1.0",
+    "rollbar": "^2.19.4",
     "unassertify": "^2.1.1",
     "vanilla-lazyload": "^17.3.0",
     "varsnap": "^1.6.4"
