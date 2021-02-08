@@ -18,12 +18,11 @@ sudo apt-get install -y nginx
 # Configure nginx
 sudo rm -r /etc/nginx/sites-available
 sudo ln -s ~/reaction-pics/config/sites-available/app /etc/nginx/sites-enabled/reaction.pics-app
-sudo ln -s ~/reaction-pics/config/sites-available/headers /etc/nginx/sites-enabled/reaction.pics-headers
 sudo rm -r /var/www/html
 
 # Secure nginx
 sudo mkdir /etc/nginx/ssl
-sudo openssl dhparam -out /etc/nginx/ssl/dhparams.pem 2048
+curl https://ssl-config.mozilla.org/ffdhe2048.txt | sudo tee /etc/nginx/ssl/dhparams.pem > /dev/null
 # Copy server.key and server.pem to /etc/nginx/ssl
 sudo service nginx restart
 
