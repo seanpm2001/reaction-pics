@@ -13,6 +13,9 @@ steps:
     commands:
       - ln -fs .env.example .env
       - bin/test.sh
+      - bash <(curl -s https://codecov.io/bash) -t $${CODECOV_KEY}
+    environment:
+      CODECOV_KEY: 29a128f7-f56b-4d73-8ec8-da3803ec2c3c
 
   - name: Test Node
     image: node:14
