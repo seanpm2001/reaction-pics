@@ -4,7 +4,7 @@
   "description": "Reaction Pics",
   "scripts": {
     "minify": "node bin/browserify.js",
-    "test": "nyc --require dotenv/config --instrument false mochify -R dot --transform envify server/test/*.js"
+    "test": "nyc --require dotenv/config --instrument false mochify -R dot --transform envify server/test/*.js --allow-chrome-as-root"
   },
   "repository": {
     "type": "git",
