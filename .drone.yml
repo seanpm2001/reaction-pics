@@ -58,7 +58,7 @@ steps:
       username: albertyw
       key_path: /root/ssh/id_ed25519
       script:
-        - "/home/albertyw/reaction-pics/bin/deploy.sh"
+        - "/home/albertyw/reaction-pics/bin/deploy.sh master"
     volumes:
       - name: ssh_key
         path: /root/ssh/id_ed25519
