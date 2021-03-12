@@ -10,11 +10,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zaptest/observer"
 )
 
 type HandlerTestSuite struct {
 	suite.Suite
 	deps handlerDeps
+	logs *observer.ObservedLogs
 }
 
 func TestHandlerTestSuite(t *testing.T) {
@@ -22,7 +24,9 @@ func TestHandlerTestSuite(t *testing.T) {
 }
 
 func (s *HandlerTestSuite) SetupTest() {
-	logger := zap.NewNop().Sugar()
+	observer, logs := observer.New(zap.DebugLevel)
+	logger := zap.New(observer).Sugar()
+	s.logs = logs
 	board := tumblr.NewBoard([]tumblr.Post{})
 	s.deps = handlerDeps{
 		logger:         logger,
@@ -37,6 +41,10 @@ func (s *HandlerTestSuite) TestIndexFile() {
 
 	response := httptest.NewRecorder()
 	indexHandler(response, request, s.deps)
+	if s.logs.Len() > 0 {
+		lastLog := s.logs.All()[s.logs.Len()-1].Message
+		assert.Fail(s.T(), lastLog)
+	}
 	assert.Equal(s.T(), response.Code, 200)
 
 	assert.Contains(s.T(), response.Body.String(), s.deps.appCacheString)
