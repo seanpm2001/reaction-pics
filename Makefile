@@ -1,5 +1,3 @@
-export ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
 all: test
 
 clean:

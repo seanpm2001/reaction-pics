@@ -24,8 +24,6 @@ const (
 	maxResults = 20
 )
 
-var staticPath = "server/static/"
-
 func relToAbsPath(path string) string {
 	_, filename, _, ok := runtime.Caller(0)
 	if !ok {
