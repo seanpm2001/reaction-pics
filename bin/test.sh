@@ -6,8 +6,6 @@ IFS=$'\n\t'
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd -P "$DIR/.." || exit 1
 pwd
-root_dir="$(pwd)"
-export ROOT_DIR="$root_dir"
 
 echo "" > coverage.txt
 for godir in $(go list ./...); do

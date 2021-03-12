@@ -14,7 +14,7 @@ import (
 
 // appCacheString returns a cache string that can be used to bust browser/CDN caches
 func appCacheString(logger *zap.SugaredLogger) string {
-	appFile := staticPath + "app.js"
+	appFile := relToAbsPath("static/app.js")
 	info, err := os.Stat(appFile)
 	if err != nil {
 		logger.Error(err)

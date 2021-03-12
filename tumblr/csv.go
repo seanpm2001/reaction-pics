@@ -2,14 +2,16 @@ package tumblr
 
 import (
 	"encoding/csv"
+	"fmt"
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
 )
 
 const (
-	prodCSVPath = "tumblr/data/posts.csv"
-	testCSVPath = "tumblr/data/posts_test.csv"
+	prodCSVPath = "data/posts.csv"
+	testCSVPath = "data/posts_test.csv"
 )
 
 // ReadPostsFromCSV reads a CSV file into a list of posts
@@ -41,6 +43,11 @@ func getCSVPath(test bool) string {
 	if test {
 		path = testCSVPath
 	}
-	path = filepath.Join(os.Getenv("ROOT_DIR"), path)
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		filename = "."
+	}
+	path = filepath.Join(filepath.Dir(filename), path)
+	fmt.Println(path)
 	return path
 }

@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -23,8 +24,14 @@ const (
 	maxResults = 20
 )
 
-var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
-var staticPath = fmt.Sprintf("%s/static/", serverDir)
+func relToAbsPath(path string) string {
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		filename = "."
+	}
+	absPath := filepath.Join(filepath.Dir(filename), path)
+	return absPath
+}
 
 // indexHandler is an http handler that returns the index page HTML
 func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
@@ -35,7 +42,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		http.NotFound(w, r)
 		return
 	}
-	t, err := template.ParseFiles(staticPath + "index.htm")
+
+	path := relToAbsPath("static/index.htm")
+	t, err := template.ParseFiles(path)
 	if err != nil {
 		err = errors.New("Cannot read post template")
 		d.logger.Error(err)
@@ -165,7 +174,7 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 
 // staticHandler returns static files
 func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	staticFS := rewriteFS(http.FileServer(http.Dir(staticPath)).ServeHTTP)
+	staticFS := rewriteFS(http.FileServer(http.Dir(relToAbsPath("static"))).ServeHTTP)
 	staticFS(w, r)
 }
 
@@ -179,7 +188,7 @@ func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	faviconPath := filepath.Join(staticPath, "favicon", "favicon.ico")
+	faviconPath := relToAbsPath("static/favicon/favicon.iso")
 	http.ServeFile(w, r, faviconPath)
 }
 
