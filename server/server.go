@@ -136,6 +136,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	for _, p := range d.board.Posts {
 		if p.ID == postID {
 			foundPost = true
+			break
 		}
 	}
 	if !foundPost {
