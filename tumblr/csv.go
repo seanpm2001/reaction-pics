@@ -4,7 +4,6 @@ import (
 	"encoding/csv"
 	"io"
 	"os"
-	"path/filepath"
 )
 
 const (
@@ -41,6 +40,5 @@ func getCSVPath(test bool) string {
 	if test {
 		path = testCSVPath
 	}
-	path = filepath.Join(os.Getenv("ROOT_DIR"), path)
 	return path
 }

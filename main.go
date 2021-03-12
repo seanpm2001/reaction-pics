@@ -57,7 +57,7 @@ func getLogger() *zap.SugaredLogger {
 	} else {
 		config = zap.NewProductionConfig()
 	}
-	logFile := filepath.Join(os.Getenv("ROOT_DIR"), "logs", "app", "app.log")
+	logFile := filepath.Join(".", "logs", "app", "app.log")
 	config.OutputPaths = []string{"stdout", logFile}
 	logger, err := config.Build()
 	if err != nil {

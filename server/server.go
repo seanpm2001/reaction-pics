@@ -23,8 +23,7 @@ const (
 	maxResults = 20
 )
 
-var serverDir = filepath.Join(os.Getenv("ROOT_DIR"), "server")
-var staticPath = fmt.Sprintf("%s/static/", serverDir)
+var staticPath = "server/static/"
 
 // indexHandler is an http handler that returns the index page HTML
 func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
