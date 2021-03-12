@@ -120,9 +120,6 @@ function addResults(data) {
   for (let x=0; x<data.data.length; x++) {
     const post = data.data[x];
     resultHTML += addResult(post);
-    if (data.data.length === 1) {
-      addMetaTags(post);
-    }
   }
   if (data.data.length + data.offset < data.totalResults) {
     resultHTML += '<a class="btn btn-primary" href="#" id="paginateNext">';
@@ -162,15 +159,6 @@ function addResult(postData) {
   return postHTML;
 }
 addResult = varsnap(addResult);
-
-function addMetaTags(postData) {
-  let metaTags = '<meta property="og:title" content="' + postData.title + '" />';
-  metaTags += '<meta property="og:image" content="' + postData.image + '" />';
-  console.log('asdfasdf');
-  document.getElementsByTagName('head')[0].innerHTML += metaTags;
-  return metaTags;
-}
-addMetaTags = varsnap(addMetaTags);
 
 function stats() {
   return getJSON("/stats.json", {}, false).then((data) => {
