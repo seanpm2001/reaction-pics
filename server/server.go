@@ -24,6 +24,11 @@ const (
 	maxResults = 20
 )
 
+type metaHeader struct {
+	Property string
+	Content  string
+}
+
 func relToAbsPath(path string) string {
 	_, filename, _, ok := runtime.Caller(0)
 	if !ok {
@@ -42,11 +47,14 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		http.NotFound(w, r)
 		return
 	}
+	indexHandlerWithHeaders(w, r, d, []metaHeader{})
+}
 
+func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDeps, headers []metaHeader) {
 	path := relToAbsPath("static/index.htm")
 	t, err := template.ParseFiles(path)
 	if err != nil {
-		err = errors.New("Cannot read post template")
+		err = errors.Wrap(err, "Cannot read post template")
 		d.logger.Error(err)
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
@@ -54,7 +62,11 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	templateData := struct {
 		CacheString string
-	}{d.appCacheString}
+		MetaHeaders []metaHeader
+	}{
+		CacheString: d.appCacheString,
+		MetaHeaders: headers,
+	}
 	err = t.Execute(w, templateData)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot execute template")
@@ -132,21 +144,27 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		http.NotFound(w, r)
 		return
 	}
-	foundPost := false
+	var post *tumblr.Post
 	for _, p := range d.board.Posts {
 		if p.ID == postID {
-			foundPost = true
+			post = &p
 			break
 		}
 	}
-	if !foundPost {
+	if post == nil {
 		err = errors.New("Cannot find post")
 		d.logger.Warn(err)
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
 	}
-	indexHandler(w, r, d)
+
+	headers := []metaHeader{
+		metaHeader{"og:title", post.Title},
+		metaHeader{"og:image", post.Image},
+	}
+
+	indexHandlerWithHeaders(w, r, d, headers)
 }
 
 // statsHandler returns internal stats about the reaction.pics DB as json
