@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/albertyw/reaction-pics/tumblr"
@@ -137,7 +138,11 @@ func (s *HandlerTestSuite) TestPostHandlerNotFound() {
 }
 
 func (s *HandlerTestSuite) TestPostHandler() {
-	post := tumblr.Post{ID: 1234}
+	post := tumblr.Post{
+		ID:    1234,
+		Title: "Post Title",
+		Image: "https://img.reaction.pics/file/reaction-pics/abcd.gif",
+	}
 	s.deps.board.AddPost(post)
 	request, err := http.NewRequest("GET", "/post/1234", nil)
 	assert.NoError(s.T(), err)
@@ -145,7 +150,10 @@ func (s *HandlerTestSuite) TestPostHandler() {
 	response := httptest.NewRecorder()
 	postHandler(response, request, s.deps)
 	assert.Equal(s.T(), response.Code, 200)
-	assert.NotEqual(s.T(), len(response.Body.String()), 0)
+	body := response.Body.String()
+	assert.NotEqual(s.T(), len(body), 0)
+	assert.True(s.T(), strings.Contains(body, post.Title))
+	assert.True(s.T(), strings.Contains(body, post.Image))
 }
 
 func (s *HandlerTestSuite) TestPostDataHandler() {
