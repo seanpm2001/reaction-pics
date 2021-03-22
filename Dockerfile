@@ -12,17 +12,17 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install go and other dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential locales                      `: basic packages` \
-    git curl wget tar ca-certificates            `: go installation` \
+    git curl wget -nv tar ca-certificates            `: go installation` \
     gcc g++ make gnupg                           `: nodejs dependencies` \
     && rm -rf /var/lib/apt/lists/*
-RUN wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz && \
+RUN wget -nv https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz && \
     tar xvf godeb-amd64.tar.gz && \
     ./godeb install "$(./godeb list | tail -n 1)" && \
     rm godeb* go_*deb
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
 # Install node
-RUN wget https://deb.nodesource.com/setup_14.x && bash setup_14.x && \
+RUN wget -nv https://deb.nodesource.com/setup_14.x && bash setup_14.x && \
     apt-get install -y --no-install-recommends nodejs && \
     rm -rf /var/lib/apt/lists/*
 
