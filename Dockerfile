@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && ./godeb install "$(./godeb list | tail -n 1)" \
     && rm godeb* go_*deb \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen \
-    && wget -nv https://deb.nodesource.com/setup_14.x && bash setup_14.x \
+    && wget -nv https://deb.nodesource.com/setup_16.x && bash setup_16.x \
     && apt-get install -y --no-install-recommends nodejs && \
     rm -rf /var/lib/apt/lists/*
 
