@@ -18,10 +18,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && curl https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz | tar xvz \
     && ./godeb install "$(./godeb list | tail -n 1)" \
     && rm godeb \
-    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && curl https://deb.nodesource.com/setup_16.x | bash \
-    && apt-get install -y --no-install-recommends nodejs && \
-    rm -rf /var/lib/apt/lists/*
+    && apt-get install -y --no-install-recommends \
+    nodejs                                      ` Javascript assets` \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set up directory structures
 ENV GOPATH /root/gocode
