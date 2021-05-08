@@ -2,6 +2,7 @@ FROM ubuntu:20.04
 
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
+HEALTHCHECK --interval=5s --timeout=3s CMD bin/healthcheck.sh || exit 1
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set locale
