@@ -46,3 +46,11 @@ if [ -n "$golint_errors" ]; then
     echo "$golint_errors"
     exit 1
 fi
+
+go mod tidy
+gosumdiff="$(git diff go.sum)"
+if [ -n "$gosumdiff" ]; then
+    echo "Go.sum not up to date:"
+    echo "$gosumdiff"
+    exit 1
+fi
