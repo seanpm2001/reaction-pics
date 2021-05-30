@@ -17,7 +17,6 @@ sudo apt-get install -y nginx
 
 # Configure nginx
 sudo rm -r /etc/nginx/sites-available
-sudo ln -s ~/reaction-pics/config/sites-available/app /etc/nginx/sites-enabled/reaction.pics-app
 sudo rm -r /var/www/html
 
 # Secure nginx

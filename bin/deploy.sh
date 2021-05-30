@@ -46,5 +46,6 @@ if [ "$ENVIRONMENT" = "production" ] && [ "$BRANCH" = "master" ]; then
     docker volume prune --force
 
     # Update nginx
+    sudo cp config/nginx/app /etc/nginx/sites-enabled/reaction.pics-app
     sudo service nginx reload
 fi
