@@ -24,8 +24,8 @@ server {
 server {
     listen          443 ssl http2;
     server_name     www.reaction.pics;
-    access_log      /home/albertyw/reaction-pics/logs/nginx/access.log;
-    error_log       /home/albertyw/reaction-pics/logs/nginx/error.log;
+    access_log      /var/log/nginx/reaction-pics/access.log;
+    error_log       /var/log/nginx/reaction-pics/error.log;
 
     include snippets/ssl.conf;
     include snippets/gzip.conf;
