@@ -10,11 +10,6 @@ sudo hostnamectl set-hostname reaction.pics
 cd ~ || exit 1
 git clone git@github.com:albertyw/reaction-pics
 
-# Install nginx
-sudo add-apt-repository ppa:nginx/stable
-sudo apt-get update
-sudo apt-get install -y nginx
-
 # Configure nginx
 sudo rm -r /etc/nginx/sites-available
 sudo rm -r /var/www/html
@@ -23,7 +18,7 @@ sudo rm -r /var/www/html
 sudo mkdir /etc/nginx/ssl
 curl https://ssl-config.mozilla.org/ffdhe2048.txt | sudo tee /etc/nginx/ssl/dhparams.pem > /dev/null
 # Copy server.key and server.pem to /etc/nginx/ssl
-sudo service nginx restart
+docker container restart nginx
 
 # Set up docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
