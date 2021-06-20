@@ -47,5 +47,5 @@ if [ "$ENVIRONMENT" = "production" ] && [ "$BRANCH" = "master" ]; then
 
     # Update nginx
     sudo cp config/nginx/app /etc/nginx/sites-enabled/reaction.pics-app
-    docker container restart nginx
+    docker exec nginx /etc/init.d/nginx reload
 fi

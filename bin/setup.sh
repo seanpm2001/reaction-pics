@@ -18,7 +18,7 @@ sudo rm -r /var/www/html
 sudo mkdir /etc/nginx/ssl
 curl https://ssl-config.mozilla.org/ffdhe2048.txt | sudo tee /etc/nginx/ssl/dhparams.pem > /dev/null
 # Copy server.key and server.pem to /etc/nginx/ssl
-docker container restart nginx
+docker exec nginx /etc/init.d/nginx reload
 
 # Set up docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
