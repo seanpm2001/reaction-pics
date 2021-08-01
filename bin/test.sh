@@ -36,7 +36,7 @@ if [ -n "$gofmt_errors" ]; then
     exit 1
 fi
 
-go install golang.org/x/lint/golint
+go install golang.org/x/lint/golint@latest
 golint_errors=""
 for gofile in $gofiles; do
     golint_errors+=$(golint "$gofile")
