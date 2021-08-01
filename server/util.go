@@ -27,9 +27,9 @@ func appCacheString(logger *zap.SugaredLogger) string {
 
 // logURL is a closure that logs (to stdout) the url and query of requests
 func logURL(
-	targetFunc func(http.ResponseWriter, *http.Request),
+	targetFunc http.HandlerFunc,
 	logger *zap.SugaredLogger,
-) func(http.ResponseWriter, *http.Request) {
+) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		url := r.URL.String()
 		logger.Info(url)
@@ -39,8 +39,7 @@ func logURL(
 
 // rewriteFS wraps a static file handler so to rewrite to the static directory
 // and the root path is rewritten to index.htm
-func rewriteFS(targetFunc func(http.ResponseWriter, *http.Request),
-) func(http.ResponseWriter, *http.Request) {
+func rewriteFS(targetFunc http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		path := strings.TrimPrefix(r.URL.Path, "/static/")
 		r.URL.Path = path
