@@ -7,7 +7,6 @@ import (
 
 	"github.com/albertyw/reaction-pics/server"
 	"github.com/joho/godotenv"
-	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -29,20 +28,6 @@ func setupEnv() {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func getNewRelicApp(logger *zap.SugaredLogger) *newrelic.Application {
-	newrelicKey := os.Getenv("NEWRELIC_KEY")
-	writer := logWriter{l: logger}
-	app, err := newrelic.NewApplication(
-		newrelic.ConfigAppName("Reaction.pics"),
-		newrelic.ConfigLicense(newrelicKey),
-		newrelic.ConfigDebugLogger(writer),
-	)
-	if err != nil {
-		logger.Fatal(err)
-	}
-	return app
 }
 
 func setupRollbar() {
@@ -77,6 +62,5 @@ func main() {
 	setupRollbar()
 	logger := getLogger()
 	defer logger.Sync()
-	newrelicApp := getNewRelicApp(logger)
-	server.Run(newrelicApp, logger)
+	server.Run(logger)
 }

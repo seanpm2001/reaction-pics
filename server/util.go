@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/albertyw/reaction-pics/tumblr"
-	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
 )
@@ -58,22 +57,20 @@ type handlerDeps struct {
 
 // handlerGenerator returns a struct that can generate wrapped http handler functions
 type handlerGenerator struct {
-	newrelicApp *newrelic.Application
-	logger      *zap.SugaredLogger
-	deps        handlerDeps
+	logger *zap.SugaredLogger
+	deps   handlerDeps
 }
 
 // newHandlerGenerator returns a new handlerGenerator
-func newHandlerGenerator(board *tumblr.Board, newrelicApp *newrelic.Application, logger *zap.SugaredLogger) handlerGenerator {
+func newHandlerGenerator(board *tumblr.Board, logger *zap.SugaredLogger) handlerGenerator {
 	deps := handlerDeps{
 		logger:         logger,
 		board:          board,
 		appCacheString: appCacheString(logger),
 	}
 	return handlerGenerator{
-		newrelicApp: newrelicApp,
-		logger:      logger,
-		deps:        deps,
+		logger: logger,
+		deps:   deps,
 	}
 }
 
@@ -83,5 +80,5 @@ func (g handlerGenerator) newHandler(pattern string, handlerFunc handlerWithDeps
 	f := func(w http.ResponseWriter, r *http.Request) {
 		handlerFunc(w, r, g.deps)
 	}
-	return newrelic.WrapHandle(g.newrelicApp, pattern, http.HandlerFunc(logURL(f, g.logger)))
+	return pattern, http.HandlerFunc(logURL(f, g.logger))
 }

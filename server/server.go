@@ -14,7 +14,6 @@ import (
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/ikeikeikeike/go-sitemap-generator/v2/stm"
-	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
@@ -216,11 +215,11 @@ func robotsTxtHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 // Run starts up the HTTP server
-func Run(newrelicApp *newrelic.Application, logger *zap.SugaredLogger) {
+func Run(logger *zap.SugaredLogger) {
 	board := tumblr.InitializeBoard()
 	address := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	logger.Infof("server listening on %s", address)
-	generator := newHandlerGenerator(board, newrelicApp, logger)
+	generator := newHandlerGenerator(board, logger)
 	http.Handle(generator.newHandler("/", indexHandler))
 	http.Handle(generator.newHandler("/favicon.ico", faviconHandler))
 	http.Handle(generator.newHandler("/robots.txt", robotsTxtHandler))

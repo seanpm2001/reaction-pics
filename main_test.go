@@ -6,19 +6,12 @@ import (
 
 	"github.com/rollbar/rollbar-go"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/zap"
 )
 
 func TestSetupEnv(t *testing.T) {
 	setupEnv()
 	port := os.Getenv("PORT")
 	assert.NotEqual(t, port, "")
-}
-
-func TestGetNewRelicApp(t *testing.T) {
-	setupEnv()
-	app := getNewRelicApp(zap.NewNop().Sugar())
-	assert.NotNil(t, app)
 }
 
 func TestSetupRollbar(t *testing.T) {
