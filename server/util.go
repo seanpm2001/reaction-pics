@@ -75,10 +75,9 @@ func newHandlerGenerator(board *tumblr.Board, logger *zap.SugaredLogger) handler
 }
 
 // newHandlerFunc returns a http handler function
-func (g handlerGenerator) newHandler(pattern string, handlerFunc handlerWithDeps,
-) (string, http.Handler) {
+func (g handlerGenerator) newHandler(handlerFunc handlerWithDeps) http.Handler {
 	f := func(w http.ResponseWriter, r *http.Request) {
 		handlerFunc(w, r, g.deps)
 	}
-	return pattern, http.HandlerFunc(logURL(f, g.logger))
+	return http.HandlerFunc(logURL(f, g.logger))
 }
