@@ -14,7 +14,9 @@ steps:
       - ln -fs .env.example .env
       - touch /drone/src/server/static/app.js
       - bin/test.sh
-      - curl -s https://codecov.io/bash | bash
+      - curl -Os https://uploader.codecov.io/latest/linux/codecov
+      - chmod +x codecov
+      - ./codecov
     environment:
       CODECOV_TOKEN: 29a128f7-f56b-4d73-8ec8-da3803ec2c3c
 
