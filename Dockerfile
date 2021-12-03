@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM golang:1.17-bullseye
 
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
@@ -10,19 +10,15 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
-
-# Install go and other dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential locales                      `: basic packages` \
-    git curl tar ca-certificates                 `: go installation` \
-    gcc g++ make gnupg                           `: nodejs dependencies` \
-    && curl https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz | tar xvz \
-    && ./godeb install "$(./godeb list | tail -n 1)" \
-    && rm godeb \
+    locales                                     `: Basic-packages` \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
-    && curl https://deb.nodesource.com/setup_16.x | bash \
-    && apt-get install -y --no-install-recommends \
-    nodejs                                      ` Javascript assets` \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install dependencies
+RUN curl https://deb.nodesource.com/setup_16.x | bash \
+    && apt-get update && apt-get install -y --no-install-recommends \
+    nodejs                                      `: Javascript assets` \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up directory structures
