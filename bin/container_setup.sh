@@ -9,10 +9,6 @@ cd "$DIR/.." || exit 1
 # Set locale
 sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
-# Setup env
-rm -rf .env
-ln -s .env.prod .env
-
 # Compile go and node
 mkdir /root/gocode/bin
 mkdir /root/gocode/pkg
