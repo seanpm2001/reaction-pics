@@ -28,6 +28,6 @@ COPY . /root/gocode/src/github.com/albertyw/reaction-pics
 WORKDIR /root/gocode/src/github.com/albertyw/reaction-pics
 
 # App-specific setup
-RUN bin/container_setup.sh
+RUN make bins && npm prune --production
 
 CMD ["bin/start.sh"]
