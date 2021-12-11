@@ -13,14 +13,10 @@ server/static/app.js: node_modules
 bins: server/static/app.js
 	go build
 
-bin/hadolint:
-	curl -sL https://github.com/hadolint/hadolint/releases/download/v1.17.3/hadolint-Linux-x86_64 > bin/hadolint && chmod +x bin/hadolint
-
-test: bins bin/hadolint
+test: bins
 	./bin/test.sh
 	npm test
 	git ls-files | grep -e \.sh$ | xargs shellcheck --exclude=SC1091
-	bin/hadolint Dockerfile --ignore=DL3008 --ignore=DL4006 --ignore=SC2046 --ignore=SC2006
 
 serve: bins
 	./reaction-pics
