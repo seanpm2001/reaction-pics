@@ -159,8 +159,8 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 
 	headers := []metaHeader{
-		metaHeader{"og:title", post.Title},
-		metaHeader{"og:image", post.Image},
+		{"og:title", post.Title},
+		{"og:image", post.Image},
 	}
 
 	indexHandlerWithHeaders(w, r, d, headers)
