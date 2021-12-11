@@ -55,6 +55,7 @@ func CSVToPost(row []string) *Post {
 	id, err := strconv.ParseInt(row[0], 10, 64)
 	if err != nil {
 		err = errors.Wrapf(err, "Cannot parse id for %s", row[0])
+		rollbar.Error(rollbar.ERR, err)
 		id = 0
 	}
 
