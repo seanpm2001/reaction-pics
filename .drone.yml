@@ -21,9 +21,8 @@ steps:
       CODECOV_TOKEN: 29a128f7-f56b-4d73-8ec8-da3803ec2c3c
 
   - name: Test Node
-    image: node:16
+    image: satantime/puppeteer-node:16-bullseye-slim
     commands:
-      - apt-get update && apt-get install -y fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libcups2 libgbm1 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 lsb-release xdg-utils
       - ln -fs .env.example .env
       - npm ci
       - npm test
