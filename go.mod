@@ -1,6 +1,6 @@
 module github.com/albertyw/reaction-pics
 
-go 1.16
+go 1.17
 
 require (
 	github.com/clbanning/mxj v1.8.4 // indirect
