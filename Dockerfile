@@ -1,4 +1,4 @@
-FROM golang:1.17-bullseye
+FROM golang:1.18-bullseye
 
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003

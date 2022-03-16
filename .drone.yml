@@ -9,7 +9,7 @@ volumes:
 
 steps:
   - name: Test Go
-    image: golang:1.17
+    image: golang:1.18
     commands:
       - ln -fs .env.example .env
       - touch /drone/src/server/static/app.js
