@@ -29,12 +29,12 @@ RUN curl https://deb.nodesource.com/setup_16.x | bash \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up directory structures
+WORKDIR /root/gocode/src/github.com/albertyw/reaction-pics
 ENV GOPATH /root/gocode
-RUN mkdir -p /root/gocode/src/github.com/albertyw/reaction-pics
-COPY . /root/gocode/src/github.com/albertyw/reaction-pics
+RUN mkdir -p .
+COPY . .
 COPY --from=node ./server/static/app.js ./server/static/app.js
 COPY --from=node ./node_modules ./node_modules
-WORKDIR /root/gocode/src/github.com/albertyw/reaction-pics
 
 # App-specific setup
 RUN make bins
