@@ -4,13 +4,7 @@ clean:
 	rm reaction-pics
 	rm server/static/app.js
 
-node_modules:
-	npm install
-
-server/static/app.js: node_modules
-	npm run minify
-
-bins: server/static/app.js
+bins:
 	go build
 
 test: bins
