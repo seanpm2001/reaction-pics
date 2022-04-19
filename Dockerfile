@@ -28,6 +28,8 @@ COPY . /root/gocode/src/github.com/albertyw/reaction-pics
 WORKDIR /root/gocode/src/github.com/albertyw/reaction-pics
 
 # App-specific setup
-RUN make bins && npm prune --production
+RUN make bins \
+    && npm ci --only=production \
+    && npm run minify
 
 CMD ["bin/start.sh"]
