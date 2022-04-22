@@ -21,7 +21,7 @@ steps:
       CODECOV_TOKEN: 29a128f7-f56b-4d73-8ec8-da3803ec2c3c
 
   - name: Test Node
-    image: satantime/puppeteer-node:16-bullseye-slim
+    image: satantime/puppeteer-node:18-bullseye-slim
     commands:
       - ln -fs .env.example .env
       - npm ci
