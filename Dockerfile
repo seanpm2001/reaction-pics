@@ -22,12 +22,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
-RUN curl https://deb.nodesource.com/setup_16.x | bash \
-    && apt-get update && apt-get install -y --no-install-recommends \
-    nodejs                                      `: Javascript assets` \
-    && rm -rf /var/lib/apt/lists/*
-
 # Set up directory structures
 WORKDIR /root/gocode/src/github.com/albertyw/reaction-pics
 ENV GOPATH /root/gocode
