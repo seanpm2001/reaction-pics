@@ -12,10 +12,7 @@ go vet ./...
 
 gofiles=$(git ls-files | grep -F .go)
 
-gofmt_errors=""
-for gofile in $gofiles; do
-    gofmt_errors+=$(gofmt -e -l -d -s "$gofile")
-done
+gofmt_errors=$(gofmt -e -l -d -s .)
 if [ -n "$gofmt_errors" ]; then
     echo "Fmt failures on:"
     echo "$gofmt_errors"
