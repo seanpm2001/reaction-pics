@@ -7,15 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd -P "$DIR/.." || exit 1
 pwd
 
-echo "" > coverage.txt
-for godir in $(go list ./...); do
-    go test -coverprofile=coverage.out "$godir" -covermode=atomic
-    if [ -f coverage.out ]
-    then
-        grep -v "mode: set" coverage.out >> coverage.txt
-    fi
-done
-rm coverage.out
+go test -coverprofile=coverage.txt -covermode=atomic ./...
 
 govet_errors=$(go vet ./...)
 if [ -n "$govet_errors" ]; then
