@@ -8,13 +8,7 @@ cd -P "$DIR/.." || exit 1
 pwd
 
 go test -coverprofile=coverage.txt -covermode=atomic ./...
-
-govet_errors=$(go vet ./...)
-if [ -n "$govet_errors" ]; then
-    echo "Vet failures on:"
-    echo "$govet_errors"
-    exit 1
-fi
+go vet ./...
 
 gofiles=$(git ls-files | grep -F .go)
 
