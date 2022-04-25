@@ -17,10 +17,10 @@ const (
 // ReadPostsFromCSV reads a CSV file into a list of posts
 func ReadPostsFromCSV(csvPath string) []Post {
 	file, err := os.Open(csvPath)
-	defer file.Close()
 	if err != nil {
 		return []Post{}
 	}
+	defer file.Close()
 	return readCSV(file)
 }
 

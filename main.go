@@ -12,17 +12,6 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-// logWriter allows the logger the implement the io.Writer interface
-type logWriter struct {
-	l *zap.SugaredLogger
-}
-
-// Write receives bytes and writes to a logger
-func (w logWriter) Write(p []byte) (int, error) {
-	w.l.Info(string(p))
-	return len(p), nil
-}
-
 func setupEnv() {
 	err := godotenv.Load()
 	if err != nil {
