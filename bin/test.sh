@@ -17,8 +17,8 @@ if [ -n "$gofmt_errors" ]; then
     exit 1
 fi
 
-go install golang.org/x/lint/golint@latest
-golint -set_exit_status ./...
+go install honnef.co/go/tools/cmd/staticcheck@latest
+staticcheck ./...
 
 go mod tidy
 gosumdiff="$(git diff go.sum)"

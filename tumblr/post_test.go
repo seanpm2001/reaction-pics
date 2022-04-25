@@ -62,8 +62,8 @@ func TestInitializeBoard(t *testing.T) {
 	// When the lock is released, it should have data in it
 	time.Sleep(time.Millisecond * 10)
 	b.mut.RLock()
-	b.mut.RUnlock()
 	assert.True(t, len(b.Posts) > 0)
+	b.mut.RUnlock()
 }
 
 func TestAddPost(t *testing.T) {
