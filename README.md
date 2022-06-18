@@ -12,7 +12,7 @@ Index of DevOps Reactions
 
 ## Installation
 
-1.  Install Go 1.14.
+1.  Install Go 1.18.
 3.  `make serve`
 
 ## Running tests
