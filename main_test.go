@@ -6,7 +6,13 @@ import (
 
 	"github.com/rollbar/rollbar-go"
 	"github.com/stretchr/testify/assert"
+	"go.uber.org/goleak"
 )
+
+func TestMain(m *testing.M) {
+	rollbar.Close()
+	goleak.VerifyTestMain(m)
+}
 
 func TestSetupEnv(t *testing.T) {
 	setupEnv()

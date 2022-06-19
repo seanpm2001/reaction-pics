@@ -8,11 +8,17 @@ import (
 	"testing"
 
 	"github.com/albertyw/reaction-pics/tumblr"
+	"github.com/rollbar/rollbar-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+	"go.uber.org/goleak"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest/observer"
 )
+
+func TestMain(m *testing.M) {
+	goleak.VerifyTestMain(m)
+}
 
 type HandlerTestSuite struct {
 	suite.Suite
@@ -22,6 +28,10 @@ type HandlerTestSuite struct {
 
 func TestHandlerTestSuite(t *testing.T) {
 	suite.Run(t, new(HandlerTestSuite))
+}
+
+func (s *HandlerTestSuite) TearDownSuite() {
+	rollbar.Close()
 }
 
 func (s *HandlerTestSuite) SetupTest() {
