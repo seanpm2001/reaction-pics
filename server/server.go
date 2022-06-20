@@ -80,7 +80,7 @@ func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDe
 // It matches the query against post titles and then ranks posts by number of likes
 func searchHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	query := r.URL.Query().Get("query")
-	query = strings.ToLower(query)
+	query = strings.TrimSpace(strings.ToLower(query))
 	queriedBoard := d.board.FilterBoard([]string{query})
 	if query == "" {
 		queriedBoard.RandomizePosts()
