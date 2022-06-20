@@ -132,13 +132,20 @@ func (b Board) PostsToJSON() *[]PostJSON {
 }
 
 // FilterBoard returns a new Board with a subset of posts filtered by a string
-func (b Board) FilterBoard(query string) *Board {
+func (b Board) FilterBoard(queries []string) *Board {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
 	selectedPosts := []Post{}
 	for _, post := range b.Posts {
 		postData := strings.ToLower(post.Title)
-		if strings.Contains(postData, query) {
+		mismatch := false
+		for _, query := range queries {
+			if !strings.Contains(postData, query) {
+				mismatch = true
+				break
+			}
+		}
+		if !mismatch {
 			selectedPosts = append(selectedPosts, post)
 		}
 	}

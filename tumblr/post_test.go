@@ -99,7 +99,7 @@ func TestFilterBoard(t *testing.T) {
 	posts[0] = Post{1, "title1", "url1", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 123}
 	posts[1] = Post{2, "title2", "url2", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 124}
 	board := NewBoard(posts)
-	newBoard := board.FilterBoard("title2")
+	newBoard := board.FilterBoard([]string{"title2"})
 	assert.Equal(t, len(newBoard.Posts), 1)
 	assert.Equal(t, newBoard.Posts[0].ID, int64(2))
 }

@@ -81,7 +81,7 @@ func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDe
 func searchHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	query := r.URL.Query().Get("query")
 	query = strings.ToLower(query)
-	queriedBoard := d.board.FilterBoard(query)
+	queriedBoard := d.board.FilterBoard([]string{query})
 	if query == "" {
 		queriedBoard.RandomizePosts()
 	}
