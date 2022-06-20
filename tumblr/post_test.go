@@ -95,13 +95,21 @@ func TestPostsToJSON(t *testing.T) {
 }
 
 func TestFilterBoard(t *testing.T) {
-	posts := make([]Post, 2)
+	posts := make([]Post, 3)
 	posts[0] = Post{1, "title1", "url1", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 123}
 	posts[1] = Post{2, "title2", "url2", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 124}
+	posts[2] = Post{3, "title2 title3", "url3", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 125}
 	board := NewBoard(posts)
 	newBoard := board.FilterBoard([]string{"title2"})
-	assert.Equal(t, len(newBoard.Posts), 1)
+	assert.Equal(t, len(newBoard.Posts), 2)
 	assert.Equal(t, newBoard.Posts[0].ID, int64(2))
+	assert.Equal(t, newBoard.Posts[1].ID, int64(3))
+	newBoard = board.FilterBoard([]string{"title3"})
+	assert.Equal(t, len(newBoard.Posts), 1)
+	assert.Equal(t, newBoard.Posts[0].ID, int64(3))
+	newBoard = board.FilterBoard([]string{"title3", "title2"})
+	assert.Equal(t, len(newBoard.Posts), 1)
+	assert.Equal(t, newBoard.Posts[0].ID, int64(3))
 }
 
 func TestLimitBoard(t *testing.T) {
