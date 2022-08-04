@@ -6,7 +6,7 @@ RUN npm ci --only=production \
     && sed -i '' server/static/**/*
 
 
-FROM golang:1.18-bullseye
+FROM golang:1.19-bullseye
 
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
