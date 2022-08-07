@@ -42,7 +42,10 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
 		err := fmt.Errorf("file not found: %s", r.URL.Path)
 		d.logger.Warn(err)
-		rollbar.RequestError(rollbar.WARN, r, err)
+		if !strings.HasPrefix(r.URL.Path, ".php") {
+			// Ignore bots scanning for php vulnerabilities
+			rollbar.RequestError(rollbar.WARN, r, err)
+		}
 		http.NotFound(w, r)
 		return
 	}
