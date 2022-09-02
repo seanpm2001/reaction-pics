@@ -5,7 +5,7 @@ clean:
 	rm server/static/app.js
 
 bins:
-	go build .
+	go build -race .
 
 test: bins
 	./bin/test.sh
