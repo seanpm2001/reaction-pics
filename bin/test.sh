@@ -18,7 +18,7 @@ if [ -n "$gofmt_errors" ]; then
 fi
 
 go install honnef.co/go/tools/cmd/staticcheck@latest
-staticcheck ./...
+staticcheck -checks all ./...
 
 go mod tidy
 gosumdiff="$(git diff go.sum)"
