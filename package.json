@@ -36,7 +36,7 @@
     "loose-envify": "^1.4.0",
     "minify-stream": "^2.1.0",
     "rollbar": "^2.19.4",
-    "unassertify": "^2.1.1",
+    "unassertify": "^3.0.0",
     "vanilla-lazyload": "^17.3.0",
     "varsnap": "^1.6.4"
   }
