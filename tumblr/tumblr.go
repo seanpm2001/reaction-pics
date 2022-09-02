@@ -1,3 +1,4 @@
+// Package tumblr data model for reaction.pics
 package tumblr
 
 // GetPosts returns a list of all Posts

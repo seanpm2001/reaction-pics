@@ -1,3 +1,4 @@
+// Package server is the backend web server for reaction.pics
 package server
 
 import (
