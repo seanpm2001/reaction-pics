@@ -1,6 +1,6 @@
 module github.com/albertyw/reaction-pics
 
-go 1.18
+go 1.19
 
 require (
 	github.com/gosimple/slug v1.12.0
