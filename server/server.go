@@ -2,6 +2,7 @@
 package server
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -23,6 +24,9 @@ import (
 const (
 	maxResults = 20
 )
+
+//go:embed "static/index.htm"
+var indexHTML string
 
 type metaHeader struct {
 	Property string
@@ -54,15 +58,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 }
 
 func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDeps, headers []metaHeader) {
-	path := relToAbsPath("static/index.htm")
-	t, err := template.ParseFiles(path)
-	if err != nil {
-		err = errors.Wrap(err, "Cannot read post template")
-		d.logger.Error(err)
-		rollbar.RequestError(rollbar.ERR, r, err)
-		http.Error(w, err.Error(), 500)
-		return
-	}
+	t := template.Must(template.New("index").Parse(indexHTML))
 	templateData := struct {
 		CacheString string
 		MetaHeaders []metaHeader
@@ -70,7 +66,7 @@ func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDe
 		CacheString: d.appCacheString,
 		MetaHeaders: headers,
 	}
-	err = t.Execute(w, templateData)
+	err := t.Execute(w, templateData)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot execute template")
 		d.logger.Error(err)
