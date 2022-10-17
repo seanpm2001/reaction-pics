@@ -10,11 +10,12 @@ import (
 	"go.uber.org/zap"
 )
 
-// go:embed "static/app.js"
-var appJS []byte
-
 // appCacheString returns a cache string that can be used to bust browser/CDN caches
 func appCacheString() string {
+	appJS, err := staticFiles.ReadFile("static/app.js")
+	if err != nil {
+		return "notfound"
+	}
 	cacheHash := md5.Sum(appJS)
 	return fmt.Sprintf("%x", cacheHash)
 }
