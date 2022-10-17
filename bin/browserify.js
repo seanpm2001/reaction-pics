@@ -22,3 +22,16 @@ browserify(inputFile, {debug: true})
     keep_classnames: true,
   }))
   .pipe(fs.createWriteStream(outputFile));
+
+const bootstrapDist = path.join(__dirname, '..', 'node_modules', 'bootstrap', 'dist');
+const staticDir = path.join(__dirname, '..', 'server', 'static');
+function vendorBootstrapFile(dirName, fileName) {
+  fs.copyFileSync(
+    path.join(bootstrapDist, dirName, fileName),
+    path.join(staticDir, dirName, fileName),
+  );
+}
+vendorBootstrapFile('css', 'bootstrap.min.css');
+vendorBootstrapFile('css', 'bootstrap.min.css.map');
+vendorBootstrapFile('js', 'bootstrap.min.js');
+vendorBootstrapFile('js', 'bootstrap.min.js.map');
