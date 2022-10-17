@@ -5,7 +5,6 @@ import (
 	_ "embed"
 	"fmt"
 	"net/http"
-	"strings"
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"go.uber.org/zap"
@@ -28,16 +27,6 @@ func logURL(
 	return func(w http.ResponseWriter, r *http.Request) {
 		url := r.URL.String()
 		logger.Info(url)
-		targetFunc(w, r)
-	}
-}
-
-// rewriteFS wraps a static file handler so to rewrite to the static directory
-// and the root path is rewritten to index.htm
-func rewriteFS(targetFunc http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		path := strings.TrimPrefix(r.URL.Path, "/static/")
-		r.URL.Path = path
 		targetFunc(w, r)
 	}
 }

@@ -2,14 +2,12 @@
 package server
 
 import (
-	_ "embed"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"net/http"
 	"os"
-	"path/filepath"
-	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -31,18 +29,13 @@ var indexHTML string
 //go:embed "static/favicon/favicon.ico"
 var faviconICO []byte
 
+//go:embed "static/*"
+var staticFiles embed.FS
+var staticFileServer = http.FileServer(http.FS(staticFiles))
+
 type metaHeader struct {
 	Property string
 	Content  string
-}
-
-func relToAbsPath(path string) string {
-	_, filename, _, ok := runtime.Caller(0)
-	if !ok {
-		filename = "."
-	}
-	absPath := filepath.Join(filepath.Dir(filename), path)
-	return absPath
 }
 
 // indexHandler is an http handler that returns the index page HTML
@@ -196,8 +189,7 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 
 // staticHandler returns static files
 func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	staticFS := rewriteFS(http.FileServer(http.Dir(relToAbsPath("static"))).ServeHTTP)
-	staticFS(w, r)
+	staticFileServer.ServeHTTP(w, r)
 }
 
 func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
