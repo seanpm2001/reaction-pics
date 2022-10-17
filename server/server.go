@@ -211,7 +211,7 @@ func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	faviconPath := relToAbsPath("static/favicon/favicon.iso")
+	faviconPath := relToAbsPath("static/favicon/favicon.ico")
 	http.ServeFile(w, r, faviconPath)
 }
 
