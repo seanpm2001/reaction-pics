@@ -1,27 +1,23 @@
 package server
 
 import (
+	"crypto/md5"
+	_ "embed"
+	"fmt"
 	"net/http"
-	"os"
-	"strconv"
 	"strings"
 
 	"github.com/albertyw/reaction-pics/tumblr"
-	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
 )
 
+// go:embed "static/app.js"
+var appJS []byte
+
 // appCacheString returns a cache string that can be used to bust browser/CDN caches
-func appCacheString(logger *zap.SugaredLogger) string {
-	appFile := relToAbsPath("static/app.js")
-	info, err := os.Stat(appFile)
-	if err != nil {
-		logger.Error(err)
-		rollbar.Error(rollbar.ERR, err)
-		return ""
-	}
-	cacheString := strconv.FormatInt(info.ModTime().Unix(), 10)
-	return cacheString
+func appCacheString() string {
+	cacheHash := md5.Sum(appJS)
+	return fmt.Sprintf("%x", cacheHash)
 }
 
 // logURL is a closure that logs (to stdout) the url and query of requests
@@ -66,7 +62,7 @@ func newHandlerGenerator(board *tumblr.Board, logger *zap.SugaredLogger) handler
 	deps := handlerDeps{
 		logger:         logger,
 		board:          board,
-		appCacheString: appCacheString(logger),
+		appCacheString: appCacheString(),
 	}
 	return handlerGenerator{
 		logger: logger,
