@@ -28,6 +28,9 @@ const (
 //go:embed "static/index.htm"
 var indexHTML string
 
+//go:embed "static/favicon/favicon.ico"
+var faviconICO []byte
+
 type metaHeader struct {
 	Property string
 	Content  string
@@ -207,8 +210,7 @@ func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	faviconPath := relToAbsPath("static/favicon/favicon.ico")
-	http.ServeFile(w, r, faviconPath)
+	w.Write(faviconICO)
 }
 
 func robotsTxtHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
