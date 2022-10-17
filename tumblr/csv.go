@@ -1,31 +1,21 @@
 package tumblr
 
 import (
+	"bytes"
+	_ "embed"
 	"encoding/csv"
-	"fmt"
-	"io"
-	"os"
-	"path/filepath"
-	"runtime"
 )
 
-const (
-	prodCSVPath = "data/posts.csv"
-	testCSVPath = "data/posts_test.csv"
-)
+//go:embed data/posts.csv
+var prodCSV []byte
+
+//go:embed data/posts_test.csv
+var testCSV []byte
 
 // ReadPostsFromCSV reads a CSV file into a list of posts
-func ReadPostsFromCSV(csvPath string) []Post {
-	file, err := os.Open(csvPath)
-	if err != nil {
-		return []Post{}
-	}
-	defer file.Close()
-	return readCSV(file)
-}
-
-func readCSV(data io.Reader) []Post {
-	reader := csv.NewReader(data)
+func ReadPostsFromCSV(csvData []byte) []Post {
+	ioReader := bytes.NewReader(csvData)
+	reader := csv.NewReader(ioReader)
 	var posts []Post
 	for {
 		row, err := reader.Read()
@@ -38,16 +28,9 @@ func readCSV(data io.Reader) []Post {
 	return posts
 }
 
-func getCSVPath(test bool) string {
-	path := prodCSVPath
+func getCSV(test bool) []byte {
 	if test {
-		path = testCSVPath
+		return testCSV
 	}
-	_, filename, _, ok := runtime.Caller(0)
-	if !ok {
-		filename = "."
-	}
-	path = filepath.Join(filepath.Dir(filename), path)
-	fmt.Println(path)
-	return path
+	return prodCSV
 }
