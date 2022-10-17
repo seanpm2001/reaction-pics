@@ -42,7 +42,7 @@ func (s *HandlerTestSuite) SetupTest() {
 	s.deps = handlerDeps{
 		logger:         logger,
 		board:          &board,
-		appCacheString: appCacheString(logger),
+		appCacheString: appCacheString(),
 	}
 }
 

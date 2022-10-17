@@ -2,13 +2,12 @@
 package server
 
 import (
+	"embed"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"net/http"
 	"os"
-	"path/filepath"
-	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -24,18 +23,13 @@ const (
 	maxResults = 20
 )
 
+//go:embed "static/*"
+var staticFiles embed.FS
+var staticFileServer = http.FileServer(http.FS(staticFiles))
+
 type metaHeader struct {
 	Property string
 	Content  string
-}
-
-func relToAbsPath(path string) string {
-	_, filename, _, ok := runtime.Caller(0)
-	if !ok {
-		filename = "."
-	}
-	absPath := filepath.Join(filepath.Dir(filename), path)
-	return absPath
 }
 
 // indexHandler is an http handler that returns the index page HTML
@@ -54,15 +48,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 }
 
 func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDeps, headers []metaHeader) {
-	path := relToAbsPath("static/index.htm")
-	t, err := template.ParseFiles(path)
-	if err != nil {
-		err = errors.Wrap(err, "Cannot read post template")
-		d.logger.Error(err)
-		rollbar.RequestError(rollbar.ERR, r, err)
-		http.Error(w, err.Error(), 500)
-		return
-	}
+	t := template.Must(template.ParseFS(staticFiles, "static/index.htm"))
 	templateData := struct {
 		CacheString string
 		MetaHeaders []metaHeader
@@ -70,7 +56,7 @@ func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDe
 		CacheString: d.appCacheString,
 		MetaHeaders: headers,
 	}
-	err = t.Execute(w, templateData)
+	err := t.Execute(w, templateData)
 	if err != nil {
 		err = errors.Wrap(err, "Cannot execute template")
 		d.logger.Error(err)
@@ -197,8 +183,7 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 
 // staticHandler returns static files
 func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	staticFS := rewriteFS(http.FileServer(http.Dir(relToAbsPath("static"))).ServeHTTP)
-	staticFS(w, r)
+	staticFileServer.ServeHTTP(w, r)
 }
 
 func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
@@ -211,8 +196,12 @@ func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	faviconPath := relToAbsPath("static/favicon/favicon.ico")
-	http.ServeFile(w, r, faviconPath)
+	favicon, err := staticFiles.ReadFile("static/favicon/favicon.ico")
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+	w.Write(favicon)
 }
 
 func robotsTxtHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {

@@ -102,7 +102,7 @@ func NewBoard(p []Post) Board {
 
 func (b *Board) populateBoardFromCSV() {
 	b.mut.Lock()
-	posts := ReadPostsFromCSV(getCSVPath(false))
+	posts := ReadPostsFromCSV(getCSV(false))
 	b.Posts = append(b.Posts, posts...)
 	b.mut.Unlock()
 	b.SortPostsByLikes()
