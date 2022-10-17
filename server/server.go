@@ -23,9 +23,6 @@ const (
 	maxResults = 20
 )
 
-//go:embed "static/favicon/favicon.ico"
-var faviconICO []byte
-
 //go:embed "static/*"
 var staticFiles embed.FS
 var staticFileServer = http.FileServer(http.FS(staticFiles))
@@ -199,7 +196,12 @@ func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 }
 
 func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	w.Write(faviconICO)
+	favicon, err := staticFiles.ReadFile("static/favicon/favicon.ico")
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+	w.Write(favicon)
 }
 
 func robotsTxtHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
