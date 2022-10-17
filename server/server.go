@@ -23,9 +23,6 @@ const (
 	maxResults = 20
 )
 
-//go:embed "static/index.htm"
-var indexHTML string
-
 //go:embed "static/favicon/favicon.ico"
 var faviconICO []byte
 
@@ -54,7 +51,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 }
 
 func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDeps, headers []metaHeader) {
-	t := template.Must(template.New("index").Parse(indexHTML))
+	t := template.Must(template.ParseFS(staticFiles, "static/index.htm"))
 	templateData := struct {
 		CacheString string
 		MetaHeaders []metaHeader
