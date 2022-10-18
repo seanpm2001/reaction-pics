@@ -3,13 +3,13 @@ module github.com/albertyw/reaction-pics
 go 1.19
 
 require (
-	github.com/gosimple/slug v1.12.0
+	github.com/gosimple/slug v1.13.1
 	github.com/ikeikeikeike/go-sitemap-generator/v2 v2.0.2
 	github.com/joho/godotenv v1.4.0
 	github.com/pkg/errors v0.9.1
-	github.com/rollbar/rollbar-go v1.4.4
+	github.com/rollbar/rollbar-go v1.4.5
 	github.com/stretchr/testify v1.8.0
-	go.uber.org/goleak v1.1.12
+	go.uber.org/goleak v1.2.0
 	go.uber.org/zap v1.23.0
 )
 
