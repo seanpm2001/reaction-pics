@@ -10,8 +10,7 @@ FROM golang:1.19-bullseye as go
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set up directory structures
-WORKDIR /root/gocode/src/github.com/albertyw/reaction-pics
-ENV GOPATH /root/gocode
+WORKDIR /root/
 RUN mkdir -p .
 COPY . .
 COPY --from=node ./server/static ./server/static
@@ -26,8 +25,8 @@ HEALTHCHECK --interval=5s --timeout=3s CMD bin/healthcheck.sh || exit 1
 
 WORKDIR /root/
 RUN apk add --no-cache libc6-compat=1.2.3-r0
-COPY --from=go /root/gocode/src/github.com/albertyw/reaction-pics/reaction-pics .
-COPY --from=go /root/gocode/src/github.com/albertyw/reaction-pics/.env* ./
-RUN mkdir -p /root/gocode/src/github.com/albertyw/reaction-pics/logs/app
+COPY --from=go /root/reaction-pics .
+COPY --from=go /root/.env* ./
+RUN mkdir -p /root/logs/app
 
 CMD ["./reaction-pics"]

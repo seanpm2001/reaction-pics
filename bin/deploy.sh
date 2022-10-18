@@ -37,7 +37,7 @@ docker run \
     --restart=always \
     --publish="127.0.0.1:$PORT:$PORT" \
     --network="$NETWORK" \
-    --mount type=bind,source="$(pwd)"/logs/app,target=/root/gocode/src/github.com/albertyw/reaction-pics/logs/app \
+    --mount type=bind,source="$(pwd)"/logs/app,target=/root/logs/app \
     --name="$CONTAINER" "$CONTAINER:$BRANCH"
 
 if [ "$ENVIRONMENT" = "production" ] && [ "$BRANCH" = "master" ]; then
