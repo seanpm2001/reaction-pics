@@ -93,6 +93,16 @@ func (s *HandlerTestSuite) TestNoExactURL() {
 	assert.Equal(s.T(), response.Code, 404)
 }
 
+func (s *HandlerTestSuite) TestSecurityHandler() {
+	request, err := http.NewRequest("GET", "/.well-known/security.txt", nil)
+	assert.NoError(s.T(), err)
+
+	response := httptest.NewRecorder()
+	securityHandler(response, request, s.deps)
+	assert.Equal(s.T(), response.Code, 200)
+	assert.Contains(s.T(), response.Body.String(), "Contact")
+}
+
 func (s *HandlerTestSuite) TestSearchHandler() {
 	request, err := http.NewRequest("GET", "/search", nil)
 	assert.NoError(s.T(), err)

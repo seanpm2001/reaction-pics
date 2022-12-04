@@ -208,6 +208,15 @@ func robotsTxtHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	fmt.Fprint(w, "")
 }
 
+func securityHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+	securityFile, err := staticFiles.ReadFile("static/security.txt")
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+	w.Write(securityFile)
+}
+
 // Run starts up the HTTP server
 func Run(logger *zap.SugaredLogger) {
 	board := tumblr.InitializeBoard()
@@ -217,6 +226,7 @@ func Run(logger *zap.SugaredLogger) {
 	http.Handle("/", generator.newHandler(indexHandler))
 	http.Handle("/favicon.ico", generator.newHandler(faviconHandler))
 	http.Handle("/robots.txt", generator.newHandler(robotsTxtHandler))
+	http.Handle("/.well-known/security.txt", generator.newHandler(securityHandler))
 	http.Handle("/search", generator.newHandler(searchHandler))
 	http.Handle("/postdata/", generator.newHandler(postDataHandler))
 	http.Handle("/post/", generator.newHandler(postHandler))
