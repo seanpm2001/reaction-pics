@@ -93,6 +93,26 @@ func (s *HandlerTestSuite) TestNoExactURL() {
 	assert.Equal(s.T(), response.Code, 404)
 }
 
+func (s *HandlerTestSuite) TestFaviconHandler() {
+	request, err := http.NewRequest("GET", "/favicon.ico", nil)
+	assert.NoError(s.T(), err)
+
+	response := httptest.NewRecorder()
+	faviconHandler(response, request, s.deps)
+	assert.Equal(s.T(), response.Code, 200)
+	assert.Greater(s.T(), len(response.Body.String()), 0)
+}
+
+func (s *HandlerTestSuite) TestRobotsTxtHandler() {
+	request, err := http.NewRequest("GET", "/robots.txt", nil)
+	assert.NoError(s.T(), err)
+
+	response := httptest.NewRecorder()
+	robotsTxtHandler(response, request, s.deps)
+	assert.Equal(s.T(), response.Code, 200)
+	assert.Equal(s.T(), response.Body.String(), "")
+}
+
 func (s *HandlerTestSuite) TestSecurityHandler() {
 	request, err := http.NewRequest("GET", "/.well-known/security.txt", nil)
 	assert.NoError(s.T(), err)
