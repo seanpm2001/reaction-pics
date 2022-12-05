@@ -28,7 +28,7 @@ func TestSetupRollbar(t *testing.T) {
 
 func TestGetLogger(t *testing.T) {
 	origEnv := os.Getenv("ENVIRONMENT")
-	defer func() { os.Setenv("ENVIRONMENt", origEnv) }()
+	defer func() { os.Setenv("ENVIRONMENT", origEnv) }()
 
 	os.Setenv("ENVIRONMENT", "development")
 	logger := getLogger()
