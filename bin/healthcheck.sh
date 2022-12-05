@@ -1,8 +1,5 @@
-#!/bin/bash
-
-set -euxo "pipefail"
-IFS=$'\n\t'
+#!/bin/sh
 
 curl \
     --fail \
-    "curl localhost:5003/time/"
+    localhost:5003/time/

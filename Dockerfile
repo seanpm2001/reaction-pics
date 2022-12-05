@@ -21,12 +21,13 @@ RUN make bins
 FROM alpine:3
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
-HEALTHCHECK --interval=5s --timeout=3s CMD bin/healthcheck.sh || exit 1
+HEALTHCHECK --interval=5s --timeout=3s CMD ./healthcheck.sh || exit 1
 
 WORKDIR /root/
-RUN apk add --no-cache libc6-compat=1.2.3-r4
+RUN apk add --no-cache libc6-compat=1.2.3-r4 curl==7.86.0-r1
 COPY --from=go /root/reaction-pics .
 COPY --from=go /root/.env* ./
+COPY --from=go /root/bin/healthcheck.sh .
 RUN mkdir -p /root/logs/app
 
 CMD ["./reaction-pics"]
