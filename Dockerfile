@@ -24,6 +24,7 @@ EXPOSE 5003
 HEALTHCHECK --interval=5s --timeout=3s CMD bin/healthcheck.sh || exit 1
 
 WORKDIR /root/
+RUN apk add --no-cache libc6-compat=1.2.3-r4
 COPY --from=go /root/reaction-pics .
 COPY --from=go /root/.env* ./
 RUN mkdir -p /root/logs/app
