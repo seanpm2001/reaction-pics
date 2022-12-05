@@ -216,9 +216,13 @@ func (s *HandlerTestSuite) TestPostDataPercentHandler() {
 
 	response := httptest.NewRecorder()
 	postDataHandler(response, request, s.deps)
-	var data map[string][]map[string]interface{}
-	json.Unmarshal(response.Body.Bytes(), &data)
-	title := data["data"][0]["title"].(string)
+	var overallData map[string]json.RawMessage
+	err = json.Unmarshal(response.Body.Bytes(), &overallData)
+	assert.NoError(s.T(), err)
+	var data []map[string]interface{}
+	err = json.Unmarshal(overallData["data"], &data)
+	assert.NoError(s.T(), err)
+	title := data[0]["title"].(string)
 	assert.Equal(s.T(), `asdf% qwer`, title)
 }
 
@@ -268,7 +272,8 @@ func (s *HandlerTestSuite) TestTimeHandler() {
 	timeHandler(response, request, s.deps)
 	assert.Equal(s.T(), response.Code, 200)
 	var data map[string]int
-	json.Unmarshal(response.Body.Bytes(), &data)
+	err = json.Unmarshal(response.Body.Bytes(), &data)
+	assert.NoError(s.T(), err)
 	unixTime, found := data["unixtime"]
 	assert.True(s.T(), found)
 	assert.True(s.T(), unixTime > 0)
