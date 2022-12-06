@@ -222,7 +222,8 @@ func (s *HandlerTestSuite) TestPostDataPercentHandler() {
 	var data []map[string]interface{}
 	err = json.Unmarshal(overallData["data"], &data)
 	assert.NoError(s.T(), err)
-	title := data[0]["title"].(string)
+	title, ok := data[0]["title"].(string)
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), `asdf% qwer`, title)
 }
 
