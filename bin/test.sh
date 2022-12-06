@@ -20,6 +20,9 @@ fi
 go install honnef.co/go/tools/cmd/staticcheck@latest
 staticcheck -checks all ./...
 
+go install github.com/kisielk/errcheck@latest
+errcheck -asserts ./...
+
 go mod tidy
 gosumdiff="$(git diff go.sum)"
 if [ -n "$gosumdiff" ]; then

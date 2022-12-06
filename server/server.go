@@ -85,7 +85,14 @@ func searchHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	queriedBoard.SortPostsByLikes()
 	data["data"] = queriedBoard.PostsToJSON()
 	dataBytes, _ := json.Marshal(data)
-	fmt.Fprint(w, string(dataBytes))
+	_, err = fmt.Fprint(w, string(dataBytes))
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for searchHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
 // postDataHandler is an http handler to return post data by ID in json format
@@ -114,7 +121,14 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		"data":         []tumblr.PostJSON{post.ToJSONStruct()},
 	}
 	marshalledPost, _ := json.Marshal(data)
-	fmt.Fprint(w, string(marshalledPost))
+	_, err = fmt.Fprint(w, string(marshalledPost))
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for postDataHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
 // postHandler is an http handler that validates the correctness of a post url
@@ -161,7 +175,14 @@ func statsHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		"keywords":  d.board.Keywords(),
 	}
 	stats, _ := json.Marshal(data)
-	fmt.Fprint(w, string(stats))
+	_, err := fmt.Fprint(w, string(stats))
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for statsHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
 // sitemapHandler returns a sitemap of reaction.pics as an xml file
@@ -174,7 +195,14 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	for _, url := range d.board.URLs() {
 		sm.Add(stm.URL{{"loc", url}})
 	}
-	w.Write(sm.XMLContent())
+	_, err := w.Write(sm.XMLContent())
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for sitemapHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
 // staticHandler returns static files
@@ -182,35 +210,63 @@ func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	staticFileServer.ServeHTTP(w, r)
 }
 
-func timeHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+func timeHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	unixTime := int32(time.Now().Unix())
 	data := map[string]interface{}{
 		"unixtime": unixTime,
 	}
 	timeData, _ := json.Marshal(data)
-	fmt.Fprint(w, string(timeData))
+	_, err := fmt.Fprint(w, string(timeData))
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for staticHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
-func faviconHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+func faviconHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	favicon, err := staticFiles.ReadFile("static/favicon/favicon.ico")
 	if err != nil {
 		http.NotFound(w, r)
 		return
 	}
-	w.Write(favicon)
+	_, err = w.Write(favicon)
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for faviconHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
-func robotsTxtHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
-	fmt.Fprint(w, "")
+func robotsTxtHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
+	_, err := fmt.Fprint(w, "")
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for robotsTxtHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
-func securityHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
+func securityHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	securityFile, err := staticFiles.ReadFile("static/security.txt")
 	if err != nil {
 		http.NotFound(w, r)
 		return
 	}
-	w.Write(securityFile)
+	_, err = w.Write(securityFile)
+	if err != nil {
+		err = errors.Wrap(err, "cannot write output for securityHandler")
+		d.logger.Error(err)
+		rollbar.RequestError(rollbar.ERR, r, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
 // Run starts up the HTTP server
@@ -230,5 +286,11 @@ func Run(logger *zap.SugaredLogger) {
 	http.Handle("/sitemap.xml", generator.newHandler(sitemapHandler))
 	http.Handle("/static/", generator.newHandler(staticHandler))
 	http.Handle("/time/", generator.newHandler(timeHandler))
-	http.ListenAndServe(address, nil)
+	err := http.ListenAndServe(address, nil)
+	if err != nil {
+		err = errors.Wrap(err, "cannot run http server")
+		logger.Error(err)
+		rollbar.Error(rollbar.ERR, err)
+		return
+	}
 }

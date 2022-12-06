@@ -50,6 +50,9 @@ func main() {
 	setupEnv()
 	setupRollbar()
 	logger := getLogger()
-	defer logger.Sync()
 	server.Run(logger)
+	err := logger.Sync()
+	if err != nil {
+		rollbar.Error(rollbar.ERR, err)
+	}
 }
