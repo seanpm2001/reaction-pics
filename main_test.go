@@ -27,19 +27,11 @@ func TestSetupRollbar(t *testing.T) {
 }
 
 func TestGetLogger(t *testing.T) {
-	origEnv := os.Getenv("ENVIRONMENT")
-	defer func() {
-		err := os.Setenv("ENVIRONMENT", origEnv)
-		assert.NoError(t, err)
-	}()
-
-	err := os.Setenv("ENVIRONMENT", "development")
-	assert.NoError(t, err)
+	t.Setenv("ENVIRONMENT", "development")
 	logger := getLogger()
 	assert.NotNil(t, logger)
 
-	err = os.Setenv("ENVIRONMENT", "production")
-	assert.NoError(t, err)
+	t.Setenv("ENVIRONMENT", "production")
 	logger = getLogger()
 	assert.NotNil(t, logger)
 }
