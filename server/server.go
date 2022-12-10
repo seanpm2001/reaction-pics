@@ -10,7 +10,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"time"
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/ikeikeikeike/go-sitemap-generator/v2/stm"
@@ -210,22 +209,6 @@ func staticHandler(w http.ResponseWriter, r *http.Request, _ handlerDeps) {
 	staticFileServer.ServeHTTP(w, r)
 }
 
-func timeHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
-	unixTime := int32(time.Now().Unix())
-	data := map[string]interface{}{
-		"unixtime": unixTime,
-	}
-	timeData, _ := json.Marshal(data)
-	_, err := fmt.Fprint(w, string(timeData))
-	if err != nil {
-		err = errors.Wrap(err, "cannot write output for staticHandler")
-		d.logger.Error(err)
-		rollbar.RequestError(rollbar.ERR, r, err)
-		http.Error(w, err.Error(), 500)
-		return
-	}
-}
-
 func faviconHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	favicon, err := staticFiles.ReadFile("static/favicon/favicon.ico")
 	if err != nil {
@@ -285,7 +268,6 @@ func Run(logger *zap.SugaredLogger) {
 	http.Handle("/stats.json", generator.newHandler(statsHandler))
 	http.Handle("/sitemap.xml", generator.newHandler(sitemapHandler))
 	http.Handle("/static/", generator.newHandler(staticHandler))
-	http.Handle("/time/", generator.newHandler(timeHandler))
 	err := http.ListenAndServe(address, nil)
 	if err != nil {
 		err = errors.Wrap(err, "cannot run http server")
