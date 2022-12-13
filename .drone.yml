@@ -11,7 +11,7 @@ steps:
   - name: Test Go
     image: golang:1.19
     commands:
-      - ln -fs .env.example .env
+      - cp .env.example .env
       - touch /drone/src/server/static/app.js
       - bin/test.sh
       - curl -Os https://uploader.codecov.io/latest/linux/codecov
@@ -23,14 +23,14 @@ steps:
   - name: Test Node
     image: satantime/puppeteer-node:18-bullseye-slim
     commands:
-      - ln -fs .env.example .env
+      - cp .env.example .env
       - npm ci
       - npm test
 
   - name: Test Bash
     image: koalaman/shellcheck-alpine:stable
     commands:
-      - ln -fs .env.example .env
+      - cp .env.example .env
       - shellcheck -x --exclude=SC1091 bin/*.sh
 
   - name: Test Dockerfile
