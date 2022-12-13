@@ -167,6 +167,8 @@ func (b Board) GetPostByID(postID int64) *Post {
 
 // LimitBoard modifies the current board with maxResults posts starting at offset
 func (b *Board) LimitBoard(offset, maxResults int) {
+	b.mut.Lock()
+	defer b.mut.Unlock()
 	if offset > len(b.Posts) {
 		offset = len(b.Posts)
 	}
