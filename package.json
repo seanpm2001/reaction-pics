@@ -30,7 +30,7 @@
     "bootstrap": "^5.0.0",
     "browser-pack-flat": "^3.4.2",
     "browserify": "^17.0.0",
-    "common-shakeify": "^0.6.2",
+    "common-shakeify": "^1.0.0",
     "dotenv": "^16.0.0",
     "logfit": "^0.8.2",
     "loose-envify": "^1.4.0",
