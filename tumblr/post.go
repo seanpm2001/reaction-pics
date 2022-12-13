@@ -108,7 +108,7 @@ func (b *Board) populateBoardFromCSV() {
 	b.SortPostsByLikes()
 }
 
-// AddPost adds a single post to the board and sorts it
+// AddPost adds a single post to the board; no-ops if the post is already present
 func (b *Board) AddPost(p Post) {
 	b.mut.Lock()
 	defer b.mut.Unlock()
