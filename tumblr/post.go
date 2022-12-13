@@ -88,7 +88,13 @@ type Board struct {
 // posts into it
 func InitializeBoard() *Board {
 	board := NewBoard([]Post{})
-	go board.populateBoardFromCSV()
+	board.mut.Lock()
+	go func() {
+		defer board.mut.Unlock()
+		posts := ReadPostsFromCSV(getCSV(false))
+		board.Posts = append(board.Posts, posts...)
+		board.sortPostsByLikes()
+	}()
 	return &board
 }
 
@@ -98,14 +104,6 @@ func NewBoard(p []Post) Board {
 		Posts: p,
 		mut:   &sync.RWMutex{},
 	}
-}
-
-func (b *Board) populateBoardFromCSV() {
-	b.mut.Lock()
-	defer b.mut.Unlock()
-	posts := ReadPostsFromCSV(getCSV(false))
-	b.Posts = append(b.Posts, posts...)
-	b.sortPostsByLikes()
 }
 
 // AddPost adds a single post to the board; no-ops if the post is already present
