@@ -2,4 +2,4 @@
 
 curl \
     --fail \
-    localhost:5003/time/
+    localhost:5003/
