@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -12,10 +13,19 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
+//go:embed .env
+var dotenv []byte
+
 func setupEnv() {
-	err := godotenv.Load()
+	envMap, err := godotenv.Unmarshal(string(dotenv))
 	if err != nil {
 		panic(err)
+	}
+	for key, value := range envMap {
+		err := os.Setenv(key, value)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 
