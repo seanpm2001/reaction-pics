@@ -43,12 +43,18 @@ steps:
     commands:
       - gixy config/nginx/*
 
+  - name: Test Makefile
+    image: cytopia/checkmake:latest
+    commands:
+      - checkmake Makefile
+
   - name: Build Docker Container
     depends_on:
       - Test Go
       - Test Node
       - Test Bash
       - Test Dockerfile
+      - Test Makefile
       - Test Nginx
     image: plugins/docker
     settings:
