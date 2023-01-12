@@ -9,6 +9,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/rollbar/rollbar-go v1.4.5
 	github.com/stretchr/testify v1.8.1
+	go.uber.org/automaxprocs v1.5.1
 	go.uber.org/goleak v1.2.0
 	go.uber.org/zap v1.24.0
 )
