@@ -18,14 +18,12 @@ COPY --from=node ./server/static ./server/static
 # App-specific setup
 RUN make bins
 
-FROM alpine:3
+FROM debian:bullseye-slim
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
 HEALTHCHECK --interval=5s --timeout=3s CMD ./healthcheck.sh || exit 1
 
 WORKDIR /root/
-# hadolint ignore=DL3018
-RUN apk add --no-cache libc6-compat curl
 COPY --from=go /root/reaction-pics .
 COPY --from=go /root/bin/healthcheck.sh .
 RUN mkdir -p /root/logs/app
