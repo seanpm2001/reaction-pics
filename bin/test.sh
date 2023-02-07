@@ -7,7 +7,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd -P "$DIR/.." || exit 1
 pwd
 
-go test -race -coverprofile=coverage.txt -covermode=atomic ./...
+go test -race -coverprofile=c.out -covermode=atomic ./...
+go tool cover -func=c.out
+sed -i 's/github.com\/albertyw\/reaction-pics\///g' c.out
 go vet ./...
 
 gofmt_errors=$(gofmt -e -l -d -s .)

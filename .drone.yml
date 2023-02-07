@@ -13,12 +13,14 @@ steps:
     commands:
       - cp .env.example .env
       - touch /drone/src/server/static/app.js
+      - curl -L "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-$(dpkg --print-architecture)" > "${HOME}/bin/cc-test-reporter"
+      - chmod +x "${HOME}/bin/cc-test-reporter"
+      - cc-test-reporter before-build
       - bin/test.sh
-      - curl -Os https://uploader.codecov.io/latest/linux/codecov
-      - chmod +x codecov
-      - ./codecov
+      - exitcode="$?"
+      - cc-test-reporter after-build --exit-code "$exitcode"
     environment:
-      CODECOV_TOKEN: 29a128f7-f56b-4d73-8ec8-da3803ec2c3c
+      CC_TEST_REPORTER_ID: a80cd7d0697a40f38985bf79bc5aec83b6c742ed8d3463b42388b972a0b99443
 
   - name: Test Node
     image: satantime/puppeteer-node:18-bullseye-slim
