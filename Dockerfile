@@ -6,7 +6,7 @@ RUN npm ci --only=production \
     && sed -i '' server/static/**/*
 
 
-FROM golang:1.19-bullseye as go
+FROM golang:1.20-bullseye as go
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set up directory structures
