@@ -21,6 +21,9 @@ RUN make bins
 FROM debian:bullseye-slim
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl                                        `: Basic-packages` \
+    && rm -rf /var/lib/apt/lists/*
 HEALTHCHECK --interval=5s --timeout=3s CMD ./healthcheck.sh || exit 1
 
 WORKDIR /root/
