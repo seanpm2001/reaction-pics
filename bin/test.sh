@@ -19,12 +19,6 @@ if [ -n "$gofmt_errors" ]; then
     exit 1
 fi
 
-go install honnef.co/go/tools/cmd/staticcheck@latest
-staticcheck -checks all ./...
-
-go install github.com/kisielk/errcheck@latest
-errcheck -asserts ./...
-
 go mod tidy
 gosumdiff="$(git diff go.sum)"
 if [ -n "$gosumdiff" ]; then
@@ -32,3 +26,6 @@ if [ -n "$gosumdiff" ]; then
     echo "$gosumdiff"
     exit 1
 fi
+
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin"
+golangci-lint run ./...
