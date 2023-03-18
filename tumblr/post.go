@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	"github.com/gosimple/slug"
-	"github.com/pkg/errors"
+	_ "github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
 )
 
@@ -54,8 +54,7 @@ func (p Post) ToJSONStruct() PostJSON {
 func CSVToPost(row []string) *Post {
 	id, err := strconv.ParseInt(row[0], 10, 64)
 	if err != nil {
-		err = errors.Wrapf(err, "Cannot parse id for %s", row[0])
-		rollbar.Error(rollbar.ERR, err)
+		rollbar.Error("cannot parse id", map[string]string{"id": row[0]})
 		id = 0
 	}
 
@@ -63,8 +62,7 @@ func CSVToPost(row []string) *Post {
 
 	likes, err := strconv.ParseInt(row[4], 10, 64)
 	if err != nil {
-		err = errors.Wrapf(err, "Cannot parse likes for %s", row[4])
-		rollbar.Error(rollbar.ERR, err)
+		rollbar.Error("cannot parse likes", map[string]string{"likes": row[4]})
 		likes = 0
 	}
 	post := Post{
