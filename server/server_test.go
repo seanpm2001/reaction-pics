@@ -36,11 +36,11 @@ func (s *HandlerTestSuite) TearDownSuite() {
 
 func (s *HandlerTestSuite) SetupTest() {
 	observer, logs := observer.New(zap.DebugLevel)
-	logger := zap.New(observer).Sugar()
+	logger := zap.New(observer)
 	s.logs = logs
 	board := tumblr.NewBoard([]tumblr.Post{})
 	s.deps = handlerDeps{
-		logger:         logger,
+		logger:         logger.Sugar(),
 		board:          &board,
 		appCacheString: appCacheString(),
 	}

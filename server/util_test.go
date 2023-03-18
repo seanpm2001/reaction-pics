@@ -15,11 +15,11 @@ func TestCacheString(t *testing.T) {
 
 func TestNewHandlerGenerator(t *testing.T) {
 	b := tumblr.NewBoard([]tumblr.Post{})
-	l := zap.NewNop().Sugar()
+	l := zap.NewNop()
 	s := appCacheString()
 	generator := newHandlerGenerator(&b, l)
 	assert.Equal(t, generator.logger, l)
-	assert.Equal(t, generator.deps.logger, l)
+	assert.Equal(t, generator.deps.logger, l.Sugar())
 	assert.Equal(t, generator.deps.board, &b)
 	assert.Equal(t, generator.deps.appCacheString, s)
 }

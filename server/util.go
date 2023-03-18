@@ -23,7 +23,7 @@ func appCacheString() string {
 // logURL is a closure that logs (to stdout) the url and query of requests
 func logURL(
 	targetFunc http.HandlerFunc,
-	logger *zap.SugaredLogger,
+	logger *zap.Logger,
 ) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		url := r.URL.String()
@@ -43,14 +43,14 @@ type handlerDeps struct {
 
 // handlerGenerator returns a struct that can generate wrapped http handler functions
 type handlerGenerator struct {
-	logger *zap.SugaredLogger
+	logger *zap.Logger
 	deps   handlerDeps
 }
 
 // newHandlerGenerator returns a new handlerGenerator
-func newHandlerGenerator(board *tumblr.Board, logger *zap.SugaredLogger) handlerGenerator {
+func newHandlerGenerator(board *tumblr.Board, logger *zap.Logger) handlerGenerator {
 	deps := handlerDeps{
-		logger:         logger,
+		logger:         logger.Sugar(),
 		board:          board,
 		appCacheString: appCacheString(),
 	}

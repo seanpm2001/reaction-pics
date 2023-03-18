@@ -253,10 +253,10 @@ func securityHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 }
 
 // Run starts up the HTTP server
-func Run(logger *zap.SugaredLogger) {
+func Run(logger *zap.Logger) {
 	board := tumblr.InitializeBoard()
 	address := fmt.Sprintf(":%s", os.Getenv("PORT"))
-	logger.Infof("server listening on %s", address)
+	logger.Info("server listening", zap.String("address", address))
 	generator := newHandlerGenerator(board, logger)
 	http.Handle("/", generator.newHandler(indexHandler))
 	http.Handle("/favicon.ico", generator.newHandler(faviconHandler))
@@ -270,8 +270,7 @@ func Run(logger *zap.SugaredLogger) {
 	http.Handle("/static/", generator.newHandler(staticHandler))
 	err := http.ListenAndServe(address, nil)
 	if err != nil {
-		err = errors.Wrap(err, "cannot run http server")
-		logger.Error(err)
+		logger.Error("cannot run http server", zap.Error(err))
 		rollbar.Error(rollbar.ERR, err)
 		return
 	}

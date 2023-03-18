@@ -35,7 +35,7 @@ func setupRollbar() {
 	rollbar.SetEnvironment(os.Getenv("ENVIRONMENT"))
 }
 
-func getLogger() *zap.SugaredLogger {
+func getLogger() *zap.Logger {
 	var config zap.Config
 	if os.Getenv("ENVIRONMENT") == "development" {
 		config = zap.NewDevelopmentConfig()
@@ -53,8 +53,7 @@ func getLogger() *zap.SugaredLogger {
 	if err != nil {
 		panic(err)
 	}
-	sugaredLogger := logger.Sugar()
-	return sugaredLogger
+	return logger
 }
 
 func main() {
