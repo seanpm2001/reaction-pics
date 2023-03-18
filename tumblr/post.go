@@ -8,7 +8,6 @@ import (
 	"sync"
 
 	"github.com/gosimple/slug"
-	_ "github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
 )
 
