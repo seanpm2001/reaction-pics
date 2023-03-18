@@ -4,6 +4,7 @@ package server
 import (
 	"embed"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -13,7 +14,6 @@ import (
 
 	"github.com/albertyw/reaction-pics/tumblr"
 	"github.com/ikeikeikeike/go-sitemap-generator/v2/stm"
-	"github.com/pkg/errors"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
 )
@@ -34,8 +34,7 @@ type metaHeader struct {
 // indexHandler is an http handler that returns the index page HTML
 func indexHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	if r.URL.Path != "/" && !strings.HasPrefix(r.URL.Path, "/post/") {
-		err := fmt.Errorf("file not found: %s", r.URL.Path)
-		d.logger.Warn(err)
+		d.logger.Warn("file not found", zap.String("path", r.URL.Path))
 		http.NotFound(w, r)
 		return
 	}
@@ -53,8 +52,7 @@ func indexHandlerWithHeaders(w http.ResponseWriter, r *http.Request, d handlerDe
 	}
 	err := t.Execute(w, templateData)
 	if err != nil {
-		err = errors.Wrap(err, "Cannot execute template")
-		d.logger.Error(err)
+		d.logger.Error("Cannot execute template", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -86,8 +84,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	dataBytes, _ := json.Marshal(data)
 	_, err = fmt.Fprint(w, string(dataBytes))
 	if err != nil {
-		err = errors.Wrap(err, "cannot write output for searchHandler")
-		d.logger.Error(err)
+		d.logger.Error("cannot write output for searchHandler", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -100,8 +97,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
 	if err != nil {
-		err = errors.Wrap(err, "Cannot parse post id")
-		d.logger.Warn(err)
+		d.logger.Warn("Cannot parse post id", zap.Error(err))
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -109,7 +105,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	post := d.board.GetPostByID(postID)
 	if post == nil {
 		err = errors.New("Cannot find post")
-		d.logger.Warn(err)
+		d.logger.Warn("Cannot find post", zap.Error(err))
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -122,8 +118,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	marshalledPost, _ := json.Marshal(data)
 	_, err = fmt.Fprint(w, string(marshalledPost))
 	if err != nil {
-		err = errors.Wrap(err, "cannot write output for postDataHandler")
-		d.logger.Error(err)
+		d.logger.Error("cannot write output for postDataHandler", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -137,8 +132,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	postIDString := pathStrings[2]
 	postID, err := strconv.ParseInt(postIDString, 10, 64)
 	if err != nil {
-		err = errors.Wrap(err, "Cannot parse post id")
-		d.logger.Warn(err)
+		d.logger.Warn("Cannot parse post id", zap.Error(err))
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -152,7 +146,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	if post == nil {
 		err = errors.New("Cannot find post")
-		d.logger.Warn(err)
+		d.logger.Warn("Cannot find post", zap.Error(err))
 		rollbar.RequestError(rollbar.WARN, r, err)
 		http.NotFound(w, r)
 		return
@@ -176,8 +170,7 @@ func statsHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	stats, _ := json.Marshal(data)
 	_, err := fmt.Fprint(w, string(stats))
 	if err != nil {
-		err = errors.Wrap(err, "cannot write output for statsHandler")
-		d.logger.Error(err)
+		d.logger.Error("cannot write output for statsHandler", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -196,8 +189,7 @@ func sitemapHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	_, err := w.Write(sm.XMLContent())
 	if err != nil {
-		err = errors.Wrap(err, "cannot write output for sitemapHandler")
-		d.logger.Error(err)
+		d.logger.Error("cannot write output for sitemapHandler", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -217,8 +209,7 @@ func faviconHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	_, err = w.Write(favicon)
 	if err != nil {
-		err = errors.Wrap(err, "cannot write output for faviconHandler")
-		d.logger.Error(err)
+		d.logger.Error("cannot write output for faviconHandler", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -228,8 +219,7 @@ func faviconHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 func robotsTxtHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	_, err := fmt.Fprint(w, "")
 	if err != nil {
-		err = errors.Wrap(err, "cannot write output for robotsTxtHandler")
-		d.logger.Error(err)
+		d.logger.Error("cannot write output for robotsTxtHandler", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return
@@ -244,8 +234,7 @@ func securityHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	_, err = w.Write(securityFile)
 	if err != nil {
-		err = errors.Wrap(err, "cannot write output for securityHandler")
-		d.logger.Error(err)
+		d.logger.Error("cannot write output for securityHandler", zap.Error(err))
 		rollbar.RequestError(rollbar.ERR, r, err)
 		http.Error(w, err.Error(), 500)
 		return

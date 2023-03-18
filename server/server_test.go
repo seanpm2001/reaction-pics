@@ -40,7 +40,7 @@ func (s *HandlerTestSuite) SetupTest() {
 	s.logs = logs
 	board := tumblr.NewBoard([]tumblr.Post{})
 	s.deps = handlerDeps{
-		logger:         logger.Sugar(),
+		logger:         logger,
 		board:          &board,
 		appCacheString: appCacheString(),
 	}

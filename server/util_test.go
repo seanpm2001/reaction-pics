@@ -19,7 +19,7 @@ func TestNewHandlerGenerator(t *testing.T) {
 	s := appCacheString()
 	generator := newHandlerGenerator(&b, l)
 	assert.Equal(t, generator.logger, l)
-	assert.Equal(t, generator.deps.logger, l.Sugar())
+	assert.Equal(t, generator.deps.logger, l)
 	assert.Equal(t, generator.deps.board, &b)
 	assert.Equal(t, generator.deps.appCacheString, s)
 }

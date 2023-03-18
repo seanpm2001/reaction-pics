@@ -36,7 +36,7 @@ type handlerWithDeps func(http.ResponseWriter, *http.Request, handlerDeps)
 
 // handlerDeps is a struct of handler dependencies
 type handlerDeps struct {
-	logger         *zap.SugaredLogger
+	logger         *zap.Logger
 	board          *tumblr.Board
 	appCacheString string
 }
@@ -50,7 +50,7 @@ type handlerGenerator struct {
 // newHandlerGenerator returns a new handlerGenerator
 func newHandlerGenerator(board *tumblr.Board, logger *zap.Logger) handlerGenerator {
 	deps := handlerDeps{
-		logger:         logger.Sugar(),
+		logger:         logger,
 		board:          board,
 		appCacheString: appCacheString(),
 	}
