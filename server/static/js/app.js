@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('axios/dist/browser/axios.cjs');
 const LogFit = require('logfit');
 const Rollbar = require('rollbar');
 const LazyLoad = require('vanilla-lazyload');
