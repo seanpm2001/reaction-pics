@@ -13,7 +13,7 @@ browserify(inputFile, {debug: true})
   .transform('loose-envify')
   .plugin('common-shakeify')
   .plugin('browser-pack-flat/plugin')
-  .transform('babelify',  {presets: ['@babel/preset-env']})
+  .transform('babelify',  {global: true, presets: ['@babel/preset-env']})
   .bundle()
   .pipe(minifyStream({
     mangle: false,
