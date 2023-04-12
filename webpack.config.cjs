@@ -11,6 +11,11 @@ const config = {
     path: path.resolve(__dirname, "server", "static"),
     filename: 'app.js',
   },
+  resolve: {
+    alias: {
+      "axios/dist/browser/axios.cjs": path.resolve(__dirname, "node_modules/axios/dist/browser/axios.cjs"),
+    },
+  },
   plugins: [
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
