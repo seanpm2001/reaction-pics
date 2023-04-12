@@ -35,6 +35,6 @@ vendor
 
 node_modules
 .nyc_output
-server/static/app.js
+server/static/app.js*
 
 rclone*
