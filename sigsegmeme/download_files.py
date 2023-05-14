@@ -60,6 +60,8 @@ def write_to_master_csv(csv_data: list[CSVData]) -> None:
     with open('../model/data/posts.csv', 'a', newline='') as handle:
         csv_writer = csv.writer(handle, dialect='unix', quoting=csv.QUOTE_MINIMAL)
         for data in csv_data:
+            if not data.image_name():
+                continue
             row = [
                 data.tweet_id,
                 data.text,
