@@ -1,5 +1,7 @@
 import csv
 
+import requests
+
 
 class CSVData:
     def __init__(
@@ -16,6 +18,21 @@ class CSVData:
 
     def url(self) -> str:
         return 'https://twitter.com/sigsegmeme/status/%s' % (self.tweet_id)
+
+    def internal_image_location(self) -> str:
+        if not self.media_urls:
+            return ''
+        extension = self.media_urls.split('.')[-1].split('?')[0]
+        filename = './media/%s.%s' % (self.tweet_id, extension)
+        return filename
+
+    def download_tweet(self) -> None:
+        tweet_location = self.internal_image_location()
+        if not tweet_location:
+            return
+        response = requests.get(self.media_urls)
+        with open(tweet_location, 'wb') as handle:
+            handle.write(response.content)
 
 
 def parse_csv() -> list[CSVData]:
@@ -35,7 +52,8 @@ def parse_csv() -> list[CSVData]:
 def main() -> None:
     csv_data = parse_csv()
     for row in csv_data:
-        print(row.__dict__)
+        # row.download_tweet()
+        print(row.internal_image_location())
 
 
 if __name__ == '__main__':
