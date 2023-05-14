@@ -2,10 +2,20 @@ import csv
 
 
 class CSVData:
-    def __init__(self, tweet_id: str, text: str, urls: str) -> None:
+    def __init__(
+        self,
+        tweet_id: str,
+        text: str,
+        media_urls: str,
+        favorites: int,
+    ) -> None:
         self.tweet_id = tweet_id
         self.text = text
-        self.urls = urls
+        self.media_urls = media_urls
+        self.favorites = favorites
+
+    def url(self) -> str:
+        return 'https://twitter.com/sigsegmeme/status/%s' % (self.tweet_id)
 
 
 def parse_csv() -> list[CSVData]:
@@ -13,7 +23,12 @@ def parse_csv() -> list[CSVData]:
     with open('./tweets.csv') as handle:
         csv_reader = csv.DictReader(handle)
         for row in csv_reader:
-            data.append(CSVData(row['Tweet Id'], row['Text'], row['Media URLs']))
+            data.append(CSVData(
+                row['Tweet Id'],
+                row['Text'],
+                row['Media URLs'],
+                int(row['Favorites']),
+            ))
     return data
 
 
