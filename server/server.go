@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/albertyw/reaction-pics/tumblr"
+	"github.com/albertyw/reaction-pics/model"
 	"github.com/ikeikeikeike/go-sitemap-generator/v2/stm"
 	"github.com/rollbar/rollbar-go"
 	"go.uber.org/zap"
@@ -113,7 +113,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	data := map[string]interface{}{
 		"offset":       0,
 		"totalResults": 1,
-		"data":         []tumblr.PostJSON{post.ToJSONStruct()},
+		"data":         []model.PostJSON{post.ToJSONStruct()},
 	}
 	marshalledPost, _ := json.Marshal(data)
 	_, err = fmt.Fprint(w, string(marshalledPost))
@@ -137,7 +137,7 @@ func postHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		http.NotFound(w, r)
 		return
 	}
-	var post *tumblr.Post
+	var post *model.Post
 	for _, p := range d.board.Posts {
 		if p.ID == postID {
 			post = &p
@@ -243,7 +243,7 @@ func securityHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 
 // Run starts up the HTTP server
 func Run(logger *zap.Logger) {
-	board := tumblr.InitializeBoard()
+	board := model.InitializeBoard()
 	address := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	logger.Info("server listening", zap.String("address", address))
 	generator := newHandlerGenerator(board, logger)

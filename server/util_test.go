@@ -3,7 +3,7 @@ package server
 import (
 	"testing"
 
-	"github.com/albertyw/reaction-pics/tumblr"
+	"github.com/albertyw/reaction-pics/model"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
 )
@@ -14,7 +14,7 @@ func TestCacheString(t *testing.T) {
 }
 
 func TestNewHandlerGenerator(t *testing.T) {
-	b := tumblr.NewBoard([]tumblr.Post{})
+	b := model.NewBoard([]model.Post{})
 	l := zap.NewNop()
 	s := appCacheString()
 	generator := newHandlerGenerator(&b, l)

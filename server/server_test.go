@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/albertyw/reaction-pics/tumblr"
+	"github.com/albertyw/reaction-pics/model"
 	"github.com/rollbar/rollbar-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
@@ -38,7 +38,7 @@ func (s *HandlerTestSuite) SetupTest() {
 	observer, logs := observer.New(zap.DebugLevel)
 	logger := zap.New(observer)
 	s.logs = logs
-	board := tumblr.NewBoard([]tumblr.Post{})
+	board := model.NewBoard([]model.Post{})
 	s.deps = handlerDeps{
 		logger:         logger,
 		board:          &board,
@@ -178,7 +178,7 @@ func (s *HandlerTestSuite) TestPostHandlerNotFound() {
 }
 
 func (s *HandlerTestSuite) TestPostHandler() {
-	post := tumblr.Post{
+	post := model.Post{
 		ID:    1234,
 		Title: "Post Title",
 		Image: "https://img.reaction.pics/file/reaction-pics/abcd.gif",
@@ -197,7 +197,7 @@ func (s *HandlerTestSuite) TestPostHandler() {
 }
 
 func (s *HandlerTestSuite) TestPostDataHandler() {
-	post := tumblr.Post{ID: 1234}
+	post := model.Post{ID: 1234}
 	s.deps.board.AddPost(post)
 	request, err := http.NewRequest("GET", "/postdata/1234", nil)
 	assert.NoError(s.T(), err)
@@ -209,7 +209,7 @@ func (s *HandlerTestSuite) TestPostDataHandler() {
 }
 
 func (s *HandlerTestSuite) TestPostDataPercentHandler() {
-	post := tumblr.Post{ID: 1234, Title: `asdf% qwer`}
+	post := model.Post{ID: 1234, Title: `asdf% qwer`}
 	s.deps.board.AddPost(post)
 	request, err := http.NewRequest("GET", "/postdata/1234", nil)
 	assert.NoError(s.T(), err)

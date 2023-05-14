@@ -1,4 +1,4 @@
-package tumblr
+package model
 
 import (
 	"bytes"

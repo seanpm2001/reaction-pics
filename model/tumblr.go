@@ -1,5 +1,5 @@
-// Package tumblr data model for reaction.pics
-package tumblr
+// Package model contains data for reaction.pics
+package model
 
 // GetPosts returns a list of all Posts
 func GetPosts(posts chan<- Post) {

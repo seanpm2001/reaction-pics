@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/albertyw/reaction-pics/tumblr"
+	"github.com/albertyw/reaction-pics/model"
 	"go.uber.org/zap"
 )
 
@@ -37,7 +37,7 @@ type handlerWithDeps func(http.ResponseWriter, *http.Request, handlerDeps)
 // handlerDeps is a struct of handler dependencies
 type handlerDeps struct {
 	logger         *zap.Logger
-	board          *tumblr.Board
+	board          *model.Board
 	appCacheString string
 }
 
@@ -48,7 +48,7 @@ type handlerGenerator struct {
 }
 
 // newHandlerGenerator returns a new handlerGenerator
-func newHandlerGenerator(board *tumblr.Board, logger *zap.Logger) handlerGenerator {
+func newHandlerGenerator(board *model.Board, logger *zap.Logger) handlerGenerator {
 	deps := handlerDeps{
 		logger:         logger,
 		board:          board,
