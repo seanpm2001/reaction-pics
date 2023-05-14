@@ -7,7 +7,8 @@ steps:
     image: golang:1.20
     commands:
       - cp .env.example .env
-      - touch /drone/src/server/static/app.js
+      - touch /drone/src/server/static/gen/main.js
+      - touch /drone/src/server/static/gen/main.css
       - curl -L "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-$(dpkg --print-architecture)" > "${HOME}/bin/cc-test-reporter"
       - chmod +x "${HOME}/bin/cc-test-reporter"
       - cc-test-reporter before-build
