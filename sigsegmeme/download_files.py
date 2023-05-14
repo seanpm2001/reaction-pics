@@ -12,7 +12,7 @@ class CSVData:
         favorites: int,
     ) -> None:
         self.tweet_id = tweet_id
-        self.text = text
+        self.text = text.split(' https://t.co/')[0]
         self.media_urls = media_urls
         self.favorites = favorites
 
