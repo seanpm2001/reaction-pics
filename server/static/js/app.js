@@ -8,7 +8,7 @@ if (typeof window !== 'undefined') {
   require('normalize.css/normalize.css');
   require('bootstrap/dist/css/bootstrap.css');
   require('bootstrap/dist/js/bootstrap.js');
-  require('../global.css');
+  require('../css/global.css');
 }
 
 const rollbarConfig = {
