@@ -155,7 +155,13 @@ function addResult(postData) {
   if (postData.url) postHTML += '<a href="' + postData.internalURL + '">';
   postHTML += postData.title;
   if (postData.url) postHTML += '</a></h2>';
-  if (postData.image) postHTML += '<p><img data-src="' + postData.image + '" class="result-img lazy" /></p>';
+  if (postData.image) {
+    if (postData.image.endsWith('.mp4')) {
+      postHTML += '<p><video class="result-img" autoplay loop muted><source src="' + postData.image + '" type="video/mp4" /></video></p>';
+    } else {
+      postHTML += '<p><img data-src="' + postData.image + '" class="result-img lazy" /></p>';
+    }
+  }
   if (postData.likes) {
       postHTML += '<p><a href="#" id="likes" class="btn btn-success disabled">';
       postHTML += postData.likes + ' <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>';
