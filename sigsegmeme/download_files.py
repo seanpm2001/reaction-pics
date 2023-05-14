@@ -62,6 +62,8 @@ def write_to_master_csv(csv_data: list[CSVData]) -> None:
         for data in csv_data:
             if not data.image_name():
                 continue
+            if data.image_name().endswith('.m3u8'):
+                continue
             row = [
                 data.tweet_id,
                 data.text,
