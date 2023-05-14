@@ -3872,3 +3872,480 @@
 29838787273,When I walk into a meeting and I'm the only security person,https://securityreactions.tumblr.com/post/29838787273/when-i-walk-into-a-meeting-and-im-the-only,2bc03e31-837d-44ef-9ebe-237afc05182d.gif,2
 29838467536,"When someone says ""$thing is unhackable""",https://securityreactions.tumblr.com/post/29838467536/when-someone-says-thing-is-unhackable,37db33c9-d280-4bcc-b426-edabf3fed689.gif,4
 29837760775,Trying to retrofit security on a poorly designed system,https://securityreactions.tumblr.com/post/29837760775/trying-to-retrofit-security-on-a-poorly-designed,0280ce7a-4366-4d0d-9440-f6cd5d65174e.gif,0
+1583620125718036481,"“This proposal sounds good, on the surface, but would your average upper primate consider .unwrap() readable? The core team ran an experiment on 300 kindergartners and most could not describe the control flow of the situation adequately, so we respectfully decline”",https://twitter.com/sigsegmeme/status/1583620125718036481,1583620125718036481.mp4,5
+1545518433583992832,brb going to deploy my app using bun js runtime real quick,https://twitter.com/sigsegmeme/status/1545518433583992832,1545518433583992832.jpg,46
+1529816103685267457,@jwgur seems legit to me,https://twitter.com/sigsegmeme/status/1529816103685267457,,1
+1529158355607904256,docker is why we can’t have nice things,https://twitter.com/sigsegmeme/status/1529158355607904256,1529158355607904256.jpg,50
+1527370243177586688,somebody check on Python,https://twitter.com/sigsegmeme/status/1527370243177586688,1527370243177586688.jpg,51
+1526705478180425738,RT @sigsegmeme : AWS calculating your bill,https://twitter.com/sigsegmeme/status/1526705478180425738,1526705478180425738.jpg,0
+1526650018442141701,don’t do this,https://twitter.com/sigsegmeme/status/1526650018442141701,1526650018442141701.jpg,47
+1516788092182609925,"me: git pull
+*fetched 200 commits, 18 remote branches, 5 hyenas and a small car*",https://twitter.com/sigsegmeme/status/1516788092182609925,1516788092182609925.png,38
+1486826213448499208,"broke: the single responsibility principle
+
+woke: a User class with 60 methods that makes HTTP requests and talks to the database",https://twitter.com/sigsegmeme/status/1486826213448499208,1486826213448499208.jpg,22
+1486392375660400651,redis is the closet you hide everything in and try not to think about,https://twitter.com/sigsegmeme/status/1486392375660400651,1486392375660400651.png,51
+1486070896095866891,when you try deleting unused legacy code but your site goes down instead,https://twitter.com/sigsegmeme/status/1486070896095866891,1486070896095866891.mp4,44
+1479868447936761857,don’t let your brain get in the way of instant gratification,https://twitter.com/sigsegmeme/status/1479868447936761857,1479868447936761857.jpg,66
+1479535655763992577,@,https://twitter.com/sigsegmeme/status/1479535655763992577,1479535655763992577.jpg,12
+1468348392917057546,“The internet is a decentralized network of computers”,https://twitter.com/sigsegmeme/status/1468348392917057546,1468348392917057546.jpg,36
+1461434148191719430,when you finally find the asshole that invented timezones,https://twitter.com/sigsegmeme/status/1461434148191719430,1461434148191719430.jpg,43
+1382733698693480457,https://t.co/BmMU9eCBRy,https://twitter.com/sigsegmeme/status/1382733698693480457,1382733698693480457.jpg,73
+1379602114784206853,tag someone still waiting to see if their rust app compiles,https://twitter.com/sigsegmeme/status/1379602114784206853,1379602114784206853.jpg,42
+1377692020668522508,Look mom I’m using sum types,https://twitter.com/sigsegmeme/status/1377692020668522508,1377692020668522508.jpg,42
+1377032893738979332,not my problem 😤,https://twitter.com/sigsegmeme/status/1377032893738979332,1377032893738979332.jpg,48
+1376641539032633357,"them: don't worry about that now, we'll cross that bridge when we get to it
+
+the bridge when you get to it:",https://twitter.com/sigsegmeme/status/1376641539032633357,1376641539032633357.jpg,49
+1375112491479470084,tag someone rewriting live production code rn,https://twitter.com/sigsegmeme/status/1375112491479470084,1375112491479470084.jpg,17
+1374842704882982915,"web dev: our app is so janky and convoluted it sucks to work with
+firmware dev:",https://twitter.com/sigsegmeme/status/1374842704882982915,1374842704882982915.jpg,40
+1373135006562942977,"the job: developing an application to satisfy some requirements
+the interview questions:",https://twitter.com/sigsegmeme/status/1373135006562942977,1373135006562942977.mp4,54
+1373061305918164997,s/Javascript/&lt;language you stan&gt;/g,https://twitter.com/sigsegmeme/status/1373061305918164997,1373061305918164997.jpg,37
+1371967038877360131,@biowaffeln this is called Stockholm Syndrome,https://twitter.com/sigsegmeme/status/1371967038877360131,,7
+1371917189826105350,authors note: i am using javascript now so expect many more expressions of pain and suffering to come,https://twitter.com/sigsegmeme/status/1371917189826105350,,13
+1371916595514183685,thank you javascript very cool!,https://twitter.com/sigsegmeme/status/1371916595514183685,1371916595514183685.jpg,173
+1359547718352457733,hey! me again! I know you must be busy so you haven’t seen my 9 previous emails haha 😛 they must have fallen through those cracks in our inboxes that definitely exist lol anyways let me know what time works for a quick chat. I’ll check back in 20 minutes :) Thanks!,https://twitter.com/sigsegmeme/status/1359547718352457733,1359547718352457733.jpg,28
+1358657915339608065,when you accidentally grep the root filesystem and it hits /dev/urandom,https://twitter.com/sigsegmeme/status/1358657915339608065,1358657915339608065.mp4,35
+1352999068293869568,when someone online calls you a terrible programmer,https://twitter.com/sigsegmeme/status/1352999068293869568,1352999068293869568.jpg,51
+1346971231958913027,trying to code the first week of January,https://twitter.com/sigsegmeme/status/1346971231958913027,1346971231958913027.mp4,38
+1346509337569632257,5 minutes into your on-call shift and nothing has gone wrong yet,https://twitter.com/sigsegmeme/status/1346509337569632257,1346509337569632257.jpg,16
+1346378723570798592,happy new year to everyone that understands the earth is dark on one side,https://twitter.com/sigsegmeme/status/1346378723570798592,1346378723570798592.jpg,48
+1341237275389120512,https://t.co/KFZMOBaEdL,https://twitter.com/sigsegmeme/status/1341237275389120512,1341237275389120512.jpg,59
+1338572937830551553,@colourmeamused_ 👋,https://twitter.com/sigsegmeme/status/1338572937830551553,,0
+1336918532945305602,assert dominance over your coworkers by drowning out their thoughts with your mx blues,https://twitter.com/sigsegmeme/status/1336918532945305602,1336918532945305602.jpg,30
+1335327228759044108,kubernetes is wildin out here,https://twitter.com/sigsegmeme/status/1335327228759044108,1335327228759044108.mp4,24
+1334598914163560448,having mixed feelings about by #2020Wrapped from Github this year,https://twitter.com/sigsegmeme/status/1334598914163560448,1334598914163560448.png,98
+1334583457364762625,tag someone who owns a mouse,https://twitter.com/sigsegmeme/status/1334583457364762625,1334583457364762625.jpg,56
+1334325364894601216,me going to bed during my on-call shift thinking I’m going to get a full nights rest without being paged,https://twitter.com/sigsegmeme/status/1334325364894601216,1334325364894601216.jpg,24
+1334129930163073024,when you’ve been refactoring code for 20 minutes with no test failures but then you deliberately raise an exception and they still don’t fail,https://twitter.com/sigsegmeme/status/1334129930163073024,1334129930163073024.jpg,61
+1333813107488153603,tag a rockstar dev with 4 stars on github,https://twitter.com/sigsegmeme/status/1333813107488153603,1333813107488153603.jpg,67
+1331280768778129408,powering on your computer in the morning for yet another day of coding,https://twitter.com/sigsegmeme/status/1331280768778129408,1331280768778129408.jpg,57
+1329810654627323904,this is definitely going to work 😎,https://twitter.com/sigsegmeme/status/1329810654627323904,1329810654627323904.jpg,31
+1329630797930721281,bailing to find your next gig after you convinced your company to adopt super-hyped tech which created an absolute disaster,https://twitter.com/sigsegmeme/status/1329630797930721281,1329630797930721281.png,29
+1329444869207678976,this one goes out to all the Gophers out there,https://twitter.com/sigsegmeme/status/1329444869207678976,1329444869207678976.jpg,20
+1329143069019688968,always write your tests first so you can write them them all over again now that your assumptions have changed,https://twitter.com/sigsegmeme/status/1329143069019688968,1329143069019688968.jpg,56
+1328821021349179392,nit: newline,https://twitter.com/sigsegmeme/status/1328821021349179392,1328821021349179392.jpg,247
+1326701863501180928,"interviewer: given an array of integers...
+
+my brain:",https://twitter.com/sigsegmeme/status/1326701863501180928,1326701863501180928.m3u8,74
+1326321838994108418,when you allocate way too many objects and wonder what all those threads you created are up to,https://twitter.com/sigsegmeme/status/1326321838994108418,1326321838994108418.jpg,36
+1324398606271565826,"when I hit Ctrl-C, your ass goes down, say it",https://twitter.com/sigsegmeme/status/1324398606271565826,1324398606271565826.jpg,20
+1324387231210131456,joining a startup from a FAANG company,https://twitter.com/sigsegmeme/status/1324387231210131456,1324387231210131456.jpg,23
+1323311043611926529,me trying to undo whatever git command I just ran,https://twitter.com/sigsegmeme/status/1323311043611926529,1323311043611926529.jpg,58
+1321481563440381955,me trying to remember the name of the guy who invented Djikstra’s algorithm,https://twitter.com/sigsegmeme/status/1321481563440381955,1321481563440381955.jpg,31
+1321068915217367040,@iamdevloper Blockers?,https://twitter.com/sigsegmeme/status/1321068915217367040,,3
+1318607082065715203,"programmers be like ""looks good ship it""",https://twitter.com/sigsegmeme/status/1318607082065715203,1318607082065715203.jpg,49
+1318232184201895937,binary search after one iteration,https://twitter.com/sigsegmeme/status/1318232184201895937,1318232184201895937.jpg,97
+1317138860418224128,when slack goes down so you can finally do your job,https://twitter.com/sigsegmeme/status/1317138860418224128,1317138860418224128.jpg,43
+1317112807343742976,the design                             the implementation,https://twitter.com/sigsegmeme/status/1317112807343742976,1317112807343742976.jpg,99
+1316139830666055680,how it started:               how it's going:,https://twitter.com/sigsegmeme/status/1316139830666055680,1316139830666055680.png,68
+1316077519163006978,"company: we have a technical bar raising program to ensure consistent quality of new hires
+
+the bar:",https://twitter.com/sigsegmeme/status/1316077519163006978,1316077519163006978.jpg,18
+1313635875318833155,when you type ‘gti’ instead of ‘git’ 9 times in rapid succession and have to question your whole career,https://twitter.com/sigsegmeme/status/1313635875318833155,1313635875318833155.jpg,55
+1312829732828872705,sysadmins when they finally quit their jobs,https://twitter.com/sigsegmeme/status/1312829732828872705,1312829732828872705.jpg,35
+1311773259680100353,RT @memenetes : Never stop learning: cloud native edition,https://twitter.com/sigsegmeme/status/1311773259680100353,1311773259680100353.png,0
+1309881949201354752,why are you like this,https://twitter.com/sigsegmeme/status/1309881949201354752,1309881949201354752.jpg,40
+1307872619497230336,when your team wants you to talk about the worst technical mistakes you’ve made,https://twitter.com/sigsegmeme/status/1307872619497230336,1307872619497230336.jpg,17
+1306940525413642240,my brain cells after 3 cold brews and rewriting the same function 10 times to gain an extra 0.1% speedup,https://twitter.com/sigsegmeme/status/1306940525413642240,1306940525413642240.m3u8,49
+1306731978805444608,junior devs when the tech lead gets back from vacation early,https://twitter.com/sigsegmeme/status/1306731978805444608,1306731978805444608.mp4,46
+1306095686337859585,when you find out someone committed code with tabs instead of spaces,https://twitter.com/sigsegmeme/status/1306095686337859585,1306095686337859585.jpg,40
+1305878623623294977,when you pick the cheaper dev on Upwork,https://twitter.com/sigsegmeme/status/1305878623623294977,1305878623623294977.jpg,39
+1305354745129955328,🔥🔥🔥,https://twitter.com/sigsegmeme/status/1305354745129955328,1305354745129955328.jpg,59
+1303722780811198467,donate? no thanks ❤️,https://twitter.com/sigsegmeme/status/1303722780811198467,1303722780811198467.jpg,28
+1299544412570226689,I misused “your” so you know I’m a human or at least a relatively well trained AI,https://twitter.com/sigsegmeme/status/1299544412570226689,,8
+1299541523462324224,happy friday everyone unless your a Linux server 🎉,https://twitter.com/sigsegmeme/status/1299541523462324224,1299541523462324224.jpg,30
+1299463835150102529,when rediscover your old side project prototype you deployed years ago and forgot about but now there’s a whole community using it,https://twitter.com/sigsegmeme/status/1299463835150102529,1299463835150102529.jpg,17
+1299178346467729410,when you roll your own hashing algorithm,https://twitter.com/sigsegmeme/status/1299178346467729410,1299178346467729410.jpg,48
+1293223548664918016,evaluating an open source library that uses LESS instead of SASS,https://twitter.com/sigsegmeme/status/1293223548664918016,1293223548664918016.mp4,6
+1293173549105020928,"@dev_johannes I know this is a meme page and am sorry for breaking character
+https://t.co/aJ4XZLoPmV",https://twitter.com/sigsegmeme/status/1293173549105020928,,0
+1293172252087922690,"@dev_johannes comment the why, not the how",https://twitter.com/sigsegmeme/status/1293172252087922690,1293172252087922690.mp4,0
+1292823021930131457,when someone on here says that commenting code is unnecessary if your variable names are good enough,https://twitter.com/sigsegmeme/status/1292823021930131457,1292823021930131457.jpg,50
+1292558848662937604,"kill one legacy codebase, create a new one in its place",https://twitter.com/sigsegmeme/status/1292558848662937604,1292558848662937604.mp4,29
+1291864554394333184,new grad engineers presenting their proposed system architecture at the team review,https://twitter.com/sigsegmeme/status/1291864554394333184,1291864554394333184.jpg,41
+1291420955298889728,@memenetes,https://twitter.com/sigsegmeme/status/1291420955298889728,,1
+1291401672196067329,k8s vibes be toxic sometimes,https://twitter.com/sigsegmeme/status/1291401672196067329,1291401672196067329.jpg,55
+1291217874938474496,me to the broken ass code ive been working on all week,https://twitter.com/sigsegmeme/status/1291217874938474496,1291217874938474496.jpg,157
+1288073724491698186,not sure how anything worked when you laid out your website with a bunch of &lt;br&gt; and &amp;nbsp;,https://twitter.com/sigsegmeme/status/1288073724491698186,,4
+1288073390109196291,i tried to make these line up properly on desktop and mobile like 30 times but as it turns out i'm not very smart,https://twitter.com/sigsegmeme/status/1288073390109196291,,1
+1288072840923811843,tech unicorns 2014     tech unicorns 2020,https://twitter.com/sigsegmeme/status/1288072840923811843,1288072840923811843.jpg,16
+1285558374877323264,@iamdevloper,https://twitter.com/sigsegmeme/status/1285558374877323264,1285558374877323264.mp4,5
+1284614755295076353,drop an F in the chat for the Cloudflare SREs this week,https://twitter.com/sigsegmeme/status/1284614755295076353,1284614755295076353.jpg,41
+1283486657350492160,Sorry this meme arrived 3 years late I was waiting for my laptop to finish compiling libreoffice,https://twitter.com/sigsegmeme/status/1283486657350492160,,13
+1283485875066646529,"me: *runs make -j8*
+
+my laptop speakers:",https://twitter.com/sigsegmeme/status/1283485875066646529,1283485875066646529.m3u8,40
+1281823304299343873,@memenetes Ok,https://twitter.com/sigsegmeme/status/1281823304299343873,,1
+1281261911674204161,yeah I know CockroachDB isn't the only one,https://twitter.com/sigsegmeme/status/1281261911674204161,1281261911674204161.jpg,20
+1280995054706847744,when you forget to add PagerDuty to your do not disturb exceptions so you sleep through your company burning to the ground,https://twitter.com/sigsegmeme/status/1280995054706847744,1280995054706847744.jpg,27
+1280976863561609216,what’s an option type,https://twitter.com/sigsegmeme/status/1280976863561609216,1280976863561609216.jpg,55
+1280602906438164481,this meme is a true story,https://twitter.com/sigsegmeme/status/1280602906438164481,,10
+1280602779937955840,Walking back into the office of the company that laid you off 2 months before they acquired the company you just started a job at,https://twitter.com/sigsegmeme/status/1280602779937955840,1280602779937955840.m3u8,27
+1280600460257161218,@iamdevloper,https://twitter.com/sigsegmeme/status/1280600460257161218,1280600460257161218.jpg,70
+1280569164516581376,"them: welcome to the job, take some time to get acquainted with our Ruby on Rails monolith, its a little messy lol
+
+me:",https://twitter.com/sigsegmeme/status/1280569164516581376,1280569164516581376.jpg,27
+1275172552604659712,RT @sigsegmeme : recruiters in your inbox after company layoffs,https://twitter.com/sigsegmeme/status/1275172552604659712,1275172552604659712.mp4,0
+1275150669754728448,"generic programming: *exists*
+
+Go developers:",https://twitter.com/sigsegmeme/status/1275150669754728448,1275150669754728448.mp4,30
+1273789286207250433,documentation like this ❤️,https://twitter.com/sigsegmeme/status/1273789286207250433,1273789286207250433.jpg,148
+1273400502680600576,"them: you can’t just start drinking at noon on a Tuesday!
+
+me, having just spent the last 3 hours debugging what turned out to be a typo:",https://twitter.com/sigsegmeme/status/1273400502680600576,1273400502680600576.jpg,77
+1272688285760942082,theres probably an emacs macro to unbreak your wrist though,https://twitter.com/sigsegmeme/status/1272688285760942082,1272688285760942082.jpg,17
+1272644160013496324,typically launched with a 3 page blog post as well,https://twitter.com/sigsegmeme/status/1272644160013496324,1272644160013496324.jpg,32
+1271680812841197569,just gonna leave this here for ya,https://twitter.com/sigsegmeme/status/1271680812841197569,1271680812841197569.jpg,36
+1269831107672862721,your startups CEO on the phone with the VC after you blow a years worth of funding in 6 weeks,https://twitter.com/sigsegmeme/status/1269831107672862721,1269831107672862721.m3u8,19
+1267665392945823745,If you don’t get this one you’re either incredibly lucky or suffering from Stockholm Syndrome,https://twitter.com/sigsegmeme/status/1267665392945823745,,5
+1267664177419759616,Buckle up for some exception-based control flow partner,https://twitter.com/sigsegmeme/status/1267664177419759616,1267664177419759616.mp4,21
+1264790876028653568,I’ve been away from computer building for so long I wondered if they changed the direction CPU pins went,https://twitter.com/sigsegmeme/status/1264790876028653568,,7
+1264695056465788928,"RT @garybernhardt : A proposal: replace the binary distinction between ""junior"" and ""senior"" software developer with a continuous metric: when you say ""please describe the problems with the programming language that you've used the most"", how long does it take before they stop talking?",https://twitter.com/sigsegmeme/status/1264695056465788928,,0
+1262795550065397760,@iamdevloper @autonomousdotai the grift is real,https://twitter.com/sigsegmeme/status/1262795550065397760,,1
+1261329405588185089,week 12 of quarantine and it’s your turn at the team standup,https://twitter.com/sigsegmeme/status/1261329405588185089,1261329405588185089.mp4,85
+1260720604245827586,don't forget about baby alpine linux,https://twitter.com/sigsegmeme/status/1260720604245827586,1260720604245827586.jpg,9
+1260718039969996801,Ubuntu vs Arch Linux,https://twitter.com/sigsegmeme/status/1260718039969996801,1260718039969996801.jpg,36
+1260010669937553408,@jwgur same energy,https://twitter.com/sigsegmeme/status/1260010669937553408,,0
+1259991882966413312,rust programmers when its been 5 minutes since they told someone that its better than everything else,https://twitter.com/sigsegmeme/status/1259991882966413312,1259991882966413312.png,96
+1259547554682941447,looking at any code you wrote more than 6 months ago,https://twitter.com/sigsegmeme/status/1259547554682941447,1259547554682941447.jpg,94
+1258795691230494725,when you `npm start` your electron app and watch your CPU start to melt,https://twitter.com/sigsegmeme/status/1258795691230494725,1258795691230494725.jpg,44
+1258794725118795779,@cubusaddendum I will not be accepting critique of my bash shitposts,https://twitter.com/sigsegmeme/status/1258794725118795779,,9
+1258791856659447808,"peep my soundcloud
+
+for ((i=0 ; ;i++ )); do echo ""\a""; delay=$([[ $(($i % 5)) == ""0"" ]] &amp;&amp; echo 0.3 || echo 0.7); sleep $delay; done",https://twitter.com/sigsegmeme/status/1258791856659447808,,66
+1258435920963022848,c++ programmers buying a monitor that can fit linker errors on one screen,https://twitter.com/sigsegmeme/status/1258435920963022848,1258435920963022848.jpg,10610
+1258184640696893441,congratulations you’re hired,https://twitter.com/sigsegmeme/status/1258184640696893441,1258184640696893441.jpg,29
+1257503769962692610,if you know you know,https://twitter.com/sigsegmeme/status/1257503769962692610,1257503769962692610.jpg,87
+1257498742216933377,Now fix it clown,https://twitter.com/sigsegmeme/status/1257498742216933377,1257498742216933377.jpg,31
+1257059838179377153,The revolution of the next 12-18months is here,https://twitter.com/sigsegmeme/status/1257059838179377153,1257059838179377153.jpg,20
+1255318887484227584,umm yes I need three new mech keyboards. where my mx blues at,https://twitter.com/sigsegmeme/status/1255318887484227584,1255318887484227584.jpg,31
+1254604460313239558,"them: we’ll create a v2 and move our customers over, the migration won’t last forever
+the migration:",https://twitter.com/sigsegmeme/status/1254604460313239558,1254604460313239558.jpg,16
+1253516664823590915,when the ELK team says that you can’t log as much as you want,https://twitter.com/sigsegmeme/status/1253516664823590915,1253516664823590915.jpg,9
+1252433437916463106,walking into the incident review with your entire management chain after you brought the site down for 12 hours,https://twitter.com/sigsegmeme/status/1252433437916463106,1252433437916463106.jpg,45
+1252088356391059456,when the web server has an expired certificate,https://twitter.com/sigsegmeme/status/1252088356391059456,1252088356391059456.mp4,34
+1249908829778821121,when your name is bob and you go to a cryptography conference,https://twitter.com/sigsegmeme/status/1249908829778821121,1249908829778821121.jpg,37
+1249738773186871298,your PM after you finally ship the product but it's loaded with technical debt and has outages like its a feature,https://twitter.com/sigsegmeme/status/1249738773186871298,1249738773186871298.jpg,17
+1247940855358464000,me estimating how long the project is going to take,https://twitter.com/sigsegmeme/status/1247940855358464000,1247940855358464000.mp4,79
+1241424580629204992,"manager: remember to keep the postmortem blameless, even if it’s their fault don’t put anyone on blast
+
+my team in the postmortem:",https://twitter.com/sigsegmeme/status/1241424580629204992,1241424580629204992.mp4,18
+1241008685222166528,If only ZTP were actually zero touch,https://twitter.com/sigsegmeme/status/1241008685222166528,1241008685222166528.jpg,4
+1240860760001130496,Quarantine day 186 and you remember all the times Linux has hurt you but know it’s immune to coronavirus,https://twitter.com/sigsegmeme/status/1240860760001130496,1240860760001130496.mp4,4
+1237508436839071751,AWS calculating your bill,https://twitter.com/sigsegmeme/status/1237508436839071751,1237508436839071751.jpg,166
+1237381644962746369,@iamdevloper *stops npm install*,https://twitter.com/sigsegmeme/status/1237381644962746369,,54
+1237233129221509120,the three CPU cycles you saved by prematurely optimizing your program,https://twitter.com/sigsegmeme/status/1237233129221509120,1237233129221509120.jpg,22
+1235438687825125377,@jwgur Any tweet responding to this is a side effect and you should feel bad,https://twitter.com/sigsegmeme/status/1235438687825125377,,1
+1235437069817782272,@jwgur even trying to remember the concepts that make this joke happen are nightmare inducing,https://twitter.com/sigsegmeme/status/1235437069817782272,,0
+1235436792389591045,@jwgur As a PHD math student this makes complete sense to me,https://twitter.com/sigsegmeme/status/1235436792389591045,,1
+1233874537353302022,does anyone know?,https://twitter.com/sigsegmeme/status/1233874537353302022,1233874537353302022.jpg,19
+1233239117468663809,not everyday you get to see breakthroughs like this,https://twitter.com/sigsegmeme/status/1233239117468663809,1233239117468663809.jpg,37
+1232540413514461184,@real_human_vc,https://twitter.com/sigsegmeme/status/1232540413514461184,1232540413514461184.jpg,2
+1232352723691081728,"@iamdevloper So long as you don't run them they have neither failed nor passed, and exist in a superposition of the two",https://twitter.com/sigsegmeme/status/1232352723691081728,,15
+1230207251085918221,when your company switches to slack and you can't do your job anymore because your RAM is gone and you've developed debilitating ADHD,https://twitter.com/sigsegmeme/status/1230207251085918221,1230207251085918221.jpg,29
+1230187413223477249,this account is all shitposting now,https://twitter.com/sigsegmeme/status/1230187413223477249,,5
+1230186690238701568,it has been brought to my attention I have been unfair to the people who take the garbage out themselves,https://twitter.com/sigsegmeme/status/1230186690238701568,1230186690238701568.jpg,12
+1229931997218385923,@its_hth bruh it’s 2020 we got overhead as a service,https://twitter.com/sigsegmeme/status/1229931997218385923,,2
+1229914156851253256,GC gang where you at,https://twitter.com/sigsegmeme/status/1229914156851253256,1229914156851253256.jpg,22
+1229907887859871744,when you pitch your linear regression model as an AI,https://twitter.com/sigsegmeme/status/1229907887859871744,1229907887859871744.jpg,36
+1228453151952515078,When you just add “+1” under another comment in the PR because you don’t have anything else to contribute,https://twitter.com/sigsegmeme/status/1228453151952515078,1228453151952515078.jpg,28
+1227049864367951872,https://t.co/jXQMeNT0JZ,https://twitter.com/sigsegmeme/status/1227049864367951872,1227049864367951872.jpg,29
+1224773563951058944,when you end up using a goto statement in 2020,https://twitter.com/sigsegmeme/status/1224773563951058944,1224773563951058944.jpg,24
+1224542650029805574,when you get paged at 4am,https://twitter.com/sigsegmeme/status/1224542650029805574,1224542650029805574.jpg,12
+1223343077131243524,RT @sigsegmeme : mfw git checkout . with a full days work uncommitted and unstaged,https://twitter.com/sigsegmeme/status/1223343077131243524,1223343077131243524.jpg,0
+1223343011712598016,"RT @sigsegmeme : Don’t mind me, just taking out the trash",https://twitter.com/sigsegmeme/status/1223343011712598016,1223343011712598016.jpg,0
+1222953471672037382,"when the interviewer asks you to solve problems with tries, red black trees and dynamic programming but all you do at your job is loop over arrays and make JSON requests",https://twitter.com/sigsegmeme/status/1222953471672037382,1222953471672037382.mp4,48
+1221930546831511552,when your company measures productivity by number of commits and your coworker brags they merged 5 today but you have a cron that merges 900 commits every hour,https://twitter.com/sigsegmeme/status/1221930546831511552,1221930546831511552.png,12
+1220731922067939328,when your cat walks across the keyboard but it fixes the bug you’ve been working on for hours,https://twitter.com/sigsegmeme/status/1220731922067939328,1220731922067939328.jpg,21
+1218605529896906752,@rrrrrrrix I don’t think so but the thing is I have no good joke ideas,https://twitter.com/sigsegmeme/status/1218605529896906752,,2
+1218575062095106049,When engsec asks why you have the sites private key checked in to a public github repo,https://twitter.com/sigsegmeme/status/1218575062095106049,1218575062095106049.mp4,22
+1218568118852710400,something something snapchat for databases,https://twitter.com/sigsegmeme/status/1218568118852710400,1218568118852710400.jpg,14
+1216559086231281664,me getting ready to tell the scrum master that I need to move my task to the next sprint,https://twitter.com/sigsegmeme/status/1216559086231281664,1216559086231281664.jpg,29
+1213289073110069248,https://t.co/v6QZIkoR2a,https://twitter.com/sigsegmeme/status/1213289073110069248,1213289073110069248.jpg,14
+1211736401785638917,when you cant paste into the password field and need to manually type it in,https://twitter.com/sigsegmeme/status/1211736401785638917,1211736401785638917.m3u8,39
+1211334753623916550,going into a technical interview after not interviewing for years,https://twitter.com/sigsegmeme/status/1211334753623916550,1211334753623916550.m3u8,16
+1207099944672227329,when your intern presents their final project and you gotta hype it up,https://twitter.com/sigsegmeme/status/1207099944672227329,1207099944672227329.jpg,35
+1202986414012588034,Anyone else's Spotify really nail it?,https://twitter.com/sigsegmeme/status/1202986414012588034,1202986414012588034.jpg,15
+1202465358273269760,"project manager: hows the project going?
+
+me, having just botched a script that deleted the git repo:
+are you in the right headspace to receive information that could possibly hurt you?",https://twitter.com/sigsegmeme/status/1202465358273269760,,23
+1201960009053147136,RT @sigsegmeme : when you run a load test and it fails spectacularly,https://twitter.com/sigsegmeme/status/1201960009053147136,1201960009053147136.mp4,0
+1201959591631818753,SREs about to null route all your traffic during a DDoS attack,https://twitter.com/sigsegmeme/status/1201959591631818753,1201959591631818753.jpg,6
+1201898438985539584,https://t.co/JPxLctWN1j,https://twitter.com/sigsegmeme/status/1201898438985539584,1201898438985539584.jpg,24
+1201296135698051073,if you don’t get this you’re not invited onto my SoftBank yacht,https://twitter.com/sigsegmeme/status/1201296135698051073,,3
+1201291775886819328,Masayoshi Son after you pitch your dog sweater delivery startup saying it represents a $50B market,https://twitter.com/sigsegmeme/status/1201291775886819328,1201291775886819328.jpg,14
+1199779171511091201,SoftBank Vision Fund after bailing out WeWork,https://twitter.com/sigsegmeme/status/1199779171511091201,1199779171511091201.mp4,9
+1199146860201398272,the one asshole always blowing up your Slack asking for help without doing anything to figure it out themselves,https://twitter.com/sigsegmeme/status/1199146860201398272,1199146860201398272.m3u8,19
+1199075448870670336,when you’re in the bathroom and realize you didn’t lock your computer,https://twitter.com/sigsegmeme/status/1199075448870670336,1199075448870670336.jpg,14
+1192809581480759298,when a computer science student asks for your advice,https://twitter.com/sigsegmeme/status/1192809581480759298,1192809581480759298.jpg,16
+1192808970936836102,RT @rickhanlonii : Hey can you review my diff,https://twitter.com/sigsegmeme/status/1192808970936836102,,0
+1189269496898506755,RT @lizuselton :,https://twitter.com/sigsegmeme/status/1189269496898506755,1189269496898506755.jpg,0
+1187979195667943424,"tech lead: be sure to read the documentation on the system first before asking questions
+me:",https://twitter.com/sigsegmeme/status/1187979195667943424,1187979195667943424.jpg,19
+1179781714593374209,https://t.co/Lyk5ep9w31,https://twitter.com/sigsegmeme/status/1179781714593374209,1179781714593374209.jpg,26
+1179585284830355457,@cszhu,https://twitter.com/sigsegmeme/status/1179585284830355457,,5
+1178712822500474881,"nobody:
+jeff bezos after you forget to terminate a t2.micro instance you used for testing something:",https://twitter.com/sigsegmeme/status/1178712822500474881,1178712822500474881.jpg,24
+1178432869301133312,"me: great, the code behaves as expected
+race conditions:",https://twitter.com/sigsegmeme/status/1178432869301133312,1178432869301133312.jpg,23
+1178004905937821699,“right to be forgotten” lmao is that like a new JavaScript framework or something?,https://twitter.com/sigsegmeme/status/1178004905937821699,1178004905937821699.jpg,12
+1177999434942160896,"them: oh that’s just the custom encryption we wrote to—
+me:",https://twitter.com/sigsegmeme/status/1177999434942160896,1177999434942160896.jpg,13
+1177284602307719169,"extra ram: *exists*
+slack:",https://twitter.com/sigsegmeme/status/1177284602307719169,1177284602307719169.jpg,15
+1174682454503940097,"RT @hashseed : With nullish coalescing, this is now valid JavaScript:
+~~!![[]]||__``&amp;&amp;$$++&lt;&lt;((""""??''))**00==ಠಠ--//\\",https://twitter.com/sigsegmeme/status/1174682454503940097,,0
+1174346193893232640,@mattbrigade @cszhu run,https://twitter.com/sigsegmeme/status/1174346193893232640,,1
+1174346073181216770,when your company tries to do a reorg without disrupting the business,https://twitter.com/sigsegmeme/status/1174346073181216770,1174346073181216770.mp4,16
+1174305222585389057,@iamdevloper,https://twitter.com/sigsegmeme/status/1174305222585389057,1174305222585389057.jpg,19
+1173361128958758918,me getting ready to smash the build button again knowing damn well there were 800 errors and I haven’t changed a thing,https://twitter.com/sigsegmeme/status/1173361128958758918,1173361128958758918.jpg,27
+1172589554001465345,when you start the phone screen and take one look at the coding problem and know you’re completely fucked,https://twitter.com/sigsegmeme/status/1172589554001465345,1172589554001465345.jpg,24
+1172240240712605697,"hiring manager: if you could choose four words to describe yourself what would they be?
+me:",https://twitter.com/sigsegmeme/status/1172240240712605697,1172240240712605697.mp4,20
+1172194581099757569,recruiters in your inbox after company layoffs,https://twitter.com/sigsegmeme/status/1172194581099757569,1172194581099757569.mp4,22
+1171455777875251200,the Hadoop scheduler after the reduce step starts,https://twitter.com/sigsegmeme/status/1171455777875251200,1171455777875251200.png,5
+1171437165995126784,when you come back from vacation and see all the code your team has committed while you were gone,https://twitter.com/sigsegmeme/status/1171437165995126784,1171437165995126784.jpg,13
+1171065944329920512,@SerafSS2 @iamdevloper,https://twitter.com/sigsegmeme/status/1171065944329920512,1171065944329920512.mp4,30
+1171063400736219138,@SerafSS2 @iamdevloper *pays for GitHub Pro despite the private repos being free now for probably quite some time but never bothered to check*,https://twitter.com/sigsegmeme/status/1171063400736219138,,148
+1171048325233217536,@iamdevloper *pays for Github Pro just to keep my 8 completely dead side projects private*,https://twitter.com/sigsegmeme/status/1171048325233217536,,114
+1170400558915686401,"RT @cszhu : STOP making fun of different programming languages
+
+C is FAST
+
+Java is POPULAR
+
+Ruby is COOL
+
+Python is BEAUTIFUL
+
+Javascript
+
+Haskell is INTRIGUING",https://twitter.com/sigsegmeme/status/1170400558915686401,,0
+1170010672693989376,so tell me a little about yourself and I’ll pretend to listen before I completely destroy you,https://twitter.com/sigsegmeme/status/1170010672693989376,1170010672693989376.jpg,42
+1169969824270823425,"@iamdevloper company: *stocks fridge completely full with PBR tall boys*
+me:",https://twitter.com/sigsegmeme/status/1169969824270823425,1169969824270823425.mp4,18
+1169243228081741824,@iamdevloper Me to the frontend devs that set up the form so tabbing doesn’t work and I have to use the mouse,https://twitter.com/sigsegmeme/status/1169243228081741824,1169243228081741824.jpg,32
+1168550229668442117,@iamdevloper,https://twitter.com/sigsegmeme/status/1168550229668442117,1168550229668442117.png,52
+1168249570297561088,@iamdevloper,https://twitter.com/sigsegmeme/status/1168249570297561088,1168249570297561088.jpg,51
+1168208655587692546,when the teams at lunch and the intern says he just ran an unreviewed bash script in prod,https://twitter.com/sigsegmeme/status/1168208655587692546,1168208655587692546.mp4,26
+1167936882107269121,When all the meetup speakers are finished but the company hosting says they want to take a few minutes to say they’re currently recruiting,https://twitter.com/sigsegmeme/status/1167936882107269121,1167936882107269121.jpg,6
+1167832686217572352,"RT @markdalgleish : Companies: *Use free open source to make literally millions of dollars*
+
+Open source maintainers: Could we at least get a couple of dollars from this?
+
+Open source consumers:",https://twitter.com/sigsegmeme/status/1167832686217572352,1167832686217572352.jpg,0
+1167602904997519360,RT @sigsegmeme : When you hear your coworker complaining about some trash code and he goes to check the blame,https://twitter.com/sigsegmeme/status/1167602904997519360,1167602904997519360.mp4,0
+1167602133967003650,RT @sigsegmeme : what do you mean 247 characters is too long,https://twitter.com/sigsegmeme/status/1167602133967003650,1167602133967003650.jpg,0
+1167450989051428865,when you keep smashing “go to definition” but there’s way too many levels of abstraction,https://twitter.com/sigsegmeme/status/1167450989051428865,1167450989051428865.mp4,41
+1167151180780322826,When you meet the guy in the office who’s been saying his editor is better than yours,https://twitter.com/sigsegmeme/status/1167151180780322826,1167151180780322826.jpg,17
+1166704604609941504,@iamdevloper,https://twitter.com/sigsegmeme/status/1166704604609941504,1166704604609941504.jpg,18
+1164397639137464320,s/utils/lodash for our JavaScript friends,https://twitter.com/sigsegmeme/status/1164397639137464320,1164397639137464320.jpg,28
+1163803015947706368,systemd when the main process dies,https://twitter.com/sigsegmeme/status/1163803015947706368,1163803015947706368.jpg,15
+1160957247155068929,@BrendanEich @iamdevloper,https://twitter.com/sigsegmeme/status/1160957247155068929,1160957247155068929.jpg,1
+1160948117413486593,"RT @BrendanEich : @sigsegmeme @iamdevloper It was supposed to be Robin the boy hostage to Java as Batman. Batman died, Robin stepped up.",https://twitter.com/sigsegmeme/status/1160948117413486593,,0
+1160932743246753793,@iamdevloper Brendan eich: build the internet using this language I spent a weekend working on its called JavaScript and it’s good for you,https://twitter.com/sigsegmeme/status/1160932743246753793,,5
+1160930665782751239,@iamdevloper Ken Thompson: abstract every interface as a file it’s good for you,https://twitter.com/sigsegmeme/status/1160930665782751239,,8
+1160923388401061889,@iamdevloper dennis ritchie in 1972: use this void pointer it’s good for you,https://twitter.com/sigsegmeme/status/1160923388401061889,,23
+1160902485726416897,RT @tracietwitty : This makes me feel less alone,https://twitter.com/sigsegmeme/status/1160902485726416897,1160902485726416897.jpg,0
+1160327834465906688,When you start working at a new company and they have 95% code coverage and everything isn’t total shit,https://twitter.com/sigsegmeme/status/1160327834465906688,1160327834465906688.jpg,13
+1159246074172903435,when you run a load test and it fails spectacularly,https://twitter.com/sigsegmeme/status/1159246074172903435,1159246074172903435.mp4,8
+1156935124279341057,You expect me to iterate over this array backwards with *language primitives*? Nah I need the backwards-array-iterator package to do the heavy lifting,https://twitter.com/sigsegmeme/status/1156935124279341057,1156935124279341057.mp4,12
+1156223899232821249,when you’ve never even heard of the project before but you’re listed as an author in the docs,https://twitter.com/sigsegmeme/status/1156223899232821249,1156223899232821249.jpg,19
+1154493897474658304,me trying to explain what kubernetes is to my alien I got from Area 51,https://twitter.com/sigsegmeme/status/1154493897474658304,1154493897474658304.jpg,20
+1154409912576946176,when you finally rebase after working on your branch for a week and get 900 merge conflicts,https://twitter.com/sigsegmeme/status/1154409912576946176,1154409912576946176.jpg,12
+1153616390844223488,https://t.co/s0o8OQHEBp,https://twitter.com/sigsegmeme/status/1153616390844223488,1153616390844223488.jpg,10
+1153611071468515329,@iamdevloper Otherwise it’s just sparkling spaghetti code,https://twitter.com/sigsegmeme/status/1153611071468515329,,45
+1148462120024956928,https://t.co/vgG8CbVsvf,https://twitter.com/sigsegmeme/status/1148462120024956928,1148462120024956928.jpg,19
+1148341410812219392,When you’ve been coding for hours late at night and you hear your cat bump into something,https://twitter.com/sigsegmeme/status/1148341410812219392,1148341410812219392.jpg,8
+1147572039185600512,Apologies for the typo I’ll try harder next time,https://twitter.com/sigsegmeme/status/1147572039185600512,,6
+1147543382614409217,https://t.co/4r1DlpUma0,https://twitter.com/sigsegmeme/status/1147543382614409217,1147543382614409217.jpg,23
+1144730122316070913,the rainbow command prompt helps me code faster,https://twitter.com/sigsegmeme/status/1144730122316070913,1144730122316070913.jpg,12
+1144671665009364992,"eng candidate: what’s your typical day look like?
+me:",https://twitter.com/sigsegmeme/status/1144671665009364992,1144671665009364992.jpg,9
+1144240685165502464,@iamdevloper,https://twitter.com/sigsegmeme/status/1144240685165502464,1144240685165502464.jpg,16
+1144035569774800896,"Work life balance? Yeah it’s great, very relaxed",https://twitter.com/sigsegmeme/status/1144035569774800896,1144035569774800896.jpg,7
+1143491896557363201,something something synergy,https://twitter.com/sigsegmeme/status/1143491896557363201,1143491896557363201.jpg,7
+1143341694630420482,https://t.co/5zeQI5cfVE,https://twitter.com/sigsegmeme/status/1143341694630420482,1143341694630420482.jpg,15
+1143140229299281922,@OneDevloperArmy oof,https://twitter.com/sigsegmeme/status/1143140229299281922,,0
+1142952820490088448,"them: don’t put up any more of these bullshit PRs
+me coming back with more bullshit PRs:",https://twitter.com/sigsegmeme/status/1142952820490088448,1142952820490088448.jpg,9
+1142949363653783552,Just focus on the equity kid,https://twitter.com/sigsegmeme/status/1142949363653783552,1142949363653783552.jpg,6
+1142091873944834049,“I feel so attacked right now”,https://twitter.com/sigsegmeme/status/1142091873944834049,1142091873944834049.jpg,28
+1141858591286157314,"them: can someone approve my PR real quick?
+their PR:",https://twitter.com/sigsegmeme/status/1141858591286157314,1141858591286157314.jpg,18
+1141834503872221190,debugging a production issue when metrics are down,https://twitter.com/sigsegmeme/status/1141834503872221190,1141834503872221190.jpg,8
+1141056092077772801,https://t.co/C8jwt8wuvC,https://twitter.com/sigsegmeme/status/1141056092077772801,1141056092077772801.mp4,13
+1140778097282813959,Better luck next time rookie,https://twitter.com/sigsegmeme/status/1140778097282813959,1140778097282813959.jpg,8
+1140668960553209857,@SwiftOnSecurity,https://twitter.com/sigsegmeme/status/1140668960553209857,1140668960553209857.jpg,26
+1140649871973781504,@iamdevloper Was this you?,https://twitter.com/sigsegmeme/status/1140649871973781504,1140649871973781504.jpg,3
+1140380698538401793,@aojajena @idanyliuk Not everyone is a masochist vas,https://twitter.com/sigsegmeme/status/1140380698538401793,,6
+1140377303798747138,Startups sound fun,https://twitter.com/sigsegmeme/status/1140377303798747138,1140377303798747138.jpg,12
+1139636390671650818,"A monad is just a monoid in the category of endofunctors, what’s the big deal?",https://twitter.com/sigsegmeme/status/1139636390671650818,1139636390671650818.mp4,20
+1139523170304700417,Your servers after NTP goes down,https://twitter.com/sigsegmeme/status/1139523170304700417,1139523170304700417.jpg,6
+1138260796511793152,Better luck next time my friend #oof,https://twitter.com/sigsegmeme/status/1138260796511793152,1138260796511793152.jpg,8
+1135920336514551808,When you decide to leave your well-established company and join a startup because it sounds fun and exciting but it wasn't what you expected,https://twitter.com/sigsegmeme/status/1135920336514551808,1135920336514551808.jpg,9
+1134829118766407681,Startups after securing VC funding burning cash on incentives and promotions,https://twitter.com/sigsegmeme/status/1134829118766407681,1134829118766407681.mp4,8
+1134136367972323328,"@iamdevloper &gt; we've evaluated different solutions and have concluded that X is the best option
+
+we planned on using X all along and found convenient ways to write off everything else",https://twitter.com/sigsegmeme/status/1134136367972323328,,6
+1133819703498027008,https://t.co/woDeH3acXt,https://twitter.com/sigsegmeme/status/1133819703498027008,1133819703498027008.m3u8,32
+1133351091595358209,@iamdevloper Bro I’m just here to learn about merkle trees and stuff,https://twitter.com/sigsegmeme/status/1133351091595358209,1133351091595358209.jpg,107
+1132711996674183169,You’re gonna take some downtime my dude,https://twitter.com/sigsegmeme/status/1132711996674183169,1132711996674183169.mp4,5
+1132705920297910277,@NATALE_REALE ~/workspace/&lt;project with clever name I realized was way harder than I thought and have lost interest entirely&gt;/,https://twitter.com/sigsegmeme/status/1132705920297910277,,0
+1131981368865558533,@iamdevloper,https://twitter.com/sigsegmeme/status/1131981368865558533,1131981368865558533.jpg,17
+1131971900895375360,when you mistakenly publish your AWS key to a public github repo,https://twitter.com/sigsegmeme/status/1131971900895375360,1131971900895375360.jpg,19
+1131955516073136128,when u attach to your python service in production to debug an outage,https://twitter.com/sigsegmeme/status/1131955516073136128,1131955516073136128.jpg,10
+1131627205568716800,So many private Github repos I'm taking with me to the grave,https://twitter.com/sigsegmeme/status/1131627205568716800,1131627205568716800.jpg,21
+1129015342934757376,@iamdevloper So the joke is writing a game about fizzbuzz is the same as writing fizzbuzz?,https://twitter.com/sigsegmeme/status/1129015342934757376,,1
+1128736419030208522,@KyleTranel @iamdevloper Thanks for the tip chief,https://twitter.com/sigsegmeme/status/1128736419030208522,,0
+1128682871848341505,"Introducing the inverse-mullet pattern: business in the back, party in the front",https://twitter.com/sigsegmeme/status/1128682871848341505,1128682871848341505.jpg,16
+1128681434540138496,@iamdevloper,https://twitter.com/sigsegmeme/status/1128681434540138496,1128681434540138496.jpg,156
+1127764713578934272,@TheBestHuman Us and a,https://twitter.com/sigsegmeme/status/1127764713578934272,1127764713578934272.jpg,0
+1127591657510264833,https://t.co/c9DZ6turFq,https://twitter.com/sigsegmeme/status/1127591657510264833,1127591657510264833.mp4,27
+1127588787922571270,Name a more patriotic editor I’ll wait,https://twitter.com/sigsegmeme/status/1127588787922571270,1127588787922571270.jpg,14
+1124480128917155840,If y’all thought this account was just dad jokes about CSS I have some bad news for you its also dad jokes about life before AWS too you privileged millennials,https://twitter.com/sigsegmeme/status/1124480128917155840,,13
+1124479098452099074,Your on-prem servers on generator power while the utility company scrambles to get the primary circuit back up,https://twitter.com/sigsegmeme/status/1124479098452099074,1124479098452099074.jpg,7
+1124013287128145920,What did we do before kubernetes?,https://twitter.com/sigsegmeme/status/1124013287128145920,1124013287128145920.jpg,14
+1123581108266967040,Take the red pill and come with me,https://twitter.com/sigsegmeme/status/1123581108266967040,1123581108266967040.jpg,12
+1123233051952189440,@iamdevloper,https://twitter.com/sigsegmeme/status/1123233051952189440,1123233051952189440.jpg,3
+1121203517744717826,Also trying to stop 6 autoplay videos with audio and yes I know you have an app but oh and you want to enable desktop notifications too okay no thanks wait what do you need my location for?,https://twitter.com/sigsegmeme/status/1121203517744717826,1121203517744717826.jpg,8
+1120394035485663233,@buzzfeedexp Just use Dropbox as your vcs instead,https://twitter.com/sigsegmeme/status/1120394035485663233,,0
+1119450947430707201,@buzzfeedexp Javascript,https://twitter.com/sigsegmeme/status/1119450947430707201,1119450947430707201.jpg,5
+1116532278778142720,Look everyone I just came here to code not to manage this JIRA work board,https://twitter.com/sigsegmeme/status/1116532278778142720,1116532278778142720.jpg,9
+1115643804218839041,Anyone else super peeved when this happens?,https://twitter.com/sigsegmeme/status/1115643804218839041,1115643804218839041.jpg,17
+1111295236322422784,@iamdevloper @spolsky &gt; Closed: mostly opinion based,https://twitter.com/sigsegmeme/status/1111295236322422784,,9
+1107747620112334848,When you work at a large company and find the other 3 teams working on the exact same thing as you,https://twitter.com/sigsegmeme/status/1107747620112334848,1107747620112334848.png,16
+1107746495489425408,When you spend 9 hours trying to find out why something is broken but then you fix it in 5 minutes the next day,https://twitter.com/sigsegmeme/status/1107746495489425408,1107746495489425408.jpg,18
+1107672362357420032,@iamdevloper @bruised_blood,https://twitter.com/sigsegmeme/status/1107672362357420032,1107672362357420032.jpg,0
+1106281782435995650,John McCarthy after developing LISP in the 50s,https://twitter.com/sigsegmeme/status/1106281782435995650,1106281782435995650.png,17
+1105683101760393216,When you spot your friend walking into the Haskell meetup,https://twitter.com/sigsegmeme/status/1105683101760393216,1105683101760393216.jpg,12
+1105679394612305920,Not today satan,https://twitter.com/sigsegmeme/status/1105679394612305920,1105679394612305920.jpg,17
+1105303173256736768,When your weekend on call shift is here and you know damn well you’re not getting more than 4 hours of sleep,https://twitter.com/sigsegmeme/status/1105303173256736768,1105303173256736768.jpg,1
+1105119341031219201,When another engineer asks you a question that could be easily answered by reading the documentation,https://twitter.com/sigsegmeme/status/1105119341031219201,1105119341031219201.mp4,10
+1104123777640587264,https://t.co/QQqWnQzIkX,https://twitter.com/sigsegmeme/status/1104123777640587264,1104123777640587264.jpg,5
+1104112352578875392,https://t.co/7KLunTfp48,https://twitter.com/sigsegmeme/status/1104112352578875392,1104112352578875392.jpg,4
+1102608276242350080,@iamdevloper,https://twitter.com/sigsegmeme/status/1102608276242350080,1102608276242350080.jpg,66
+1101191249959084032,"me: forgets a comma
+go compiler:",https://twitter.com/sigsegmeme/status/1101191249959084032,1101191249959084032.jpg,14
+1100589126577868800,what do you mean 247 characters is too long,https://twitter.com/sigsegmeme/status/1100589126577868800,1100589126577868800.jpg,24
+1100446808591847424,@iamdevloper,https://twitter.com/sigsegmeme/status/1100446808591847424,1100446808591847424.jpg,25
+1099127005822410752,When the new hire engineer blocks your PR,https://twitter.com/sigsegmeme/status/1099127005822410752,1099127005822410752.jpg,10
+1099040187181543424,RT @sigsegmeme : OSS in a nutshell,https://twitter.com/sigsegmeme/status/1099040187181543424,1099040187181543424.jpg,0
+1098407277306949633,When the interviewer asks you a dynamic programming question and you forgot to study,https://twitter.com/sigsegmeme/status/1098407277306949633,1098407277306949633.jpg,17
+1097922074671104000,https://t.co/bpyPjXOZqE,https://twitter.com/sigsegmeme/status/1097922074671104000,1097922074671104000.jpg,11
+1097895021301325824,@iamdevloper High in fiber?,https://twitter.com/sigsegmeme/status/1097895021301325824,,2
+1097558698535186432,When you spent 6 hours writing a library you thought would be useful but then you find a better one on GitHub,https://twitter.com/sigsegmeme/status/1097558698535186432,1097558698535186432.jpg,31
+1097551902215000064,When someone tries to initiate a tcp connection with you,https://twitter.com/sigsegmeme/status/1097551902215000064,1097551902215000064.jpg,11
+1097228826180898816,@iamdevloper if settings.text.isBold { bootInBoldMode() } else { bootInNotBoldMode() },https://twitter.com/sigsegmeme/status/1097228826180898816,,182
+1096620671495368705,You and your homie trying to scrap the project together an hour before the deadline,https://twitter.com/sigsegmeme/status/1096620671495368705,1096620671495368705.jpg,18
+1096620009533501440,@lukefisklennon Just code better,https://twitter.com/sigsegmeme/status/1096620009533501440,,1
+1096564961000620032,product managers when engineering tries to prioritize fixing technical debt on the conference call,https://twitter.com/sigsegmeme/status/1096564961000620032,1096564961000620032.jpg,26
+1096459304582864896,When you ask a quantum computer if the value of a qubit is 1,https://twitter.com/sigsegmeme/status/1096459304582864896,1096459304582864896.jpg,6
+1096457294819160064,Me watching production explode knowing my on-call shift ended an hour ago,https://twitter.com/sigsegmeme/status/1096457294819160064,1096457294819160064.jpg,16
+1096456746447470594,Ceiling cat watching you join yet another startup,https://twitter.com/sigsegmeme/status/1096456746447470594,1096456746447470594.jpg,9
+1096177736958136321,When you write an unintelligible line of bash with 12 pipes and against all odds it works,https://twitter.com/sigsegmeme/status/1096177736958136321,1096177736958136321.mp4,6
+1096126074490998789,"me: *trying desperately to get to sleep after an intense coding session at 3am*
+my brain:",https://twitter.com/sigsegmeme/status/1096126074490998789,1096126074490998789.mp4,17
+1095813419851120640,https://t.co/fmJW9169vC,https://twitter.com/sigsegmeme/status/1095813419851120640,1095813419851120640.jpg,10
+1095733987748630529,@carejunto @iamdevloper typically you don't add taxes to your income so maybe a better comment/variable name for the result is in order here,https://twitter.com/sigsegmeme/status/1095733987748630529,,1
+1095725571919642626,@carejunto @iamdevloper mY CoDE dOeSnT nEeD CoMmeNtS,https://twitter.com/sigsegmeme/status/1095725571919642626,1095725571919642626.jpg,12
+1095723505222443008,@iamdevloper me after 2 hours of reviewing their code,https://twitter.com/sigsegmeme/status/1095723505222443008,1095723505222443008.jpg,96
+1095564549225246720,Don’t get what the big deal is honestly,https://twitter.com/sigsegmeme/status/1095564549225246720,1095564549225246720.jpg,7
+1095185995782209536,When you ask your friend at Facebook how their engagement percentage is so high,https://twitter.com/sigsegmeme/status/1095185995782209536,1095185995782209536.jpg,8
+1095149986847674368,@venzann just use the output from your yubikey,https://twitter.com/sigsegmeme/status/1095149986847674368,,1
+1095148999114256384,trying to come up with a good variable name after you've been coding for 14 hours,https://twitter.com/sigsegmeme/status/1095148999114256384,,12
+1095145081873395712,When you're 30 minutes into the interview and the candidate is still coding their fizzbuzz solution but you have to stay professional,https://twitter.com/sigsegmeme/status/1095145081873395712,1095145081873395712.jpg,17
+1095143694494138368,RT @JonyIveParody : .@SwiftOnSecurity (via @tldtoday),https://twitter.com/sigsegmeme/status/1095143694494138368,1095143694494138368.jpg,0
+1095010768573984768,https://t.co/INNDM8EcMM,https://twitter.com/sigsegmeme/status/1095010768573984768,1095010768573984768.jpg,10
+1095007458316013568,You and your coworker after fixing the outage that started at 3am,https://twitter.com/sigsegmeme/status/1095007458316013568,1095007458316013568.jpg,11
+1094376948782911488,"code review: this change will break production
+me:",https://twitter.com/sigsegmeme/status/1094376948782911488,1094376948782911488.jpg,11
+1093995485067505664,when you ask the misconfigured Zookeeper node who the cluster leader is,https://twitter.com/sigsegmeme/status/1093995485067505664,1093995485067505664.jpg,5
+1093913851949592581,Browsing the comment section on hacker news,https://twitter.com/sigsegmeme/status/1093913851949592581,1093913851949592581.mp4,9
+1093912600377610241,When your coworker mentions rewriting your product as a blockchain,https://twitter.com/sigsegmeme/status/1093912600377610241,1093912600377610241.jpg,17
+1093725869263089664,When you encounter a production issue and restarting doesn’t fix it,https://twitter.com/sigsegmeme/status/1093725869263089664,1093725869263089664.jpg,19
+1093556933678686208,Skills: SQL,https://twitter.com/sigsegmeme/status/1093556933678686208,1093556933678686208.jpg,14
+1093547508523909120,@Parito brew undo,https://twitter.com/sigsegmeme/status/1093547508523909120,,1
+1093370094183301120,My last two brain cells trying to figure out how to secure Series A,https://twitter.com/sigsegmeme/status/1093370094183301120,1093370094183301120.jpg,3
+1093311455548432384,Life is just a really long regex,https://twitter.com/sigsegmeme/status/1093311455548432384,1093311455548432384.jpg,29
+1093246843683692544,C++ needs to chill,https://twitter.com/sigsegmeme/status/1093246843683692544,1093246843683692544.jpg,4
+1093195793031294976,When you hear your coworker complaining about some trash code and he goes to check the blame,https://twitter.com/sigsegmeme/status/1093195793031294976,1093195793031294976.mp4,18
+1093021630840766464,When you're trying to go to sleep but remember you logged into gmail earlier on accounts․google․com․notgoogle․com,https://twitter.com/sigsegmeme/status/1093021630840766464,1093021630840766464.jpg,8
+1093018409657192448,https://t.co/AQuILYnvfG,https://twitter.com/sigsegmeme/status/1093018409657192448,1093018409657192448.jpg,15
+1093017072185929728,When the job candidate asks what it’s like working for your company and you slip up and give an honest answer,https://twitter.com/sigsegmeme/status/1093017072185929728,1093017072185929728.jpg,10
+1092977065647759360,Calm down everyone it’s webscale,https://twitter.com/sigsegmeme/status/1092977065647759360,1092977065647759360.jpg,5
+1092954345476243456,"interviewer: describe your coding style
+me:",https://twitter.com/sigsegmeme/status/1092954345476243456,1092954345476243456.jpg,14
+1092821060997664768,https://t.co/cAbqYBaC00,https://twitter.com/sigsegmeme/status/1092821060997664768,1092821060997664768.jpg,14
+1092817440705196033,How rust devs look at you after another use-after-free CVE,https://twitter.com/sigsegmeme/status/1092817440705196033,1092817440705196033.jpg,9
+1092615399240126465,"me: npm install
+me 500 years later:",https://twitter.com/sigsegmeme/status/1092615399240126465,1092615399240126465.jpg,13
+1092607546521612289,"me:
+////////////////////////////////////
+template &lt;template &lt;typename...&gt; class Tpl,
+          typename ...Args1,
+          typename ...Args2&gt;
+struct join&lt;Tpl&lt;Args1...&gt;, Tpl&lt;Args2...&gt;&gt;
+{
+    typedef Tpl&lt;Args1..., Args2...&gt; type;
+};
+//////////////////////////////////
+c++ compiler:",https://twitter.com/sigsegmeme/status/1092607546521612289,1092607546521612289.jpg,10
+1092590588770189313,sorry not sorry,https://twitter.com/sigsegmeme/status/1092590588770189313,1092590588770189313.jpg,9
+1092578925102784513,When you get called into a meeting with the sales team,https://twitter.com/sigsegmeme/status/1092578925102784513,1092578925102784513.jpg,13
+1092527842707959808,@buzzfeedexp @iamdevloper find . -name “*.css” -delete,https://twitter.com/sigsegmeme/status/1092527842707959808,,3
+1092498433351372803,when you feel like a genius after fixing a bug but then realize that you're the one who put it there in the first place,https://twitter.com/sigsegmeme/status/1092498433351372803,1092498433351372803.jpg,6
+1092130287293587458,When you get that “exciting new job opportunity!” email from a recruiting firm,https://twitter.com/sigsegmeme/status/1092130287293587458,1092130287293587458.jpg,10
+1092117928126820352,https://t.co/gmlyKejf1p,https://twitter.com/sigsegmeme/status/1092117928126820352,1092117928126820352.jpg,13
+1091956501302792192,"Salary $6000
+WeWork $300
+Coffee $80
+Slack apps $13000
+Snacks $120
+Someone who is good at the economy please help me budget this my startup is dying",https://twitter.com/sigsegmeme/status/1091956501302792192,,12
+1091952500825935873,10x engineers don’t need code review don’t @ me,https://twitter.com/sigsegmeme/status/1091952500825935873,1091952500825935873.jpg,11
+1091931915521675264,distributed systems are fun they said,https://twitter.com/sigsegmeme/status/1091931915521675264,1091931915521675264.jpg,3
+1091928206569988096,When you run your code for the first time after writing it and it works like you expected,https://twitter.com/sigsegmeme/status/1091928206569988096,1091928206569988096.jpg,12
+1091885700427919360,When the new engineer joins the team and starts filing PRs against your old code,https://twitter.com/sigsegmeme/status/1091885700427919360,1091885700427919360.jpg,23
+1091876359595380736,"them: you can’t just run from your problems
+me:",https://twitter.com/sigsegmeme/status/1091876359595380736,1091876359595380736.jpg,208
+1091415068946792448,When you hear your PagerDuty ringtone at 4:57pm on Friday,https://twitter.com/sigsegmeme/status/1091415068946792448,1091415068946792448.jpg,12
+1091402441734598657,OSS in a nutshell,https://twitter.com/sigsegmeme/status/1091402441734598657,1091402441734598657.jpg,28
+1091401079760154624,Remember when Ruby on Rails was the future?,https://twitter.com/sigsegmeme/status/1091401079760154624,1091401079760154624.jpg,7
+1091156540994682880,But all the cool devs are doing it,https://twitter.com/sigsegmeme/status/1091156540994682880,1091156540994682880.jpg,19
+1091145136711450624,mfw git checkout . with a full days work uncommitted and unstaged,https://twitter.com/sigsegmeme/status/1091145136711450624,1091145136711450624.jpg,11
+1091045819300499456,Linux shitposting,https://twitter.com/sigsegmeme/status/1091045819300499456,1091045819300499456.jpg,4
+1091002361076576256,@iamdevloper SJavascript,https://twitter.com/sigsegmeme/status/1091002361076576256,,0
+1090805063478460416,"RT @kellabyte : @Pouriaaa JSON is poorly designed if it was meant to be optimized for machine2machine communications.
+
+On the flip side, JSON is poorly designed if it was meant to be optimized to be human readable.
+
+So if it’s weak at both, what is it meant for then?",https://twitter.com/sigsegmeme/status/1090805063478460416,,0
+1090693696989753345,Slack eats more memory than Alzheimer's Disease,https://twitter.com/sigsegmeme/status/1090693696989753345,1090693696989753345.jpg,13
+1090692383346475009,@SwiftOnSecurity,https://twitter.com/sigsegmeme/status/1090692383346475009,1090692383346475009.jpg,3
+1090679272136531968,AI and ML engineers debating which field is better,https://twitter.com/sigsegmeme/status/1090679272136531968,1090679272136531968.jpg,4
+1090673920640933888,Consoling your coworker after he gets roasted on Slack for asking a stupid question,https://twitter.com/sigsegmeme/status/1090673920640933888,1090673920640933888.jpg,4
+1090673488585666560,"Don’t mind me, just taking out the trash",https://twitter.com/sigsegmeme/status/1090673488585666560,1090673488585666560.jpg,23
+1090491584334880768,After a successful product launch,https://twitter.com/sigsegmeme/status/1090491584334880768,1090491584334880768.jpg,9
+1090451582452346881,Bert searches the on-call runbook while Ernie watches all the business metrics crash during the outage,https://twitter.com/sigsegmeme/status/1090451582452346881,1090451582452346881.jpg,1
+1090298123040129025,them: you must be stupid if you think you're going to deploy this without tests,https://twitter.com/sigsegmeme/status/1090298123040129025,1090298123040129025.jpg,18
+1089970503589126144,Developers reading hacker news,https://twitter.com/sigsegmeme/status/1089970503589126144,1089970503589126144.mp4,6
+1088676791479238656,When you WFH sick to avoid an interview you were scheduled to do today,https://twitter.com/sigsegmeme/status/1088676791479238656,1088676791479238656.jpg,4
+1087249466766196736,Backend engineers designing a UI,https://twitter.com/sigsegmeme/status/1087249466766196736,1087249466766196736.jpg,16
+1087144646839398400,When the VP of engineering announces a reorg,https://twitter.com/sigsegmeme/status/1087144646839398400,1087144646839398400.jpg,3
+1087143992070791170,When your coworker always deploys broken code,https://twitter.com/sigsegmeme/status/1087143992070791170,1087143992070791170.jpg,22
+1086812600770342912,It’s a trap,https://twitter.com/sigsegmeme/status/1086812600770342912,1086812600770342912.jpg,3
+1086810142710980608,The first time you use channels for production code in Go,https://twitter.com/sigsegmeme/status/1086810142710980608,1086810142710980608.jpg,1
+1084260394904875008,When you hit deploy and go make a coffee but when you come back the site is down,https://twitter.com/sigsegmeme/status/1084260394904875008,1084260394904875008.jpg,4
+1083945105847799808,When you run the clear_database.py script in the project directory but forget to change the environment variable from production to testing like it said in the README,https://twitter.com/sigsegmeme/status/1083945105847799808,1083945105847799808.jpg,9
+1083880419596980224,#redis #hipsters,https://twitter.com/sigsegmeme/status/1083880419596980224,1083880419596980224.jpg,5
+1083834534834057217,When your elasticsearch cluster loses half your data in a network partition,https://twitter.com/sigsegmeme/status/1083834534834057217,1083834534834057217.jpg,2
+1082462615832485889,@iamrecruitr,https://twitter.com/sigsegmeme/status/1082462615832485889,,0
+1082362985702510592,Node.js maintainers accepting new language feature PRs,https://twitter.com/sigsegmeme/status/1082362985702510592,1082362985702510592.mp4,34
+1081288439016742912,When your coworker starts talking about Rust again at the team lunch,https://twitter.com/sigsegmeme/status/1081288439016742912,1081288439016742912.jpg,5
+1075987144798232576,When legal says you can't use that open source lib because it's licenced under the GPL,https://twitter.com/sigsegmeme/status/1075987144798232576,1075987144798232576.jpg,5
+1075983038662627329,"When the recruiter writes something clever like System.out.println(""Awesome new opportunity!"") in the subject line to describe the job instead of a normal subject line",https://twitter.com/sigsegmeme/status/1075983038662627329,1075983038662627329.jpg,3
