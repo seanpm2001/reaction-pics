@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "minify": "npm run build",
-    "test": "nyc --require dotenv/config --instrument false mochify -R dot --global-transform browserify-css --transform loose-envify server/test/*.js --allow-chrome-as-root",
+    "test": "npm run minify && npm run cover",
+    "cover": "nyc --require dotenv/config --instrument false mochify -R dot --global-transform browserify-css --transform loose-envify server/test/*.js --allow-chrome-as-root",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
