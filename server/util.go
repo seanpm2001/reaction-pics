@@ -12,7 +12,7 @@ import (
 
 // appCacheString returns a cache string that can be used to bust browser/CDN caches
 func appCacheString() string {
-	appJS, err := staticFiles.ReadFile("static/gen/app.js")
+	appJS, err := staticFiles.ReadFile("static/gen/main.js")
 	if err != nil {
 		return "notfound"
 	}

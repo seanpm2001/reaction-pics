@@ -9,7 +9,6 @@ const config = {
   entry: "./server/static/js/app.js",
   output: {
     path: path.resolve(__dirname, "server", "static", "gen"),
-    filename: 'app.js',
   },
   resolve: {
     alias: {
