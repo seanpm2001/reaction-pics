@@ -4,6 +4,10 @@ const Rollbar = require('rollbar');
 const LazyLoad = require('vanilla-lazyload');
 const varsnap = require('varsnap');
 
+if (typeof window !== 'undefined') {
+  require('../global.css');
+}
+
 const rollbarConfig = {
   accessToken: process.env.ROLLBAR_CLIENT_TOKEN,
   captureUncaught: true,
