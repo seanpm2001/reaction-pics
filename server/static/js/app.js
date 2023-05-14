@@ -5,6 +5,9 @@ const LazyLoad = require('vanilla-lazyload');
 const varsnap = require('varsnap');
 
 if (typeof window !== 'undefined') {
+  require('normalize.css/normalize.css');
+  require('bootstrap/dist/css/bootstrap.css');
+  require('bootstrap/dist/js/bootstrap.js');
   require('../global.css');
 }
 
