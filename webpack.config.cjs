@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV == "production";
 const config = {
   entry: "./server/static/js/app.js",
   output: {
-    path: path.resolve(__dirname, "server", "static"),
+    path: path.resolve(__dirname, "server", "static", "gen"),
     filename: 'app.js',
   },
   resolve: {

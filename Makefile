@@ -4,7 +4,7 @@ all: test
 .PHONY:clean
 clean:
 	rm reaction-pics
-	rm server/static/app.js
+	rm server/static/gen/*
 
 .PHONY:bins
 bins:
