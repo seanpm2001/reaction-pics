@@ -1,3 +1,4 @@
+// Package model contains data for reaction.pics
 package model
 
 import (
