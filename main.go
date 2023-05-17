@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"time"
 
 	"github.com/albertyw/reaction-pics/server"
 	"github.com/joho/godotenv"
@@ -43,6 +44,7 @@ func getLogger() *zap.Logger {
 	} else {
 		config = zap.NewProductionConfig()
 	}
+	config.EncoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout(time.RFC3339)
 	_, filename, _, ok := runtime.Caller(0)
 	if !ok {
 		filename = "."
