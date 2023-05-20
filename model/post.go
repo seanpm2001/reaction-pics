@@ -89,8 +89,7 @@ func InitializeBoard() *Board {
 	board.mut.Lock()
 	go func() {
 		defer board.mut.Unlock()
-		posts := ReadPostsFromCSV(getCSV(false))
-		board.Posts = append(board.Posts, posts...)
+		board.Posts = ReadPostsFromCSV(getCSV(false))
 		board.sortPostsByLikes()
 	}()
 	return &board
