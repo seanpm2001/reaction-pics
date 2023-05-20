@@ -28,12 +28,6 @@ type Post struct {
 	Likes int64  `json:"likes"`
 }
 
-// PostJSON is a representation of Post for creating JSON values
-type PostJSON struct {
-	JPost
-	InternalURL string `json:"internalURL"`
-}
-
 // InternalURL returns the path to the post
 func (p Post) InternalURL() string {
 	slug := slug.Make(p.Title)
@@ -43,12 +37,14 @@ func (p Post) InternalURL() string {
 	return "/post/" + strconv.FormatInt(p.ID, 10) + "/" + slug
 }
 
-type JPost Post
-
 // MarshalJSON allows Post to be converted to json
 func (p Post) MarshalJSON() ([]byte, error) {
-	return json.Marshal(&PostJSON{
-		JPost:       JPost(p),
+	type jPost Post
+	return json.Marshal(&struct {
+		jPost
+		InternalURL string `json:"internalURL"`
+	}{
+		jPost:       jPost(p),
 		InternalURL: p.InternalURL(),
 	})
 }
