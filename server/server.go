@@ -80,7 +80,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	}
 	queriedBoard.LimitBoard(offset, maxResults)
 	queriedBoard.SortPostsByLikes()
-	data["data"] = queriedBoard.PostsToJSON()
+	data["data"] = queriedBoard
 	dataBytes, _ := json.Marshal(data)
 	_, err = fmt.Fprint(w, string(dataBytes))
 	if err != nil {
@@ -113,7 +113,7 @@ func postDataHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 	data := map[string]interface{}{
 		"offset":       0,
 		"totalResults": 1,
-		"data":         []model.PostJSON{post.ToJSONStruct()},
+		"data":         []*model.Post{post},
 	}
 	marshalledPost, _ := json.Marshal(data)
 	_, err = fmt.Fprint(w, string(marshalledPost))

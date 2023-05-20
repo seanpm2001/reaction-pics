@@ -2,6 +2,7 @@
 package model
 
 import (
+	"encoding/json"
 	"math/rand"
 	"sort"
 	"strconv"
@@ -27,12 +28,6 @@ type Post struct {
 	Likes int64  `json:"likes"`
 }
 
-// PostJSON is a representation of Post for creating JSON values
-type PostJSON struct {
-	Post
-	InternalURL string `json:"internalURL"`
-}
-
 // InternalURL returns the path to the post
 func (p Post) InternalURL() string {
 	slug := slug.Make(p.Title)
@@ -42,12 +37,16 @@ func (p Post) InternalURL() string {
 	return "/post/" + strconv.FormatInt(p.ID, 10) + "/" + slug
 }
 
-// ToJSONStruct builds a PostJSON based on the Post
-func (p Post) ToJSONStruct() PostJSON {
-	return PostJSON{
-		Post:        p,
+// MarshalJSON allows Post to be converted to json
+func (p Post) MarshalJSON() ([]byte, error) {
+	type jPost Post
+	return json.Marshal(&struct {
+		jPost
+		InternalURL string `json:"internalURL"`
+	}{
+		jPost:       jPost(p),
 		InternalURL: p.InternalURL(),
-	}
+	})
 }
 
 // CSVToPost converts a CSV row into a Post
@@ -86,13 +85,7 @@ type Board struct {
 // posts into it
 func InitializeBoard() *Board {
 	board := NewBoard([]Post{})
-	board.mut.Lock()
-	go func() {
-		defer board.mut.Unlock()
-		posts := ReadPostsFromCSV(getCSV(false))
-		board.Posts = append(board.Posts, posts...)
-		board.sortPostsByLikes()
-	}()
+	board.PopulateBoard()
 	return &board
 }
 
@@ -102,6 +95,16 @@ func NewBoard(p []Post) Board {
 		Posts: p,
 		mut:   &sync.RWMutex{},
 	}
+}
+
+// PopulateBoard adds production posts to the board
+func (b *Board) PopulateBoard() {
+	b.mut.Lock()
+	go func() {
+		defer b.mut.Unlock()
+		b.Posts = ReadPostsFromCSV(getCSV(false))
+		b.sortPostsByLikes()
+	}()
 }
 
 // AddPost adds a single post to the board; no-ops if the post is already present
@@ -116,15 +119,11 @@ func (b *Board) AddPost(p Post) {
 	b.Posts = append(b.Posts, p)
 }
 
-// PostsToJSON converts a Post into a JSON string
-func (b Board) PostsToJSON() *[]PostJSON {
+// MarshalJSON allows Board to be converted to json
+func (b Board) MarshalJSON() ([]byte, error) {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
-	postsJSON := make([]PostJSON, len(b.Posts))
-	for i := 0; i < len(b.Posts); i++ {
-		postsJSON[i] = b.Posts[i].ToJSONStruct()
-	}
-	return &postsJSON
+	return json.Marshal(b.Posts)
 }
 
 // FilterBoard returns a new Board with a subset of posts filtered by a string
