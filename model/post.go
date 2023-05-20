@@ -2,6 +2,7 @@
 package model
 
 import (
+	"encoding/json"
 	"math/rand"
 	"sort"
 	"strconv"
@@ -29,7 +30,7 @@ type Post struct {
 
 // PostJSON is a representation of Post for creating JSON values
 type PostJSON struct {
-	Post
+	JPost
 	InternalURL string `json:"internalURL"`
 }
 
@@ -42,12 +43,14 @@ func (p Post) InternalURL() string {
 	return "/post/" + strconv.FormatInt(p.ID, 10) + "/" + slug
 }
 
-// ToJSONStruct builds a PostJSON based on the Post
-func (p Post) ToJSONStruct() PostJSON {
-	return PostJSON{
-		Post:        p,
+type JPost Post
+
+// MarshalJSON allows Post to be converted to json
+func (p Post) MarshalJSON() ([]byte, error) {
+	return json.Marshal(&PostJSON{
+		JPost:       JPost(p),
 		InternalURL: p.InternalURL(),
-	}
+	})
 }
 
 // CSVToPost converts a CSV row into a Post
@@ -120,15 +123,11 @@ func (b *Board) AddPost(p Post) {
 	b.Posts = append(b.Posts, p)
 }
 
-// PostsToJSON converts a Post into a JSON string
-func (b Board) PostsToJSON() *[]PostJSON {
+// MarshalJSON allows Board to be converted to json
+func (b Board) MarshalJSON() ([]byte, error) {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
-	postsJSON := make([]PostJSON, len(b.Posts))
-	for i := 0; i < len(b.Posts); i++ {
-		postsJSON[i] = b.Posts[i].ToJSONStruct()
-	}
-	return &postsJSON
+	return json.Marshal(b.Posts)
 }
 
 // FilterBoard returns a new Board with a subset of posts filtered by a string

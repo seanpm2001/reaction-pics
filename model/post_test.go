@@ -74,23 +74,6 @@ func TestAddPost(t *testing.T) {
 	assert.Equal(t, len(board.Posts), 1)
 }
 
-func TestPostsToJSON(t *testing.T) {
-	posts := make([]Post, 2)
-	posts[0] = Post{1, "title1", "url1", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 123}
-	posts[1] = Post{2, "title2", "url2", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 124}
-	board := NewBoard(posts)
-	data := board.PostsToJSON()
-	assert.Equal(t, len(*data), 2)
-
-	post := (*data)[0]
-	assert.Equal(t, post.ID, int64(1))
-	assert.Equal(t, post.Title, "title1")
-	assert.Equal(t, post.URL, "url1")
-	assert.Equal(t, post.Image, "https://img.reaction.pics/file/reaction-pics/abcd.gif")
-	assert.Equal(t, post.Likes, int64(123))
-	assert.Equal(t, post.InternalURL, "/post/1/title1")
-}
-
 func TestFilterBoard(t *testing.T) {
 	posts := make([]Post, 3)
 	posts[0] = Post{1, "title1", "url1", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 123}
