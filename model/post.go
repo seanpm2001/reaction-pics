@@ -3,6 +3,7 @@ package model
 
 import (
 	"encoding/json"
+	"math"
 	"math/rand"
 	"sort"
 	"strconv"
@@ -133,19 +134,28 @@ func (b Board) FilterBoard(queries []string) *Board {
 	defer b.mut.RUnlock()
 	selectedPosts := []Post{}
 	for _, post := range b.Posts {
-		mismatch := false
-		for _, query := range queries {
-			if !fuzzy.MatchNormalizedFold(query, post.Title) {
-				mismatch = true
-				break
-			}
-		}
-		if !mismatch {
+		distance := multiWordRank(queries, post)
+		if distance == 0 {
 			selectedPosts = append(selectedPosts, post)
 		}
 	}
 	board := NewBoard(selectedPosts)
 	return &board
+}
+
+func multiWordRank(queries []string, post Post) int {
+	distance := 0
+	for _, query := range queries {
+		minDistance := math.MaxInt32
+		for _, word := range strings.Split(post.Title, " ") {
+			wordDistance := fuzzy.LevenshteinDistance(query, strings.ToLower(word))
+			if wordDistance < minDistance {
+				minDistance = wordDistance
+			}
+		}
+		distance += minDistance
+	}
+	return distance
 }
 
 // GetPostByID returns a post that matches the postID
