@@ -141,7 +141,7 @@ func (b Board) FilterBoard(queries []string) *Board {
 		distance := multiWordRank(queries, post)
 		selectedPosts = append(selectedPosts, postWithDistance{post, distance})
 	}
-	sort.Slice(selectedPosts, func(i, j int) bool { return selectedPosts[i].distance < selectedPosts[j].distance })
+	sort.SliceStable(selectedPosts, func(i, j int) bool { return selectedPosts[i].distance < selectedPosts[j].distance })
 	posts := []Post{}
 	for _, selectedPost := range selectedPosts {
 		posts = append(posts, selectedPost.Post)
