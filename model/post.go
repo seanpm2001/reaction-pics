@@ -133,10 +133,9 @@ func (b Board) FilterBoard(queries []string) *Board {
 	defer b.mut.RUnlock()
 	selectedPosts := []Post{}
 	for _, post := range b.Posts {
-		postData := strings.ToLower(post.Title)
 		mismatch := false
 		for _, query := range queries {
-			if !fuzzy.Match(query, postData) {
+			if !fuzzy.MatchNormalizedFold(query, post.Title) {
 				mismatch = true
 				break
 			}
