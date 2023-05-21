@@ -177,6 +177,11 @@ function stats() {
   return getJSON("/stats.json", {}, false).then((data) => {
     const line = "Currently indexing " + data.postCount + " posts";
     document.getElementById('indexStat').textContent = line;
+    let suggestions = '';
+    for (const keyword of data.keywords.slice(0, 10)) {
+      suggestions += '<span class="suggestion">' + keyword + '</span>';
+    }
+    document.getElementById('suggestions').innerHTML = suggestions;
   });
 }
 // Cannot serialize and compare jquery request

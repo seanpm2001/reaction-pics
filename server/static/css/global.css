@@ -1,6 +1,9 @@
 #jumbotron {
     background-color:#e9ecef;
 }
+.suggestion {
+  padding: 10px;
+}
 .result-img {
     height: 200px;
     min-width:200px;
