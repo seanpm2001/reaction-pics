@@ -3,6 +3,7 @@ package model
 
 import (
 	"encoding/json"
+	"math"
 	"math/rand"
 	"sort"
 	"strconv"
@@ -10,6 +11,7 @@ import (
 	"sync"
 
 	"github.com/gosimple/slug"
+	"github.com/lithammer/fuzzysearch/fuzzy"
 	"github.com/rollbar/rollbar-go"
 )
 
@@ -130,22 +132,37 @@ func (b Board) MarshalJSON() ([]byte, error) {
 func (b Board) FilterBoard(queries []string) *Board {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
-	selectedPosts := []Post{}
+	type postWithDistance struct {
+		Post
+		distance int
+	}
+	selectedPosts := []postWithDistance{}
 	for _, post := range b.Posts {
-		postData := strings.ToLower(post.Title)
-		mismatch := false
-		for _, query := range queries {
-			if !strings.Contains(postData, query) {
-				mismatch = true
-				break
+		distance := multiWordRank(queries, post)
+		selectedPosts = append(selectedPosts, postWithDistance{post, distance})
+	}
+	sort.SliceStable(selectedPosts, func(i, j int) bool { return selectedPosts[i].distance < selectedPosts[j].distance })
+	posts := []Post{}
+	for _, selectedPost := range selectedPosts {
+		posts = append(posts, selectedPost.Post)
+	}
+	board := NewBoard(posts)
+	return &board
+}
+
+func multiWordRank(queries []string, post Post) int {
+	distance := 0
+	for _, query := range queries {
+		minDistance := math.MaxInt32
+		for _, word := range strings.Split(post.Title, " ") {
+			wordDistance := fuzzy.LevenshteinDistance(query, strings.ToLower(word))
+			if wordDistance < minDistance {
+				minDistance = wordDistance
 			}
 		}
-		if !mismatch {
-			selectedPosts = append(selectedPosts, post)
-		}
+		distance += minDistance
 	}
-	board := NewBoard(selectedPosts)
-	return &board
+	return distance
 }
 
 // GetPostByID returns a post that matches the postID
