@@ -132,14 +132,21 @@ func (b Board) MarshalJSON() ([]byte, error) {
 func (b Board) FilterBoard(queries []string) *Board {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
-	selectedPosts := []Post{}
+	type postWithDistance struct {
+		Post
+		distance int
+	}
+	selectedPosts := []postWithDistance{}
 	for _, post := range b.Posts {
 		distance := multiWordRank(queries, post)
-		if distance == 0 {
-			selectedPosts = append(selectedPosts, post)
-		}
+		selectedPosts = append(selectedPosts, postWithDistance{post, distance})
 	}
-	board := NewBoard(selectedPosts)
+	sort.Slice(selectedPosts, func(i, j int) bool { return selectedPosts[i].distance < selectedPosts[j].distance })
+	posts := []Post{}
+	for _, selectedPost := range selectedPosts {
+		posts = append(posts, selectedPost.Post)
+	}
+	board := NewBoard(posts)
 	return &board
 }
 
