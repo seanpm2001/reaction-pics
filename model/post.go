@@ -10,6 +10,7 @@ import (
 	"sync"
 
 	"github.com/gosimple/slug"
+	"github.com/lithammer/fuzzysearch/fuzzy"
 	"github.com/rollbar/rollbar-go"
 )
 
@@ -135,7 +136,7 @@ func (b Board) FilterBoard(queries []string) *Board {
 		postData := strings.ToLower(post.Title)
 		mismatch := false
 		for _, query := range queries {
-			if !strings.Contains(postData, query) {
+			if !fuzzy.Match(query, postData) {
 				mismatch = true
 				break
 			}
