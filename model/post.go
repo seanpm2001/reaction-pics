@@ -233,12 +233,15 @@ func (b Board) URLs() []string {
 func (b Board) Keywords() []string {
 	b.mut.RLock()
 	defer b.mut.RUnlock()
+	stopwords := loadStopwords()
 	words := map[string]int{}
 	for _, post := range b.Posts {
 		for _, word := range strings.Fields(post.Title) {
-			if len(word) > 4 {
-				words[word]++
+			word := strings.ToLower(word)
+			if _, ok := stopwords[word]; ok {
+				continue
 			}
+			words[word]++
 		}
 	}
 	// Reuse Board sort
