@@ -10,6 +10,10 @@ clean:
 bins:
 	go build -race .
 
+.PHONY:web
+webpack:
+	npm run build:dev
+
 .PHONY:test
 test: bins
 	./bin/test.sh
@@ -17,7 +21,7 @@ test: bins
 	git ls-files | grep -e \.sh$ | xargs shellcheck --exclude=SC1091
 
 .PHONY:serve
-serve: bins
+serve: webpack bins
 	./reaction-pics
 
 .PHONY:lsremote
