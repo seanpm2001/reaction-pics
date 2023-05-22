@@ -199,15 +199,8 @@ func (b *Board) SortPostsByLikes() {
 }
 
 func (b *Board) sortPostsByLikes() {
-	sort.Sort(sort.Reverse(SortByLikes(b.Posts)))
+	sort.Slice(b.Posts, func(i, j int) bool { return b.Posts[i].Likes > b.Posts[j].Likes })
 }
-
-// SortByLikes is an interface for Sorting
-type SortByLikes []Post
-
-func (a SortByLikes) Len() int           { return len(a) }
-func (a SortByLikes) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a SortByLikes) Less(i, j int) bool { return a[i].Likes < a[j].Likes }
 
 // RandomizePosts will shuffle the current Board's posts
 func (b *Board) RandomizePosts() {
