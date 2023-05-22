@@ -179,7 +179,7 @@ function stats() {
     document.getElementById('indexStat').textContent = line;
     let suggestions = '';
     for (const keyword of data.keywords.slice(0, 10)) {
-      suggestions += '<a href="/?query=' + keyword + '" class="suggestion">' + keyword + '</a>';
+      suggestions += '<span class="suggestion"><a href="/?query=' + keyword + '" class="btn btn-secondary btn-sm">' + keyword + '</a></span>';
     }
     document.getElementById('suggestions').innerHTML = suggestions;
   });
