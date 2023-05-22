@@ -177,7 +177,7 @@ function stats() {
   return getJSON("/stats.json", {}, false).then((data) => {
     const line = "Currently indexing " + data.postCount + " posts";
     document.getElementById('indexStat').textContent = line;
-    let suggestions = '';
+    let suggestions = '<span class="suggestion">Try:</span>';
     for (const keyword of data.keywords.slice(0, 10)) {
       suggestions += '<span class="suggestion"><a href="/?query=' + keyword + '" class="btn btn-secondary btn-sm">' + keyword + '</a></span>';
     }
