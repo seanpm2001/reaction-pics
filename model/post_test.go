@@ -97,6 +97,14 @@ func TestFilterBoard(t *testing.T) {
 	assert.Equal(t, newBoard.Posts[2].ID, int64(1))
 }
 
+func TestMultiWordRank(t *testing.T) {
+	assert.Equal(t, multiWordRank([]string{"title1"}, Post{Title: "title1"}), 0)
+	assert.Equal(t, multiWordRank([]string{"title1"}, Post{Title: "title1 title2"}), 0)
+	assert.Equal(t, multiWordRank([]string{"title2"}, Post{Title: "title1"}), 1)
+	assert.Equal(t, multiWordRank([]string{"oncall"}, Post{Title: "Can you call the customer and talk them through this?"}), 2)
+	assert.Equal(t, multiWordRank([]string{"oncall"}, Post{Title: "When your Sunday oncall outage turns into their Monday oncall outage"}), 0)
+}
+
 func TestLimitBoard(t *testing.T) {
 	posts := make([]Post, 2)
 	posts[0] = Post{1, "title1", "url1", "https://img.reaction.pics/file/reaction-pics/abcd.gif", 123}
