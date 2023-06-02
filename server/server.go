@@ -79,7 +79,9 @@ func searchHandler(w http.ResponseWriter, r *http.Request, d handlerDeps) {
 		"totalResults": len(queriedBoard.Posts),
 	}
 	queriedBoard.LimitBoard(offset, maxResults)
-	queriedBoard.SortPostsByLikes()
+	if query == "" {
+		queriedBoard.SortPostsByLikes()
+	}
 	data["data"] = queriedBoard
 	dataBytes, _ := json.Marshal(data)
 	_, err = fmt.Fprint(w, string(dataBytes))
