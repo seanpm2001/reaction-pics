@@ -6,7 +6,7 @@ RUN npm ci --only=production \
     && sed -i '' server/static/**/*
 
 
-FROM golang:1.20-bullseye as go
+FROM golang:1.20-bookworm as go
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set up directory structures
@@ -18,7 +18,7 @@ COPY --from=node ./server/static ./server/static
 # App-specific setup
 RUN make bins
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5003
 RUN apt-get update && apt-get install -y --no-install-recommends \
