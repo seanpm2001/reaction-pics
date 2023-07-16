@@ -1,6 +1,6 @@
 FROM node:18-slim as node
-WORKDIR /
-COPY . .
+WORKDIR /root
+COPY . /root
 RUN npm ci --only=production \
     && npm run minify \
     && sed -i '' server/static/**/*
@@ -13,7 +13,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /root/
 RUN mkdir -p .
 COPY . .
-COPY --from=node ./server/static ./server/static
+COPY --from=node /root/server/static ./server/static
 
 # App-specific setup
 RUN make bins
