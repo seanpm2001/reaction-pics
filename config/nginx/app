@@ -1,3 +1,5 @@
+# vi: ft=nginx
+
 ### Redirects ###
 
 # Change IP address to domain name
