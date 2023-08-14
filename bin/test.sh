@@ -29,3 +29,6 @@ fi
 
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin"
 golangci-lint run ./...
+
+go install golang.org/x/vuln/cmd/govulncheck@latest
+govulncheck ./...
