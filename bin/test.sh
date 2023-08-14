@@ -27,7 +27,5 @@ if [ -n "$gosumdiff" ]; then
     exit 1
 fi
 
-# Unpin version after https://github.com/golangci/golangci-lint/issues/3862 is resolved
-# curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin"
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin" v1.52.2
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)/bin"
 golangci-lint run ./...
