@@ -10,8 +10,8 @@ require (
 	github.com/rollbar/rollbar-go v1.4.5
 	github.com/stretchr/testify v1.8.4
 	go.uber.org/automaxprocs v1.5.3
-	go.uber.org/goleak v1.2.1
-	go.uber.org/zap v1.25.0
+	go.uber.org/goleak v1.3.0
+	go.uber.org/zap v1.26.0
 )
 
 require (
