@@ -19,7 +19,7 @@ steps:
       CC_TEST_REPORTER_ID: a80cd7d0697a40f38985bf79bc5aec83b6c742ed8d3463b42388b972a0b99443
 
   - name: Test Node
-    image: satantime/puppeteer-node:18-bookworm-slim
+    image: satantime/puppeteer-node:21-bookworm-slim
     commands:
       - cp .env.example .env
       - apt-get update && apt-get install -y chromium
@@ -41,7 +41,7 @@ steps:
       - hadolint Dockerfile --ignore=DL3008 --ignore=DL4006 --ignore=SC2046 --ignore=SC2006
 
   - name: Test Nginx
-    image: python:3.11-alpine
+    image: python:3.12-alpine
     commands:
       - pip install gixy==0.1.20 pyparsing==2.4.7
       - gixy config/nginx/*
@@ -71,7 +71,7 @@ steps:
     environment:
       SSH_KEY:
         from_secret: ssh_key
-    image: albertyw/ssh-client:4.0.0
+    image: albertyw/ssh-client:4.1.0
     commands:
       - ssh-keyscan direct.albertyw.com >> /root/.ssh/known_hosts
       - echo "$${SSH_KEY}" > /root/.ssh/id_ed25519
