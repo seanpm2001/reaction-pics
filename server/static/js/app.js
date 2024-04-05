@@ -54,20 +54,20 @@ function getJSON(url, params, cancellable) {
 }
 
 function showPost(postID) {
-  const url = "/postdata/" + postID;
+  const url = '/postdata/' + postID;
   getJSON(url, {}, false).then((data) => {
-    setResults("");
+    setResults('');
     addResults(data);
   });
 }
 
 function getQuery() {
-  const query = document.getElementById("query").value;
+  const query = document.getElementById('query').value;
   return query;
 }
 
 function setResults(html) {
-  document.getElementById("results").innerHTML = html;
+  document.getElementById('results').innerHTML = html;
 }
 
 function updateResults(query, offset) {
@@ -79,14 +79,14 @@ function updateResults(query, offset) {
     query: query,
     offset: offset,
   };
-  getJSON("/search", params, true).then((data) => {
-      searchCancel = undefined;
-      setResults("");
-      saveQuery(query, data);
-      updateURL(query);
-      addResults(data);
-      window.scrollTo(0, 0);
-  }).catch((thrown) => {
+  getJSON('/search', params, true).then((data) => {
+    searchCancel = undefined;
+    setResults('');
+    saveQuery(query, data);
+    updateURL(query);
+    addResults(data);
+    window.scrollTo(0, 0);
+  }).catch(() => {
     // no-op
   });
 }
@@ -102,18 +102,18 @@ function saveQuery(query, data) {
   document.getElementById('data').innerHTML = dataHTML;
   return dataHTML;
 }
-saveQuery = varsnap(saveQuery);
+saveQuery = varsnap(saveQuery); // eslint-disable-line no-func-assign
 
 function updateURL(query) {
-  let url = "/";
-  if (query !== undefined && query !== "") {
-    url += "?query=" + query;
+  let url = '/';
+  if (query !== undefined && query !== '') {
+    url += '?query=' + query;
   }
   const urlPath = window.location.pathname.split('/');
   if (urlPath[1] === 'post') {
-    history.pushState({}, "Reaction Pics", url);
+    history.pushState({}, 'Reaction Pics', url);
   } else {
-    history.replaceState({}, "Reaction Pics", url);
+    history.replaceState({}, 'Reaction Pics', url);
   }
   return url;
 }
@@ -139,7 +139,7 @@ function addResults(data) {
   lazyLoadInstance.update();
   return resultHTML;
 }
-addResults = varsnap(addResults);
+addResults = varsnap(addResults); // eslint-disable-line no-func-assign
 
 function paginateNext() {
   let offset = parseInt(document.getElementById('offset').value, 10);
@@ -161,19 +161,19 @@ function addResult(postData) {
     }
   }
   if (postData.likes) {
-      postHTML += '<p><a href="#" id="likes" class="btn btn-success disabled">';
-      postHTML += postData.likes + ' <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>';
-      postHTML += '</a></p>';
-      postHTML += '<p><a href="' + postData.url + '">Original</a></p>';
+    postHTML += '<p><a href="#" id="likes" class="btn btn-success disabled">';
+    postHTML += postData.likes + ' <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>';
+    postHTML += '</a></p>';
+    postHTML += '<p><a href="' + postData.url + '">Original</a></p>';
   }
   postHTML += '</div>';
   return postHTML;
 }
-addResult = varsnap(addResult);
+addResult = varsnap(addResult); // eslint-disable-line no-func-assign
 
 function stats() {
-  return getJSON("/stats.json", {}, false).then((data) => {
-    const line = "Currently indexing " + data.postCount + " posts";
+  return getJSON('/stats.json', {}, false).then((data) => {
+    const line = 'Currently indexing ' + data.postCount + ' posts';
     document.getElementById('indexStat').textContent = line;
     let suggestions = '<span class="suggestion">Try:</span>';
     for (const keyword of data.keywords.slice(0, 10)) {
@@ -186,14 +186,14 @@ function stats() {
 // stats = varsnap(stats);
 
 function getParameterByName(url, name) {
-    name = name.replace(/[\[\]]/g, "\\$&");
-    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
-    const results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  name = name.replace(/[[\]]/g, '\\$&');
+  const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+  const results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
-getParameterByName = varsnap(getParameterByName);
+getParameterByName = varsnap(getParameterByName); // eslint-disable-line no-func-assign
 
 document.addEventListener('DOMContentLoaded', function() {
   const query = getParameterByName(window.location.href, 'query');

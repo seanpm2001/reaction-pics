@@ -32,7 +32,6 @@ context('Varsnap', function() {
   });
   it('runs with production', async function() {
     const status = await varsnap.runTests();
-    // TODO: reenable
-    // expect(status).to.be.true;
+    expect(status).to.be.true;
   });
 });
