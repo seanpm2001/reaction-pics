@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Reaction Pics",
   "private": true,
+  "type": "module",
   "scripts": {
     "minify": "npm run build",
     "test": "npm run minify && npm run cover",

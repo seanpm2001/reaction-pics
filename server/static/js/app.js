@@ -1,15 +1,13 @@
-const axios = require('axios/dist/browser/axios.cjs');
-const LogFit = require('logfit');
-const Rollbar = require('rollbar');
-const LazyLoad = require('vanilla-lazyload');
-const varsnap = require('varsnap');
+import axios from 'axios';
+import LogFit from 'logfit';
+import Rollbar from 'rollbar';
+import LazyLoad from 'vanilla-lazyload';
+import varsnap from 'varsnap';
 
-if (typeof window !== 'undefined') {
-  require('normalize.css/normalize.css');
-  require('bootstrap/dist/css/bootstrap.css');
-  require('bootstrap/dist/js/bootstrap.js');
-  require('../css/global.css');
-}
+import 'normalize.css/normalize.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import '../css/global.css';
 
 const rollbarConfig = {
   accessToken: process.env.ROLLBAR_CLIENT_TOKEN,

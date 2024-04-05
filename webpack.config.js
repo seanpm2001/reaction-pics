@@ -1,18 +1,18 @@
-const path = require("path");
-const Dotenv = require("dotenv-webpack");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+import path from "path";
+import Dotenv from "dotenv-webpack";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
   entry: "./server/static/js/app.js",
   output: {
-    path: path.resolve(__dirname, "server", "static", "gen"),
+    path: path.resolve("server", "static", "gen"),
   },
   resolve: {
     alias: {
-      "axios/dist/browser/axios.cjs": path.resolve(__dirname, "node_modules/axios/dist/browser/axios.cjs"),
+      "axios/dist/browser/axios.cjs": path.resolve("node_modules/axios/dist/browser/axios.cjs"),
     },
   },
   plugins: [
@@ -44,7 +44,7 @@ const config = {
   },
 };
 
-module.exports = () => {
+export default () => {
   if (isProduction) {
     config.mode = "production";
   } else {
