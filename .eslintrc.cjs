@@ -25,6 +25,7 @@ module.exports = {
   },
   "globals": {
     "it": true,
+    "context": true,
     "describe": true,
     "after": true,
     "before": true,
