@@ -29,6 +29,7 @@ bin/hadolint
 reaction-pics
 coverage.txt
 c.out
+.coverage
 
 Godeps
 vendor
