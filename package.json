@@ -10,7 +10,8 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "wdio": "wdio run ./wdio.conf.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,10 @@
   },
   "homepage": "https://github.com/albertyw/reaction-pics#readme",
   "devDependencies": {
+    "@wdio/browser-runner": "^8.35.1",
+    "@wdio/cli": "^8.35.1",
+    "@wdio/mocha-framework": "^8.35.0",
+    "@wdio/spec-reporter": "^8.32.4",
     "browserify-css": "^0.15.0",
     "chai": "^4.2.0",
     "mocha": "^10.0.0",
