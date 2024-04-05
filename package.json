@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "minify": "npm run build",
-    "test": "npm run minify && npm run cover",
-    "cover": "nyc --require dotenv/config --instrument false mochify -R dot --global-transform browserify-css --transform loose-envify server/test/*.js --allow-chrome-as-root",
+    "test": "npm run minify && npm run wdio",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
@@ -29,21 +28,15 @@
     "@wdio/cli": "^8.35.1",
     "@wdio/mocha-framework": "^8.35.0",
     "@wdio/spec-reporter": "^8.32.4",
-    "browserify-css": "^0.15.0",
-    "chai": "^4.2.0",
-    "mocha": "^10.0.0",
-    "mochify": "^9.0.0",
-    "nyc": "^15.1.0"
+    "chai": "^4.2.0"
   },
   "dependencies": {
     "axios": "^1.0.0",
     "bootstrap": "^5.0.0",
     "css-loader": "^7.0.0",
     "css-minimizer-webpack-plugin": "^6.0.0",
-    "dotenv": "^16.0.0",
     "dotenv-webpack": "^8.0.1",
     "logfit": "^0.8.2",
-    "loose-envify": "^1.4.0",
     "mini-css-extract-plugin": "^2.7.5",
     "normalize.css": "^8.0.1",
     "rollbar": "^2.19.4",
