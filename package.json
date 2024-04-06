@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "eslint": "eslint server/static/js server/test",
+    "eslint": "eslint -c .eslint.config.js server/static/js server/test",
     "minify": "npm run build",
     "test": "npm run eslint && npm run minify && npm run wdio",
     "build": "webpack --mode=production --node-env=production",
@@ -30,7 +30,8 @@
     "@wdio/mocha-framework": "^8.35.0",
     "@wdio/spec-reporter": "^8.32.4",
     "chai": "^5.0.0",
-    "eslint": "^9.0.0"
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0"
   },
   "dependencies": {
     "axios": "^1.0.0",
